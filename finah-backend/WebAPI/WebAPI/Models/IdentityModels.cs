@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace WebAPI.Models
 {
@@ -29,5 +30,20 @@ namespace WebAPI.Models
         {
             return new ApplicationDbContext();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id).ToTable("AspNetRoles");
+            modelBuilder.Entity<IdentityUser>().ToTable("AspNetUsers");
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId).ToTable("AspNetUserLogins");
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId }).ToTable("AspNetUserRoles");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaims");
+        }
+
+        public System.Data.Entity.DbSet<Vraag> Vragen { get; set; }
+        public System.Data.Entity.DbSet<Rapport> Rapporten { get; set; }
+        public System.Data.Entity.DbSet<Antwoord> Antwoorden { get; set; }
     }
 }
