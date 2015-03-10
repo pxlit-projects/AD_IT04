@@ -13,7 +13,5 @@ namespace WebAPI.Models
         [Required]
         public String Beschrijving { get; set; }
 
-        [Required]
-        public String ExtraVraag { get; set; }
     }
 }

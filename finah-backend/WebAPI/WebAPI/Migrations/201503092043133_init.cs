@@ -110,7 +110,6 @@ namespace WebAPI.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Beschrijving = c.String(nullable: false),
-                        ExtraVraag = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

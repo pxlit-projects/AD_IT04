@@ -11,18 +11,19 @@ namespace WebAPI.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(WebAPI.Models.ApplicationDbContext context)
         {
             var vragen = new List<Vraag>
             {
-                new Vraag { Beschrijving = "Uitvoeren van dagelijkse routinehandelingen", ExtraVraag = "Wilt u dat hieraan gewerkt wordt?" },
-                new Vraag { Beschrijving = "Iets nieuws leren (zoals het leren omgaan met bijv. een nieuwe GSM, vaatwasmachine of afstandsbediening; leren ikv een hobby)" , ExtraVraag = "Wilt u dat hieraan gewerkt wordt?" },
-                new Vraag { Beschrijving = "Denken (zoals fantaseren, een mening vormen, met ideeën spelen, of nadenken)", ExtraVraag = "Wilt u dat hieraan gewerkt wordt?" },
-                new Vraag { Beschrijving = "Lezen (zoals boeken, instructies, kranten, in tekst of in braille)", ExtraVraag = "Wilt u dat hieraan gewerkt wordt?" },
-                new Vraag { Beschrijving = "Rekenen (zoals gepast betalen bij een winkel)", ExtraVraag = "Wilt u dat hieraan gewerkt wordt?" }
+                new Vraag { Beschrijving = "Uitvoeren van dagelijkse routinehandelingen" },
+                new Vraag { Beschrijving = "Iets nieuws leren (zoals het leren omgaan met bijv. een nieuwe GSM, vaatwasmachine of afstandsbediening; leren ikv een hobby)"},
+                new Vraag { Beschrijving = "Denken (zoals fantaseren, een mening vormen, met ideeën spelen, of nadenken)"},
+                new Vraag { Beschrijving = "Lezen (zoals boeken, instructies, kranten, in tekst of in braille)"},
+                new Vraag { Beschrijving = "Rekenen (zoals gepast betalen bij een winkel)"}
             };
 
             vragen.ForEach(v => context.Vragen.AddOrUpdate(p => p.Id, v));
