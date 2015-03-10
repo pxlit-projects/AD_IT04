@@ -34,7 +34,7 @@ namespace WebAPI.Migrations
                 new Antwoord { RapportId = 1, VraagId = 1, AntwoordInt = 0, AntwoordExtra = 0, Verzorger = true },
                 new Antwoord { RapportId = 1, VraagId = 2, AntwoordInt = 1, AntwoordExtra = 0, Verzorger = false },
                 new Antwoord { RapportId = 1, VraagId = 3, AntwoordInt = 2, AntwoordExtra = 1, Verzorger = true },
-                new Antwoord { RapportId = 1, VraagId = 4,AntwoordInt = 3, AntwoordExtra = 2, Verzorger = false },
+                new Antwoord { RapportId = 1, VraagId = 4, AntwoordInt = 3, AntwoordExtra = 2, Verzorger = false },
                 new Antwoord { RapportId = 1, VraagId = 5, AntwoordInt = 4, AntwoordExtra = 1, Verzorger = true }
             };
 
@@ -54,5 +54,6 @@ namespace WebAPI.Migrations
             context.SaveChanges();
 
         }
+
     }
 }
