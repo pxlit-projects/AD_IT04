@@ -19,5 +19,8 @@ namespace WebAPI.Models
         [Required]
         public DateTime Date { get; set; }
 
+        [Required]
+        public int Vragenlijst_Id { get; set; }
+
     }
 }

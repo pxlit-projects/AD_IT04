@@ -11,16 +11,16 @@ namespace WebAPI.Models
         public int Id { get; set; }
 
         [Required]
-        public int VraagId { get; set; }
+        public int Vraag_Id { get; set; }
 
         [Required]
-        public int RapportId { get; set; }
+        public int Rapport_Id { get; set; }
 
         [Required]
         public int AntwoordInt { get; set; }
 
         [Required]
-        public int AntwoordExtra { get; set; }
+        public int AntwoordExtra { get; set; } 
 
         [Required]
         public Boolean Verzorger { get; set; }

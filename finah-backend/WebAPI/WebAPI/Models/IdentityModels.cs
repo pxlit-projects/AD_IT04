@@ -22,7 +22,7 @@ namespace WebAPI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("FinahConnection", throwIfV1Schema: false)
         {
         }
 
@@ -45,5 +45,7 @@ namespace WebAPI.Models
         public System.Data.Entity.DbSet<Vraag> Vragen { get; set; }
         public System.Data.Entity.DbSet<Rapport> Rapporten { get; set; }
         public System.Data.Entity.DbSet<Antwoord> Antwoorden { get; set; }
+        public System.Data.Entity.DbSet<Vragenlijst> Vragenlijsten { get; set; }
+
     }
 }
