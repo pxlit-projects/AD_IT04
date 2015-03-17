@@ -26,13 +26,12 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(Vraag))]
         public IHttpActionResult GetVraag(int id)
         {
-            Vraag vraag = db.Vragen.Find(id);
-            if (vraag == null)
+            var model = db.Vragen.Where(r => r.Vragenlijst_Id == id);
+            if (model.Count() == 0)
             {
                 return NotFound();
             }
-
-            return Ok(vraag);
+            return Ok(model);
         }
 
         // PUT: api/Vraag/5
