@@ -1,15 +1,58 @@
+body {
+	background-color: #FFFFCC;
+	
+	
+}
+
+form {
+	
+}
+
+input[type="button"]{
+	border : 1px;
+	height: 5em;
+	width : 15em;
+	background-color: #E3E1B8;
+	border-radius: 0.5em;
+	text-align: center;
+	white-space: normal;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+input[type="button"]:hover{
+	background-color: #FFFFFF;
+}
+
+input[type="button"]:active{
+	background-color: #0000FF;
+}
+
+#btnleft {
+	position: absolute;
+	left: 2em;
+	bottom: 2em;
+}
+
+#btnright {
+	position: absolute;
+	right: 2em;
+	bottom: 2em;
+
 #slider{
     width:100%;
     height:15px;
     border:1px solid #000;
     overflow:hidden; 
 }
+
 #sliderbar{
     width:37%;
     height:15px;
     border-right: 1px solid #000000;
     background: #d65946; 
 }
+
 #percent {
     color: #000000;
     font-size: 15px;

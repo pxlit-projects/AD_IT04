@@ -130,8 +130,8 @@ function test(){
 		 <input type="button" value = "Hinderlijk (voor mantelzorger)" onClick="toon(4)">
 		 <input type="button" value = "Hinderlijk (voor beide)" onClick="toon(5)">
 		 <p id="vraag"></p>
-		 <input type="button" value = "Vorige vraag" id="terug" onclick='back()' disabled>
-		 <input type="button" value = "Volgende vraag" id="volgende" onclick='next()' disabled>
+		 <input type="button" id = "btnleft" value = "Vorige vraag" id="terug" onclick='back()' disabled>
+		 <input type="button" id="btnright" value = "Volgende vraag" id="volgende" onclick='next()' disabled>
 	</form>
     </body>
 </html>
