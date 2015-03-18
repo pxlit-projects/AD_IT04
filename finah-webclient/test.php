@@ -69,7 +69,7 @@ function enable(e){
 	if(e.target.id == "butja" ){
 		antwoorden[vraag].hinder = true;
 	}else{
-		
+
 		antwoorden[vraag].hinder = false;
 	}
 	var element = document.getElementById('volgende');
@@ -88,7 +88,7 @@ function next(){
 		document.getElementById('terug').disabled = false;
 		document.getElementById('vraag').innerHTML = "";
 	}else{
-	
+
 		document.getElementById('volgende').disabled = true;
 	}
 }
@@ -124,14 +124,14 @@ function test(){
     </div>
 </div>
 	<form>
-	     <input type="button" value = "Verloopt naar wensen" id="eersteknop" onClick="verberg(1)">
-		 <input type="button" value = "Niet hinderlijk" onClick="verberg(2)">
-		 <input type="button" value = "Hinderlijk (voor patiënt)" onClick="toon(3)">
-		 <input type="button" value = "Hinderlijk (voor mantelzorger)" onClick="toon(4)">
-		 <input type="button" value = "Hinderlijk (voor beide)" onClick="toon(5)">
-		 <p id="vraag"></p>
-		 <input type="button" id = "btnleft" value = "Vorige vraag" id="terug" onclick='back()' disabled>
-		 <input type="button" id="btnright" value = "Volgende vraag" id="volgende" onclick='next()' disabled>
+		<input type="button" value = "Verloopt naar wensen" id="eersteknop" onClick="verberg(1)" />
+		<input type="button" value = "Niet hinderlijk" onClick="verberg(2)">
+		<input type="button" value = "Hinderlijk (voor patiënt)" onClick="toon(3)">
+		<input type="button" value = "Hinderlijk (voor mantelzorger)" onClick="toon(4)">
+		<input type="button" value = "Hinderlijk (voor beide)" onClick="toon(5)">
+		<p id="vraag"></p>
+		<input type="button" id="btnleft" value = "Vorige vraag" id="terug" onclick='back()' disabled>
+		<input type="button" id="btnright" value = "Volgende vraag" id="volgende" onclick='next()' disabled>
 	</form>
     </body>
 </html>
