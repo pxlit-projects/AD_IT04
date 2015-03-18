@@ -21,11 +21,11 @@ input[type="button"]{
 }
 
 input[type="button"]:hover{
-	background-color: #FFFFFF;
+	background-color: #b0b0a0;
 }
 
 input[type="button"]:active{
-	background-color: #0000FF;
+	background-color: #a3a398;
 }
 
 #btnleft {
