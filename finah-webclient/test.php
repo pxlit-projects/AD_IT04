@@ -140,14 +140,6 @@ function back(){
 	}
 }
 
-function test(){
-	for (i = 0; i < aantalvragen; i++){
-		vraag = 1;
-		document.getElementById('#eersteknop').click();
-		document.getElementById('volgende').click();
-		console.log(antwoorden);
-	}
-}
 </script>
 
 </head>
