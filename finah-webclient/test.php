@@ -171,16 +171,16 @@ function test(){
 
 <form>
 	<div id="antwoordButtons">
-		<input type="button" value = "Verloopt naar wensen" id="eersteknop" onClick="positiefAntwoord(1)">
-		<input type="button" value = "Niet hinderlijk" onClick="positiefAntwoord(2)">
-		<input type="button" value = "Hinderlijk (voor patiënt)" onClick="toon(3)">
-		<input type="button" value = "Hinderlijk (voor mantelzorger)" onClick="toon(4)">
-		<input type="button" value = "Hinderlijk (voor beide)" onClick="toon(5)">
+		<input type="button" id="button1"  value="Verloopt naar wensen"           onClick="positiefAntwoord(1)">
+		<input type="button" id="button2"  value="Niet hinderlijk"                onClick="positiefAntwoord(2)">
+		<input type="button" id="button3"  value="Hinderlijk (voor patiënt)"      onClick="toon(3)">
+		<input type="button" id="button5"  value="Hinderlijk (voor mantelzorger)" onClick="toon(4)">
+		<input type="button" id="button6"  value="Hinderlijk (voor beide)"        onClick="toon(5)">
 	</div>
 
 	<div id="volgendeVorigeButtons">
-		<input type="button" value = "Vorige vraag" id="terug" onclick='back()' disabled>
-		<input type="button" value = "Volgende vraag" id="volgende" onclick='next()' disabled>
+		<input type="button" id="terug"    value="Vorige vraag"    onclick='back()' disabled>
+		<input type="button" id="volgende" value="Volgende vraag"  onclick='next()' disabled>
 	</div>
 </form>
 
