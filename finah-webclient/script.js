@@ -1,6 +1,6 @@
-window.onload = function (){
-	document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
-};
+function laad() {
+                document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
+            };
 
 function drawslider(maximum, deel){
 	console.log(maximum + " , " + deel);

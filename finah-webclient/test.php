@@ -31,7 +31,7 @@ var vraag = 1;
 </script>
 
 </head>
-<body onload="drawslider(50, 0);">
+<body onload="drawslider(50, 0);laad();">
 <div id="slider">
 	<div id="sliderbar">
 	</div>
