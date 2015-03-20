@@ -6,8 +6,7 @@ function drawslider(maximum, deel){
 	console.log(maximum + " , " + deel);
 	var percent = Math.round((deel * 100) / maximum);
 	document.getElementById("sliderbar").style.width = percent + '%';
-	document.getElementById("sliderbar").style.width = percent + '%';
-    document.getElementById("percent").innerHTML =' Vraag ' +vraag + ' van '+ aantalvragen +' (' + percent + '%'+')';
+	document.getElementById("percent").innerHTML =' Vraag ' +vraag + ' van '+ aantalvragen +' (' + percent + '%'+')';
 }
 
 function toon(antwoord){
