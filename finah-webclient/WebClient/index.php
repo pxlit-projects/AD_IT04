@@ -48,13 +48,13 @@ $vragen = json_decode($jsonVragen);
             <div id="antwoordButtons">
                 <input type="button" id="button1" value="Verloopt&#10;naar wensen"           onClick="positiefAntwoord(1)">
                 <input type="button" id="button2" value="Niet&#10;hinderlijk"                onClick="positiefAntwoord(2)">
-                <input type="button" id="button3" value="Hinderlijk&#10;(voor patiënt)"      onClick="negatiefAntwoord(3)">
+                <input type="button" id="button3" value="Hinderlijk&#10;(voor cliënt)"      onClick="negatiefAntwoord(3)">
                 <input type="button" id="button4" value="Hinderlijk&#10;(voor mantelzorger)" onClick="negatiefAntwoord(4)">
                 <input type="button" id="button5" value="Hinderlijk&#10;(voor beide)"        onClick="negatiefAntwoord(5)">
             </div>
 
             <div id="antwoordExtraDiv">
-                <h2><p>&nbsp;&nbsp;Wilt u hier iets aan doen?</p></h2>
+                <h2><p>&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p></h2>
                 <input type="button" id="butja"  value="Ja"  onClick="saveAntwoordExtra('butja')">
                 <input type="button" id="butnee" value="Nee" onClick="saveAntwoordExtra('butnee')">
             </div>
