@@ -1,166 +1,217 @@
 function laad() {
-                document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
-            };
-
-function drawslider(maximum, deel){
-	console.log(maximum + " , " + deel);
-	var percent = Math.round((deel * 100) / maximum);
-	document.getElementById("sliderbar").style.width = percent + '%';
-	document.getElementById("percent").innerHTML =' Vraag ' +vraag + ' van '+ aantalvragen +' (' + percent + '%'+')';
+    document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
 }
 
-function toon(antwoord){
-	try{
-		var huidige = "button" + antwoord;
-		huidige = document.getElementById(huidige);
-		switchButtonColour(huidige);
-
-		var vorige = antwoorden[vraag].AntwoordInt;
-		vorige = "button" + vorige;
-		vorige = document.getElementById(vorige);
-		switchButtonColour(vorige);
-	}catch(e){
-	}
-	antwoorden[vraag] = {Vraag_Id: vragen[vraag - 1].Id, Rapport_Id: rapport_Id,
-		AntwoordInt: antwoord, Verzorger: verzorger};
-
-	var para = document.createElement('p');
-	para.setAttribute('id', 'extraVraag');
-	var node = document.createTextNode('Wil u hier iets aan doen?');
-	para.appendChild(node);
-	var buttonja = document.createElement('input');
-	buttonja.type = 'button';
-	buttonja.name = 'ja';
-	buttonja.value = 'ja';
-	buttonja.id = 'butja';
-	var buttonnee = document.createElement('input');
-	buttonnee.type = 'button';
-	buttonnee.name = 'nee';
-	buttonnee.value = 'nee';
-	buttonnee.id = 'butnee';
-	var element = document.getElementById('antwoordButtons');
-	element.appendChild(para);
-	element.appendChild(buttonja);
-	element.appendChild(buttonnee);
-	controleer();
+function drawslider(maximum, deel) {
+    console.log(maximum + " , " + deel);
+    percent = Math.round((deel * 100) / maximum);
+    document.getElementById("sliderbar").style.width = percent + '%';
+    document.getElementById("percent").innerHTML = ' Vraag ' + vraag + ' van ' + aantalvragen + ' (' + percent + '%' + ')';
 }
 
-function positiefAntwoord(antwoord){
-	try{
-		var huidige = "button" + antwoord;
-		huidige = document.getElementById(huidige);
-		switchButtonColour(huidige);
+function positiefAntwoord(antwoord) {
+    document.getElementById('antwoordExtraDiv').style.visibility = 'hidden';
 
-		var vorige = antwoorden[vraag].AntwoordInt;
-		vorige = "button" + vorige;
-		vorige = document.getElementById(vorige);
-		switchButtonColour(vorige);
-	}catch(e){
-	}
-	antwoorden[vraag] = {Vraag_Id: vragen[vraag - 1].Id, Rapport_Id: rapport_Id,
-		AntwoordInt: antwoord, AntwoordExtra: 0, Verzorger: verzorger};
+    try {
+        switchButtonColour();
+    } catch (e) {
+        console.log(e);
+    }
 
-	if (vraag <= aantalvragen){
-		document.getElementById('volgende').disabled = false;
-	}
+    antwoorden[vraag] = {Vraag_Id: vragen[vraag - 1].Id, Rapport_Id: rapport_Id,
+        AntwoordInt: antwoord, AntwoordExtra: 0, Verzorger: verzorger};
+
+    switchButtonColour();
+
+    if (vraag <= aantalvragen) {
+        document.getElementById('volgende').disabled = false;
+        document.getElementById('cmdbutton').disabled = false;
+
+    }
 }
 
-function controleer(){
-	document.getElementById('butja').onclick = enable;
-	document.getElementById('butnee').onclick = enable;
+function negatiefAntwoord(antwoord) {
+    document.getElementById('antwoordExtraDiv').style.visibility = 'visible';
+
+    antwoordExtra = 0;
+
+    if (antwoorden[vraag] !== undefined) {
+        if (antwoorden[vraag].AntwoordInt !== antwoord) {
+            document.getElementById('volgende').disabled = true;
+            document.getElementById('cmdbutton').disabled = true;
+            try {
+                switchButtonExtraColour();
+            }
+            catch (e) {
+                console.log(e);
+            }
+        } else {
+            antwoordExtra = antwoorden[vraag].AntwoordExtra;
+        }
+    }
+
+    try {
+        switchButtonColour();
+    } catch (e) {
+        console.log(e);
+    }
+
+    antwoorden[vraag] = {Vraag_Id: vragen[vraag - 1].Id, Rapport_Id: rapport_Id,
+        AntwoordInt: antwoord, AntwoordExtra: antwoordExtra, Verzorger: verzorger};
+
+    switchButtonColour();
 }
 
+function saveAntwoordExtra(button) {
+    try {
+        switchButtonExtraColour();
+    } catch (e) {
+        console.log(e);
+    }
 
-function enable(e){
-	if (e.target.id === "butja"){
-		antwoorden[vraag].AntwoordExtra = 2;
-	} else {
-		antwoorden[vraag].AntwoordExtra = 1;
-	}
-	if (vraag <= aantalvragen){
-		var element = document.getElementById('volgende');
-		element.disabled = false;
-	}
+    if (button === "butja") {
+        antwoorden[vraag].AntwoordExtra = 1;
+    } else {
+        antwoorden[vraag].AntwoordExtra = 2;
+    }
+
+    switchButtonExtraColour();
+
+    if (vraag <= aantalvragen) {
+        document.getElementById('volgende').disabled = false;
+        document.getElementById('cmdbutton').disabled = false;
+    }
 }
 
-function next(){
-	console.log(antwoorden);
-	document.getElementById('volgende').disabled = true;
+function next() {
+    console.log(antwoorden);
 
-	if (vraag < aantalvragen){
-		vraag += 1;
-		drawslider(aantalvragen, vraag - 1);
-		document.getElementById('terug').disabled = false;
-		document.getElementById('vraag').innerHTML = vragen[vraag - 1].Beschrijving;
+    document.getElementById('antwoordExtraDiv').style.visibility = 'hidden';
 
-		if (document.getElementById('butja')){
-			var parentNode = document.getElementById('antwoordButtons');
-			var extraVraag = document.getElementById('extraVraag');
-			var butja = document.getElementById('butja');
-			var butnee = document.getElementById('butnee');
-			parentNode.removeChild(extraVraag);
-			parentNode.removeChild(butja);
-			parentNode.removeChild(butnee);
-		}
-	} else {
-		drawslider(aantalvragen, vraag);
-		var parentnode = document.getElementById('volgendeVorigeButtons');
-		var volgendebutton = document.getElementById('volgende');
-		parentno.removeChild(volgendebutton);
-	}
+    switchButtonColour();
+    switchButtonExtraColour();
+
+    vraag += 1;
+    drawslider(aantalvragen, vraag - 1);
+    document.getElementById('vorige').disabled = false;
+    document.getElementById('vraag').innerHTML = vragen[vraag - 1].Beschrijving;
+
+    try {
+        switchButtonColour();
+    } catch (e) {
+        document.getElementById('volgende').disabled = true;
+        document.getElementById('cmdbutton').disabled = true;
+    }
+
+    if (antwoorden[vraag] !== undefined) {
+        if (antwoorden[vraag].AntwoordExtra !== 0) {
+            document.getElementById('antwoordExtraDiv').style.visibility = 'visible';
+            switchButtonExtraColour();
+        }
+    }
+
+    if (vraag === aantalvragen) {
+        document.getElementById('volgende').style.visibility = "hidden";
+        document.getElementById('cmdbutton').style.visibility = "visible";
+    }
 }
 
-function back(){
-	console.log(antwoorden);
-	if (vraag > 1){
-		vraag -= 1;
-		drawslider(aantalvragen, vraag - 1);
-		document.getElementById('vraag').innerHTML = vragen[vraag - 1].Beschrijving;
+function back() {
+    console.log(antwoorden);
 
-		if (document.getElementById('butja')){
-			var parentNode = document.getElementById('antwoordButtons');
-			var extraVraag = document.getElementById('extraVraag');
-			var butja = document.getElementById('butja');
-			var butnee = document.getElementById('butnee');
-			parentNode.removeChild(extraVraag);
-			parentNode.removeChild(butja);
-			parentNode.removeChild(butnee);
-		}
+    document.getElementById('volgende').style.visibility = "visible";
+    document.getElementById('cmdbutton').style.visibility = "hidden";
 
-		if (vraag === 1){
-			document.getElementById('terug').disabled = true;
-		}
-	} else {
-		document.getElementById('terug').disabled = true;
-	}
+    try {
+        switchButtonColour();
+        switchButtonExtraColour();
+    } catch (e) {
+        console.log(e);
+    }
+
+    vraag -= 1;
+    drawslider(aantalvragen, vraag - 1);
+    document.getElementById('vraag').innerHTML = vragen[vraag - 1].Beschrijving;
+    document.getElementById('volgende').disabled = false;
+
+    if (antwoorden[vraag].AntwoordExtra !== 0) {
+        document.getElementById('antwoordExtraDiv').style.visibility = 'visible';
+        switchButtonExtraColour();
+    } else {
+        document.getElementById('antwoordExtraDiv').style.visibility = 'hidden';
+    }
+
+    if (vraag === 1) {
+        document.getElementById('vorige').disabled = true;
+    }
+
+    switchButtonColour();
 }
 
-function switchButtonColour(button){
-	if(button !== null){
-		try{
-			var defaultcolor  = "rgb(227, 225, 184)";
-			var selectedcolor = "rgb(163, 163, 152)";
-			var kleur = button.style.backgroundColor;
-			if(kleur == defaultcolor || kleur === ""){
-				button.style.backgroundColor = selectedcolor;
-			}else{
-				button.style.backgroundColor = defaultcolor;
-			}
-		}catch(e){
-			console.log(e);
-		}
-	}
+function switchButtonColour() {
+    buttonNumber = antwoorden[vraag].AntwoordInt;
+    buttonId = "button" + buttonNumber;
+    button = document.getElementById(buttonId);
+
+    if (button !== null) {
+        try {
+            defaultcolor = "rgb(227, 225, 184)";
+            selectedcolor = "rgb(163, 163, 152)";
+            kleur = button.style.backgroundColor;
+
+            if (kleur === defaultcolor || kleur === "") {
+                button.style.backgroundColor = selectedcolor;
+            } else {
+                button.style.backgroundColor = defaultcolor;
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
 }
-// Method for converting the form's values to a json-object
-// and putting this object back in the form
-function getJson(){
-	var jsonarray = "[";
-	for (i = 1; i < antwoorden.length; i++){
-		jsonarray += JSON.stringify(antwoorden[i]);
-		if (i !== antwoorden.length - 1){
-			jsonarray += ",";
-		}
-	}
-	jsonarray += "]";
-	document.getElementById("json").value = jsonarray;
+
+function switchButtonExtraColour() {
+    buttonId2 = "";
+    if (antwoorden[vraag].AntwoordExtra === 1) {
+        buttonId2 = "butja";
+    } else if (antwoorden[vraag].AntwoordExtra === 2) {
+        buttonId2 = "butnee";
+    }
+
+    button2 = document.getElementById(buttonId2);
+
+    console.log(button2);
+
+    if (button2 !== null) {
+        try {
+            defaultcolor2 = "rgb(227, 225, 184)";
+            selectedcolor2 = "rgb(163, 163, 152)";
+            kleur2 = button2.style.backgroundColor;
+
+            if (kleur2 === defaultcolor2 || kleur2 === "") {
+                button2.style.backgroundColor = selectedcolor2;
+            } else {
+                button2.style.backgroundColor = defaultcolor2;
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+// Method for converting the form's values to a json-array
+// and putting this array back in the form
+function getJson() {
+    jsonarray = "[";
+
+    for (i = 1; i < antwoorden.length; i++) {
+        jsonarray += JSON.stringify(antwoorden[i]);
+        if (i !== antwoorden.length - 1) {
+            jsonarray += ",";
+        }
+    }
+
+    jsonarray += "]";
+
+    document.getElementById("jsonArray").value = jsonarray;
 }

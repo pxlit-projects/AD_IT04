@@ -1,22 +1,19 @@
 <?php
 
-// Checks if the request came from a delete or from an add button
 if (@$_POST['cmdbutton'] == 'Voltooien') {
-    // Gets the table and the json object from the form
-    //and calls the add-method
+    // Gets the table and the json array from the form
+    //and calls the add-method for each json
     $tabel = @$_POST['tabel'];
-    $json = @$_POST['json'];
+    $jsonArray = @$_POST['jsonArray'];
 
-    $arr = json_decode($json);
-    foreach ($arr as $value) {
-        add(json_encode($value), $tabel);
+    $arr = json_decode($jsonArray);
+
+    foreach ($arr as $json) {
+        add(json_encode($json), $tabel);
     }
-} else if (@$_POST['cmdbutton'] == 'Delete') {
-    // Gets the table and the ID from the form
-    // and calls the delete-method
-    $tabel = @$_POST['tabel'];
-    $id = @$_POST['id'];
-    delete($tabel, $id);
+
+    header('Location: ./vragenlijstVoltooid.html');
+    exit;
 }
 
 // Adds an item to a table by using the $json and the $tabel variables we supplied through the form
@@ -31,19 +28,6 @@ function add($json, $tabel) {
             'content' => $json
     ));
     $url = 'http://finahweb.azurewebsites.net/api/' . $tabel;
-    $ctx = stream_context_create($params);
-    $fp = fopen($url, 'rb', false, $ctx);
-
-    fclose($fp);
-}
-
-// Deletes an item from a table by using the $tabel and the $id variables we supplied through the form
-function delete($tabel, $id) {
-    $params = array('http' => array(
-            'method' => 'DELETE',
-            'content' => ""
-    ));
-    $url = 'http://finahweb.azurewebsites.net/api/' . $tabel . '/' . $id;
     $ctx = stream_context_create($params);
     $fp = fopen($url, 'rb', false, $ctx);
 
