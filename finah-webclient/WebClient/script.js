@@ -14,6 +14,7 @@ function positiefAntwoord(antwoord) {
 
     try {
         switchButtonColour();
+        switchButtonExtraColour();
     } catch (e) {
         console.log(e);
     }
@@ -26,7 +27,6 @@ function positiefAntwoord(antwoord) {
     if (vraag <= aantalvragen) {
         document.getElementById('volgende').disabled = false;
         document.getElementById('cmdbutton').disabled = false;
-
     }
 }
 
