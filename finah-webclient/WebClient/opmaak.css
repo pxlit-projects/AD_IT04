@@ -1,3 +1,7 @@
+body {
+    font-family: sans-serif;
+}
+
 #slider{
     margin-top: 20px;
     width:80%;
@@ -8,15 +12,13 @@
     margin-right: auto;
 }
 #sliderbar{
-    width:37%;
     height:50px;
-    border-right: 1px solid #000000;
-    background: #00cc00;
+    /*border-right: 1px solid #000000;*/
+    background: #BCED91;
 }
 #percent {
     color: #000000;
-    font-size: 25px;
-    font-style: italic;
+    font-size: 20px;
     font-weight: bold;
     left: 25px;
     position: relative;
@@ -28,24 +30,16 @@ input[type="button"], [type="submit"]{
     background-color: #E3E1B8;
     border-radius: 5px;
     text-align: center;
-    font-size: 21px;
+    font-size: 20px;
     width: 200px;
     height: 100px;
-    margin-left: 10px;
-}
-
-input[type="button"]:hover, [type="submit"]:hover{
-    background-color: #b0b0a0;
-}
-
-input[type="button"]:active, [type="submit"]:active{
-    background-color: #a3a398;
 }
 
 #vraagBox {
     display: table;
     margin-left: auto;
     margin-right: auto;
+    max-width: 60%
 }
 
 #vraag {
@@ -53,26 +47,25 @@ input[type="button"]:active, [type="submit"]:active{
     vertical-align: middle;
     text-align: center;
     height: 100px;
-    width: 60%;
+    font-weight: normal;
 }
 
 #antwoordButtons {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
+    text-align: center;
 }
 
 #antwoordExtraDiv {
-    margin-left: 10%;
-    visibility: hidden; 
+    text-align: center;
+    visibility: hidden;
+    margin-top: 5%;
 }
 
 #volgendeVorigeButtons {
-    margin-left: 1.8%;
-    margin-right: auto;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
     width: 95%;
     position: absolute;
-    bottom: 5%;
+    bottom: 2.5%;
 }
 
 #vorige {
@@ -87,7 +80,8 @@ input[type="button"]:active, [type="submit"]:active{
 
 #cmdbutton {
     position: absolute;
-    right: 2.6%;
-    bottom: 5%;
+    right: 2%;
+    bottom: 2.5%;
     visibility: hidden;
 }
+

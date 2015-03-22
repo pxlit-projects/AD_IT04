@@ -1,5 +1,20 @@
+defaultcolor = "rgb(227, 225, 184)";
+selectedcolor = "rgb(188, 237, 145)";
+
 function laad() {
     document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
+
+    var inputs = document.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].type === 'button' || inputs[i].type === 'submit') {
+            inputs[i].onmousedown = function () {
+                this.style.backgroundColor = selectedcolor;
+            };
+            inputs[i].onmouseup = function () {
+                this.style.backgroundColor = defaultcolor;
+            };
+        }
+    }
 }
 
 function drawslider(maximum, deel) {
@@ -149,15 +164,13 @@ function back() {
 }
 
 function switchButtonColour() {
-    buttonNumber = antwoorden[vraag].AntwoordInt;
-    buttonId = "button" + buttonNumber;
-    button = document.getElementById(buttonId);
+    var buttonNumber = antwoorden[vraag].AntwoordInt;
+    var buttonId = "button" + buttonNumber;
+    var button = document.getElementById(buttonId);
 
     if (button !== null) {
         try {
-            defaultcolor = "rgb(227, 225, 184)";
-            selectedcolor = "rgb(163, 163, 152)";
-            kleur = button.style.backgroundColor;
+            var kleur = button.style.backgroundColor;
 
             if (kleur === defaultcolor || kleur === "") {
                 button.style.backgroundColor = selectedcolor;
@@ -171,27 +184,23 @@ function switchButtonColour() {
 }
 
 function switchButtonExtraColour() {
-    buttonId2 = "";
+    var buttonId = "";
     if (antwoorden[vraag].AntwoordExtra === 1) {
-        buttonId2 = "butja";
+        buttonId = "butja";
     } else if (antwoorden[vraag].AntwoordExtra === 2) {
-        buttonId2 = "butnee";
+        buttonId = "butnee";
     }
 
-    button2 = document.getElementById(buttonId2);
+    var button = document.getElementById(buttonId);
 
-    console.log(button2);
-
-    if (button2 !== null) {
+    if (button !== null) {
         try {
-            defaultcolor2 = "rgb(227, 225, 184)";
-            selectedcolor2 = "rgb(163, 163, 152)";
-            kleur2 = button2.style.backgroundColor;
+            var kleur = button.style.backgroundColor;
 
-            if (kleur2 === defaultcolor2 || kleur2 === "") {
-                button2.style.backgroundColor = selectedcolor2;
+            if (kleur === defaultcolor || kleur === "") {
+                button.style.backgroundColor = selectedcolor;
             } else {
-                button2.style.backgroundColor = defaultcolor2;
+                button.style.backgroundColor = defaultcolor;
             }
         } catch (e) {
             console.log(e);
@@ -202,7 +211,7 @@ function switchButtonExtraColour() {
 // Method for converting the form's values to a json-array
 // and putting this array back in the form
 function getJson() {
-    jsonarray = "[";
+    var jsonarray = "[";
 
     for (i = 1; i < antwoorden.length; i++) {
         jsonarray += JSON.stringify(antwoorden[i]);

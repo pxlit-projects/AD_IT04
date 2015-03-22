@@ -2,7 +2,11 @@
 
 <?php
 // request list of vragen from Web API by VragenlijstId
-$vragenlijst_Id = 1;
+//$vragenlijst_Id = @$_GET['vragenlijstId'];
+//$verzorger = @$_GET['verzorger'];
+//$rapport_Id = @$_GET['rapportId'];
+
+$vragenlijst_Id = 3;
 $verzorger = true;
 $rapport_Id = 3;
 
@@ -34,10 +38,8 @@ $vragen = json_decode($jsonVragen);
     <body onload="drawslider(50, 0);
             laad();">
         <div id="slider">
-            <div id="sliderbar">
-            </div>
-            <div id="percent">
-            </div>
+            <div id="sliderbar"></div>
+            <div id="percent"></div>
         </div>
 
         <div id="vraagBox">
@@ -46,15 +48,15 @@ $vragen = json_decode($jsonVragen);
 
         <form>
             <div id="antwoordButtons">
-                <input type="button" id="button1" value="Verloopt&#10;naar wensen"           onClick="positiefAntwoord(1)">
-                <input type="button" id="button2" value="Niet&#10;hinderlijk"                onClick="positiefAntwoord(2)">
-                <input type="button" id="button3" value="Hinderlijk&#10;(voor cliënt)"      onClick="negatiefAntwoord(3)">
-                <input type="button" id="button4" value="Hinderlijk&#10;(voor mantelzorger)" onClick="negatiefAntwoord(4)">
-                <input type="button" id="button5" value="Hinderlijk&#10;(voor beide)"        onClick="negatiefAntwoord(5)">
+                <input type="button" id="button1" value="Verloopt&#10;naar wensen" onClick="positiefAntwoord(1)">
+                <input type="button" style="margin-left: 10px" id="button2" value="Niet&#10;hinderlijk"                onClick="positiefAntwoord(2)">
+                <input type="button" style="margin-left: 10px" id="button3" value="Hinderlijk&#10;(voor cliënt)"       onClick="negatiefAntwoord(3)">
+                <input type="button" style="margin-left: 10px" id="button4" value="Hinderlijk&#10;(voor mantelzorger)" onClick="negatiefAntwoord(4)">
+                <input type="button" style="margin-left: 10px" id="button5" value="Hinderlijk&#10;(voor beide)"        onClick="negatiefAntwoord(5)">
             </div>
 
             <div id="antwoordExtraDiv">
-                <h2><p>&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p></h2>
+                <h2><p style="font-weight: normal">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p></h2>
                 <input type="button" id="butja"  value="Ja"  onClick="saveAntwoordExtra('butja')">
                 <input type="button" id="butnee" value="Nee" onClick="saveAntwoordExtra('butnee')">
             </div>
@@ -65,7 +67,7 @@ $vragen = json_decode($jsonVragen);
             </div>
         </form>
 
-        <form action="dbScript.php" method="POST" onsubmit="getJson()" style="text-align: center">
+        <form action="dbScript.php" method="POST" onsubmit="getJson()">
             <input type="hidden" name="tabel" value="antwoord"/>
             <input type="hidden" name="jsonArray" id="jsonArray"/>
             <input type="submit" name="cmdbutton" id="cmdbutton" value="Voltooien" />
