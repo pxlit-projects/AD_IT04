@@ -4,17 +4,27 @@ selectedcolor = "rgb(188, 237, 145)";
 function laad() {
     document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
 
-    var inputs = document.getElementsByTagName("input");
-    for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].type === 'button' || inputs[i].type === 'submit') {
-            inputs[i].onmousedown = function () {
-                this.style.backgroundColor = selectedcolor;
-            };
-            inputs[i].onmouseup = function () {
-                this.style.backgroundColor = defaultcolor;
-            };
-        }
-    }
+//    var inputs = document.getElementsByTagName("input");
+//    for (var i = 0; i < inputs.length; i++) {
+//        if (inputs[i].type === 'button' || inputs[i].type === 'submit') {
+//            inputs[i].onmousedown = function () {
+//                if (this.style.backgroundColor === defaultcolor || this.style.backgroundColor === "") {
+//                    this.style.backgroundColor = selectedcolor;
+//                }
+//                else {
+//                    this.style.backgroundColor = defaultcolor;
+//                }
+//            };
+//            inputs[i].onmouseup = function () {
+//                if (this.style.backgroundColor === selectedcolor) {
+//                    console.log('got through');
+//                    this.style.backgroundColor = defaultcolor;
+//                } else {
+//                    this.style.backgroundColor = selectedcolor;
+//                }
+//            };
+//        }
+//    }
 }
 
 function drawslider(maximum, deel) {
@@ -167,6 +177,8 @@ function switchButtonColour() {
     var buttonNumber = antwoorden[vraag].AntwoordInt;
     var buttonId = "button" + buttonNumber;
     var button = document.getElementById(buttonId);
+
+    console.log(button);
 
     if (button !== null) {
         try {

@@ -26,13 +26,14 @@ body {
 }
 
 input[type="button"], [type="submit"]{
-    border : 1px;
     background-color: #E3E1B8;
-    border-radius: 5px;
     text-align: center;
     font-size: 20px;
     width: 200px;
     height: 100px;
+    border: 1px;
+    border-radius: 5px;
+    /*box-shadow: 1px 1px 5px #888;*/
 }
 
 #vraagBox {

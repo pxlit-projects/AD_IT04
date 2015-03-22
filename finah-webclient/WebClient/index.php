@@ -24,14 +24,12 @@ $vragen = json_decode($jsonVragen);
         <script src="script.js"></script>
 
         <script>
-
             var vragen = JSON.parse('<?php echo json_encode($vragen) ?>');
             var verzorger = <?php echo json_encode($verzorger) ?>;
             var rapport_Id = <?php echo json_encode($rapport_Id) ?>;
             var aantalvragen = vragen.length;
             var antwoorden = new Array();
             var vraag = 1;
-
         </script>
 
     </head>
@@ -58,11 +56,11 @@ $vragen = json_decode($jsonVragen);
             <div id="antwoordExtraDiv">
                 <h2><p style="font-weight: normal">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p></h2>
                 <input type="button" id="butja"  value="Ja"  onClick="saveAntwoordExtra('butja')">
-                <input type="button" id="butnee" value="Nee" onClick="saveAntwoordExtra('butnee')">
+                <input type="button" style="margin-left: 10px" id="butnee" value="Nee" onClick="saveAntwoordExtra('butnee')">
             </div>
 
             <div id="volgendeVorigeButtons">
-                <input type="button" id="vorige"    value="Vorige vraag"    onclick='back()' disabled>
+                <input type="button" id="vorige"   value="Vorige vraag"    onclick='back()' disabled>
                 <input type="button" id="volgende" value="Volgende vraag"  onclick='next()' disabled>
             </div>
         </form>
