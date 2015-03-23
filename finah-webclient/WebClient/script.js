@@ -1,30 +1,5 @@
-defaultcolor = "rgb(227, 225, 184)";
-selectedcolor = "rgb(188, 237, 145)";
-
 function laad() {
     document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
-
-//    var inputs = document.getElementsByTagName("input");
-//    for (var i = 0; i < inputs.length; i++) {
-//        if (inputs[i].type === 'button' || inputs[i].type === 'submit') {
-//            inputs[i].onmousedown = function () {
-//                if (this.style.backgroundColor === defaultcolor || this.style.backgroundColor === "") {
-//                    this.style.backgroundColor = selectedcolor;
-//                }
-//                else {
-//                    this.style.backgroundColor = defaultcolor;
-//                }
-//            };
-//            inputs[i].onmouseup = function () {
-//                if (this.style.backgroundColor === selectedcolor) {
-//                    console.log('got through');
-//                    this.style.backgroundColor = defaultcolor;
-//                } else {
-//                    this.style.backgroundColor = selectedcolor;
-//                }
-//            };
-//        }
-//    }
 }
 
 function drawslider(maximum, deel) {
@@ -182,12 +157,12 @@ function switchButtonColour() {
 
     if (button !== null) {
         try {
-            var kleur = button.style.backgroundColor;
+            var border = button.style.border;
 
-            if (kleur === defaultcolor || kleur === "") {
-                button.style.backgroundColor = selectedcolor;
+            if (border === "") {
+                button.style.border = "4px solid";
             } else {
-                button.style.backgroundColor = defaultcolor;
+                button.style.border = "";
             }
         } catch (e) {
             console.log(e);
@@ -207,12 +182,12 @@ function switchButtonExtraColour() {
 
     if (button !== null) {
         try {
-            var kleur = button.style.backgroundColor;
+            var border = button.style.border;
 
-            if (kleur === defaultcolor || kleur === "") {
-                button.style.backgroundColor = selectedcolor;
+            if (border === "") {
+                button.style.border = "4px solid";
             } else {
-                button.style.backgroundColor = defaultcolor;
+                button.style.border = "";
             }
         } catch (e) {
             console.log(e);
