@@ -3,10 +3,9 @@ function laad() {
 }
 
 function drawslider(maximum, deel) {
-    console.log(maximum + " , " + deel);
     percent = Math.round((deel * 100) / maximum);
     document.getElementById("sliderbar").style.width = percent + '%';
-    document.getElementById("percent").innerHTML = ' Vraag ' + vraag + ' van ' + aantalvragen + ' (' + percent + '%' + ')';
+    document.getElementById("percent").innerHTML = ' Vraag ' + vraag + ' van ' + aantalvragen + ' (' + percent + '%)';
 }
 
 function positiefAntwoord(antwoord) {
@@ -153,8 +152,6 @@ function switchButtonColour() {
     var buttonId = "button" + buttonNumber;
     var button = document.getElementById(buttonId);
 
-    console.log(button);
-
     if (button !== null) {
         try {
             var border = button.style.border;
@@ -198,6 +195,8 @@ function switchButtonExtraColour() {
 // Method for converting the form's values to a json-array
 // and putting this array back in the form
 function getJson() {
+    drawslider(aantalvragen, vraag);
+
     var jsonarray = "[";
 
     for (i = 1; i < antwoorden.length; i++) {

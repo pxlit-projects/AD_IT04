@@ -6,7 +6,7 @@
 //$verzorger = @$_GET['verzorger'];
 //$rapport_Id = @$_GET['rapportId'];
 
-$vragenlijst_Id = 3;
+$vragenlijst_Id = 1;
 $verzorger = true;
 $rapport_Id = 3;
 
@@ -44,26 +44,24 @@ $vragen = json_decode($jsonVragen);
             <h1><div id="vraag"></div></h1>
         </div>
 
-        <form>
-            <div id="antwoordButtons">
-                <input type="button" id="button1" value="Verloopt&#10;naar wensen" onClick="positiefAntwoord(1)">
-                <input type="button" style="margin-left: 25px" id="button2" value="Niet&#10;hinderlijk"                onClick="positiefAntwoord(2)">
-                <input type="button" style="margin-left: 25px" id="button3" value="Hinderlijk&#10;(voor cliënt)"       onClick="negatiefAntwoord(3)">
-                <input type="button" style="margin-left: 25px" id="button4" value="Hinderlijk&#10;(voor mantelzorger)" onClick="negatiefAntwoord(4)">
-                <input type="button" style="margin-left: 25px" id="button5" value="Hinderlijk&#10;(voor beide)"        onClick="negatiefAntwoord(5)">
-            </div>
+        <div id="antwoordButtons">
+            <button type="button" id="button1" onClick="positiefAntwoord(1)">Verloopt</br>naar wensen</button>
+            <button type="button" style="margin-left: 25px" id="button2" onClick="positiefAntwoord(2)">Niet</br>hinderlijk</button>
+            <button type="button" style="margin-left: 25px" id="button3" onClick="negatiefAntwoord(3)">Hinderlijk</br>(voor cliënt</button>
+            <button type="button" style="margin-left: 25px" id="button4" onClick="negatiefAntwoord(4)">Hinderlijk</br>(voor mantelzorger)</button>
+            <button type="button" style="margin-left: 25px" id="button5" onClick="negatiefAntwoord(5)">Hinderlijk</br>(voor beide)</button>
+        </div>
 
-            <div id="antwoordExtraDiv">
-                <p id="extraVraag">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p>
-                <input type="button" id="butja"  value="Ja"  onClick="saveAntwoordExtra('butja')">
-                <input type="button" style="margin-left: 25px" id="butnee" value="Nee" onClick="saveAntwoordExtra('butnee')">
-            </div>
+        <div id="antwoordExtraDiv">
+            <p id="extraVraag">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p>
+            <button type="button" id="butja" onClick="saveAntwoordExtra('butja')">Ja</button>
+            <button type="button" style="margin-left: 25px" id="butnee" onClick="saveAntwoordExtra('butnee')">Nee</button>
+        </div>
 
-            <div id="volgendeVorigeButtons">
-                <input type="button" id="vorige"   value="Vorige vraag"    onclick='back()' disabled>
-                <input type="button" id="volgende" value="Volgende vraag"  onclick='next()' disabled>
-            </div>
-        </form>
+        <div id="volgendeVorigeButtons">
+            <button type="button" id="vorige"   value="Vorige vraag"    onclick='back()' disabled="true">Vorige</button>
+            <button type="button" id="volgende" value="Volgende vraag"  onclick='next()' disabled="true">Volgende</button>
+        </div>
 
         <form action="dbScript.php" method="POST" onsubmit="getJson()">
             <input type="hidden" name="tabel" value="antwoord"/>
