@@ -41,7 +41,7 @@ $vragen = json_decode($jsonVragen);
         </div>
 
         <div id="vraagBox">
-            <h2><div id="vraag"></div></h2>
+            <h1><div id="vraag"></div></h1>
         </div>
 
         <form>
@@ -54,7 +54,7 @@ $vragen = json_decode($jsonVragen);
             </div>
 
             <div id="antwoordExtraDiv">
-                <h2><p style="font-weight: normal">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p></h2>
+                <p id="extraVraag">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p>
                 <input type="button" id="butja"  value="Ja"  onClick="saveAntwoordExtra('butja')">
                 <input type="button" style="margin-left: 25px" id="butnee" value="Nee" onClick="saveAntwoordExtra('butnee')">
             </div>
