@@ -47,7 +47,7 @@ $vragen = json_decode($jsonVragen);
         <div id="antwoordButtons">
             <button type="button" id="button1" onClick="positiefAntwoord(1)">Verloopt</br>naar wensen</button>
             <button type="button" style="margin-left: 25px" id="button2" onClick="positiefAntwoord(2)">Niet</br>hinderlijk</button>
-            <button type="button" style="margin-left: 25px" id="button3" onClick="negatiefAntwoord(3)">Hinderlijk</br>(voor cliënt</button>
+            <button type="button" style="margin-left: 25px" id="button3" onClick="negatiefAntwoord(3)">Hinderlijk</br>(voor cliënt)</button>
             <button type="button" style="margin-left: 25px" id="button4" onClick="negatiefAntwoord(4)">Hinderlijk</br>(voor mantelzorger)</button>
             <button type="button" style="margin-left: 25px" id="button5" onClick="negatiefAntwoord(5)">Hinderlijk</br>(voor beide)</button>
         </div>
