@@ -110,6 +110,7 @@ function next() {
     }
 
     if (vraag === aantalvragen) {
+        document.getElementById('volgende').disabled = true;
         document.getElementById('volgende').style.visibility = "hidden";
         document.getElementById('cmdbutton').style.visibility = "visible";
     }

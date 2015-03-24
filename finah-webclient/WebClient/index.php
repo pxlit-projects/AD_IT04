@@ -22,6 +22,7 @@ $vragen = json_decode($jsonVragen);
         <meta charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="opmaak.css" />
         <script src="script.js"></script>
+        <script src="UnitTests.js"></script>
 
         <script>
             var vragen = JSON.parse('<?php echo json_encode($vragen) ?>');
@@ -68,6 +69,11 @@ $vragen = json_decode($jsonVragen);
             <input type="hidden" name="jsonArray" id="jsonArray"/>
             <input type="submit" name="cmdbutton" id="cmdbutton" value="Voltooien" />
         </form>
+        
+        <div id="testButtons">
+            <button type="button" id="testbutton1" onclick="crashTest()">Crash</br>test</br> </button>
+            <button type="button" id="testbutton2" onclick="testInvullenEnVersturen()">Invullen</br>en versturen</button>
+        </div>
 
     </body>
 </html>

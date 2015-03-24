@@ -95,28 +95,40 @@ button::-moz-focus-inner {
     margin-top: 5%;
 }
 
-#volgendeVorigeButtons {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    width: 95%;
+#vorige {
+    left: 2.5%;
     position: absolute;
     bottom: 2.5%;
 }
 
-#vorige {
-    float: left;
-    position: relative;
-}
-
 #volgende {
-    float: right;
-    position: relative;
+    right: 2.5%;
+    position: absolute;
+    bottom: 2.5%;
 }
 
 #cmdbutton {
     position: absolute;
-    right: 2%;
+    right: 2.5%;
     bottom: 2.5%;
     visibility: hidden;
 }
 
+#testButtons {
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    text-align: center;
+    width: 40%;
+    bottom: 10%;
+    visibility: hidden;
+}
+
+#testbutton1 {
+    background-color: #79CDCD;
+}
+
+#testbutton2 {
+    margin-left: 25px;
+    background-color: #79CDCD;
+}
