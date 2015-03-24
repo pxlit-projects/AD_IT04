@@ -59,8 +59,8 @@ $vragen = json_decode($jsonVragen);
         </div>
 
         <div id="volgendeVorigeButtons">
-            <button type="button" id="vorige"   value="Vorige vraag"    onclick='back()' disabled="true">Vorige</button>
-            <button type="button" id="volgende" value="Volgende vraag"  onclick='next()' disabled="true">Volgende</button>
+            <button type="button" id="vorige"   onclick='back()' disabled="true">Vorige vraag</button>
+            <button type="button" id="volgende" onclick='next()' disabled="true">Volgende vraag</button>
         </div>
 
         <form action="dbScript.php" method="POST" onsubmit="getJson()">
