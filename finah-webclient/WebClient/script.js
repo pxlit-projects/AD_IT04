@@ -1,6 +1,9 @@
+var images = new Array("figuren/1-01.jpg");
+var preLoadedImage = "figuren/1-02.jpg";
+
 function laad() {
     document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
-    document.getElementById('afbeelding').src = "figuren/1-01.jpg";
+    document.getElementById('afbeelding').src = images[0];
 }
 
 function drawslider(maximum, deel) {
@@ -83,6 +86,25 @@ function saveAntwoordExtra(button) {
     }
 }
 
+function setNextImage() {
+    if (images.length >= vraag) {
+        document.getElementById('afbeelding').src = images[vraag - 1];
+    } else {
+        document.getElementById('afbeelding').src = preLoadedImage;
+        images[vraag - 1] = preLoadedImage;
+        if (vraag < 9) {
+            hulp = "0" + (vraag + 1);
+        } else {
+            hulp = vraag + 1;
+        }
+        preLoadedImage = "figuren/" + vragenlijst_Id + "-" + hulp + ".jpg";
+    }
+}
+
+function setPreviousImage() {
+    document.getElementById('afbeelding').src = images[vraag - 1];
+}
+
 function next() {
     console.log(antwoorden);
 
@@ -96,10 +118,7 @@ function next() {
     document.getElementById('vorige').disabled = false;
     document.getElementById('vraag').innerHTML = vragen[vraag - 1].Beschrijving;
 
-    if (vraag < 10) {
-        hulp = "0" + vraag;
-    }
-    document.getElementById('afbeelding').src = "figuren/" + vragenlijst_Id + "-" + hulp + ".jpg";
+    setNextImage();
 
     try {
         switchButtonColour();
@@ -143,10 +162,7 @@ function back() {
     document.getElementById('volgende').disabled = false;
     document.getElementById('vraag').innerHTML = vragen[vraag - 1].Beschrijving;
 
-    if (vraag < 10) {
-        hulp = "0" + vraag;
-    }
-    document.getElementById('afbeelding').src = "figuren/" + vragenlijst_Id + "-" + hulp + ".jpg";
+    setPreviousImage();
 
     if (antwoorden[vraag].AntwoordExtra !== 0) {
         document.getElementById('antwoordExtraDiv').style.visibility = 'visible';
