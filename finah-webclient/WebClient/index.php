@@ -1,79 +1,39 @@
 <!DOCTYPE html>
 
 <?php
-// request list of vragen from Web API by VragenlijstId
-//$vragenlijst_Id = @$_GET['vragenlijstId'];
-//$verzorger = @$_GET['verzorger'];
-//$rapport_Id = @$_GET['rapportId'];
-
-$vragenlijst_Id = 1;
-$verzorger = true;
-$rapport_Id = 3;
-
-$jsonVragen = file_get_contents('http://finahweb.azurewebsites.net/api/vraag/' . $vragenlijst_Id);
-
-// deserialize data from JSON
-$vragen = json_decode($jsonVragen);
+$vragenlijst_Id = @$_GET['vragenlijstId'];
+$verzorger = @$_GET['verzorger'];
+$rapport_Id = @$_GET['rapportId'];
 ?>
 
 <html>
     <head>
-        <title>Vragenlijst</title>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="opmaak.css" />
-        <script src="script.js"></script>
-        <script src="UnitTests.js"></script>
-
-        <script>
-            var vragen = JSON.parse('<?php echo json_encode($vragen) ?>');
-            var verzorger = <?php echo json_encode($verzorger) ?>;
-            var rapport_Id = <?php echo json_encode($rapport_Id) ?>;
-            var aantalvragen = vragen.length;
-            var antwoorden = new Array();
-            var vraag = 1;
-        </script>
-
+        <title>Welkom</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="opmaak.css"/>
     </head>
-    <body onload="drawslider(50, 0);
-            laad();">
-        <div id="slider">
-            <div id="sliderbar"></div>
-            <div id="percent"></div>
+    <body>
+
+        <div id="welkomtekst">
+            <div><h1>Welkom bij je finah-vragenlijst.</h1></div>
+            </br>
+            <div>
+                <h2>
+                    Gelieve je browser niet te sluiten tot de vragenlijst voltooid is.
+                    </br>
+                    </br>
+                    Druk op start om te beginnen.
+                </h2>
+            </div>
         </div>
 
-        <div id="vraagBox">
-            <h1><div id="vraag"></div></h1>
-        </div>
-
-        <div id="antwoordButtons">
-            <button type="button" id="button1" onClick="positiefAntwoord(1)">Verloopt</br>naar wensen</button>
-            <button type="button" style="margin-left: 25px" id="button2" onClick="positiefAntwoord(2)">Niet</br>hinderlijk</button>
-            <button type="button" style="margin-left: 25px" id="button3" onClick="negatiefAntwoord(3)">Hinderlijk</br>(voor cliënt)</button>
-            <button type="button" style="margin-left: 25px" id="button4" onClick="negatiefAntwoord(4)">Hinderlijk</br>(voor mantelzorger)</button>
-            <button type="button" style="margin-left: 25px" id="button5" onClick="negatiefAntwoord(5)">Hinderlijk</br>(voor beide)</button>
-        </div>
-
-        <div id="antwoordExtraDiv">
-            <p id="extraVraag">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p>
-            <button type="button" id="butja" onClick="saveAntwoordExtra('butja')">Ja</button>
-            <button type="button" style="margin-left: 25px" id="butnee" onClick="saveAntwoordExtra('butnee')">Nee</button>
-        </div>
-
-        <div id="volgendeVorigeButtons">
-            <button type="button" id="vorige"   onclick='back()' disabled="true">Vorige vraag</button>
-            <button type="button" id="volgende" onclick='next()' disabled="true">Volgende vraag</button>
-        </div>
-
-        <form action="dbScript.php" method="POST" onsubmit="getJson()">
-            <input type="hidden" name="tabel" value="antwoord"/>
-            <input type="hidden" name="jsonArray" id="jsonArray"/>
-            <input type="submit" name="cmdbutton" id="cmdbutton" value="Voltooien" />
+        <form id="startForm" action="vragenlijst.php" method="POST">
+            <input type="hidden" name="vragenlijstId" value="<?php echo $vragenlijst_Id ?>" >
+            <input type="hidden" name="verzorger" value="<?php echo $verzorger ?>" >
+            <input type="hidden" name="rapportId" value="<?php echo $rapport_Id ?>" >
+            <input type="submit" id="buttonStart" value="Start">
         </form>
-        
-        <div id="testButtons">
-            <button type="button" id="testbutton1" onclick="crashTest()">Crash</br>test</br> </button>
-            <button type="button" id="testbutton2" onclick="testInvullenEnVersturen()">Invullen</br>en versturen</button>
-        </div>
 
     </body>
 </html>
