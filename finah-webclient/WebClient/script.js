@@ -109,7 +109,7 @@ function next() {
     }
 
     if (antwoorden[vraag] !== undefined) {
-        if (antwoorden[vraag].Antwoord !== 1 || antwoorden[vraag].Antwoord !== 2) {
+        if (antwoorden[vraag].AntwoordInt !== 1 && antwoorden[vraag].AntwoordInt !== 2) {
             if (antwoorden[vraag].AntwoordExtra === 0) {
                 document.getElementById('volgende').disabled = true;
             }
