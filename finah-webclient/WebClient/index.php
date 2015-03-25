@@ -16,15 +16,15 @@ $rapport_Id = @$_GET['rapportId'];
     <body>
 
         <div id="welkomtekst">
-            <div><h1>Welkom bij je finah-vragenlijst.</h1></div>
+            <div><h2>Welkom bij je finah-vragenlijst.</h2></div>
             </br>
             <div>
-                <h2>
+                <h3>
                     Gelieve je browser niet te sluiten tot de vragenlijst voltooid is.
                     </br>
                     </br>
                     Druk op start om te beginnen.
-                </h2>
+                </h3>
             </div>
         </div>
 
