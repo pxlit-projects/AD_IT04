@@ -43,7 +43,7 @@ $vragen = json_decode($jsonVragen);
         </div>
 
         <div id="vraagBox">
-            <h1><div id="vraag"></div></h1>
+            <h2><div id="vraag"></div></h2>
         </div>
 
         <div id="antwoordButtons">

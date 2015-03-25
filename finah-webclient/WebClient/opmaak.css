@@ -30,10 +30,10 @@ body {
 input[type="submit"], button{
     background-color: #c9ecad;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     font-family: sans-serif;
-    width: 250px;
-    height: 100px;
+    width: 200px;
+    height: 80px;
     border: 0;
     border-radius: 10px;
     outline: none;
@@ -69,20 +69,20 @@ button::-moz-focus-inner {
     display: table;
     margin-left: auto;
     margin-right: auto;
-    max-width: 60%
+    max-width: 60%;
 }
 
 #vraag {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    height: 120px;
+    height: 80px;
     font-weight: normal;
 }
 
 #extraVraag {
     font-weight: normal;
-    font-size: 28px;
+    font-size: 20px;
 }
 
 #antwoordButtons {
@@ -92,7 +92,7 @@ button::-moz-focus-inner {
 #antwoordExtraDiv {
     text-align: center;
     visibility: hidden;
-    margin-top: 5%;
+    margin-top: 2.5%;
 }
 
 #vorige {
@@ -150,8 +150,8 @@ button::-moz-focus-inner {
 }
 
 #afbeeldingdiv{
-	width: 20%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align : center;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align : center;
 }
