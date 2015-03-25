@@ -1,5 +1,6 @@
 function laad() {
     document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
+    document.getElementById('afbeelding').src = "figuren/1-01.jpg";
 }
 
 function drawslider(maximum, deel) {
@@ -132,6 +133,7 @@ function back() {
     vraag -= 1;
     drawslider(aantalvragen, vraag - 1);
     document.getElementById('vraag').innerHTML = vragen[vraag - 1].Beschrijving;
+    document.getElementById('afbeelding').src = "figuren/" + vragenlijst_Id+ "-" + vraag  +".jpg";
     document.getElementById('volgende').disabled = false;
 
     if (antwoorden[vraag].AntwoordExtra !== 0) {

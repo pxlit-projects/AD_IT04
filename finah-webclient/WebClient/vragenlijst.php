@@ -24,6 +24,7 @@ $vragen = json_decode($jsonVragen);
             var vragen = JSON.parse('<?php echo json_encode($vragen) ?>');
             var verzorger = <?php echo json_encode($verzorger) ?>;
             var rapport_Id = <?php echo json_encode($rapport_Id) ?>;
+            var vragenlijst_Id = <?php echo json_encode($vragenlijst_Id) ?>;
             var aantalvragen = vragen.length;
             var antwoorden = new Array();
             var vraag = 1;
@@ -36,6 +37,10 @@ $vragen = json_decode($jsonVragen);
             <div id="sliderbar"></div>
             <div id="percent"></div>
         </div>
+
+	<div id="afbeeldingdiv"> 
+	<img id="afbeelding"> </img>
+	</div>
 
         <div id="vraagBox">
             <h1><div id="vraag"></div></h1>
