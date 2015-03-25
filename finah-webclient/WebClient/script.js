@@ -109,7 +109,10 @@ function next() {
     }
 
     if (antwoorden[vraag] !== undefined) {
-        if (antwoorden[vraag].AntwoordExtra !== 0) {
+        if (antwoorden[vraag].Antwoord !== 1 || antwoorden[vraag].Antwoord !== 2) {
+            if (antwoorden[vraag].AntwoordExtra === 0) {
+                document.getElementById('volgende').disabled = true;
+            }
             document.getElementById('antwoordExtraDiv').style.visibility = 'visible';
             switchButtonExtraColour();
         }

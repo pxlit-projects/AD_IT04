@@ -25,7 +25,6 @@ $vragen = json_decode($jsonVragen);
             var verzorger = <?php echo json_encode($verzorger) ?>;
             var rapport_Id = <?php echo json_encode($rapport_Id) ?>;
             var vragenlijst_Id = <?php echo json_encode($vragenlijst_Id) ?>;
-            console.log(vragenlijst_Id);
             var aantalvragen = vragen.length;
             var antwoorden = new Array();
             var vraag = 1;

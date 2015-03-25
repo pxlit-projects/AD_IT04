@@ -14,14 +14,15 @@ function crashTest() {
 }
 
 function testInvullenEnVersturen() {
+    var random;
     for (i = 0; i <= aantalvragen - 2; i++) {
-        var random = Math.floor((Math.random() * 5));
+        random = Math.floor((Math.random() * 5));
         byId(buttons[random]).click();
         random = Math.floor((Math.random() * 2)) + 5;
         byId(buttons[random]).click();
         byId(buttons[8]).click();
     }
-    var random = Math.floor((Math.random() * 5));
+    random = Math.floor((Math.random() * 5));
     byId(buttons[random]).click();
     random = Math.floor((Math.random() * 2)) + 5;
     byId(buttons[random]).click();
