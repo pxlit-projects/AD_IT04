@@ -28,3 +28,15 @@ function testInvullenEnVersturen() {
     byId(buttons[random]).click();
     byId('cmdbutton').click();
 }
+
+var cont = true;
+
+function superCrashTest(){
+	if(cont){
+		setTimeout ( "superCrashTest()", 2000 );
+	}
+
+	var random = Math.floor((Math.random() * 9));
+	console.log(buttons[random]);
+        byId(buttons[random]).click();
+}
