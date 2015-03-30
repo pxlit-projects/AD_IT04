@@ -28,7 +28,7 @@ $rapport_Id = @$_GET['rapportId'];
             </div>
         </div>
 
-        <form id="startForm" action="vragenlijst_bootstrap.php" method="POST">
+        <form id="startForm" action="vragenlijst.php" method="POST">
             <input type="hidden" name="vragenlijstId" value="<?php echo $vragenlijst_Id ?>" >
             <input type="hidden" name="verzorger" value="<?php echo $verzorger ?>" >
             <input type="hidden" name="rapportId" value="<?php echo $rapport_Id ?>" >
