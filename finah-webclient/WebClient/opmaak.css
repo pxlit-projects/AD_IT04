@@ -266,7 +266,6 @@ button::-moz-focus-inner {
 }
 
 #antwoordButtons {
-    border: 1px solid;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -277,7 +276,6 @@ button::-moz-focus-inner {
     text-align: center;
     visibility: hidden;
     margin-top: 2.5%;
-	border: 1px solid;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -297,7 +295,6 @@ button::-moz-focus-inner {
 }
 
 #volgendeVorigeButtons{
-    border: 1px solid;
     display: table;
     margin-left: auto;
     margin-right: auto;
@@ -315,16 +312,22 @@ button::-moz-focus-inner {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    margin-top: 150px;
+    margin-top: 20px;
     text-align: center;
+	font-size: 12px;
 }
 
 #startForm {
-    width: 20%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
+}
+
+#buttonStart{
+    float: center;
+	display: block;
 }
 
 #testButtons {
@@ -351,6 +354,5 @@ button::-moz-focus-inner {
 	margin-left:auto;
 	margin-right:auto;
     text-align : center;
-	border: 1px solid;
 }
 }
