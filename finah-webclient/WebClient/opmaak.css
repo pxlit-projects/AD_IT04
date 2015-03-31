@@ -1,3 +1,4 @@
+@media only screen and (max-width: 2000px) { 
 body {
     font-family: sans-serif;
     background: url(figuren/background.jpg);
@@ -78,6 +79,7 @@ button::-moz-focus-inner {
     text-align: center;
     height: 80px;
     font-weight: normal;
+	
 }
 
 #extraVraag {
@@ -154,4 +156,201 @@ button::-moz-focus-inner {
     margin-left: auto;
     margin-right: auto;
     text-align : center;
+}
+}
+@media only screen and (max-width: 480px) { 
+body {
+    font-family: sans-serif;
+    background: url(figuren/background.jpg);
+    background-size: cover;
+}
+
+#slider{
+    margin-top: 20px;
+    width:80%;
+    height:30px;
+    border:3px solid #000;
+    overflow:hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+#sliderbar{
+    height:30px;
+    /*border-right: 1px solid #000000;*/
+    background: #c9ecad;
+}
+#percent {
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    left: 25px;
+    position: relative;
+    top: -20px;
+}
+
+input[type="submit"], button{
+    background-color: #c9ecad;
+    text-align: center;
+    font-size: 12px;
+    font-family: sans-serif;
+    width: 150px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+	margin-bottom: 3px;
+	
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+#button1 {
+    background-color: #c6ffaf;
+	float: none;
+	display: block;
+}
+#button2 {
+    background-color: #c9ecad;
+	float: none;
+	display: block;
+}
+#button3 {
+    background-color: #efce8f;
+	float: none;
+	display: block;
+}
+#button4 {
+    background-color: #fbb58f;
+	float: none;
+	display: block;
+	
+}
+#button5 {
+    background-color: #e89f8a;
+	float: none;
+	display: block;
+	
+	
+}
+#butja {
+    background-color: #c6ffaf;
+	float: none;
+	display: block;
+}
+#butnee {
+    background-color: #e89f8a;
+	float: none;
+	display: block;
+}
+
+#vraagBox {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;
+}
+
+#vraag {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    height: 80px;
+    font-size:12px;
+}
+
+#extraVraag {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+#antwoordButtons {
+    border: 1px solid;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;	
+}
+
+#antwoordExtraDiv {
+    text-align: center;
+    visibility: hidden;
+    margin-top: 2.5%;
+	border: 1px solid;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;  
+}
+
+#vorige {
+	display:block; 
+    margin:2px auto; 
+    position:relative;	
+}
+
+#volgende {
+    display:block;
+    margin:2px auto; 
+    position:relative;	
+}
+
+#volgendeVorigeButtons{
+    border: 1px solid;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;	
+}
+
+#cmdbutton {
+    position: absolute;
+    right: 2.5%;
+    bottom: 2.5%;
+    visibility: hidden;
+}
+
+#welkomtekst {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 150px;
+    text-align: center;
+}
+
+#startForm {
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#testButtons {
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    text-align: center;
+    width: 40%;
+    bottom: 10%;
+    visibility: hidden;
+}
+
+#testbutton1 {
+    background-color: #79CDCD;
+}
+
+#testbutton2 {
+    margin-left: 25px;
+    background-color: #79CDCD;
+}
+
+#afbeeldingdiv{
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+    text-align : center;
+	border: 1px solid;
+}
 }

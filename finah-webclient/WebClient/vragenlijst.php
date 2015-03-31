@@ -47,7 +47,7 @@ $vragen = json_decode($jsonVragen);
         </div>
 
         <div id="antwoordButtons">
-            <button type="button" id="button1" onClick="positiefAntwoord(1)">Verloopt</br>naar wensen</button>
+            <button type="button" style="margin-left: 25px" id="button1" onClick="positiefAntwoord(1)">Verloopt</br>naar wensen</button>
             <button type="button" style="margin-left: 25px" id="button2" onClick="positiefAntwoord(2)">Niet</br>hinderlijk</button>
             <button type="button" style="margin-left: 25px" id="button3" onClick="negatiefAntwoord(3)">Hinderlijk</br>(voor cliënt)</button>
             <button type="button" style="margin-left: 25px" id="button4" onClick="negatiefAntwoord(4)">Hinderlijk</br>(voor mantelzorger)</button>
@@ -56,13 +56,13 @@ $vragen = json_decode($jsonVragen);
 
         <div id="antwoordExtraDiv">
             <p id="extraVraag">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p>
-            <button type="button" id="butja" onClick="saveAntwoordExtra('butja')">Ja</button>
+            <button type="button" style="margin-left: 25px" id="butja" onClick="saveAntwoordExtra('butja')">Ja</button>
             <button type="button" style="margin-left: 25px" id="butnee" onClick="saveAntwoordExtra('butnee')">Nee</button>
         </div>
 
         <div id="volgendeVorigeButtons">
-            <button type="button" id="vorige"   onclick='back()' disabled="true">Vorige vraag</button>
-            <button type="button" id="volgende" onclick='next()' disabled="true">Volgende vraag</button>
+            <button type="button" id="vorige" style="margin-left: 25px"   onclick='back()' disabled="true">Vorige vraag</button>
+            <button type="button" id="volgende" style="margin-left: 25px" onclick='next()' disabled="true">Volgende vraag</button>
         </div>
 
         <form action="dbScript.php" method="POST" onsubmit="getJson()">
