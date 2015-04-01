@@ -283,20 +283,16 @@ button::-moz-focus-inner {
 }
 
 #vorige {
-	display:block; 
-    margin:2px auto; 
-    position:relative;	
+    position:unset;	
 }
 
-#volgende {
-    display:block;
-    margin:2px auto; 
-    position:relative;	
+#volgende{
+    position:unset;
 }
 
 #volgendeVorigeButtons{
-    display: table;
     margin-left: auto;
+    text-align:center;
     margin-right: auto;
     max-width: 60%;	
 }
