@@ -1,8 +1,9 @@
 @media only screen and (max-width: 2000px) { 
 body {
-    font-family: sans-serif;
-    background: url(figuren/background.jpg);
+    font-family: sans-serif;;
+        background: url(figuren/background.jpg) center center fixed;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #slider{
@@ -161,8 +162,9 @@ button::-moz-focus-inner {
 @media only screen and (max-width: 480px) { 
 body {
     font-family: sans-serif;
-    background: url(figuren/background.jpg);
+        background: url(figuren/background.jpg) center center fixed;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #slider{
