@@ -4,10 +4,11 @@ class Antwoord{
 	int AntwoordExtra;
 	int AntwoordInt;
 	int Id;
-	boolean verzoger;
-	int vraagid;
+	boolean Verzorger;
+	int Vraag_Id;
+	int Rapport_Id;
 
 	public String toString(){
-		return Id + ": " + vraagid + "\t|" + AntwoordInt + "|" + AntwoordExtra + "\t(" + verzoger + ")";
+		return Id + ": " + Vraag_Id + "\t|" + AntwoordInt + "|" + AntwoordExtra + "\t(" + Verzorger + ")";
 	}
 }
