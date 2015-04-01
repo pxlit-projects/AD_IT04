@@ -47,29 +47,28 @@ $vragen = json_decode($jsonVragen);
         </div>
 
         <div id="antwoordButtons">
-            <button type="button" style="margin-left: 25px" id="button1" onClick="positiefAntwoord(1)">Verloopt</br>naar wensen</button>
-            <button type="button" style="margin-left: 25px" id="button2" onClick="positiefAntwoord(2)">Niet</br>hinderlijk</button>
-            <button type="button" style="margin-left: 25px" id="button3" onClick="negatiefAntwoord(3)">Hinderlijk</br>(voor cliënt)</button>
-            <button type="button" style="margin-left: 25px" id="button4" onClick="negatiefAntwoord(4)">Hinderlijk</br>(voor mantelzorger)</button>
-            <button type="button" style="margin-left: 25px" id="button5" onClick="negatiefAntwoord(5)">Hinderlijk</br>(voor beide)</button>
+            <button type="button" id="button1" onClick="positiefAntwoord(1)">Verloopt</br>naar wensen</button>
+            <button type="button" id="button2" onClick="positiefAntwoord(2)">Niet</br>hinderlijk</button>
+            <button type="button" id="button3" onClick="negatiefAntwoord(3)">Hinderlijk</br>voor cliënt</button>
+            <button type="button" id="button4" onClick="negatiefAntwoord(4)">Hinderlijk</br>voor mantelzorger</button>
+            <button type="button" id="button5" onClick="negatiefAntwoord(5)">Hinderlijk</br>voor beide</button>
         </div>
 
         <div id="antwoordExtraDiv">
             <p id="extraVraag">&nbsp;&nbsp;Wilt u dat hieraan gewerkt wordt?</p>
-            <button type="button" style="margin-left: 25px" id="butja" onClick="saveAntwoordExtra('butja')">Ja</button>
-            <button type="button" style="margin-left: 25px" id="butnee" onClick="saveAntwoordExtra('butnee')">Nee</button>
+            <button type="button" id="butja" onClick="saveAntwoordExtra('butja')">Ja</button>
+            <button type="button" id="butnee" onClick="saveAntwoordExtra('butnee')">Nee</button>
         </div>
 
-        <div id="volgendeVorigeButtons">
-            <button type="button" id="vorige" style="margin-left: 25px"   onclick='back()' disabled="true">Vorige vraag</button>
-            <button type="button" id="volgende" style="margin-left: 25px" onclick='next()' disabled="true">Volgende vraag</button>
+        <div id="volgendeVorigeVoltooiButtons">
+            <button type="button" id="vorige"   onclick='back()' disabled="true">Vorige vraag</button>
+            <button type="button" id="volgende" onclick='next()' disabled="true">Volgende vraag</button>
+            <form action="dbScript.php" method="POST" onsubmit="getJson()" style="display: inline">
+                <input type="hidden" name="tabel" value="antwoord"/>
+                <input type="hidden" name="jsonArray" id="jsonArray"/>
+                <input type="submit" name="cmdbutton" id="cmdbutton" value="Voltooien" />
+            </form>
         </div>
-
-        <form action="dbScript.php" method="POST" onsubmit="getJson()">
-            <input type="hidden" name="tabel" value="antwoord"/>
-            <input type="hidden" name="jsonArray" id="jsonArray"/>
-            <input type="submit" name="cmdbutton" id="cmdbutton" value="Voltooien" />
-        </form>
 
         <div id="testButtons">
             <button type="button" id="testbutton1" onclick="crashTest()">Crash</br>test</br> </button>

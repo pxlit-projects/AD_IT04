@@ -4,6 +4,7 @@ var preLoadedImage = "figuren/1-02.jpg";
 function laad() {
     document.getElementById('vraag').innerHTML = vragen[0].Beschrijving;
     document.getElementById('afbeelding').src = images[0];
+    document.getElementById('cmdbutton').style.display = "none";
 }
 
 function drawslider(maximum, deel) {
@@ -138,17 +139,16 @@ function next() {
     }
 
     if (vraag === aantalvragen) {
-        document.getElementById('volgende').disabled = true;
-        document.getElementById('volgende').style.visibility = "hidden";
-        document.getElementById('cmdbutton').style.visibility = "visible";
+        document.getElementById('volgende').style.display = "none";
+        document.getElementById('cmdbutton').style.display = "";
     }
 }
 
 function back() {
     console.log(antwoorden);
 
-    document.getElementById('volgende').style.visibility = "visible";
-    document.getElementById('cmdbutton').style.visibility = "hidden";
+    document.getElementById('volgende').style.display = "";
+    document.getElementById('cmdbutton').style.display = "none";
 
     try {
         switchButtonColour();
