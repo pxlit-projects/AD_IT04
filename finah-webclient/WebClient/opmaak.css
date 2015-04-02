@@ -5,16 +5,32 @@ body {
     background-repeat: no-repeat;
 }
 
-#buttonStart {
-    margin: 0;
+#slider{
+    margin-top: 20px;
+    width:80%;
+    height:60px;
+    border:3px solid #000;
+    overflow:hidden;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#afbeeldingdiv{
+#sliderbar{
+    height:60px;
+    background: #c6ffaf;
+}
+
+#percent {
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    left: 25px;
+    position: relative;
+    top: -40px;
+}
+
+#afbeeldingdiv {
     text-align : center;
-}
-
-button::-moz-focus-inner {
-    border: 0;
 }
 
 #vraagBox {
@@ -24,14 +40,44 @@ button::-moz-focus-inner {
     max-width: 60%;
 }
 
+#vraag {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    height: 80px;
+    font-weight: normal;
+}
+
+input[type="submit"], button{
+    background-color: #c6ffaf;
+    text-align: center;
+    font-size: 20px;
+    font-family: sans-serif;
+    width: 200px;
+    height: 80px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    margin-left: 2.5%;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
 #antwoordButtons {
     text-align: center;
 }
 
 #antwoordExtraDiv {
-    margin-top: 2.5%;
     text-align: center;
     visibility: hidden;
+    margin-top: 2.5%;
+}
+
+#extraVraag {
+    font-weight: normal;
+    font-size: 20px;
 }
 
 #testButtons {
@@ -54,141 +100,30 @@ button::-moz-focus-inner {
 }
 
 @media only screen and (min-width: 1200px){ 
-    #slider{
-        margin-top: 20px;
-        width:80%;
-        height:60px;
-        border:3px solid #000;
-        overflow:hidden;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    #sliderbar{
-        height:60px;
-        background: #c9ecad;
-    }
-
-    #percent {
-        color: #000000;
-        font-size: 20px;
-        font-weight: bold;
-        left: 25px;
-        position: relative;
-        top: -40px;
-    }
-
-    input[type="submit"], button{
-        background-color: #c6ffaf;
-        text-align: center;
-        font-size: 20px;
-        font-family: sans-serif;
-        width: 200px;
-        height: 80px;
-        border: 0;
-        border-radius: 10px;
-        outline: none;
-        margin-left: 2.5%;
-    }
-
-    #vraag {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        height: 80px;
-        font-weight: normal;
-    }
-
-    #extraVraag {
-        font-weight: normal;
-        font-size: 20px;
-    }
-
-    #volgendeVorigeVoltooiButtons{
-        margin-top: 2.5%;
-    }
-
     #vorige {
         background-color: #c9ecad;
         float: left;
+        margin-top: 4%;
     }
 
     #volgende {
         background-color: #c9ecad;
         margin-right: 2.5%;
         float: right;
+        margin-top: 4%;
     }
 
     #cmdbutton {
         background-color: #c9ecad;
         margin-right: 2.5%;
         float: right;
-    }
-
-    #welkomtekst {
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-        margin-top: 150px;
-        text-align: center;
-    }
-
-    #startForm {
-        text-align: center;
-        margin-top: 50px;
+        margin-top: 4%;
     }
 }
 
 @media only screen and (max-width: 1200px), (orientation: portrait) { 
-    #slider{
-        margin-top: 20px;
-        width:80%;
-        height:30px;
-        border:3px solid #000;
-        overflow:hidden;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    #sliderbar{
-        height:30px;
-        background: #c9ecad;
-    }
-
-    #percent {
-        color: #000000;
-        font-size: 12px;
-        font-weight: bold;
-        left: 25px;
-        position: relative;
-        top: -20px;
-    }
-
     input[type="submit"], button{
-        background-color: #c6ffaf;
-        text-align: center;
-        font-size: 12px;
-        font-family: sans-serif;
-        width: 150px;
-        height: 40px;
-        border: 0;
-        border-radius: 10px;
-        outline: none;
-        margin-left: 2.5%;
-        margin-bottom: 2.5%;
-    }
-
-    #vraag {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        height: 80px;
-        font-size:12px;
-    }
-
-    #extraVraag {
-        font-weight: normal;
-        font-size: 12px;
+        margin-top: 2.5%;
     }
 
     #volgendeVorigeVoltooiButtons{
@@ -196,18 +131,108 @@ button::-moz-focus-inner {
         text-align:center;	
     }
 
-    #welkomtekst {
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-        margin-top: 20px;
-        text-align: center;
-        font-size: 12px;
+    #vorige {
+        background-color: #c9ecad;
     }
 
-    #startForm {
-        text-align: center;
-        margin-top: 20px;
+    #volgende {
+        background-color: #c9ecad;
+    }
+
+    #cmdbutton {
+        background-color: #c9ecad;
     }
 }
 
+/* Portrait mobile */
+@media screen 
+and (min-width: 640px) 
+and (min-height: 960px) 
+and (orientation: portrait) {
+
+    html, body {
+        height: 100%;
+    }
+
+    #slider{
+        width:95%;
+        height:5%;
+    }
+
+    #sliderbar{
+        height: 100%;
+    }
+
+    #percent {
+        font-size: 200%;
+        left: 2.5%;
+        top: -65%;
+    }
+
+    #afbeelding {
+        width: 25%;
+    }
+
+    #vraagBox {
+        max-width: 100%;
+        height: 15%;
+    }
+
+    #vraag {
+        font-size: 1.5em;   
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    input[type="submit"], button{
+        font-size: 1.8em;
+        width: 27%;
+        height: 35%;
+        margin-left: 5%;
+    }
+
+    #antwoordButtons {
+        height: 20%;
+        padding-bottom: 0;
+    }
+
+    #button1 {
+        margin-left: 0;
+    }
+
+    #antwoordExtraDiv {
+        height: 20%;
+        margin-top: 0;
+    }
+
+    #extraVraag {
+        font-weight: normal;
+        font-size: 2.5em;
+    }
+
+    #volgendeVorigeVoltooiButtons{
+        margin-top: 0;
+        height: 10%;
+    }
+
+    #vorige {
+        background-color: #c9ecad;
+        float: left;
+        height: 70%;
+    }
+
+    #volgende {
+        background-color: #c9ecad;
+        margin-right: 5%;
+        float: right;
+        height: 70%;
+    }
+
+    #cmdbutton {
+        background-color: #c9ecad;
+        margin-right: 5%;
+        float: right;
+        height: 70%;
+    }
+
+}

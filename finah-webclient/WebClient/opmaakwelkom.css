@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+    background: url(figuren/background.jpg) center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#welkomtekst {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 150px;
+    text-align: center;
+}
+
+#startForm {
+    text-align: center;
+    margin-top: 50px;
+}
+
+input[type="submit"]{
+    background-color: #c6ffaf;
+    text-align: center;
+    font-size: 20px;
+    font-family: sans-serif;
+    width: 200px;
+    height: 80px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+}
+
