@@ -172,23 +172,27 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
+    <Compile Include="Controllers\DokterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PatientMantelzorgerController.cs" />
     <Compile Include="Controllers\RapportController.cs" />
     <Compile Include="Controllers\VraagController.cs" />
     <Compile Include="Controllers\VragenlijstController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503170618138_init.cs" />
-    <Compile Include="Migrations\201503170618138_init.Designer.cs">
-      <DependentUpon>201503170618138_init.cs</DependentUpon>
+    <Compile Include="Migrations\201504031456396_init.cs" />
+    <Compile Include="Migrations\201504031456396_init.Designer.cs">
+      <DependentUpon>201504031456396_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Antwoord.cs" />
+    <Compile Include="Models\Dokter.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PatientMantelzorger.cs" />
     <Compile Include="Models\Rapport.cs" />
     <Compile Include="Models\Vraag.cs" />
     <Compile Include="Models\Vragenlijst.cs" />
@@ -265,8 +269,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503170618138_init.resx">
-      <DependentUpon>201503170618138_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504031456396_init.resx">
+      <DependentUpon>201504031456396_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

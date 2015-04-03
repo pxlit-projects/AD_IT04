@@ -6,24 +6,24 @@ using System.Web;
 
 namespace WebAPI.Models
 {
-    public class Rapport
+    public class PatientMantelzorger
     {
         public int Id { get; set; }
 
         [Required]
-        public int Patient_Id { get; set; }
+        public String Vnaam { get; set; }
 
         [Required]
-        public int Mantelzorger_Id { get; set; }
+        public String Anaam { get; set; }
 
         [Required]
-        public DateTime Date { get; set; }
+        [EmailAddress]
+        public String Email { get; set; }
 
         [Required]
-        public int Vragenlijst_Id { get; set; }
+        public Boolean Verzorger { get; set; }
 
         [Required]
         public int Dokter_Id { get; set; }
-
     }
 }

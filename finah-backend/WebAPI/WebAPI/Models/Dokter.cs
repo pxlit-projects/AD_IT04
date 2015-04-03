@@ -6,15 +6,18 @@ using System.Web;
 
 namespace WebAPI.Models
 {
-    public class Vragenlijst
+    public class Dokter
     {
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(450)]
-        public String Beschrijving { get; set; }
+        public String Vnaam { get; set; }
 
         [Required]
-        public int Dokter_Id { get; set; }
+        public String Anaam { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public String Email { get; set; }
     }
 }

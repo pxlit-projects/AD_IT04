@@ -12,43 +12,44 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    public class RapportController : ApiController
+    public class DokterController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Rapport
-        public IQueryable<Rapport> GetRapporten()
+        // GET: api/Dokter
+        public IQueryable<Dokter> GetDokters()
         {
-            return db.Rapporten;
+            return db.Dokters;
         }
 
-        // GET: api/Rapport/5
-        [ResponseType(typeof(Rapport))]
-        public IHttpActionResult GetRapport(int id)
+        // GET: api/Dokter/5
+        [ResponseType(typeof(Dokter))]
+        public IHttpActionResult GetDokter(int id)
         {
-            var model = db.Rapporten.Where(r => r.Dokter_Id == id);
-            if (model.Count() == 0)
+            Dokter dokter = db.Dokters.Find(id);
+            if (dokter == null)
             {
                 return NotFound();
             }
-            return Ok(model);
+
+            return Ok(dokter);
         }
 
-        // PUT: api/Rapport/5
+        // PUT: api/Dokter/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRapport(int id, Rapport rapport)
+        public IHttpActionResult PutDokter(int id, Dokter dokter)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != rapport.Id)
+            if (id != dokter.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(rapport).State = EntityState.Modified;
+            db.Entry(dokter).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +57,7 @@ namespace WebAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RapportExists(id))
+                if (!DokterExists(id))
                 {
                     return NotFound();
                 }
@@ -69,35 +70,35 @@ namespace WebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Rapport
-        [ResponseType(typeof(Rapport))]
-        public IHttpActionResult PostRapport(Rapport rapport)
+        // POST: api/Dokter
+        [ResponseType(typeof(Dokter))]
+        public IHttpActionResult PostDokter(Dokter dokter)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Rapporten.Add(rapport);
+            db.Dokters.Add(dokter);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = rapport.Id }, rapport);
+            return CreatedAtRoute("DefaultApi", new { id = dokter.Id }, dokter);
         }
 
-        // DELETE: api/Rapport/5
-        [ResponseType(typeof(Rapport))]
-        public IHttpActionResult DeleteRapport(int id)
+        // DELETE: api/Dokter/5
+        [ResponseType(typeof(Dokter))]
+        public IHttpActionResult DeleteDokter(int id)
         {
-            Rapport rapport = db.Rapporten.Find(id);
-            if (rapport == null)
+            Dokter dokter = db.Dokters.Find(id);
+            if (dokter == null)
             {
                 return NotFound();
             }
 
-            db.Rapporten.Remove(rapport);
+            db.Dokters.Remove(dokter);
             db.SaveChanges();
 
-            return Ok(rapport);
+            return Ok(dokter);
         }
 
         protected override void Dispose(bool disposing)
@@ -109,9 +110,9 @@ namespace WebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool RapportExists(int id)
+        private bool DokterExists(int id)
         {
-            return db.Rapporten.Count(e => e.Id == id) > 0;
+            return db.Dokters.Count(e => e.Id == id) > 0;
         }
     }
 }
