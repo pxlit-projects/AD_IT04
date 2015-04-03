@@ -2,3 +2,4 @@ bin/*.class
 log/*
 !.project
 !.classpath
+!src/net/finah/Debug
