@@ -262,6 +262,10 @@
     <Content Include="Views\MantelzorgerMVC\Index.cshtml" />
     <Content Include="Views\VragenlijstMVC\Index.cshtml" />
     <Content Include="Views\RapportMVC\Index.cshtml" />
+    <Content Include="Views\PatientMVC\Create.cshtml" />
+    <Content Include="Views\MantelzorgerMVC\Create.cshtml" />
+    <Content Include="Views\PatientMVC\Edit.cshtml" />
+    <Content Include="Views\MantelzorgerMVC\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,7 +2,9 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAPI.Models;
@@ -53,40 +55,64 @@ namespace WebAPI.Controllers
 
         // POST: MantelzorgerMVC/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(WebAPI.Models.PatientMantelzorger mantelzorger)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var currentUser = manager.FindById(User.Identity.GetUserId());
 
+                var dokterId = 0;
+                if (currentUser != null)
+                {
+                    dokterId = db.Dokters
+                        .Where(r => r.Email == currentUser.Email)
+                        .Select(r => r.Id)
+                        .FirstOrDefault();
+                }
+
+                mantelzorger.Verzorger = true;
+                mantelzorger.Dokter_Id = dokterId;
+
+                db.PatientMantelzorgers.Add(mantelzorger);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(mantelzorger);
         }
 
-        // GET: MantelzorgerMVC/Edit/5
-        public ActionResult Edit(int id)
+        // GET: MantelzorgerMVC/Edit
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            WebAPI.Models.PatientMantelzorger mantelzorger = db.PatientMantelzorgers.Find(id);
+
+            if (mantelzorger == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(mantelzorger);
         }
 
-        // POST: MantelzorgerMVC/Edit/5
+        // POST: MantelzorgerMVC/Edit
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMovie(PatientMantelzorger mantelzorger)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Entry(mantelzorger).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(mantelzorger);
         }
 
         // GET: MantelzorgerMVC/Delete/5

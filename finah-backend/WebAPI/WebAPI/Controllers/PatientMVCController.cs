@@ -2,7 +2,9 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAPI.Models;
@@ -28,9 +30,9 @@ namespace WebAPI.Controllers
             if (currentUser != null)
             {
                 dokterId = db.Dokters
-               .Where(r => r.Email == currentUser.Email)
-               .Select(r => r.Id)
-               .FirstOrDefault();
+                    .Where(r => r.Email == currentUser.Email)
+                    .Select(r => r.Id)
+                    .FirstOrDefault();
             }
 
             var model = db.PatientMantelzorgers
@@ -39,63 +41,87 @@ namespace WebAPI.Controllers
             return View(model);
         }
 
-        // GET: Patient/Details/5
+        // GET: PatientMVC/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Patient/Create
+        // GET: PatientMVC/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Patient/Create
+        // POST: PatientMVC/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(WebAPI.Models.PatientMantelzorger patient)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var currentUser = manager.FindById(User.Identity.GetUserId());
 
+                var dokterId = 0;
+                if (currentUser != null)
+                {
+                    dokterId = db.Dokters
+                        .Where(r => r.Email == currentUser.Email)
+                        .Select(r => r.Id)
+                        .FirstOrDefault();
+                }
+
+                patient.Verzorger = false;
+                patient.Dokter_Id = dokterId;
+
+                db.PatientMantelzorgers.Add(patient);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+
+            return View(patient);
+        }
+
+        // GET: PatientMVC/Edit
+        public ActionResult EditMovie(int? id)
+        {
+            if (id == null)
             {
-                return View();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-        }
 
-        // GET: Patient/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+            WebAPI.Models.PatientMantelzorger patient = db.PatientMantelzorgers.Find(id);
 
-        // POST: Patient/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            if (patient == null)
             {
-                // TODO: Add update logic here
+                return HttpNotFound();
+            }
 
+            return View(patient);
+        }
+
+        // POST: PatientMVC/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(PatientMantelzorger patient)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(patient).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(patient);
         }
 
-        // GET: Patient/Delete/5
+        // GET: PatientMVC/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Patient/Delete/5
+        // POST: PatientMVC/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
