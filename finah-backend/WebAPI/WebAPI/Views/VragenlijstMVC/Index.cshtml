@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebAPI.Models.Vragenlijst>
+
+@{
+    ViewBag.Title = "Vragenlijsten";
+}
+
+<br />
+
+<h2>Vragenlijsten</h2>
+
+<hr />
+
+<table style="width:70%; font-size:20px" cellpadding="10">
+
+    <tr>
+        <th>Beschrijving</th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Beschrijving</td>
+        </tr>
+
+    }
+
+</table>

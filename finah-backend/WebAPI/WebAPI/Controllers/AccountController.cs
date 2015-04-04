@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebAPI.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebAPI.Controllers
 {
@@ -18,11 +19,16 @@ namespace WebAPI.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private ApplicationDbContext db;
+        private UserManager<ApplicationUser> manager;
+
         public AccountController()
         {
+            db = new ApplicationDbContext();
+            manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +40,9 @@ namespace WebAPI.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -65,7 +71,6 @@ namespace WebAPI.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -79,6 +84,23 @@ namespace WebAPI.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    if (returnUrl != null)
+                    {
+                        var currentUser = manager.FindById(User.Identity.GetUserId());
+
+                        var dokterId = 0;
+                        if (currentUser != null)
+                        {
+                            dokterId = db.Dokters
+                           .Where(r => r.Email == currentUser.Email)
+                           .Select(r => r.Id)
+                           .FirstOrDefault();
+                        }
+
+                        return Json(dokterId);
+                    }
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -120,7 +142,7 @@ namespace WebAPI.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,15 +177,15 @@ namespace WebAPI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "PatientMVC");
                 }
                 AddErrors(result);
             }
@@ -392,7 +414,7 @@ namespace WebAPI.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "PatientMVC");
         }
 
         //
@@ -449,7 +471,7 @@ namespace WebAPI.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "PatientMVC");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

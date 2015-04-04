@@ -26,13 +26,12 @@ namespace WebAPI.Controllers
         [ResponseType(typeof(Vragenlijst))]
         public IHttpActionResult GetVragenlijst(int id)
         {
-            Vragenlijst vragenlijst = db.Vragenlijsten.Find(id);
-            if (vragenlijst == null)
+            var model = db.Vragenlijsten.Where(r => r.Dokter_Id == id);
+            if (model.Count() == 0)
             {
                 return NotFound();
             }
-
-            return Ok(vragenlijst);
+            return Ok(model);
         }
 
         // PUT: api/Vragenlijst/5

@@ -1,9 +1,12 @@
 namespace WebAPI.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using WebAPI.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WebAPI.Models.ApplicationDbContext>
     {
@@ -14,18 +17,51 @@ namespace WebAPI.Migrations
 
         protected override void Seed(WebAPI.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (!context.Roles.Any(r => r.Name == "Admin"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Admin" };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                manager.Create(role);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "kristof.spaas@gmail.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser { UserName = "kristof.spaas@gmail.com", Email = "kristof.spaas@gmail.com" };
+
+                manager.Create(user, "password");
+                manager.AddToRole(user.Id, "Admin");
+            }
+
+            if (!context.Roles.Any(r => r.Name == "Dokter"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Dokter" };
+
+                manager.Create(role);
+            }
+
+            if (!context.Roles.Any(r => r.Name == "PatientMantelverzorger"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "PatientMantelverzorger" };
+
+                manager.Create(role);
+            }
+
+            if (!context.Roles.Any(r => r.Name == "Onderzoeker"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "Onderzoeker" };
+
+                manager.Create(role);
+            }
         }
     }
 }

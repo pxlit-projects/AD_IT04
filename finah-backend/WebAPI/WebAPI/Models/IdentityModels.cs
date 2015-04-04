@@ -46,10 +46,8 @@ namespace WebAPI.Models
         public System.Data.Entity.DbSet<Rapport> Rapporten { get; set; }
         public System.Data.Entity.DbSet<Antwoord> Antwoorden { get; set; }
         public System.Data.Entity.DbSet<Vragenlijst> Vragenlijsten { get; set; }
-
-        public System.Data.Entity.DbSet<WebAPI.Models.PatientMantelzorger> PatientMantelzorgers { get; set; }
-
-        public System.Data.Entity.DbSet<WebAPI.Models.Dokter> Dokters { get; set; }
+        public System.Data.Entity.DbSet<PatientMantelzorger> PatientMantelzorgers { get; set; }
+        public System.Data.Entity.DbSet<Dokter> Dokters { get; set; }
 
     }
 }

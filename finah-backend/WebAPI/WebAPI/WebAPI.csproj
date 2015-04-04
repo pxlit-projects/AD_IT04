@@ -173,12 +173,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
     <Compile Include="Controllers\DokterController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MantelzorgerMVCController.cs" />
+    <Compile Include="Controllers\PatientMVCController.cs" />
     <Compile Include="Controllers\PatientMantelzorgerController.cs" />
     <Compile Include="Controllers\RapportController.cs" />
+    <Compile Include="Controllers\RapportMVCController.cs" />
     <Compile Include="Controllers\VraagController.cs" />
     <Compile Include="Controllers\VragenlijstController.cs" />
+    <Compile Include="Controllers\VragenlijstMVCController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +197,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PatientMantelzorger.cs" />
     <Compile Include="Models\Rapport.cs" />
+    <Compile Include="Models\RapportListViewModel.cs" />
     <Compile Include="Models\Vraag.cs" />
     <Compile Include="Models\Vragenlijst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -233,9 +237,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\PatientMVC\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -257,6 +259,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\MantelzorgerMVC\Index.cshtml" />
+    <Content Include="Views\VragenlijstMVC\Index.cshtml" />
+    <Content Include="Views\RapportMVC\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

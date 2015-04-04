@@ -22,17 +22,17 @@ namespace WebAPI.Controllers
             return db.PatientMantelzorgers;
         }
 
-        // GET: api/PatientMantelzorger/5
+        // GET: api/PatientMantelzorger/5/true
+        [Route("api/patientmantelzorger/{id}/{verzorger}")]
         [ResponseType(typeof(PatientMantelzorger))]
-        public IHttpActionResult GetPatientMantelzorger(int id)
+        public IHttpActionResult GetPatientMantelzorger(int id, Boolean verzorger)
         {
-            PatientMantelzorger patientMantelzorger = db.PatientMantelzorgers.Find(id);
-            if (patientMantelzorger == null)
+            var model = db.PatientMantelzorgers.Where(r => r.Dokter_Id == id && r.Verzorger == verzorger);
+            if (model.Count() == 0)
             {
                 return NotFound();
             }
-
-            return Ok(patientMantelzorger);
+            return Ok(model);
         }
 
         // PUT: api/PatientMantelzorger/5

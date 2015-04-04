@@ -179,8 +179,8 @@ namespace WebAPI.Migrations
             DropTable("dbo.Rapport");
             DropTable("dbo.Vraag");
             DropTable("dbo.Vragenlijst");
-            //DropTable("dbo.PatientMantelzorger");
-            //DropTable("dbo.Dokter");
+            DropTable("dbo.PatientMantelzorger");
+            DropTable("dbo.Dokter");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");

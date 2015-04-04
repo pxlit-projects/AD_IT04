@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebAPI.Models.RapportListViewModel>
+
+@{
+    ViewBag.Title = "Rapporten";
+}
+
+<br />
+
+<h2>Rapporten</h2>
+
+<hr />
+
+<table style="width:70%; font-size:20px" cellpadding="10">
+
+    <tr>
+        <th>Patiënt</th>
+        <th>Mantelzorger</th>
+        <th>Vragenlijst</th>
+        <th>Datum</th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.PatientVnaam @item.PatientAnaam</td>
+            <td>@item.MantelzorgerVnaam @item.MantelzorgerAnaam</td>
+            <td>@item.VragenlijstBeschrijving</td>
+            <td>@item.Date</td>
+        </tr>
+
+    }
+
+</table>
