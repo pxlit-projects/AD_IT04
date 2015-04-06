@@ -19,17 +19,20 @@ De client (en API) voor met de Backend to communiceren.
 (Is een project voor Eclipse)
 
 ### Webclient
-De client die berijkbaar is via een web browser.
-(heeft een http server met php mogelijkheid nodig)
+De client die bereikbaar is via een webbrowser.(heeft een http server met php mogelijkheid nodig)
+
 
 Beginpagina:
+
 ![Image of beginpagina]
 (/afbeeldingen/afbeelding1.jpg)
 
 Vragenlijst:
+
 ![Image of vragenlijst]
 (/afbeeldingen/afbeelding2.jpg)
 
 Eindpagina:
+
 ![Image of eindpagina]
 (/afbeeldingen/afbeelding3.jpg)
