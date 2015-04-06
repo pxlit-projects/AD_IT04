@@ -24,4 +24,4 @@ De client die berijkbaar is via een web browser.
 
 
 ![Image of beginpagina]
-(https://raw.github.com/pxlit-projects/AD_IT04/afbeeldingen/afbeelding1.jpg)
+(/afbeeldingen/afbeelding1.jpg)
