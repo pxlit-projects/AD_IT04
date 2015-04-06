@@ -21,3 +21,7 @@ De client (en API) voor met de Backend to communiceren.
 ### Webclient
 De client die berijkbaar is via een web browser.
 (heeft een http server met php mogelijkheid nodig)
+
+
+![Image of beginpagina]
+(https://raw.github.com/pxlit-projects/AD_IT04/afbeeldingen/afbeelding1.jpg)
