@@ -17,6 +17,10 @@ De Backend is de database waarop de API draait. Dit project is gemaakt in Visual
 met de verschillende vragen & de bijhorende antwoorden van de verschillende patiënten. De database bevat ook de inloggegevens
 van de dokters.
 
+### Instructies:
+
+### Screenshots:
+
 ## Desktop (Java):
 
 ### Beschrijving:
@@ -35,6 +39,20 @@ De client (en API) voor met de Backend to communiceren.
 
 ### Screenshots:
 
+Inloggen:
+
+![Image of inloggen]
+(/afbeeldingen/desktopclient/inlog.jpg)
+
+Patiënt toevoegen:
+
+![Image of toevoegen]
+(/afbeeldingen/desktopclient/patient_toevoegen.jpg)
+
+Vragenlijst aanmaken:
+
+![Image of aanmaken]
+(/afbeeldingen/desktopclient/vragenlijst_aanmaken.jpg)
 
 ## Webclient:
 
@@ -48,14 +66,14 @@ De client die bereikbaar is via een webbrowser.(heeft een http server met php mo
 Beginpagina:
 
 ![Image of beginpagina]
-(/afbeeldingen/afbeelding1.jpg)
+(/afbeeldingen/webclient/begin_vragenlijst.jpg)
 
 Vragenlijst:
 
 ![Image of vragenlijst]
-(/afbeeldingen/afbeelding2.jpg)
+(/afbeeldingen/webclient/vragenlijst.jpg)
 
 Eindpagina:
 
 ![Image of eindpagina]
-(/afbeeldingen/afbeelding3.jpg)
+(/afbeeldingen/webclient/einde_vragenlijst.jpg)
