@@ -15,12 +15,21 @@ Lander Ghekiere
 ### Beschrijving:
 De Backend is de database waarop de API draait. Dit project is gemaakt in Visual Studio. De database bevat alle vragenlijsten 
 met de verschillende vragen & de bijhorende antwoorden van de verschillende patiënten. De database bevat ook de inloggegevens
-van de doktors.
+van de dokters.
 
 ## Desktop (Java):
 
 ### Beschrijving:
 De client (en API) voor met de Backend to communiceren. Dit project is gemaakt in Eclipse.
+
+### Instructies:
+
+### Screenshots:
+
+## Desktop (C#):
+
+### Beschrijving:
+De client (en API) voor met de Backend to communiceren.
 
 ### Instructies:
 
