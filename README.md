@@ -3,8 +3,11 @@ AppDev repo voor AD_IT04
 
 ## Groepsleden
 Michael Voorjans
+
 Dieter Tuerlinckx
+
 Kristof Spaas
+
 Jeffrey Bosmans
 Lander Ghekiere
 
@@ -46,17 +49,17 @@ een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hierm
 Inloggen:
 
 ![Image of inloggen]
-(/afbeeldingen/desktopclient/inlog.jpg)
+(/afbeeldingen/desktopclient/inlog.JPG)
 
 Patiënt toevoegen:
 
 ![Image of toevoegen]
-(/afbeeldingen/desktopclient/patient_toevoegen.jpg)
+(/afbeeldingen/desktopclient/patient_toevoegen.JPG)
 
 Vragenlijst aanmaken:
 
 ![Image of aanmaken]
-(/afbeeldingen/desktopclient/vragenlijst_aanmaken.jpg)
+(/afbeeldingen/desktopclient/vragenlijst_aanmaken.JPG)
 
 ## Webclient:
 
