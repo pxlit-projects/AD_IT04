@@ -24,7 +24,9 @@ van de dokters.
 ## Desktop (Java):
 
 ### Beschrijving:
-De client (en API) voor met de Backend to communiceren. Dit project is gemaakt in Eclipse.
+Is de desktop client (en API) voor met de Backend to communiceren. Dit project is gemaakt in Eclipse. Met de desktop client kan 
+een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hiermee ook patiënten worden toegevoegd in de database
+& nieuwe vragenlijsten worden gemaakt & alle rapporten kunnen beheerd worden vanuit de desktop client.
 
 ### Instructies:
 
@@ -33,7 +35,9 @@ De client (en API) voor met de Backend to communiceren. Dit project is gemaakt i
 ## Desktop (C#):
 
 ### Beschrijving:
-De client (en API) voor met de Backend to communiceren.
+Is de desktop client (en API) voor met de Backend to communiceren. Dit project is gemaakt in Visual Studio. Met de desktop client kan 
+een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hiermee ook patiënten worden toegevoegd in de database
+& nieuwe vragenlijsten worden gemaakt & alle rapporten kunnen beheerd worden vanuit de desktop client.
 
 ### Instructies:
 
@@ -57,7 +61,8 @@ Vragenlijst aanmaken:
 ## Webclient:
 
 ### Beschrijving:
-De client die bereikbaar is via een webbrowser.(heeft een http server met php mogelijkheid nodig)
+De client die bereikbaar is via een webbrowser (heeft een http server met php mogelijkheid nodig). Met de webclient kunnen de patiënten
+de vragenlijst invullen & doorsturen naar de backend.
 
 ### Instructies:
 
