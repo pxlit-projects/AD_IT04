@@ -9,6 +9,7 @@ Dieter Tuerlinckx
 Kristof Spaas
 
 Jeffrey Bosmans
+
 Lander Ghekiere
 
 ## Projecten:
@@ -32,6 +33,8 @@ een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hierm
 & nieuwe vragenlijsten worden gemaakt & alle rapporten kunnen beheerd worden vanuit de desktop client.
 
 ### Instructies:
+1.Project importeren in Eclipse.
+2.Test.java runnen voor de project uit te voeren (drukt momenteel enkel de eerste vraag af van de vragenlijst).
 
 ### Screenshots:
 
