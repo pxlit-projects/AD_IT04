@@ -23,8 +23,6 @@ public class API {
 		}
 	}
 
-
-
 	public static void setURL(String newURL) throws MalformedURLException{
 		remote = new URL(newURL);
 	}
@@ -43,4 +41,27 @@ public class API {
 		return hark;
 
 	}
+
+	public static ArrayList<Rapport> getRapport(int id) throws IOException{
+		URL loc = new URL(remote + "/rapport/" + id);
+		init();
+		Debug.log("receiving data", "Rapport");
+		ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Rapport>>(){});
+		ArrayList<Rapport> hark = reader.readValue(loc);
+		Debug.log(hark.toString(), "Rapport");
+		return hark;
+
+	}
+
+	public static ArrayList<Antwoord> getAntwoordLijst(int id) throws IOException{
+		URL loc = new URL(remote + "/antwoord/" + id);
+		init();
+		Debug.log("receiving data", "Antwoord");
+		ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Antwoord>>(){});
+		ArrayList<Antwoord> hark = reader.readValue(loc);
+		Debug.log(hark.toString(), "Antwoord");
+		return hark;
+
+	}
+
 }

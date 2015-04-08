@@ -16,6 +16,16 @@ public class Test {
 			Vraag vraag1 = (Vraag)lijst1.get(0);
 			System.out.println(vraag1);
 			System.out.println("Done");
+
+			ArrayList<Rapport> rapportLijst = API.getRapport(1);
+			Rapport rapport1 = rapportLijst.get(0);
+			System.out.println(rapport1);
+
+			ArrayList<Antwoord> antwoordLijst = API.getAntwoordLijst(1);
+			Antwoord antwoord1 = antwoordLijst.get(0);
+			System.out.println(antwoord1);
+
+
 		} catch (Exception e) {
 			Debug.err(e.getMessage(), "main");
 		}
