@@ -414,7 +414,7 @@ namespace WebAPI.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "PatientMVC");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -471,7 +471,7 @@ namespace WebAPI.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "PatientMVC");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

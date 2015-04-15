@@ -18,15 +18,28 @@
                     <span class="icon-bar"></span>
                 </button>
                 <span class="navbar-brand" style="color:white;">
-                    @Html.ActionLink("Finah", "Index", "PatientMVC")
+                    @Html.ActionLink("Finah", "Index", "Home")
                 </span>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Patienten", "Index", "PatientMVC")</li>
-                    <li>@Html.ActionLink("Mantelzorgers", "Index", "MantelzorgerMVC")</li>
-                    <li>@Html.ActionLink("Vragenlijsten", "Index", "VragenlijstMVC")</li>
-                    <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
+                    @if (Roles.IsUserInRole("Dokter"))
+                    {
+                        <li>@Html.ActionLink("Patienten", "Index", "PatientMVC")</li>
+                        <li>@Html.ActionLink("Mantelzorgers", "Index", "MantelzorgerMVC")</li>
+                        <li>@Html.ActionLink("Vragenlijsten", "Index", "VragenlijstMVC")</li>
+                        <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
+                    }
+                    
+                    @if (Roles.IsUserInRole("Onderzoeker"))
+                    {
+                        <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
+                    }
+                    
+                    @if (Roles.IsUserInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Dokters", "Index", "DokterMVC")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
