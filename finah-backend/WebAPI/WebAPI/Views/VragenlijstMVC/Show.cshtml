@@ -1,0 +1,44 @@
+﻿@model WebAPI.Models.CustomVragenlijst
+
+@{
+    ViewBag.Title = "Show";
+    int i = 1;
+}
+
+<br />
+
+<h2>@Model.Beschrijving</h2>
+
+<div style="float:right;">
+    <h4>@Html.ActionLink("Wijzig", "Edit", new { id = Model.Id })</h4>
+</div>
+
+<br />
+
+<hr />
+
+<table style="width:70%; font-size:20px">
+
+    <tr>
+        <th>&nbsp</th>
+        <th>Vraag</th>
+    </tr>
+
+
+    @foreach (var item in Model.Vragen)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@item.Beschrijving</td>
+        </tr>
+
+        i++;
+    }
+
+</table>
+
+<br />
+
+<div>
+    @Html.ActionLink("Terug", "Index")
+</div>

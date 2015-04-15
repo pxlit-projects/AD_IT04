@@ -3,14 +3,19 @@
 @{
     ViewBag.Title = "Vragenlijsten";
 }
-
 <br />
 
 <h2>Vragenlijsten</h2>
 
+<br />
+
+<p>
+    @Html.ActionLink("Voeg vragenlijst toe", "Create")
+</p>
+
 <hr />
 
-<table style="width:70%; font-size:20px" cellpadding="10">
+<table style="width:70%; font-size:20px">
 
     <tr>
         <th>Beschrijving</th>
@@ -21,6 +26,9 @@
     {
         <tr>
             <td>@item.Beschrijving</td>
+            <td>@Html.ActionLink("Bekijk", "Show", new { id = item.Id })</td>
+            <td>@Html.ActionLink("Wijzig", "Edit", new { id = item.Id })</td>
+            <td>@Html.ActionLink("Verwijder", "Delete", new { id = item.Id })</td>
         </tr>
 
     }

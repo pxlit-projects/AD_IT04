@@ -1,0 +1,37 @@
+﻿@model WebAPI.Models.Vragenlijst
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<br />
+
+<h2>Verwijderen vragenlijst "@Model.Beschrijving"</h2>
+
+<br />
+<br />
+
+<h4>Weet u zeker dat u deze vragenlijst wilt verwijderen?</h4>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <br />
+        <br />
+        <br />
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijder" class="btn btn-default" />
+
+            <br />
+            <br />
+            <br />
+
+            @Html.ActionLink("Terug", "Index")
+        </div>
+    }
+</div>
+
+

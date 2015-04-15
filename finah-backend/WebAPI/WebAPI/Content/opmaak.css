@@ -1,0 +1,12 @@
+﻿body {
+}
+
+td { 
+    padding: 10px;
+}
+
+table { 
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+

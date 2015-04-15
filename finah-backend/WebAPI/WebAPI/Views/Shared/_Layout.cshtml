@@ -17,14 +17,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Finah", "Index", "PatientMVC", new { area = "" }, new { @class = "navbar-brand" })
+                <span class="navbar-brand" style="color:white;">
+                    @Html.ActionLink("Finah", "Index", "PatientMVC")
+                </span>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Patienten", "Index", "PatientMVC")</li>
-                    <li style="margin-left: 25px;">@Html.ActionLink("Mantelzorgers", "Index", "MantelzorgerMVC")</li>
-                    <li style="margin-left: 25px;">@Html.ActionLink("Vragenlijsten", "Index", "VragenlijstMVC")</li>
-                    <li style="margin-left: 25px;">@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
+                    <li>@Html.ActionLink("Mantelzorgers", "Index", "MantelzorgerMVC")</li>
+                    <li>@Html.ActionLink("Vragenlijsten", "Index", "VragenlijstMVC")</li>
+                    <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

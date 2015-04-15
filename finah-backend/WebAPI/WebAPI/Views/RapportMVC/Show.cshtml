@@ -1,0 +1,54 @@
+﻿@model WebAPI.Models.RapportDetailsModel
+
+@{
+    ViewBag.Title = "Show";
+
+    int i = 1;
+
+    var antwoordBeschrijvingen = new String[] { "Verloopt naar wensen", "Niet hinderlijk", "Hinderlijk voor Pätiënt", "Hinderlijk voor mantelzorger", "Hinderlijk voor beide" };
+    var antwoordExtraBeschrijvingen = new String[] { "", "Ja", "Nee" };
+}
+
+<br />
+
+<h2>Patiënt: @Model.PatientVnaam @Model.PatientAnaam</h2>
+<h2>Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam</h2>
+
+<br />
+
+<hr />
+
+<table style="font-size:15px">
+
+    <tr>
+        <th>&nbsp</th>
+        <th>Vraag</th>
+        <th>Patiënt</th>
+        <th>Mantelzorger</th>
+        <th>Wil patiënt hier aan werken?</th>
+        <th>Wil mantelzorger hier aan werken?</th>
+    </tr>
+
+    <tr></tr>
+
+    @foreach (var item in Model.Vragen)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@item.Beschrijving</td>
+            <td>@antwoordBeschrijvingen[@Model.Antwoorden[i - 1].AntwoordInt - 1]</td>
+            <td>@antwoordBeschrijvingen[@Model.Antwoorden[i].AntwoordInt - 1]</td>
+            <td>@antwoordExtraBeschrijvingen[@Model.Antwoorden[i - 1].AntwoordExtra]</td>
+            <td>@antwoordExtraBeschrijvingen[@Model.Antwoorden[i].AntwoordExtra]</td>
+        </tr>
+
+        i++;
+    }
+
+</table>
+
+<br />
+
+<div>
+    @Html.ActionLink("Terug", "Index")
+</div>

@@ -120,5 +120,44 @@ namespace WebAPI.Controllers
                 return View();
             }
         }
+
+        // GET: RapportMVC/Show/5
+        public ActionResult Show(int id)
+        {
+            var rapport = db.Rapporten.Find(id);
+            var patient = db.PatientMantelzorgers.Find(rapport.Patient_Id);
+            var mantelzorger = db.PatientMantelzorgers.Find(rapport.Mantelzorger_Id);
+
+            WebAPI.Models.RapportDetailsModel rapportDetailsModel = new RapportDetailsModel();
+            rapportDetailsModel.Id = id;
+            rapportDetailsModel.PatientVnaam = patient.Vnaam;
+            rapportDetailsModel.PatientAnaam = patient.Anaam;
+            rapportDetailsModel.MantelzorgerVnaam = mantelzorger.Vnaam;
+            rapportDetailsModel.MantelzorgerAnaam = mantelzorger.Anaam;
+
+            var vragen = db.Vragen.Where(r => r.Vragenlijst_Id == rapport.Vragenlijst_Id);
+            var i = 0;
+
+            rapportDetailsModel.Vragen = new Vraag[vragen.Count()];
+
+            foreach (Vraag vraag in vragen)
+            {
+                rapportDetailsModel.Vragen[i] = vraag;
+                i++;
+            }
+
+            var antwoorden = db.Antwoorden.Where(r => r.Rapport_Id == id);
+            var j = 0;
+
+            rapportDetailsModel.Antwoorden = new Antwoord[antwoorden.Count()];
+
+            foreach (Antwoord antwoord in antwoorden)
+            {
+                rapportDetailsModel.Antwoorden[j] = antwoord;
+                j++;
+            }
+
+            return View(rapportDetailsModel);
+        }
     }
 }

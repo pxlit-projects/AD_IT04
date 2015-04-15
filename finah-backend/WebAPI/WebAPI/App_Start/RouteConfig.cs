@@ -17,7 +17,7 @@ namespace WebAPI
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "PatientMVC", action = "Index", id = UrlParameter.Optional }
-            );
+            ).DataTokens.Add("area", "General");
         }
     }
 }

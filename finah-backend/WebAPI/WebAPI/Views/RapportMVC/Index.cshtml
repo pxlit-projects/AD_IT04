@@ -27,6 +27,7 @@
             <td>@item.MantelzorgerVnaam @item.MantelzorgerAnaam</td>
             <td>@item.VragenlijstBeschrijving</td>
             <td>@item.Date</td>
+            <td>@Html.ActionLink("Bekijk", "Show", new { id = item.Id })</td>
         </tr>
 
     }
