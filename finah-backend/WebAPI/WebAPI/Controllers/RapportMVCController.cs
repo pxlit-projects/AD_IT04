@@ -9,6 +9,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    [Authorize(Roles = "Dokter, Onderzoeker")]
     public class RapportMVCController : Controller
     {
         private ApplicationDbContext db;
@@ -134,6 +135,7 @@ namespace WebAPI.Controllers
             rapportDetailsModel.PatientAnaam = patient.Anaam;
             rapportDetailsModel.MantelzorgerVnaam = mantelzorger.Vnaam;
             rapportDetailsModel.MantelzorgerAnaam = mantelzorger.Anaam;
+            rapportDetailsModel.Date = rapport.Date;
 
             var vragen = db.Vragen.Where(r => r.Vragenlijst_Id == rapport.Vragenlijst_Id);
             var i = 0;
@@ -146,7 +148,7 @@ namespace WebAPI.Controllers
                 i++;
             }
 
-            var antwoorden = db.Antwoorden.Where(r => r.Rapport_Id == id);
+            var antwoorden = db.Antwoorden.Where(r => r.Rapport_Id == id).OrderBy(re => re.Verzorger);
             var j = 0;
 
             rapportDetailsModel.Antwoorden = new Antwoord[antwoorden.Count()];

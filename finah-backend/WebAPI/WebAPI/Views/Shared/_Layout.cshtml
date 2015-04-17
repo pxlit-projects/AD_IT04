@@ -24,21 +24,22 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if (Roles.IsUserInRole("Dokter"))
-                    {
+                    {                  
                         <li>@Html.ActionLink("Patienten", "Index", "PatientMVC")</li>
                         <li>@Html.ActionLink("Mantelzorgers", "Index", "MantelzorgerMVC")</li>
                         <li>@Html.ActionLink("Vragenlijsten", "Index", "VragenlijstMVC")</li>
                         <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
                     }
-                    
+
                     @if (Roles.IsUserInRole("Onderzoeker"))
                     {
                         <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
                     }
-                    
+
                     @if (Roles.IsUserInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Dokters", "Index", "DokterMVC")</li>
+                        <li>@Html.ActionLink("Onderzoekers", "Index", "OnderzoekerMVC")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -12,6 +12,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DokterController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -11,6 +11,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    [Authorize(Roles = "Dokter")]
     public class PatientMVCController : Controller
     {
         private ApplicationDbContext db;

@@ -11,8 +11,10 @@
 
 <br />
 
-<h2>Patiënt: @Model.PatientVnaam @Model.PatientAnaam</h2>
-<h2>Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam</h2>
+<h3>Patiënt: @Model.PatientVnaam @Model.PatientAnaam</h3>
+<h3>Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam</h3>
+<h3>Datum: @Model.Date.Day/@Model.Date.Month/@Model.Date.Year</h3>
+
 
 <br />
 
@@ -37,9 +39,9 @@
             <td>@i</td>
             <td>@item.Beschrijving</td>
             <td>@antwoordBeschrijvingen[@Model.Antwoorden[i - 1].AntwoordInt - 1]</td>
-            <td>@antwoordBeschrijvingen[@Model.Antwoorden[i].AntwoordInt - 1]</td>
+            <td>@antwoordBeschrijvingen[@Model.Antwoorden[(i - 1) + (Model.Antwoorden.Length / 2)].AntwoordInt - 1]</td>
             <td>@antwoordExtraBeschrijvingen[@Model.Antwoorden[i - 1].AntwoordExtra]</td>
-            <td>@antwoordExtraBeschrijvingen[@Model.Antwoorden[i].AntwoordExtra]</td>
+            <td>@antwoordExtraBeschrijvingen[@Model.Antwoorden[(i - 1) + (Model.Antwoorden.Length / 2)].AntwoordExtra]</td>
         </tr>
 
         i++;
