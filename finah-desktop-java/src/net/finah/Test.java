@@ -15,6 +15,7 @@ public class Test {
 			ArrayList<Vraag> lijst1 = API.getVragenLijst(1);
 			Vraag vraag1 = (Vraag)lijst1.get(0);
 			System.out.println(vraag1);
+			System.out.println("Done");
 
 			ArrayList<Rapport> rapportLijst = API.getRapport(1);
 			Rapport rapport1 = rapportLijst.get(0);
@@ -24,13 +25,7 @@ public class Test {
 			Antwoord antwoord1 = antwoordLijst.get(0);
 			System.out.println(antwoord1);
 
-			Vraag vraag2 = API.getVraag(1,2);
-			System.out.println(vraag2);
 
-			Antwoord antwoord2 = API.getAntwoord(1,2);
-			System.out.println(antwoord2);
-
-			System.out.println("Done");
 		} catch (Exception e) {
 			Debug.err(e.getMessage(), "main");
 		}

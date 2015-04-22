@@ -31,11 +31,6 @@ public class API {
 		return getVragenLijst(lijst).get(vraag);
 	}
 
-	public static Antwoord getAntwoord(int lijst, int id) throws IOException{
-		return getAntwoordLijst(lijst).get(id);
-	}
-
-
 	public static ArrayList<Vraag> getVragenLijst(int lijst) throws IOException{
 		URL loc = new URL(remote + "/vraag/" + lijst);
 		init();
@@ -68,4 +63,5 @@ public class API {
 		return hark;
 
 	}
+
 }
