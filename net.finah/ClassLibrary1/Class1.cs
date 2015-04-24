@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace net.finah
+namespace ClassLibrary1
 {
-    class azureDB
+    public class Class1
     {
-
-
-
     }
 }
