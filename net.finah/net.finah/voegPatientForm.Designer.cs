@@ -32,17 +32,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.voornaamTextBox = new System.Windows.Forms.TextBox();
+            this.naamTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.verzorgerComboBox = new System.Windows.Forms.ComboBox();
+            this.voegPatientButton = new System.Windows.Forms.Button();
+            this.voegVerzorgerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 0;
@@ -51,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 39);
+            this.label2.Location = new System.Drawing.Point(12, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 1;
@@ -69,60 +70,74 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 96);
+            this.label4.Location = new System.Drawing.Point(12, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Mantelzorger : ";
             // 
-            // textBox1
+            // voornaamTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(82, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.voornaamTextBox.Location = new System.Drawing.Point(95, 12);
+            this.voornaamTextBox.Name = "voornaamTextBox";
+            this.voornaamTextBox.Size = new System.Drawing.Size(277, 20);
+            this.voornaamTextBox.TabIndex = 4;
             // 
-            // textBox2
+            // naamTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(82, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.naamTextBox.Location = new System.Drawing.Point(95, 38);
+            this.naamTextBox.Name = "naamTextBox";
+            this.naamTextBox.Size = new System.Drawing.Size(277, 20);
+            this.naamTextBox.TabIndex = 5;
             // 
-            // textBox3
+            // emailTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(82, 58);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.emailTextBox.Location = new System.Drawing.Point(95, 64);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(277, 20);
+            this.emailTextBox.TabIndex = 6;
             // 
-            // comboBox1
+            // verzorgerComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(95, 93);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.verzorgerComboBox.FormattingEnabled = true;
+            this.verzorgerComboBox.Location = new System.Drawing.Point(95, 90);
+            this.verzorgerComboBox.Name = "verzorgerComboBox";
+            this.verzorgerComboBox.Size = new System.Drawing.Size(277, 21);
+            this.verzorgerComboBox.TabIndex = 7;
             // 
-            // button2
+            // voegPatientButton
             // 
-            this.button2.Location = new System.Drawing.Point(297, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Toevoegen";
-            this.button2.UseVisualStyleBackColor = true;
+            this.voegPatientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voegPatientButton.Location = new System.Drawing.Point(258, 129);
+            this.voegPatientButton.Name = "voegPatientButton";
+            this.voegPatientButton.Size = new System.Drawing.Size(114, 30);
+            this.voegPatientButton.TabIndex = 9;
+            this.voegPatientButton.Text = "Toevoegen";
+            this.voegPatientButton.UseVisualStyleBackColor = true;
+            this.voegPatientButton.Click += new System.EventHandler(this.voegPatientButton_Click);
+            // 
+            // voegVerzorgerButton
+            // 
+            this.voegVerzorgerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voegVerzorgerButton.Location = new System.Drawing.Point(12, 129);
+            this.voegVerzorgerButton.Name = "voegVerzorgerButton";
+            this.voegVerzorgerButton.Size = new System.Drawing.Size(155, 30);
+            this.voegVerzorgerButton.TabIndex = 10;
+            this.voegVerzorgerButton.Text = "Voeg verzorger toe";
+            this.voegVerzorgerButton.UseVisualStyleBackColor = true;
+            this.voegVerzorgerButton.Click += new System.EventHandler(this.voegVerzorgerButton_Click);
             // 
             // voegPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 161);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(384, 171);
+            this.Controls.Add(this.voegVerzorgerButton);
+            this.Controls.Add(this.voegPatientButton);
+            this.Controls.Add(this.verzorgerComboBox);
+            this.Controls.Add(this.emailTextBox);
+            this.Controls.Add(this.naamTextBox);
+            this.Controls.Add(this.voornaamTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -140,10 +155,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox voornaamTextBox;
+        private System.Windows.Forms.TextBox naamTextBox;
+        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.ComboBox verzorgerComboBox;
+        private System.Windows.Forms.Button voegPatientButton;
+        private System.Windows.Forms.Button voegVerzorgerButton;
     }
 }

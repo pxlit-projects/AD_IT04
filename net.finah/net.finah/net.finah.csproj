@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aanVerzorgerForm.cs">
+    <Compile Include="voegVerzorgerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aanVerzorgerForm.Designer.cs">
-      <DependentUpon>aanVerzorgerForm.cs</DependentUpon>
+    <Compile Include="voegVerzorgerForm.Designer.cs">
+      <DependentUpon>voegVerzorgerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="aanVragenFrom.cs">
       <SubType>Form</SubType>
@@ -89,8 +89,8 @@
     <Compile Include="vragenlijstform.Designer.cs">
       <DependentUpon>vragenlijstform.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="aanVerzorgerForm.resx">
-      <DependentUpon>aanVerzorgerForm.cs</DependentUpon>
+    <EmbeddedResource Include="voegVerzorgerForm.resx">
+      <DependentUpon>voegVerzorgerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="aanVragenFrom.resx">
       <DependentUpon>aanVragenFrom.cs</DependentUpon>

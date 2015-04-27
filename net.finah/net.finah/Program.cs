@@ -16,7 +16,7 @@ namespace net.finah
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new beheerform());
+            Application.Run(new loginform());
         }
     }
 }

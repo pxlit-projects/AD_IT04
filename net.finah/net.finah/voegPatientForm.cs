@@ -16,5 +16,18 @@ namespace net.finah
         {
             InitializeComponent();
         }
+
+        private void voegVerzorgerButton_Click(object sender, EventArgs e)
+        {
+            Form verzorgerForm = new voegVerzorgerForm();
+            verzorgerForm.ShowDialog();
+        }
+
+        private void voegPatientButton_Click(object sender, EventArgs e)
+        {
+            // het opslaan van het patient
+        }
+
+
     }
 }

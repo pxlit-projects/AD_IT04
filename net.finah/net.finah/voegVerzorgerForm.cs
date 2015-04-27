@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace net.finah
 {
-    public partial class aanVerzorgerForm : Form
+    public partial class voegVerzorgerForm : Form
     {
-        public aanVerzorgerForm()
+        public voegVerzorgerForm()
         {
             InitializeComponent();
         }
