@@ -32,33 +32,34 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.verzorgerComboBox = new System.Windows.Forms.ComboBox();
+            this.clientComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.intervalComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.verstuurDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.nieuwButton = new System.Windows.Forms.Button();
+            this.bewerkButton = new System.Windows.Forms.Button();
+            this.verwijderButton = new System.Windows.Forms.Button();
+            this.toevoegButton = new System.Windows.Forms.Button();
+            this.vragenDataGridView = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.toeVragenDataGridView = new System.Windows.Forms.DataGridView();
+            this.opslaanButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vragenDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toeVragenDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,7 +70,7 @@
             this.tabControl1.Location = new System.Drawing.Point(1, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(781, 555);
+            this.tabControl1.Size = new System.Drawing.Size(781, 505);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -95,8 +96,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.verzorgerComboBox);
+            this.groupBox1.Controls.Add(this.clientComboBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
@@ -107,6 +108,22 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Algemeen";
+            // 
+            // verzorgerComboBox
+            // 
+            this.verzorgerComboBox.FormattingEnabled = true;
+            this.verzorgerComboBox.Location = new System.Drawing.Point(147, 101);
+            this.verzorgerComboBox.Name = "verzorgerComboBox";
+            this.verzorgerComboBox.Size = new System.Drawing.Size(190, 28);
+            this.verzorgerComboBox.TabIndex = 4;
+            // 
+            // clientComboBox
+            // 
+            this.clientComboBox.FormattingEnabled = true;
+            this.clientComboBox.Location = new System.Drawing.Point(147, 67);
+            this.clientComboBox.Name = "clientComboBox";
+            this.clientComboBox.Size = new System.Drawing.Size(190, 28);
+            this.clientComboBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -146,29 +163,29 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.intervalComboBox);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.verstuurDateTimePicker);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(16, 247);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(364, 188);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Interval";
             // 
-            // comboBox1
+            // intervalComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.intervalComboBox.FormattingEnabled = true;
+            this.intervalComboBox.Items.AddRange(new object[] {
             "Eenmalig",
             "Wekelijks",
             "Maandelijks",
             "Jaarlijks"});
-            this.comboBox1.Location = new System.Drawing.Point(137, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 28);
-            this.comboBox1.TabIndex = 8;
+            this.intervalComboBox.Location = new System.Drawing.Point(137, 67);
+            this.intervalComboBox.Name = "intervalComboBox";
+            this.intervalComboBox.Size = new System.Drawing.Size(200, 28);
+            this.intervalComboBox.TabIndex = 8;
             // 
             // label7
             // 
@@ -179,12 +196,12 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Interval : ";
             // 
-            // dateTimePicker1
+            // verstuurDateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(137, 35);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 6;
+            this.verstuurDateTimePicker.Location = new System.Drawing.Point(137, 35);
+            this.verstuurDateTimePicker.Name = "verstuurDateTimePicker";
+            this.verstuurDateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.verstuurDateTimePicker.TabIndex = 6;
             // 
             // label6
             // 
@@ -197,65 +214,65 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.nieuwButton);
+            this.tabPage2.Controls.Add(this.bewerkButton);
+            this.tabPage2.Controls.Add(this.verwijderButton);
+            this.tabPage2.Controls.Add(this.toevoegButton);
+            this.tabPage2.Controls.Add(this.vragenDataGridView);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.toeVragenDataGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(773, 522);
+            this.tabPage2.Size = new System.Drawing.Size(773, 472);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Vragen";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // nieuwButton
             // 
-            this.button4.Location = new System.Drawing.Point(288, 339);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 35);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Nieuw";
-            this.button4.UseVisualStyleBackColor = true;
+            this.nieuwButton.Location = new System.Drawing.Point(288, 339);
+            this.nieuwButton.Name = "nieuwButton";
+            this.nieuwButton.Size = new System.Drawing.Size(100, 35);
+            this.nieuwButton.TabIndex = 7;
+            this.nieuwButton.Text = "Nieuw";
+            this.nieuwButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // bewerkButton
             // 
-            this.button3.Location = new System.Drawing.Point(288, 380);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 35);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Bewerken";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bewerkButton.Location = new System.Drawing.Point(288, 380);
+            this.bewerkButton.Name = "bewerkButton";
+            this.bewerkButton.Size = new System.Drawing.Size(100, 35);
+            this.bewerkButton.TabIndex = 6;
+            this.bewerkButton.Text = "Bewerken";
+            this.bewerkButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // verwijderButton
             // 
-            this.button2.Location = new System.Drawing.Point(288, 188);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 35);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Verwijderen";
-            this.button2.UseVisualStyleBackColor = true;
+            this.verwijderButton.Location = new System.Drawing.Point(288, 188);
+            this.verwijderButton.Name = "verwijderButton";
+            this.verwijderButton.Size = new System.Drawing.Size(100, 35);
+            this.verwijderButton.TabIndex = 5;
+            this.verwijderButton.Text = "Verwijderen";
+            this.verwijderButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // toevoegButton
             // 
-            this.button1.Location = new System.Drawing.Point(288, 147);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 35);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Toevoegen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.toevoegButton.Location = new System.Drawing.Point(288, 147);
+            this.toevoegButton.Name = "toevoegButton";
+            this.toevoegButton.Size = new System.Drawing.Size(100, 35);
+            this.toevoegButton.TabIndex = 4;
+            this.toevoegButton.Text = "Toevoegen";
+            this.toevoegButton.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // vragenDataGridView
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(418, 64);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(240, 390);
-            this.dataGridView2.TabIndex = 3;
+            this.vragenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.vragenDataGridView.Location = new System.Drawing.Point(418, 64);
+            this.vragenDataGridView.Name = "vragenDataGridView";
+            this.vragenDataGridView.Size = new System.Drawing.Size(240, 390);
+            this.vragenDataGridView.TabIndex = 3;
             // 
             // label9
             // 
@@ -275,35 +292,30 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Toegevoegde vragen";
             // 
-            // dataGridView1
+            // toeVragenDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 64);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 390);
-            this.dataGridView1.TabIndex = 0;
+            this.toeVragenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.toeVragenDataGridView.Location = new System.Drawing.Point(23, 64);
+            this.toeVragenDataGridView.Name = "toeVragenDataGridView";
+            this.toeVragenDataGridView.Size = new System.Drawing.Size(240, 390);
+            this.toeVragenDataGridView.TabIndex = 0;
             // 
-            // comboBox2
+            // opslaanButton
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(147, 67);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(190, 28);
-            this.comboBox2.TabIndex = 1;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(147, 101);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(190, 28);
-            this.comboBox3.TabIndex = 4;
+            this.opslaanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opslaanButton.Location = new System.Drawing.Point(652, 514);
+            this.opslaanButton.Name = "opslaanButton";
+            this.opslaanButton.Size = new System.Drawing.Size(120, 35);
+            this.opslaanButton.TabIndex = 1;
+            this.opslaanButton.Text = "Opslaan";
+            this.opslaanButton.UseVisualStyleBackColor = true;
             // 
             // aanVragenlijstForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.opslaanButton);
             this.Controls.Add(this.tabControl1);
             this.Name = "aanVragenlijstForm";
             this.Text = "aanVragenlijstForm";
@@ -316,8 +328,8 @@
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vragenDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toeVragenDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -334,20 +346,21 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox intervalComboBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker verstuurDateTimePicker;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button nieuwButton;
+        private System.Windows.Forms.Button bewerkButton;
+        private System.Windows.Forms.Button verwijderButton;
+        private System.Windows.Forms.Button toevoegButton;
+        private System.Windows.Forms.DataGridView vragenDataGridView;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DataGridView toeVragenDataGridView;
+        private System.Windows.Forms.ComboBox verzorgerComboBox;
+        private System.Windows.Forms.ComboBox clientComboBox;
+        private System.Windows.Forms.Button opslaanButton;
 
     }
 }

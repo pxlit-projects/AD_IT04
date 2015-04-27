@@ -28,5 +28,16 @@ namespace net.finah
             Form verzorgerForm = new voegVerzorgerForm();
             verzorgerForm.ShowDialog();
         }
+
+        private void voegVragenlijstButton_Click(object sender, EventArgs e)
+        {
+            Form vragenlijstForm = new aanVragenlijstForm();
+            vragenlijstForm.ShowDialog();
+        }
+
+        private void detailsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
