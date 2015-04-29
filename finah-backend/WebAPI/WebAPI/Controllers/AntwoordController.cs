@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
 
         // GET: api/Antwoord/5
         [ResponseType(typeof(Antwoord))]
-        public IHttpActionResult GetAntwoord(int id)
+        public IHttpActionResult GetAntwoordenByRapportId(int id)
         {
             var model = db.Antwoorden.Where(r => r.Rapport_Id == id);
             if (model.Count() == 0)

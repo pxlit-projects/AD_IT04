@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         // GET: api/PatientMantelzorger/5/true
         [Route("api/patientmantelzorger/{id}/{verzorger}")]
         [ResponseType(typeof(PatientMantelzorger))]
-        public IHttpActionResult GetPatientMantelzorger(int id, Boolean verzorger)
+        public IHttpActionResult GetPatientMantelzorgerByDokterId(int id, Boolean verzorger)
         {
             var model = db.PatientMantelzorgers.Where(r => r.Dokter_Id == id && r.Verzorger == verzorger);
             if (model.Count() == 0)

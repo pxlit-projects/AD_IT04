@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
 
         // GET: api/Rapport/5
         [ResponseType(typeof(Rapport))]
-        public IHttpActionResult GetRapport(int id)
+        public IHttpActionResult GetRapportenByDokterId(int id)
         {
             var model = db.Rapporten.Where(r => r.Dokter_Id == id);
             if (model.Count() == 0)

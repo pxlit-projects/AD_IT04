@@ -191,9 +191,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
     <Compile Include="Controllers\DokterController.cs" />
+    <Compile Include="Controllers\DokterMVCController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MantelzorgerMVCController.cs" />
+    <Compile Include="Controllers\OnderzoekerMVCController.cs" />
     <Compile Include="Controllers\PatientMVCController.cs" />
     <Compile Include="Controllers\PatientMantelzorgerController.cs" />
     <Compile Include="Controllers\RapportController.cs" />
@@ -201,6 +203,7 @@
     <Compile Include="Controllers\VraagController.cs" />
     <Compile Include="Controllers\VragenlijstController.cs" />
     <Compile Include="Controllers\VragenlijstMVCController.cs" />
+    <Compile Include="Controllers\VragenlijstVersturenMVCController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,6 +224,7 @@
     <Compile Include="Models\RapportListViewModel.cs" />
     <Compile Include="Models\Vraag.cs" />
     <Compile Include="Models\Vragenlijst.cs" />
+    <Compile Include="Models\VragenlijstVersturenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -306,6 +310,10 @@
     <Content Include="Views\VragenlijstMVC\Delete.cshtml" />
     <Content Include="Views\RapportMVC\Show.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\VragenlijstVersturenMVC\Index.cshtml" />
+    <Content Include="Views\VragenlijstVersturenMVC\VragenlijstVerstuurd.cshtml" />
+    <Content Include="Views\DokterMVC\Index.cshtml" />
+    <Content Include="Views\OnderzoekerMVC\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
 
         // GET: api/Vragenlijst/5
         [ResponseType(typeof(Vragenlijst))]
-        public IHttpActionResult GetVragenlijst(int id)
+        public IHttpActionResult GetVragenlijstenByDokterId(int id)
         {
             var model = db.Vragenlijsten.Where(r => r.Dokter_Id == id);
             if (model.Count() == 0)
