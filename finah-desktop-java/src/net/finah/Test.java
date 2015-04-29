@@ -30,6 +30,14 @@ public class Test {
 			Antwoord antwoord2 = API.getAntwoord(1,2);
 			System.out.println(antwoord2);
 
+			// test data
+			//vraag1.setBeschrijving("test");
+			//vraag1.setId(0);
+			//vraag1.setVragenLijst_I(0);
+			//lijst1.set(1,vraag1);
+			//write data
+			//String derp = API.writeVragenLijst(lijst1,1);
+			//System.out.println(derp);
 			System.out.println("Done");
 		} catch (Exception e) {
 			Debug.err(e.getMessage(), "main");

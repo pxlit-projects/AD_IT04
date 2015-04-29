@@ -20,11 +20,11 @@ public class Vraag {
 		this.id = id;
 	}
 
-	public void setbeschrijving(String beschrijving) {
+	public void setBeschrijving(String beschrijving) {
 		this.beschrijving = beschrijving;
 	}
 
-	public void setvragenlijst_Id(int vragenlijst_Id) {
+	public void setVragenLijst_I(int vragenlijst_Id) {
 		this.vragenlijst_Id = vragenlijst_Id;
 	}
 
