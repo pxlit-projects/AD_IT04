@@ -12,7 +12,7 @@ namespace API
         private int patientId;
         private int mantelzorgerId;
         private DateTime date;
-        private int VragenlijstId;
+        private int vragenlijstId;
 
         public int setId
         {
@@ -28,8 +28,8 @@ namespace API
 
         public int setVragenlijstId
         {
-            get { return VragenlijstId; }
-            set { VragenlijstId = value; }
+            get { return vragenlijstId; }
+            set { vragenlijstId = value; }
         }
         
        public String toString() {

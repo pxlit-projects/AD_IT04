@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using API;
 
 namespace net.finah
 {
@@ -15,6 +16,12 @@ namespace net.finah
         public aanVragenlijstForm()
         {
             InitializeComponent();
+        }
+
+        private void aanVragenlijstForm_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show(API.DB.GetVragen());
+
         }
     }
 }
