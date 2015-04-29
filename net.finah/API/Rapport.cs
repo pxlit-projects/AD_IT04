@@ -14,6 +14,15 @@ namespace API
         private DateTime date;
         private int vragenlijstId;
 
+        public Rapport(int id, int patientId, int mantelzorgerId, DateTime date, int vragenlijstId)
+        {
+            this.id = id;
+            this.patientId = patientId;
+            this.mantelzorgerId = mantelzorgerId;
+            this.date = date;
+            this.vragenlijstId = vragenlijstId;
+        }
+
         public int setId
         {
             get { return id; }

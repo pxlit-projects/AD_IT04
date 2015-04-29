@@ -10,35 +10,39 @@ namespace API
 {
     public class DB
     {
-        public static string GetVragen()
+        public static List<Vraag> GetVragen()
         {
-
+            List<Vraag> list = new List<Vraag>();
             HttpResponseMessage response = null;
             try
             {
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
+            client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
 
-                // Add an Accept header for JSON format.
-                client.DefaultRequestHeaders.Accept.Add(
-                    new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
 
-                response = client.GetAsync("api/Vraag").Result;
+            response = client.GetAsync("api/Vraag").Result;
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var Vraag = response.Content.ReadAsStringAsync().Result;
-                    ///usergrid.ItemsSource = users; datagridview
+            response.EnsureSuccessStatusCode();
+          
+                var vraag = response.Content.ReadAsAsync<IEnumerable<Vraag>>().Result;
 
-                }
+                list = (List<Vraag>)vraag;
+
+                //usergrid.ItemsSource = users;
+
             }
             catch (HttpRequestException ex)
             {
-                //throw ("Error Code" +  response.StatusCode + " : Message - " + response.ReasonPhrase);
+                throw ex;
+               // throw ("Error Code" +  response.StatusCode + " : Message - " + response.ReasonPhrase);
             }
 
-            return response.ToString();
-        }
+            return list;
+
+    }
+
 
         private void GetVragenlijst()
         {

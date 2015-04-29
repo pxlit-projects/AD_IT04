@@ -15,6 +15,16 @@ namespace API
         private int extraAntwoord;
         private Boolean verzorger;
 
+        public Antwoord(int id, int vraagId, int rapportId, int antwoord, int extraAntwoord, Boolean verzorger)
+        {
+            this.id = id;
+            this.vraagId = vraagId;
+            this.rapportId = rapportId;
+            this.antwoord = antwoord;
+            this.extraAntwoord = extraAntwoord;
+            this.verzorger = verzorger;
+        }
+
         public int setVraagId
         {
             get { return vraagId; }

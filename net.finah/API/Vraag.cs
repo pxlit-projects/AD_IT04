@@ -12,6 +12,13 @@ namespace API
         private string beschrijving;
         private int vragenlijstId;
 
+       /* public Vraag(int id, string beschrijving, int vragenlijstId) 
+        {
+            this.id = id;
+            this.beschrijving = beschrijving;
+            this.vragenlijstId = vragenlijstId;
+        }*/
+
         public int setId
         {
             get { return id; }
