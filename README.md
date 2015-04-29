@@ -21,7 +21,11 @@ De Backend is de database waarop de API draait. Dit project is gemaakt in Visual
 met de verschillende vragen & de bijhorende antwoorden van de verschillende patiënten. De database bevat ook de inloggegevens
 van de dokters.
 
-### Instructies:
+### Instructies: 
+
+Met de account 'dokter@gmail.com' en het wachtwoord 'P@sw0rd' kan je inloggen op de site finahweb.azurewebsites.net.
+Hier krijg je een overzicht van deze dokter zijn patiënten, mantelzorgers, vragenlijsten en rapporten.
+Tevens kan je ook vragenlijsten versturen naar patiënten en mantelzorgers.
 
 ### Screenshots:
 
