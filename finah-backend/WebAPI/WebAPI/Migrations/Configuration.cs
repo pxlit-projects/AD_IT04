@@ -32,7 +32,7 @@ namespace WebAPI.Migrations
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser { UserName = "kristof.spaas@gmail.com", Email = "kristof.spaas@gmail.com" };
 
-                manager.Create(user, "password");
+                manager.Create(user, "P@ssw0rd");
                 manager.AddToRole(user.Id, "Admin");
             }
 
@@ -43,6 +43,16 @@ namespace WebAPI.Migrations
                 var role = new IdentityRole { Name = "Dokter" };
 
                 manager.Create(role);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "dokter@gmail.com"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser { UserName = "dokter@gmail.com", Email = "dokter@gmail.com" };
+
+                manager.Create(user, "P@ssw0rd");
+                manager.AddToRole(user.Id, "Dokter");
             }
 
             if (!context.Roles.Any(r => r.Name == "PatientMantelverzorger"))

@@ -9,6 +9,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    //[Authorize(Roles = "Dokter")]
     public class VragenlijstVersturenMVCController : Controller
     {
         private ApplicationDbContext db;

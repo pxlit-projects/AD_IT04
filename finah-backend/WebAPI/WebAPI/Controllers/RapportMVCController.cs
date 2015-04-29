@@ -9,7 +9,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [Authorize(Roles = "Dokter, Onderzoeker")]
+    //[Authorize(Roles = "Dokter, Onderzoeker")]
     public class RapportMVCController : Controller
     {
         private ApplicationDbContext db;
