@@ -1,37 +1,37 @@
 ﻿@model IEnumerable<WebAPI.Models.PatientMantelzorger>
 
-@{
-    ViewBag.Title = "Patienten";
-}
-
-<br />
-
-<h2>Patiënten</h2>
-
-<br/>
-
-<p>
-    @Html.ActionLink("Voeg patiënt toe", "Create")
-</p>
-
-<hr />
-
-<table style="width:70%; font-size:20px">
-
-    <tr>
-        <th>Voornaam</th>
-        <th>Achternaam</th>
-        <th>Email</th>
-    </tr>
-
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Vnaam</td>
-            <td>@item.Anaam</td>
-            <td>@item.Email</td>
-        </tr>
+    @{
+        ViewBag.Title = "Patienten";
     }
 
-</table>
+    <br />
+
+    <h2>Patiënten</h2>
+
+    <br />
+
+                      <button class="btn btn-default" onclick="location.href='@Url.Action("Create")'">
+                          Voeg patiënt toe
+                      </button>
+
+    <hr />
+
+    <table>
+
+        <tr>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>Email</th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Vnaam</td>
+                <td>@item.Anaam</td>
+                <td>@item.Email</td>
+            </tr>
+        }
+
+    </table>

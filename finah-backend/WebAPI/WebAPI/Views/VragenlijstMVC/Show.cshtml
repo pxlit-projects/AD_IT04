@@ -9,15 +9,15 @@
 
 <h2>@Model.Beschrijving</h2>
 
-<div style="float:right;">
-    <h4>@Html.ActionLink("Wijzig", "Edit", new { id = Model.Id })</h4>
-</div>
-
 <br />
+
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Edit", new { id = Model.Id })'">
+        Wijzig vragenlijst
+    </button>
 
 <hr />
 
-<table style="width:70%; font-size:20px">
+<table>
 
     <tr>
         <th>&nbsp</th>
@@ -38,7 +38,9 @@
 </table>
 
 <br />
+<br />
+<br />
 
-<div>
-    @Html.ActionLink("Terug", "Index")
-</div>
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">
+    Terug
+</button>

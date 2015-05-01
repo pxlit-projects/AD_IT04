@@ -13,25 +13,33 @@
 
 <h4>Weet u zeker dat u deze vragenlijst wilt verwijderen?</h4>
 
-<div>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+<br />
+<br />
 
-        <br />
-        <br />
-        <br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Verwijder" class="btn btn-default" />
 
-            <br />
-            <br />
-            <br />
 
-            @Html.ActionLink("Terug", "Index")
-        </div>
-    }
-</div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Verwijder vragenlijst" class="btn btn-default" />
+
+
+    </div>
+
+
+}
+
+
+<br />
+<br />
+<br />
+<br />
+
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">
+    Terug
+</button>
+
 
 

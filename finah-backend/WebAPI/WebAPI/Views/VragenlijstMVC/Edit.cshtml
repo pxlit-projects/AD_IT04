@@ -66,17 +66,19 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Opslaan" class="btn btn-default" />
+                <input type="submit" value="Wijzig vragenlijst" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <br />
+<br />
+<br />
 
-<div>
-    @Html.ActionLink("Terug", "Index")
-</div>
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">
+    Terug
+</button>
 
 <script>
     @*getal = @i;

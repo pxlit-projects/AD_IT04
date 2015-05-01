@@ -1,26 +1,30 @@
 ﻿@model WebAPI.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Mijn account";
 }
+<br />
 
 <h2>@ViewBag.Title</h2>
 
+<hr />
+
 <p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>            
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }            
-        </dd>
-     
-    </dl>
-</div>
+
+<br/>
+
+<h4>Verander je account instellingen</h4>
+
+<br />
+
+@if (Model.HasPassword)
+{
+    <button class="btn btn-default" onclick="location.href='@Url.Action("ChangePassword")'">
+        Verander wachtwoord
+    </button>
+}
+else
+{
+    <button class="btn btn-default" onclick="location.href='@Url.Action("SetPassword")'">
+        Maak een wachtwoord aan
+    </button>
+}

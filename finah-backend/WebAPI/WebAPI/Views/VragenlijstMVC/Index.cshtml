@@ -1,36 +1,47 @@
 ﻿@model IEnumerable<WebAPI.Models.Vragenlijst>
 
-@{
-    ViewBag.Title = "Vragenlijsten";
-}
-<br />
+    @{
+        ViewBag.Title = "Vragenlijsten";
+    }
+    <br />
 
-<h2>Vragenlijsten</h2>
+    <h2>Vragenlijsten</h2>
 
-<br />
+    <br />
 
-<p>
-    @Html.ActionLink("Voeg vragenlijst toe", "Create")
-</p>
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Create")'">
+        Voeg vragenlijst toe
+    </button>
 
-<hr />
+    <hr />
 
-<table style="width:70%; font-size:20px">
+    <table>
 
-    <tr>
-        <th>Beschrijving</th>
-    </tr>
-
-
-    @foreach (var item in Model)
-    {
         <tr>
-            <td>@item.Beschrijving</td>
-            <td>@Html.ActionLink("Bekijk", "Show", new { id = item.Id })</td>
-            <td>@Html.ActionLink("Wijzig", "Edit", new { id = item.Id })</td>
-            <td>@Html.ActionLink("Verwijder", "Delete", new { id = item.Id })</td>
+            <th>Beschrijving</th>
         </tr>
 
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Beschrijving</td>
+                <td>&nbsp;</td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Show", new { id = item.Id })'">
+                        Bekijk
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Edit", new { id = item.Id })'">
+                        Wijzig
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { id = item.Id })'">
+                        Verwijder
+                    </button>
+                </td>
+            </tr>
+        }
+    </table>

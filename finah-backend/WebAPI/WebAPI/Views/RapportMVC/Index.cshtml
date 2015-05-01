@@ -1,35 +1,39 @@
 ﻿@model IEnumerable<WebAPI.Models.RapportListViewModel>
 
-@{
-    ViewBag.Title = "Rapporten";
-}
-
-<br />
-
-<h2>Rapporten</h2>
-
-<hr />
-
-<table style="width:70%; font-size:20px" cellpadding="10">
-
-    <tr>
-        <th>Patiënt</th>
-        <th>Mantelzorger</th>
-        <th>Vragenlijst</th>
-        <th>Datum</th>
-    </tr>
-
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.PatientVnaam @item.PatientAnaam</td>
-            <td>@item.MantelzorgerVnaam @item.MantelzorgerAnaam</td>
-            <td>@item.VragenlijstBeschrijving</td>
-            <td>@item.Date.Day/@item.Date.Month/@item.Date.Year</td>
-            <td>@Html.ActionLink("Bekijk", "Show", new { id = item.Id })</td>
-        </tr>
-
+    @{
+        ViewBag.Title = "Rapporten";
     }
 
-</table>
+    <br />
+
+    <h2>Rapporten</h2>
+
+    <hr />
+
+    <table>
+
+        <tr>
+            <th>Patiënt</th>
+            <th>Mantelzorger</th>
+            <th>Vragenlijst</th>
+            <th>Datum</th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PatientVnaam @item.PatientAnaam</td>
+                <td>@item.MantelzorgerVnaam @item.MantelzorgerAnaam</td>
+                <td>@item.VragenlijstBeschrijving</td>
+                <td>@item.Date.Day/@item.Date.Month/@item.Date.Year</td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Show", new { id = item.Id })'">
+                        Bekijk
+                    </button>
+                </td>
+            </tr>
+
+        }
+
+    </table>
