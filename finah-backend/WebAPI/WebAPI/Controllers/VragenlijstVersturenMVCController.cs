@@ -93,7 +93,7 @@ namespace WebAPI.Controllers
             transportWeb.DeliverAsync(messageToPatient);
             transportWeb.DeliverAsync(messageToMantelzorger);
 
-            return View();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }
