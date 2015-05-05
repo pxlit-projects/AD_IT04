@@ -59,13 +59,14 @@ function verstuurTemplate() {
         var patient = self.selectedPatient();
         var mantelzorger = self.selectedMantelzorger();
         var vragenlijst = self.selectedVragenlijst();
+        var dokterId = document.getElementById("dokterId").value;
         var rapportId;
 
         var dataObject = ko.toJSON({
             Patient_Id: patient.Id,
             Mantelzorger_Id: mantelzorger.Id,
             Vragenlijst_Id: vragenlijst.Id,
-            Dokter_Id: 1,
+            Dokter_Id: dokterId,
             Date: getDate()
         });
 
