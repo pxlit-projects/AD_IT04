@@ -93,7 +93,9 @@ namespace WebAPI.Controllers
             transportWeb.DeliverAsync(messageToPatient);
             transportWeb.DeliverAsync(messageToMantelzorger);
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            System.Diagnostics.Debug.WriteLine("Email sent successfully ######################");
+
+            return Json(new { success = true, responseText = "Email was sent succesfully!" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -83,31 +83,35 @@ function verstuurTemplate() {
             });
         }
 
-        $.when(ajax1()).done(function (a1, a2, a3, a4) {
-            var data = "{'patientId': '" + patient.Id
-               + "', 'mantelzorgerId': '" + mantelzorger.Id
-               + "', 'rapportId': '" + rapportId
-               + "', 'vragenlijstId': '" + vragenlijst.Id + "'}";
+        function ajax2() {
+            return $.when(ajax1()).done(function (a1, a2, a3, a4) {
+                var data = "{'patientId': '" + patient.Id
+                   + "', 'mantelzorgerId': '" + mantelzorger.Id
+                   + "', 'rapportId': '" + rapportId
+                   + "', 'vragenlijstId': '" + vragenlijst.Id + "'}";
 
-            return $.ajax({
-                type: "post",
-                url: "VragenlijstVersturenMVC/_SendMessage",
-                data: data,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    console.log("Email sent #######################")
-                },
-                error: function (data) {
-                    console.log("Email not sent #######################")
-                },
-            });
+                $.ajax({
+                    type: "post",
+                    url: "VragenlijstVersturenMVC/_SendMessage",
+                    data: data,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("data")
+                    },
+                    error: function (data) {
+                        console.log("Email not sent #######################")
+                    },
+                });
+            })
+        }
+
+        $.when(ajax2()).done(function (a1, a2, a3, a4) {
+            window.location.href = 'VragenlijstVersturenMVC/VragenlijstVerstuurd' +
+                   '?patientNaam=' + patient.Vnaam() + ' ' + patient.Anaam() +
+                   '&mantelzorgerNaam=' + mantelzorger.Vnaam() + ' ' + mantelzorger.Anaam() +
+                   '&vragenlijstBeschrijving=' + vragenlijst.Beschrijving();
         })
-
-        window.location.href = 'VragenlijstVersturenMVC/VragenlijstVerstuurd' +
-               '?patientNaam=' + patient.Vnaam() + ' ' + patient.Anaam() +
-               '&mantelzorgerNaam=' + mantelzorger.Vnaam() + ' ' + mantelzorger.Anaam() +
-               '&vragenlijstBeschrijving=' + vragenlijst.Beschrijving();
     };
 }
 
