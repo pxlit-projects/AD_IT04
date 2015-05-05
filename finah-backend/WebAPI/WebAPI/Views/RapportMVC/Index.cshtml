@@ -7,6 +7,7 @@
     <br />
 
     <h2>Rapporten</h2>
+    <br />
 
     <hr />
 
@@ -19,7 +20,6 @@
             <th>Datum</th>
         </tr>
 
-
         @foreach (var item in Model)
         {
             <tr>
@@ -28,12 +28,18 @@
                 <td>@item.VragenlijstBeschrijving</td>
                 <td>@item.Date.Day/@item.Date.Month/@item.Date.Year</td>
                 <td>
-                    <button class="btn btn-default" onclick="location.href='@Url.Action("Show", new { id = item.Id })'">
-                        Bekijk
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Herhaal", new { id = item.Id })'">
+                        Herhaal
                     </button>
                 </td>
+                <td>
+                    @if (item.HasAnswers == true)
+                    {
+                        <button class="btn btn-default" onclick="location.href='@Url.Action("Show", new { id = item.Id })'">
+                            Bekijk
+                        </button>
+                    }
+                </td>
             </tr>
-
         }
-
     </table>

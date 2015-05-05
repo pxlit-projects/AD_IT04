@@ -1,12 +1,17 @@
 ﻿body {
-    background-image: url("images/background.png");
-    font-size:18px;
+    background: url(images/background.png) center center fixed;
+    background-size: cover;
+    font-size: 18px;
 }
 
 table tr td,
 table tr th {
     padding-top: 20px;
     padding-right: 75px;
+}
+
+#rapportTable {
+    padding-right: 60px;
 }
 
 table {

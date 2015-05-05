@@ -10,9 +10,9 @@
 
     <br />
 
-                      <button class="btn btn-default" onclick="location.href='@Url.Action("Create")'">
-                          Voeg patiënt toe
-                      </button>
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Create")'">
+        Voeg patiënt toe
+    </button>
 
     <hr />
 
@@ -31,6 +31,16 @@
                 <td>@item.Vnaam</td>
                 <td>@item.Anaam</td>
                 <td>@item.Email</td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Edit", new { id = item.Id })'">
+                        Wijzig
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { id = item.Id })'">
+                        Verwijder
+                    </button>
+                </td>
             </tr>
         }
 

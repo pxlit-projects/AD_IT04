@@ -16,5 +16,6 @@ namespace WebAPI.Models
         public string MantelzorgerAnaam { get; set; }
         public string VragenlijstBeschrijving { get; set; }
         public DateTime Date { get; set; }
+        public Boolean HasAnswers { get; set; }
     }
 }

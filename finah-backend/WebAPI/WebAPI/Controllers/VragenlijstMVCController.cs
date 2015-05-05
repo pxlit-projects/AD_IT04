@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -50,51 +51,21 @@ namespace WebAPI.Controllers
         // GET: VragenlijstMVC/Create
         public ActionResult Create()
         {
-            return View();
-        }
+            var currentUser = manager.FindById(User.Identity.GetUserId());
 
-        // POST: VragenlijstMVC/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(WebAPI.Models.CustomVragenlijst customVragenlijst)
-        {
-            if (ModelState.IsValid)
+            var dokterId = 0;
+            if (currentUser != null)
             {
-                var currentUser = manager.FindById(User.Identity.GetUserId());
-
-                var dokterId = 0;
-                if (currentUser != null)
-                {
-                    dokterId = db.Dokters
-                        .Where(r => r.Email == currentUser.Email)
-                        .Select(r => r.Id)
-                        .FirstOrDefault();
-                }
-
-                Vragenlijst vragenlijst = new Vragenlijst();
-                vragenlijst.Beschrijving = customVragenlijst.Beschrijving;
-                vragenlijst.Dokter_Id = dokterId;
-
-                db.Vragenlijsten.Add(vragenlijst);
-
-                db.SaveChanges();
-
-                foreach (Vraag vraag in customVragenlijst.Vragen)
-                {
-                    vraag.Vragenlijst_Id = db.Vragenlijsten
-                        .Where(r => r.Beschrijving == vragenlijst.Beschrijving)
-                        .Select(r => r.Id)
-                        .FirstOrDefault();
-
-                    db.Vragen.Add(vraag);
-                }
-
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
+                dokterId = db.Dokters
+               .Where(r => r.Email == currentUser.Email)
+               .Select(r => r.Id)
+               .FirstOrDefault();
             }
 
-            return View(customVragenlijst);
+            Vragenlijst vragenlijst = new Vragenlijst();
+            vragenlijst.Dokter_Id = dokterId;
+
+            return View(vragenlijst);
         }
 
         // GET: VragenlijstMVC/Edit/5
@@ -131,29 +102,23 @@ namespace WebAPI.Controllers
 
                 vragenlijst.Beschrijving = customVragenlijst.Beschrijving;
 
+                foreach (Vraag item in customVragenlijst.Vragen)
+                {
+                    Vraag vraag = db.Vragen.Find(item.Id);
+
+                    if (item.Beschrijving != null)
+                    {
+                        vraag.Beschrijving = item.Beschrijving;
+                    }
+                    else
+                    {
+                        db.Vragen.Remove(vraag);
+                    }
+                }
+
                 db.SaveChanges();
 
-                if (customVragenlijst.Vragen != null)
-                {
-                    foreach (Vraag vraag in customVragenlijst.Vragen)
-                    {
-
-                        if (vraag.Beschrijving != null)
-                        {
-                            Vraag vraag2 = db.Vragen.Find(vraag.Id);
-                            vraag2.Beschrijving = vraag.Beschrijving;
-                        }
-                        else
-                        {
-                            db.Vragen.Remove(db.Vragen.Find(vraag.Id));
-                        }
-
-                    }
-
-                    db.SaveChanges();
-
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index");
             }
 
             return View(customVragenlijst);
@@ -162,7 +127,7 @@ namespace WebAPI.Controllers
         // GET: VragenlijstMVC/Delete/5
         public ActionResult Delete(int id)
         {
-            var vragenlijst = db.Vragenlijsten.Find(id);
+            Vragenlijst vragenlijst = db.Vragenlijsten.Find(id);
 
             return View(vragenlijst);
         }
@@ -171,6 +136,8 @@ namespace WebAPI.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            Vragenlijst vragenlijst = db.Vragenlijsten.Find(id);
+
             if (db.Rapporten.Where(r => r.Vragenlijst_Id == id).FirstOrDefault() == null)
             {
                 foreach (Vraag vraag in db.Vragen.Where(r => r.Vragenlijst_Id == id))
@@ -180,14 +147,17 @@ namespace WebAPI.Controllers
 
                 db.SaveChanges();
 
-                db.Vragenlijsten.Remove(db.Vragenlijsten.Find(id));
+                db.Vragenlijsten.Remove(vragenlijst);
 
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-
-            return View(db.Vragenlijsten.Find(id));
+            else
+            {
+                ModelState.AddModelError("", "Deze vragenlijst is al verstuurd geweest naar een patiënt en kan daarom niet verwijderd worden.");
+                return View(vragenlijst);
+            }
         }
 
         // GET: VragenlijstMVC/Show/5

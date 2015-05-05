@@ -44,82 +44,11 @@ namespace WebAPI.Controllers
                     MantelzorgerVnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Vnaam).FirstOrDefault()),
                     MantelzorgerAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Anaam).FirstOrDefault()),
                     VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
-                    Date = r.Date
+                    Date = r.Date,
+                    HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
                 });
 
             return View(model);
-        }
-
-        // GET: RapportMVC/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: RapportMVC/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: RapportMVC/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RapportMVC/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: RapportMVC/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RapportMVC/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RapportMVC/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         // GET: RapportMVC/Show/5
@@ -160,6 +89,58 @@ namespace WebAPI.Controllers
             }
 
             return View(rapportDetailsModel);
+        }
+
+        // GET: RapportMVC/Herhaal/5
+        [HttpGet]
+        public ActionResult Herhaal(int id)
+        {
+            Rapport rapport = db.Rapporten.Find(id);
+
+            RapportListViewModel model = new RapportListViewModel();
+            model.PatientVnaam = (db.PatientMantelzorgers.Where(r => r.Id == rapport.Patient_Id).Select(rev => rev.Vnaam).FirstOrDefault());
+            model.PatientAnaam = (db.PatientMantelzorgers.Where(r => r.Id == rapport.Patient_Id).Select(rev => rev.Anaam).FirstOrDefault());
+            model.MantelzorgerVnaam = (db.PatientMantelzorgers.Where(r => r.Id == rapport.Mantelzorger_Id).Select(rev => rev.Vnaam).FirstOrDefault());
+            model.MantelzorgerAnaam = (db.PatientMantelzorgers.Where(r => r.Id == rapport.Mantelzorger_Id).Select(rev => rev.Anaam).FirstOrDefault());
+            model.VragenlijstBeschrijving = (db.Vragenlijsten.Where(r => r.Id == rapport.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault());
+
+            return View(model);
+        }
+
+        // POST: RapportMVC/Herhaal/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Herhaal(int id, FormCollection formvalues)
+        {
+            Rapport rapport = db.Rapporten.Find(id);
+
+            Rapport newRapport = new Rapport();
+            newRapport.Patient_Id = rapport.Patient_Id;
+            newRapport.Mantelzorger_Id = rapport.Mantelzorger_Id;
+            newRapport.Vragenlijst_Id = rapport.Vragenlijst_Id;
+            newRapport.Dokter_Id = rapport.Dokter_Id;
+            newRapport.Date = DateTime.Now;
+
+            db.Rapporten.Add(newRapport);
+            db.SaveChanges();
+
+            var patient = db.PatientMantelzorgers.Find(newRapport.Patient_Id);
+            var patientNaam = patient.Vnaam + " " + patient.Anaam;
+
+            var mantelzorger = db.PatientMantelzorgers.Find(newRapport.Mantelzorger_Id);
+            var mantelzorgerNaam = mantelzorger.Vnaam + " " + mantelzorger.Anaam;
+
+            var vragenlijst = db.Vragenlijsten.Find(newRapport.Vragenlijst_Id);
+
+            var result = new VragenlijstVersturenMVCController()
+                ._SendMessage(newRapport.Patient_Id, newRapport.Mantelzorger_Id, newRapport.Id, newRapport.Vragenlijst_Id);
+
+            return RedirectToAction("VragenlijstVerstuurd", "VragenlijstVersturenMVC", new
+            {
+                patientNaam = patientNaam,
+                mantelzorgerNaam = mantelzorgerNaam,
+                vragenlijstBeschrijving = vragenlijst.Beschrijving
+            });
         }
     }
 }

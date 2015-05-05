@@ -1,8 +1,10 @@
-﻿@model WebAPI.Models.VragenlijstVersturenModel
-
-@{
+﻿@{
     ViewBag.Title = "Vragenlijst versturen";
 }
+
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+<script src="~/Scripts/jquery-2.1.3.min.js"></script>
+<script src="~/KnockoutModels/verstuurVragenlijstViewModel.js"></script>
 
 <br />
 
@@ -12,56 +14,9 @@
 
 <hr />
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div data-bind="with: verstuurVragenlijstViewModel">
+    @Html.Partial("_VerstuurVragenlijst")
+</div>
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Patienten, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select id="patientSelector">
-                    @foreach (var item in Model.Patienten)
-                    {
-                        <option value="@item.Id">@item.Vnaam @item.Anaam</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Mantelzorgers, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="patient">
-                    @foreach (var item in Model.Mantelzorgers)
-                    {
-                        <option value="@item.Id">@item.Vnaam @item.Anaam</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Vragenlijsten, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="patient">
-                    @foreach (var item in Model.Vragenlijsten)
-                    {
-                        <option value="@item.Id">@item.Beschrijving</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <br/>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Verstuur vragenlijst" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+@*<input type="hidden" value="@Model.Dokter_Id" id="dokterId" />*@
 

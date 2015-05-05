@@ -1,0 +1,44 @@
+﻿<form role="form">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2">Patiënt</label>
+            <div class="col-md-10">
+                <select data-bind="options: Patienten, optionsCaption: 'Kies een patiënt',
+                       value: selectedPatient,
+                       optionsText:function(item) { return item.Vnaam() + ' ' + item.Anaam() }"></select>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mantelzorger</label>
+            <div class="col-md-10">
+                <select data-bind="options: Mantelzorgers, optionsCaption: 'Kies een mantelzorger',
+                       value: selectedMantelzorger,
+                       optionsText:function(item) { return item.Vnaam() + ' ' + item.Anaam() }"></select>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Vragenlijst</label>
+            <div class="col-md-10">
+                <select data-bind="options: Vragenlijsten, optionsCaption: 'Kies een vragenlijst',
+                       value: selectedVragenlijst,
+                       optionsText:function(item) { return item.Beschrijving}"></select>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="btnVerstuurVragenlijst" class="btn btn-default" value="Verstuur vragenlijst" data-bind="click: verstuur" />
+            </div>
+        </div>
+    </div>
+
+
+</form>

@@ -104,6 +104,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid.SmtpApi, Version=1.3.1.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.3.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.6.1.0\lib\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -224,7 +232,6 @@
     <Compile Include="Models\RapportListViewModel.cs" />
     <Compile Include="Models\Vraag.cs" />
     <Compile Include="Models\Vragenlijst.cs" />
-    <Compile Include="Models\VragenlijstVersturenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -248,6 +255,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Icon.png" />
+    <Content Include="KnockoutModels\addVragenlijstViewModel.js" />
+    <Content Include="KnockoutModels\verstuurVragenlijstViewModel.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -259,6 +268,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -317,6 +330,12 @@
     <Content Include="Views\VragenlijstVersturenMVC\VragenlijstVerstuurd.cshtml" />
     <Content Include="Views\DokterMVC\Index.cshtml" />
     <Content Include="Views\OnderzoekerMVC\Index.cshtml" />
+    <Content Include="Views\PatientMVC\Delete.cshtml" />
+    <Content Include="Views\MantelzorgerMVC\Delete.cshtml" />
+    <Content Include="Views\VragenlijstMVC\_AddVragenlijst.cshtml" />
+    <Content Include="Scripts\knockout.validation.min.js.map" />
+    <Content Include="Views\VragenlijstVersturenMVC\_VerstuurVragenlijst.cshtml" />
+    <Content Include="Views\RapportMVC\Herhaal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +347,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201504031456396_init.resx">
       <DependentUpon>201504031456396_init.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

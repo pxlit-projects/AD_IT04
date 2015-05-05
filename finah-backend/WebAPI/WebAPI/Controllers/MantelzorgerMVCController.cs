@@ -84,13 +84,8 @@ namespace WebAPI.Controllers
         }
 
         // GET: MantelzorgerMVC/Edit
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             WebAPI.Models.PatientMantelzorger mantelzorger = db.PatientMantelzorgers.Find(id);
 
             if (mantelzorger == null)
@@ -104,7 +99,7 @@ namespace WebAPI.Controllers
         // POST: MantelzorgerMVC/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditMovie(PatientMantelzorger mantelzorger)
+        public ActionResult Edit(PatientMantelzorger mantelzorger)
         {
             if (ModelState.IsValid)
             {
@@ -119,22 +114,26 @@ namespace WebAPI.Controllers
         // GET: MantelzorgerMVC/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(db.PatientMantelzorgers.Find(id));
         }
 
         // POST: MantelzorgerMVC/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            PatientMantelzorger mantelzorger = db.PatientMantelzorgers.Find(id);
+
             try
             {
-                // TODO: Add delete logic here
+                db.PatientMantelzorgers.Remove(mantelzorger);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Er is al een vragenlijst verstuurd geweest naar deze mantelzorger, waardoor deze niet verwijderd kan worden.");
+                return View(mantelzorger);
             }
         }
     }

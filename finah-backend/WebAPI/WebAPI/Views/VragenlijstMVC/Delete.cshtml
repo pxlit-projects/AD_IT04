@@ -9,6 +9,11 @@
 <h2>Verwijderen vragenlijst "@Model.Beschrijving"</h2>
 
 <br />
+
+<hr />
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
 <br />
 
 <h4>Weet u zeker dat u deze vragenlijst wilt verwijderen?</h4>
@@ -20,15 +25,9 @@
 {
     @Html.AntiForgeryToken()
 
-
-
     <div class="form-actions no-color">
         <input type="submit" value="Verwijder vragenlijst" class="btn btn-default" />
-
-
     </div>
-
-
 }
 
 

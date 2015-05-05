@@ -84,13 +84,8 @@ namespace WebAPI.Controllers
         }
 
         // GET: PatientMVC/Edit
-        public ActionResult EditMovie(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             WebAPI.Models.PatientMantelzorger patient = db.PatientMantelzorgers.Find(id);
 
             if (patient == null)
@@ -119,22 +114,26 @@ namespace WebAPI.Controllers
         // GET: PatientMVC/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(db.PatientMantelzorgers.Find(id));
         }
 
         // POST: PatientMVC/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            PatientMantelzorger patient = db.PatientMantelzorgers.Find(id);
+
             try
             {
-                // TODO: Add delete logic here
+                db.PatientMantelzorgers.Remove(patient);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Er is al een vragenlijst verstuurd geweest naar deze patiënt, waardoor deze niet verwijderd kan worden.");
+                return View(patient);
             }
         }
     }

@@ -16,6 +16,8 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Dokter_Id)
+        @Html.HiddenFor(model => model.Verzorger)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Vnaam, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,14 +43,17 @@
             </div>
         </div>
 
+        <br />
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Opslaan" class="btn btn-default" />
+                <input type="submit" value="Wijzig mantelzorger" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
+<br />
 <br />
 
 <button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">

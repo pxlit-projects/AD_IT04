@@ -1,0 +1,52 @@
+﻿@model WebAPI.Models.RapportListViewModel
+
+@{
+    ViewBag.Title = "Herhaal";
+}
+
+<br />
+
+<h2>Herverstuur vragenlijst</h2>
+
+<br />
+
+<hr />
+
+<br />
+
+<h4>
+    Herversturen van vragenlijst "@Model.VragenlijstBeschrijving" naar:
+    <br />
+    <br />
+    <br />
+    Patiënt: @Model.PatientVnaam @Model.PatientAnaam
+    <br />
+    <br />
+    Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam
+</h4>
+
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Herverstuur vragenlijst" class="btn btn-default" />
+    </div>
+}
+
+<br />
+<br />
+<br />
+<br />
+
+<button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">
+    Terug
+</button>
+
+
+

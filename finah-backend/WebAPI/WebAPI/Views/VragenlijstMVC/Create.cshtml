@@ -1,17 +1,12 @@
-﻿@model WebAPI.Models.CustomVragenlijst
+﻿@model WebAPI.Models.Vragenlijst
 
 @{
     ViewBag.Title = "Create";
 }
 
-@functions{
-    int i = 2;
-
-    private void update()
-    {
-        i++;
-    }
-}
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+<script src="~/Scripts/jquery-2.1.3.min.js"></script>
+<script src="~/KnockoutModels/addVragenlijstViewModel.js"></script>
 
 <br />
 
@@ -19,54 +14,13 @@
 
 <br />
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<hr />
 
-    <div class="form-horizontal">
-        <hr />
+<div data-bind="with: addVragenlijstViewModel">
+    @Html.Partial("_AddVragenlijst")
+</div>
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Beschrijving, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Beschrijving, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Beschrijving, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <br />
-
-        <div id="vraagbox">
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Vraag 1</label>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Vragen[0].Beschrijving, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-            </div>
-
-            <br />
-
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button class="btn btn-default" type="button" onclick="nieuweVraag();">Nieuwe vraag</button>
-            </div>
-        </div>
-
-        <br />
-        <br />
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Voeg vragenlijst toe" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+<input type="hidden" value="@Model.Dokter_Id" id="dokterId" />
 
 <br />
 <br />
@@ -75,19 +29,3 @@
 <button class="btn btn-default" onclick="location.href='@Url.Action("Index")'">
     Terug
 </button>
-
-<script>
-    function nieuweVraag() {
-        var vraagbox = document.getElementById("vraagbox");
-        var span = document.createElement("span");
-        span.innerHTML = '<div class="form-group"> <label class="control-label col-md-2">Vraag ' + @i + '</label> <div class="col-md-10"> @Html.EditorFor(model => model.Vragen[i - 1].Beschrijving, new { htmlAttributes = new { @class = "form-control" } }) </div> </div> <br />';
-        vraagbox.appendChild(span);
-        @{
-            update();
-        }
-    }
-
-
-
-
-</script>

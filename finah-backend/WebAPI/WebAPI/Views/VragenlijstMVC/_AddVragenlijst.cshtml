@@ -1,0 +1,39 @@
+﻿<form role="form">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="titel">Titel</label>
+            <div class="col-md-10">
+                <input id="titel" type="text" class="form-control" data-bind="value: Titel" />
+            </div>
+        </div>
+
+        <br />
+
+        <div data-bind="foreach: vragen">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="beschrijving">Vraag <span data-bind="text: ($index() + 1)"> </span> </label>
+                <div class="col-md-10">
+
+                    <input id="beschrijving" type="text" class="form-control" data-bind="value: Beschrijving" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="btnAddVraag" class="btn btn-default" value="Nieuwe vraag" data-bind="click: addVraag" />
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="btnAddVragenlijst" class="btn btn-default" value="Voeg vragenlijst toe" data-bind="click: addVragenlijst" />
+            </div>
+        </div>
+    </div>
+
+
+</form>
