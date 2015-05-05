@@ -13,7 +13,7 @@ public class Vraag {
 	private int vragenlijst_Id;
 
 	public String toString(){
-		return id + ": " + beschrijving;
+		return id + ": " + beschrijving + ":" + vragenlijst_Id;
 	}
 
 	public void setId(int id) {

@@ -2,6 +2,7 @@ package net.finah;
 
 
 import java.util.ArrayList;
+import java.io.IOException;
 
 import net.finah.API.*;
 import net.finah.Debug.Debug;
@@ -36,11 +37,15 @@ public class Test {
 			//vraag1.setVragenLijst_I(0);
 			//lijst1.set(1,vraag1);
 			//write data
-			//String derp = API.writeVragenLijst(lijst1,1);
-			//System.out.println(derp);
+			lijst1.get(0).setBeschrijving("Sorry maar ik heb geen idee wat ik er in moet zetten :^)");
+			for(Vraag vraag: lijst1){
+				vraag.setVragenLijst_I(2);
+			}
+			Debug.log(lijst1.toString());
+			API.writeVragenLijst(lijst1,2);
 			System.out.println("Done");
-		} catch (Exception e) {
-			Debug.err(e.getMessage(), "main");
+		} catch (IOException e) {
+			Debug.err(e.getMessage()  , "main");
 		}
 	}
 
