@@ -8,7 +8,14 @@ namespace API
 {
     class Vraag
     {
-        private int id;
+
+        public string Beschrijving { get; set; }
+
+        public int Id { get; set; }
+
+        public int Vragenlijst_Id { get; set; }
+
+        /*private int id;
         private string beschrijving;
         private int vragenlijstId;
 
@@ -17,7 +24,7 @@ namespace API
             this.id = id;
             this.beschrijving = beschrijving;
             this.vragenlijstId = vragenlijstId;
-        }*/
+        }
 
         public int setId
         {
@@ -40,7 +47,7 @@ namespace API
         public String toString()
         {
             return id + ": " + beschrijving;
-        }
+        }*/
       
     }
 }

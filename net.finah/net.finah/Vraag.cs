@@ -6,31 +6,48 @@ using System.Threading.Tasks;
 
 namespace net.finah
 {
-    public class Vraag {
-	@JsonProperty("Id")
-	private int id;
+    public class Vraag
+    {
 
-	@JsonProperty("Beschrijving")
-	private String beschrijving;
+        public string Beschrijving { get; set; }
 
-	@JsonProperty("Vragenlijst_Id")
-	private int vragenlijst_Id;
+        public int Id { get; set; }
 
-	public String toString(){
-		return id + ": " + beschrijving;
-	}
+        public int Vragenlijst_Id { get; set; }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+        /*private int id;
+        private string beschrijving;
+        private int vragenlijstId;
 
-	public void setbeschrijving(String beschrijving) {
-		this.beschrijving = beschrijving;
-	}
+       /* public Vraag(int id, string beschrijving, int vragenlijstId) 
+        {
+            this.id = id;
+            this.beschrijving = beschrijving;
+            this.vragenlijstId = vragenlijstId;
+        }
 
-	public void setvragenlijst_Id(int vragenlijst_Id) {
-		this.vragenlijst_Id = vragenlijst_Id;
-	}
+        public int setId
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
-}
+        public string setBeschrijving
+        {
+            get { return beschrijving; }
+            set { beschrijving = value; }
+        }
+
+        public int setvragenlijstId
+        {
+            get { return vragenlijstId; }
+            set { vragenlijstId = value; }
+        }
+
+        public String toString()
+        {
+            return id + ": " + beschrijving;
+        }*/
+
+    }
 }
