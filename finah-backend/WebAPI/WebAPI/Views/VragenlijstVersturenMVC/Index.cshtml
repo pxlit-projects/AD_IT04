@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebAPI.Models.Vragenlijst
+
+@{
     ViewBag.Title = "Vragenlijst versturen";
 }
 
@@ -18,5 +20,4 @@
     @Html.Partial("_VerstuurVragenlijst")
 </div>
 
-@*<input type="hidden" value="@Model.Dokter_Id" id="dokterId" />*@
-
+<input type="hidden" value="@Model.Dokter_Id" id="dokterId" />

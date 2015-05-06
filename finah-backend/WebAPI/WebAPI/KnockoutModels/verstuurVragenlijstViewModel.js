@@ -59,13 +59,14 @@ function verstuurTemplate() {
         var patient = self.selectedPatient();
         var mantelzorger = self.selectedMantelzorger();
         var vragenlijst = self.selectedVragenlijst();
+        var dokterId = document.getElementById("dokterId").value;
         var rapportId;
 
         var dataObject = ko.toJSON({
             Patient_Id: patient.Id,
             Mantelzorger_Id: mantelzorger.Id,
             Vragenlijst_Id: vragenlijst.Id,
-            Dokter_Id: 1,
+            Dokter_Id: dokterId,
             Date: getDate()
         });
 
@@ -82,25 +83,35 @@ function verstuurTemplate() {
             });
         }
 
-        $.when(ajax1()).done(function (a1, a2, a3, a4) {
-            var data = "{'patientId': '" + patient.Id
-               + "', 'mantelzorgerId': '" + mantelzorger.Id
-               + "', 'rapportId': '" + rapportId
-               + "', 'vragenlijstId': '" + vragenlijst.Id + "'}";
+        function ajax2() {
+            return $.when(ajax1()).done(function (a1, a2, a3, a4) {
+                var data = "{'patientId': '" + patient.Id
+                   + "', 'mantelzorgerId': '" + mantelzorger.Id
+                   + "', 'rapportId': '" + rapportId
+                   + "', 'vragenlijstId': '" + vragenlijst.Id + "'}";
 
-            return $.ajax({
-                type: "post",
-                url: "VragenlijstVersturenMVC/_SendMessage",
-                data: data,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json"
-            });
+                $.ajax({
+                    type: "post",
+                    url: "VragenlijstVersturenMVC/_SendMessage",
+                    data: data,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("data")
+                    },
+                    error: function (data) {
+                        console.log("Email not sent #######################")
+                    },
+                });
+            })
+        }
+
+        $.when(ajax2()).done(function (a1, a2, a3, a4) {
+            window.location.href = 'VragenlijstVersturenMVC/VragenlijstVerstuurd' +
+                   '?patientNaam=' + patient.Vnaam() + ' ' + patient.Anaam() +
+                   '&mantelzorgerNaam=' + mantelzorger.Vnaam() + ' ' + mantelzorger.Anaam() +
+                   '&vragenlijstBeschrijving=' + vragenlijst.Beschrijving();
         })
-
-        window.location.href = 'VragenlijstVersturenMVC/VragenlijstVerstuurd' +
-               '?patientNaam=' + patient.Vnaam() + ' ' + patient.Anaam() +
-               '&mantelzorgerNaam=' + mantelzorger.Vnaam() + ' ' + mantelzorger.Anaam() +
-               '&vragenlijstBeschrijving=' + vragenlijst.Beschrijving();
     };
 }
 
