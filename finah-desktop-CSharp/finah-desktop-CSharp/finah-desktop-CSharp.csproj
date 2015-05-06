@@ -105,12 +105,14 @@
     <Compile Include="BeheerForm.Designer.cs">
       <DependentUpon>BeheerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dokter.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patientmantelzorger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rapport.cs" />

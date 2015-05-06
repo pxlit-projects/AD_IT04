@@ -113,7 +113,7 @@
             this.vragenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vragenDataGridView.Location = new System.Drawing.Point(418, 64);
             this.vragenDataGridView.Name = "vragenDataGridView";
-            this.vragenDataGridView.Size = new System.Drawing.Size(240, 390);
+            this.vragenDataGridView.Size = new System.Drawing.Size(348, 390);
             this.vragenDataGridView.TabIndex = 3;
             // 
             // label9
