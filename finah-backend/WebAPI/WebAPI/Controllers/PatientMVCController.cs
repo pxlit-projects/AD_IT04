@@ -5,14 +5,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [Authorize(Roles = "Dokter")]
+    //[Authorize(Roles = "Dokter")]
     public class PatientMVCController : Controller
     {
         private ApplicationDbContext db;
@@ -41,6 +40,12 @@ namespace WebAPI.Controllers
                 .Where(r => r.Dokter_Id == dokterId && r.Verzorger == false);
 
             return View(model);
+        }
+
+        // GET: PatientMVC/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
         }
 
         // GET: PatientMVC/Create
@@ -72,11 +77,6 @@ namespace WebAPI.Controllers
 
                 db.PatientMantelzorgers.Add(patient);
                 db.SaveChanges();
-
-                var user = new ApplicationUser { UserName = patient.Email, Email = patient.Email };
-                manager.Create(user, "P@ssw0rd");
-                manager.AddToRole(user.Id, "PatientMantelzorger");
-           
                 return RedirectToAction("Index");
             }
 

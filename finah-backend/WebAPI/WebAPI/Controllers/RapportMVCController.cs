@@ -9,7 +9,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [Authorize(Roles = "Dokter, Onderzoeker")]
+    //[Authorize(Roles = "Dokter, Onderzoeker")]
     public class RapportMVCController : Controller
     {
         private ApplicationDbContext db;
@@ -23,48 +23,32 @@ namespace WebAPI.Controllers
 
         public ActionResult Index()
         {
-            if (User.IsInRole("Onderzoeker"))
-            {
-                var model = db.Rapporten
-                    .Select(r => new RapportListViewModel
-                    {
-                        Id = r.Id,
-                        VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
-                        Date = r.Date,
-                        HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
-                    });
+            var currentUser = manager.FindById(User.Identity.GetUserId());
 
-                return View(model);
+            var dokterId = 0;
+            if (currentUser != null)
+            {
+                dokterId = db.Dokters
+               .Where(r => r.Email == currentUser.Email)
+               .Select(r => r.Id)
+               .FirstOrDefault();
             }
-            else
-            {
-                var currentUser = manager.FindById(User.Identity.GetUserId());
 
-                var dokterId = 0;
-                if (currentUser != null)
+            var model = db.Rapporten
+                .Where(r => r.Dokter_Id == dokterId)
+                .Select(r => new RapportListViewModel
                 {
-                    dokterId = db.Dokters
-                   .Where(r => r.Email == currentUser.Email)
-                   .Select(r => r.Id)
-                   .FirstOrDefault();
-                }
+                    Id = r.Id,
+                    PatientVnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Patient_Id).Select(rev => rev.Vnaam).FirstOrDefault()),
+                    PatientAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Patient_Id).Select(rev => rev.Anaam).FirstOrDefault()),
+                    MantelzorgerVnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Vnaam).FirstOrDefault()),
+                    MantelzorgerAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Anaam).FirstOrDefault()),
+                    VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
+                    Date = r.Date,
+                    HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
+                });
 
-                var model = db.Rapporten
-                    .Where(r => r.Dokter_Id == dokterId)
-                    .Select(r => new RapportListViewModel
-                    {
-                        Id = r.Id,
-                        PatientVnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Patient_Id).Select(rev => rev.Vnaam).FirstOrDefault()),
-                        PatientAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Patient_Id).Select(rev => rev.Anaam).FirstOrDefault()),
-                        MantelzorgerVnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Vnaam).FirstOrDefault()),
-                        MantelzorgerAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Anaam).FirstOrDefault()),
-                        VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
-                        Date = r.Date,
-                        HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
-                    });
-
-                return View(model);
-            }
+            return View(model);
         }
 
         // GET: RapportMVC/Show/5
@@ -76,15 +60,10 @@ namespace WebAPI.Controllers
 
             WebAPI.Models.RapportDetailsModel rapportDetailsModel = new RapportDetailsModel();
             rapportDetailsModel.Id = id;
-
-            if (User.IsInRole("Dokter"))
-            {
-                rapportDetailsModel.PatientVnaam = patient.Vnaam;
-                rapportDetailsModel.PatientAnaam = patient.Anaam;
-                rapportDetailsModel.MantelzorgerVnaam = mantelzorger.Vnaam;
-                rapportDetailsModel.MantelzorgerAnaam = mantelzorger.Anaam;
-            }
-
+            rapportDetailsModel.PatientVnaam = patient.Vnaam;
+            rapportDetailsModel.PatientAnaam = patient.Anaam;
+            rapportDetailsModel.MantelzorgerVnaam = mantelzorger.Vnaam;
+            rapportDetailsModel.MantelzorgerAnaam = mantelzorger.Anaam;
             rapportDetailsModel.Date = rapport.Date;
 
             var vragen = db.Vragen.Where(r => r.Vragenlijst_Id == rapport.Vragenlijst_Id);

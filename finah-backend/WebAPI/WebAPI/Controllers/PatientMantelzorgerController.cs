@@ -17,18 +17,15 @@ namespace WebAPI.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/PatientMantelzorger
-        [Route("api/patientmantelzorger/{verzorger}")]
-        public IHttpActionResult GetPatientMantelzorgers(Boolean verzorger)
+        public IQueryable<PatientMantelzorger> GetPatientMantelzorgers()
         {
-            var model = db.PatientMantelzorgers.Where(r => r.Verzorger == verzorger);
-
-            return Ok(model);
+            return db.PatientMantelzorgers;
         }
 
         // GET: api/PatientMantelzorger/5/true
         [Route("api/patientmantelzorger/{id}/{verzorger}")]
         [ResponseType(typeof(PatientMantelzorger))]
-        public IHttpActionResult GetPatientMantelzorgersByDokterId(int id, Boolean verzorger)
+        public IHttpActionResult GetPatientMantelzorgerByDokterId(int id, Boolean verzorger)
         {
             var model = db.PatientMantelzorgers.Where(r => r.Dokter_Id == id && r.Verzorger == verzorger);
             if (model.Count() == 0)
