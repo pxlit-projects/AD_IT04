@@ -14,8 +14,11 @@
     <table>
 
         <tr>
-            <th>Patiënt</th>
-            <th>Mantelzorger</th>
+            @if (User.IsInRole("Dokter"))
+            {
+                <th>Patiënt</th>
+                <th>Mantelzorger</th>
+            }
             <th>Vragenlijst</th>
             <th>Datum</th>
         </tr>
@@ -23,15 +26,24 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.PatientVnaam @item.PatientAnaam</td>
-                <td>@item.MantelzorgerVnaam @item.MantelzorgerAnaam</td>
+                @if (User.IsInRole("Dokter"))
+                {
+                    <td>@item.PatientVnaam @item.PatientAnaam</td>
+                    <td>@item.MantelzorgerVnaam @item.MantelzorgerAnaam</td>
+                }
+
                 <td>@item.VragenlijstBeschrijving</td>
                 <td>@item.Date.Day/@item.Date.Month/@item.Date.Year</td>
-                <td>
-                    <button class="btn btn-default" onclick="location.href='@Url.Action("Herhaal", new { id = item.Id })'">
-                        Herhaal
-                    </button>
-                </td>
+
+                @if (User.IsInRole("Dokter"))
+                {
+                    <td>
+                        <button class="btn btn-default" onclick="location.href='@Url.Action("Herhaal", new { id = item.Id })'">
+                            Herhaal
+                        </button>
+                    </td>
+                }
+
                 <td>
                     @if (item.HasAnswers == true)
                     {

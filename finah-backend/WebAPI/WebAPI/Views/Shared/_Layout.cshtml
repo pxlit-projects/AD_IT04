@@ -25,9 +25,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*@if (Roles.IsUserInRole("Dokter"))
-                        {*@
-                    @if (Request.IsAuthenticated)
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Dokters", "Index", "DokterMVC")</li>
+                        <li>@Html.ActionLink("Onderzoekers", "Index", "OnderzoekerMVC")</li>
+                    }
+                    
+                    @if (User.IsInRole("Dokter"))
                     {
                         <li>@Html.ActionLink("Patienten", "Index", "PatientMVC")</li>
                         <li>@Html.ActionLink("Mantelzorgers", "Index", "MantelzorgerMVC")</li>
@@ -36,33 +40,31 @@
                         <li>@Html.ActionLink("Vragenlijst versturen", "Index", "VragenlijstVersturenMVC")</li>
                     }
 
-                    @* } *@
-
-                        @*@if (Roles.IsUserInRole("Onderzoeker"))
-                            {
-                                <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
-                            }
-
-                            @if (Roles.IsUserInRole("Admin"))
-                            {
-                                <li>@Html.ActionLink("Dokters", "Index", "DokterMVC")</li>
-                                <li>@Html.ActionLink("Onderzoekers", "Index", "OnderzoekerMVC")</li>
-                            }*@
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
+                    @if (User.IsInRole("Onderzoeker"))
+                    {
+                        <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
+                    }
+                    
+                    @if (User.IsInRole("PatientMantelzorger"))
+                    {
+                        <li>@Html.ActionLink("Rapporten", "Index", "RapportMVC")</li>
+                    }
+                  
+                </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Finah</p>
-            </footer>
-        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Finah</p>
+        </footer>
+    </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

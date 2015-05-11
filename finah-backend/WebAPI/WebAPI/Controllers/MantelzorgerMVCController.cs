@@ -11,7 +11,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    //[Authorize(Roles = "Dokter")]
+    [Authorize(Roles = "Dokter")]
     public class MantelzorgerMVCController : Controller
     {
         private ApplicationDbContext db;
@@ -77,6 +77,11 @@ namespace WebAPI.Controllers
 
                 db.PatientMantelzorgers.Add(mantelzorger);
                 db.SaveChanges();
+
+                var user = new ApplicationUser { UserName = mantelzorger.Email, Email = mantelzorger.Email };
+                manager.Create(user, "P@ssw0rd");
+                manager.AddToRole(user.Id, "PatientMantelzorger");
+
                 return RedirectToAction("Index");
             }
 
