@@ -107,7 +107,7 @@ namespace WebAPI.Controllers
             WebAPI.Models.RapportDetailsModel rapportDetailsModel = new RapportDetailsModel();
             rapportDetailsModel.Id = id;
 
-            if (User.IsInRole("Dokter"))
+            if (User.IsInRole("Dokter") || User.IsInRole("PatientMantelzorger"))
             {
                 rapportDetailsModel.PatientVnaam = patient.Vnaam;
                 rapportDetailsModel.PatientAnaam = patient.Anaam;

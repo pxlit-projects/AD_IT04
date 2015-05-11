@@ -14,7 +14,7 @@
     <table>
 
         <tr>
-            @if (User.IsInRole("Dokter"))
+            @if (User.IsInRole("Dokter") || User.IsInRole("PatientMantelzorger"))
             {
                 <th>Patiënt</th>
                 <th>Mantelzorger</th>
