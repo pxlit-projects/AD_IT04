@@ -36,19 +36,21 @@ function verstuurTemplate() {
     self.selectedVragenlijst = ko.observable();
 
     self.getValues = function () {
-        $.getJSON('/api/patientmantelzorger/1/false', function (data) {
+        var dokterId = document.getElementById("dokterId").value;
+
+        $.getJSON('/api/patientmantelzorger/' + dokterId + '/false', function (data) {
             $.each(data, function (key, value) {
                 self.Patienten.push(new patientMantelzorger(value.Id, value.Vnaam, value.Anaam, value.Email));
             });
         });
 
-        $.getJSON('/api/patientmantelzorger/1/true', function (data) {
+        $.getJSON('/api/patientmantelzorger/' + dokterId + '/true', function (data) {
             $.each(data, function (key, value) {
                 self.Mantelzorgers.push(new patientMantelzorger(value.Id, value.Vnaam, value.Anaam, value.Email));
             });
         });
 
-        $.getJSON('/api/vragenlijst/1', function (data) {
+        $.getJSON('/api/vragenlijst/' + dokterId, function (data) {
             $.each(data, function (key, value) {
                 self.Vragenlijsten.push(new vragenlijst(value.Id, value.Beschrijving));
             });

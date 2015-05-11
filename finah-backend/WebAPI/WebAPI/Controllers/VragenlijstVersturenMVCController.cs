@@ -40,10 +40,9 @@ namespace WebAPI.Controllers
                .FirstOrDefault();
             }
 
-            Vragenlijst vragenlijst = new Vragenlijst();
-            vragenlijst.Dokter_Id = dokterId;
+            ViewBag.dokterId = dokterId;
 
-            return View(vragenlijst);
+            return View();
         }
 
         // GET: /VragenlijstVersturenMVC/VragenlijstVerstuurd
