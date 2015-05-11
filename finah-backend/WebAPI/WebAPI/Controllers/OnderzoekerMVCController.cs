@@ -71,20 +71,27 @@ namespace WebAPI.Controllers
         //
         // POST: /OnderzoekerMVC/Edit/5
         [HttpPost]
-        public ActionResult Edit(Onderzoeker onderzoeker)
+        public ActionResult Edit(Onderzoeker nieuweOnderzoeker)
         {
-            ApplicationUser user = db.Users.Where(r => r.Email == onderzoeker.Email).FirstOrDefault();
+            //Onderzoeker oudeOnderzoeker = db.Onderzoekers.Find(nieuweOnderzoeker.Id);
 
-            if (ModelState.IsValid)
-            {
-                user.Email = onderzoeker.Email;
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+            //ApplicationUser user = db.Users
+            //    .Where(r => r.Email == oudeOnderzoeker.Email)
+            //    .FirstOrDefault();
 
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    oudeOnderzoeker.Vnaam = nieuweOnderzoeker.Vnaam;
+            //    oudeOnderzoeker.Anaam = nieuweOnderzoeker.Anaam;
+            //    oudeOnderzoeker.Email = nieuweOnderzoeker.Email;
+            //    user.Email = nieuweOnderzoeker.Email;
+            //    db.Entry(user).State = EntityState.Modified;
+            //    db.SaveChanges();
 
-            return View(onderzoeker);
+            //    return RedirectToAction("Index");
+            //}
+
+            return View(nieuweOnderzoeker);
         }
 
         //

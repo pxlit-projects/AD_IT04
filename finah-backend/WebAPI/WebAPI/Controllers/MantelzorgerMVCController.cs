@@ -104,21 +104,27 @@ namespace WebAPI.Controllers
         // POST: MantelzorgerMVC/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PatientMantelzorger mantelzorger)
+        public ActionResult Edit(PatientMantelzorger nieuweMantelzorger)
         {
-            ApplicationUser user = db.Users.Where(r => r.Email == mantelzorger.Email).FirstOrDefault();
+            PatientMantelzorger oudeMantelzorger = db.PatientMantelzorgers.Find(nieuweMantelzorger.Id);
+
+            ApplicationUser user = db.Users
+                .Where(r => r.Email == oudeMantelzorger.Email)
+                .FirstOrDefault();
 
             if (ModelState.IsValid)
             {
-                user.Email = mantelzorger.Email;
+                oudeMantelzorger.Vnaam = nieuweMantelzorger.Vnaam;
+                oudeMantelzorger.Anaam = nieuweMantelzorger.Anaam;
+                oudeMantelzorger.Email = nieuweMantelzorger.Email;
+                user.Email = nieuweMantelzorger.Email;
                 db.Entry(user).State = EntityState.Modified;
-                db.Entry(mantelzorger).State = EntityState.Modified;
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            return View(mantelzorger);
+            return View(nieuweMantelzorger);
         }
 
         // GET: MantelzorgerMVC/Delete/5

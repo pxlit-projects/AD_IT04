@@ -75,21 +75,27 @@ namespace WebAPI.Controllers
         //
         // POST: /DokterMVC/Edit/5
         [HttpPost]
-        public ActionResult Edit(Dokter dokter)
+        public ActionResult Edit(Dokter nieuweDokter)
         {
-            ApplicationUser user = db.Users.Where(r => r.Email == dokter.Email).FirstOrDefault();
+            Dokter oudeDokter = db.Dokters.Find(nieuweDokter.Id);
+
+            ApplicationUser user = db.Users
+                .Where(r => r.Email == oudeDokter.Email)
+                .FirstOrDefault();
 
             if (ModelState.IsValid)
             {
-                user.Email = dokter.Email;
+                oudeDokter.Vnaam = nieuweDokter.Vnaam;
+                oudeDokter.Anaam = nieuweDokter.Anaam;
+                oudeDokter.Email = nieuweDokter.Email;
+                user.Email = nieuweDokter.Email;
                 db.Entry(user).State = EntityState.Modified;
-                db.Entry(dokter).State = EntityState.Modified;
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            return View(dokter);
+            return View(nieuweDokter);
         }
 
         //

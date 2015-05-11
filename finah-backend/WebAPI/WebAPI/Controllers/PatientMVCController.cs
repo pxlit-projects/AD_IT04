@@ -99,21 +99,27 @@ namespace WebAPI.Controllers
         // POST: PatientMVC/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PatientMantelzorger patient)
+        public ActionResult Edit(PatientMantelzorger nieuwePatient)
         {
-            ApplicationUser user = db.Users.Where(r => r.Email == patient.Email).FirstOrDefault();
+            PatientMantelzorger oudePatient = db.PatientMantelzorgers.Find(nieuwePatient.Id);
+
+            ApplicationUser user = db.Users
+                .Where(r => r.Email == oudePatient.Email)
+                .FirstOrDefault();
 
             if (ModelState.IsValid)
             {
-                user.Email = patient.Email;
+                oudePatient.Vnaam = nieuwePatient.Vnaam;
+                oudePatient.Anaam = nieuwePatient.Anaam;
+                oudePatient.Email = nieuwePatient.Email;
+                user.Email = nieuwePatient.Email;
                 db.Entry(user).State = EntityState.Modified;
-                db.Entry(patient).State = EntityState.Modified;
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            return View(patient);
+            return View(nieuwePatient);
         }
 
         // GET: PatientMVC/Delete/5
