@@ -94,7 +94,7 @@ namespace WebAPI.Controllers
             {
                 if (oudeOnderzoeker.Email != nieuweOnderzoeker.Email)
                 {
-                    if (db.Users.Where(r => r.Email == nieuweOnderzoeker.Email) == null)
+                    if (db.Users.Where(r => r.Email == nieuweOnderzoeker.Email).Count() == 0)
                     {
                         oudeOnderzoeker.Vnaam = nieuweOnderzoeker.Vnaam;
                         oudeOnderzoeker.Anaam = nieuweOnderzoeker.Anaam;

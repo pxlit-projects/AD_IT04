@@ -116,7 +116,7 @@ namespace WebAPI.Controllers
             {
                 if (oudePatient.Email != nieuwePatient.Email)
                 {
-                    if (db.Users.Where(r => r.Email == nieuwePatient.Email) == null)
+                    if (db.Users.Where(r => r.Email == nieuwePatient.Email).Count() == 0)
                     {
                         oudePatient.Vnaam = nieuwePatient.Vnaam;
                         oudePatient.Anaam = nieuwePatient.Anaam;

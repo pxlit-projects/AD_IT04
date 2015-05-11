@@ -122,7 +122,7 @@ namespace WebAPI.Controllers
             {
                 if (oudeMantelzorger.Email != nieuweMantelzorger.Email)
                 {
-                    if (db.Users.Where(r => r.Email == nieuweMantelzorger.Email) == null)
+                    if (db.Users.Where(r => r.Email == nieuweMantelzorger.Email).Count() == 0)
                     {
                         oudeMantelzorger.Vnaam = nieuweMantelzorger.Vnaam;
                         oudeMantelzorger.Anaam = nieuweMantelzorger.Anaam;

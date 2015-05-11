@@ -93,7 +93,7 @@ namespace WebAPI.Controllers
             {
                 if (oudeDokter.Email != nieuweDokter.Email)
                 {
-                    if (db.Users.Where(r => r.Email == nieuweDokter.Email) == null)
+                    if (db.Users.Where(r => r.Email == nieuweDokter.Email).Count() == 0)
                     {
                         oudeDokter.Vnaam = nieuweDokter.Vnaam;
                         oudeDokter.Anaam = nieuweDokter.Anaam;
