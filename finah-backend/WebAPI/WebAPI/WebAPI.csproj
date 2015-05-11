@@ -230,6 +230,7 @@
     <Compile Include="Models\Dokter.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Onderzoeker.cs" />
     <Compile Include="Models\PatientMantelzorger.cs" />
     <Compile Include="Models\Rapport.cs" />
     <Compile Include="Models\RapportDetailsModel.cs" />
@@ -340,6 +341,12 @@
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\VragenlijstVersturenMVC\_VerstuurVragenlijst.cshtml" />
     <Content Include="Views\RapportMVC\Herhaal.cshtml" />
+    <Content Include="Views\DokterMVC\Create.cshtml" />
+    <Content Include="Views\DokterMVC\Edit.cshtml" />
+    <Content Include="Views\DokterMVC\Delete.cshtml" />
+    <Content Include="Views\OnderzoekerMVC\Create.cshtml" />
+    <Content Include="Views\OnderzoekerMVC\Edit.cshtml" />
+    <Content Include="Views\OnderzoekerMVC\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

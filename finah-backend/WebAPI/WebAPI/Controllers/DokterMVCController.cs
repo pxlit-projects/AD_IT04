@@ -1,26 +1,34 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class DokterMVCController : Controller
     {
+        private ApplicationDbContext db;
+        private UserManager<ApplicationUser> manager;
+
+        public DokterMVCController()
+        {
+            db = new ApplicationDbContext();
+            manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+        }
+
         //
         // GET: /DokterMVC/
         public ActionResult Index()
         {
-            return View();
-        }
+            var model = db.Dokters;
 
-        //
-        // GET: /DokterMVC/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View(model);
         }
 
         //
@@ -33,49 +41,62 @@ namespace WebAPI.Controllers
         //
         // POST: /DokterMVC/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(WebAPI.Models.Dokter dokter)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                db.Dokters.Add(dokter);
+                db.SaveChanges();
+
+                var user = new ApplicationUser { UserName = dokter.Email, Email = dokter.Email };
+                manager.Create(user, "P@ssw0rd");
+                manager.AddToRole(user.Id, "Dokter");
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(dokter);
         }
 
         //
         // GET: /DokterMVC/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            WebAPI.Models.Dokter dokter = db.Dokters.Find(id);
+
+            if (dokter == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(dokter);
         }
 
         //
         // POST: /DokterMVC/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Dokter dokter)
         {
-            try
+            ApplicationUser user = db.Users.Where(r => r.Email == dokter.Email).FirstOrDefault();
+
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                user.Email = dokter.Email;
+                db.Entry(user).State = EntityState.Modified;
+                db.Entry(dokter).State = EntityState.Modified;
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(dokter);
         }
 
         //
         // GET: /DokterMVC/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(db.Dokters.Find(id));
         }
 
         //
@@ -83,15 +104,21 @@ namespace WebAPI.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            Dokter dokter = db.Dokters.Find(id);
+            ApplicationUser user = db.Users.Where(r => r.Email == dokter.Email).FirstOrDefault();
+
             try
             {
-                // TODO: Add delete logic here
+                db.Dokters.Remove(dokter);
+                db.Users.Remove(user);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Deze dokter heeft al patiënten, mantelzorgers of vragenlijsten toegevoegd en kan daarom niet verwijderd worden");
+                return View(dokter);
             }
         }
     }

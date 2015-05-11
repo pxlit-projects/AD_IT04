@@ -26,7 +26,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                @if (User.IsInRole("Dokter"))
+                @if (User.IsInRole("Dokter") || User.IsInRole("PatientMantelzorger"))
                 {
                     <td>@item.PatientVnaam @item.PatientAnaam</td>
                     <td>@item.MantelzorgerVnaam @item.MantelzorgerAnaam</td>

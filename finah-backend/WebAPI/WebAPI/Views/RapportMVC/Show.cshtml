@@ -12,7 +12,7 @@
 <br />
 
 
-@if (User.IsInRole("Dokter"))
+@if (User.IsInRole("Dokter") || User.IsInRole("PatientMantelzorger"))
 {
     <h3>Patiënt: @Model.PatientVnaam @Model.PatientAnaam</h3>
     <h3>Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam</h3>

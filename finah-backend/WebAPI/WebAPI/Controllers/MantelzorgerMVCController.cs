@@ -106,10 +106,15 @@ namespace WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PatientMantelzorger mantelzorger)
         {
+            ApplicationUser user = db.Users.Where(r => r.Email == mantelzorger.Email).FirstOrDefault();
+
             if (ModelState.IsValid)
             {
+                user.Email = mantelzorger.Email;
+                db.Entry(user).State = EntityState.Modified;
                 db.Entry(mantelzorger).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -127,10 +132,12 @@ namespace WebAPI.Controllers
         public ActionResult Delete(int id, FormCollection collection)
         {
             PatientMantelzorger mantelzorger = db.PatientMantelzorgers.Find(id);
+            ApplicationUser user = db.Users.Where(r => r.Email == mantelzorger.Email).FirstOrDefault();
 
             try
             {
                 db.PatientMantelzorgers.Remove(mantelzorger);
+                db.Users.Remove(user);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

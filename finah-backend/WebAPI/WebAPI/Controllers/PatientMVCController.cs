@@ -76,7 +76,7 @@ namespace WebAPI.Controllers
                 var user = new ApplicationUser { UserName = patient.Email, Email = patient.Email };
                 manager.Create(user, "P@ssw0rd");
                 manager.AddToRole(user.Id, "PatientMantelzorger");
-           
+
                 return RedirectToAction("Index");
             }
 
@@ -101,10 +101,15 @@ namespace WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PatientMantelzorger patient)
         {
+            ApplicationUser user = db.Users.Where(r => r.Email == patient.Email).FirstOrDefault();
+
             if (ModelState.IsValid)
             {
+                user.Email = patient.Email;
+                db.Entry(user).State = EntityState.Modified;
                 db.Entry(patient).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -122,10 +127,12 @@ namespace WebAPI.Controllers
         public ActionResult Delete(int id, FormCollection collection)
         {
             PatientMantelzorger patient = db.PatientMantelzorgers.Find(id);
+            ApplicationUser user = db.Users.Where(r => r.Email == patient.Email).FirstOrDefault();
 
             try
             {
                 db.PatientMantelzorgers.Remove(patient);
+                db.Users.Remove(user);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

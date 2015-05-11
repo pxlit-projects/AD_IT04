@@ -1,9 +1,43 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model IEnumerable<WebAPI.Models.ApplicationUser>
 
-<br />
+    @{
+        ViewBag.Title = "Onderzoeker";
+    }
 
-<h2>Onderzoekers</h2>
+    <br />
 
+    <h2>Onderzoekers</h2>
+
+    <br />
+
+    <button class="btn btn-default" onclick="location.href='@Url.Action("Create")'">
+        Voeg onderzoeker toe
+    </button>
+
+    <hr />
+
+    <table>
+
+        <tr>
+            <th>Email</th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Email</td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Edit", new { email = item.Email })'">
+                        Wijzig
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { email = item.Email })'">
+                        Verwijder
+                    </button>
+                </td>
+            </tr>
+        }
+
+    </table>

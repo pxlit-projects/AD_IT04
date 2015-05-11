@@ -11,9 +11,11 @@ namespace WebAPI.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Voornaam")]
         public String Vnaam { get; set; }
 
         [Required]
+        [Display(Name = "Achternaam")]
         public String Anaam { get; set; }
 
         [Required]

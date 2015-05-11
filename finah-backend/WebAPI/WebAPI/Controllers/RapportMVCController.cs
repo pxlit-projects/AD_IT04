@@ -9,7 +9,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    [Authorize(Roles = "Dokter, Onderzoeker")]
+    [Authorize(Roles = "Dokter, Onderzoeker, PatientMantelzorger")]
     public class RapportMVCController : Controller
     {
         private ApplicationDbContext db;
@@ -33,6 +33,36 @@ namespace WebAPI.Controllers
                         Date = r.Date,
                         HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
                     });
+
+                return View(model);
+            }
+            else if (User.IsInRole("PatientMantelzorger"))
+            {
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+
+                var patientMantelzorgerId = 0;
+
+                if (currentUser != null)
+                {
+                    patientMantelzorgerId = db.PatientMantelzorgers
+                   .Where(r => r.Email == currentUser.Email)
+                   .Select(r => r.Id)
+                   .FirstOrDefault();
+                }
+
+                var model = db.Rapporten
+                  .Where(r => r.Patient_Id == patientMantelzorgerId || r.Mantelzorger_Id == patientMantelzorgerId)
+                  .Select(r => new RapportListViewModel
+                  {
+                      Id = r.Id,
+                      PatientVnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Patient_Id).Select(rev => rev.Vnaam).FirstOrDefault()),
+                      PatientAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Patient_Id).Select(rev => rev.Anaam).FirstOrDefault()),
+                      MantelzorgerVnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Vnaam).FirstOrDefault()),
+                      MantelzorgerAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Anaam).FirstOrDefault()),
+                      VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
+                      Date = r.Date,
+                      HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
+                  });
 
                 return View(model);
             }
