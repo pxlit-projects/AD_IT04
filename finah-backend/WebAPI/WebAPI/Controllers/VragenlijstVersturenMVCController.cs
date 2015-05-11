@@ -13,7 +13,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    //[Authorize(Roles = "Dokter")]
+    [Authorize(Roles = "Dokter")]
     public class VragenlijstVersturenMVCController : Controller
     {
         private ApplicationDbContext db;
@@ -93,34 +93,6 @@ namespace WebAPI.Controllers
             // Send the emails.
             transportWeb.DeliverAsync(messageToPatient);
             transportWeb.DeliverAsync(messageToMantelzorger);
-
-
-            //MailMessage mailMsg = new MailMessage();
-
-            //// To
-            //mailMsg.To.Add(new MailAddress(mantelzorger.Email));
-            //// From
-            //mailMsg.From = new MailAddress("mail@finah.com", "Finah");
-            //// Subject and multipart/alternative Body
-            //mailMsg.Subject = "Finah vragenlijst";
-            //string text = "Beste " + mantelzorger.Vnaam + " " + mantelzorger.Anaam + ", \n\n"
-            //+ "via volgende link kom je uit op je finah-vragenlijst voor je patiënt " + patient.Vnaam + " " + patient.Anaam + ": \n\n"
-            //+ "http://webclientfinah.azurewebsites.net/?verzorger=true&rapportId=" + rapportId + "&vragenlijstId=" + vragenlijstId +
-            //"\n\n Mvg, \n\n Finah";
-            //mailMsg.Body = text;
-            //mailMsg.IsBodyHtml = true;
-
-            //SmtpClient smtp = new SmtpClient();
-            //smtp.Host = "smtp.sendgrid.net";
-            //smtp.Port = 587;
-            //smtp.UseDefaultCredentials = false;
-            //smtp.Credentials = new System.Net.NetworkCredential
-            //("azure_73831b50370c5a0dbf1553c548f93e44@azure.com", "2zylOlXk4oYhh1l");// Enter seders User name and password
-            //smtp.EnableSsl = true;
-            //smtp.Send(mailMsg);
-
-            System.Diagnostics.Debug.WriteLine("Email sent successfully ######################");
-
 
             return Json(new { success = true, responseText = "Email was sent succesfully!" }, JsonRequestBehavior.AllowGet);
         }

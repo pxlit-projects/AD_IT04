@@ -11,8 +11,13 @@
 
 <br />
 
-<h3>Patiënt: @Model.PatientVnaam @Model.PatientAnaam</h3>
-<h3>Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam</h3>
+
+@if (User.IsInRole("Dokter"))
+{
+    <h3>Patiënt: @Model.PatientVnaam @Model.PatientAnaam</h3>
+    <h3>Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam</h3>
+}
+
 <h3>Datum: @Model.Date.Day/@Model.Date.Month/@Model.Date.Year</h3>
 
 <hr />
