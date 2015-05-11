@@ -27,11 +27,9 @@ namespace WebAPI.Controllers
         // GET: /OnderzoekerMVC/
         public ActionResult Index()
         {
-            var users = db.Users.Where(r => r.Roles.Any(
-                re => re.RoleId == (db.Roles.Where(rev => rev.Name == "Onderzoeker")
-                    .Select(rev => rev.Id).FirstOrDefault())));
+            var model = db.Onderzoekers;
 
-            return View(users);
+            return View(model);
         }
 
         //
@@ -48,11 +46,20 @@ namespace WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = onderzoeker.Email, Email = onderzoeker.Email };
-                manager.Create(user, "P@ssw0rd");
-                manager.AddToRole(user.Id, "Onderzoeker");
+                if (db.Users.Where(r => r.Email == onderzoeker.Email).FirstOrDefault() == null)
+                {
+                    db.Onderzoekers.Add(onderzoeker);
+                    db.SaveChanges();
 
-                return RedirectToAction("Index");
+                    var user = new ApplicationUser { UserName = onderzoeker.Email, Email = onderzoeker.Email };
+                    manager.Create(user, "P@ssw0rd");
+                    manager.AddToRole(user.Id, "Onderzoeker");
+
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                return View(onderzoeker);
             }
 
             return View(onderzoeker);
@@ -60,10 +67,14 @@ namespace WebAPI.Controllers
 
         //
         // GET: /OnderzoekerMVC/Edit/5
-        public ActionResult Edit(String email)
+        public ActionResult Edit(int id)
         {
-            Onderzoeker onderzoeker = new Onderzoeker();
-            onderzoeker.Email = email;
+            WebAPI.Models.Onderzoeker onderzoeker = db.Onderzoekers.Find(id);
+
+            if (onderzoeker == null)
+            {
+                return HttpNotFound();
+            }
 
             return View(onderzoeker);
         }
@@ -73,46 +84,71 @@ namespace WebAPI.Controllers
         [HttpPost]
         public ActionResult Edit(Onderzoeker nieuweOnderzoeker)
         {
-            //Onderzoeker oudeOnderzoeker = db.Onderzoekers.Find(nieuweOnderzoeker.Id);
+            Onderzoeker oudeOnderzoeker = db.Onderzoekers.Find(nieuweOnderzoeker.Id);
 
-            //ApplicationUser user = db.Users
-            //    .Where(r => r.Email == oudeOnderzoeker.Email)
-            //    .FirstOrDefault();
+            ApplicationUser user = db.Users
+                .Where(r => r.Email == oudeOnderzoeker.Email)
+                .FirstOrDefault();
 
-            //if (ModelState.IsValid)
-            //{
-            //    oudeOnderzoeker.Vnaam = nieuweOnderzoeker.Vnaam;
-            //    oudeOnderzoeker.Anaam = nieuweOnderzoeker.Anaam;
-            //    oudeOnderzoeker.Email = nieuweOnderzoeker.Email;
-            //    user.Email = nieuweOnderzoeker.Email;
-            //    db.Entry(user).State = EntityState.Modified;
-            //    db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                if (oudeOnderzoeker.Email != nieuweOnderzoeker.Email)
+                {
+                    if (db.Users.Where(r => r.Email == nieuweOnderzoeker.Email) == null)
+                    {
+                        oudeOnderzoeker.Vnaam = nieuweOnderzoeker.Vnaam;
+                        oudeOnderzoeker.Anaam = nieuweOnderzoeker.Anaam;
+                        oudeOnderzoeker.Email = nieuweOnderzoeker.Email;
+                        user.Email = nieuweOnderzoeker.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
 
-            //    return RedirectToAction("Index");
-            //}
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuweOnderzoeker);
+                }
+                else
+                {
+                    if (db.Users.Where(r => r.Email == nieuweOnderzoeker.Email).Count() == 1)
+                    {
+                        oudeOnderzoeker.Vnaam = nieuweOnderzoeker.Vnaam;
+                        oudeOnderzoeker.Anaam = nieuweOnderzoeker.Anaam;
+                        oudeOnderzoeker.Email = nieuweOnderzoeker.Email;
+                        user.Email = nieuweOnderzoeker.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuweOnderzoeker);
+                }
+            }
 
             return View(nieuweOnderzoeker);
         }
 
         //
         // GET: /OnderzoekerMVC/Delete/5
-        public ActionResult Delete(String email)
+        public ActionResult Delete(int id)
         {
-            Onderzoeker onderzoeker = new Onderzoeker();
-            onderzoeker.Email = email;
-
-            return View(onderzoeker);
+            return View(db.Onderzoekers.Find(id));
         }
 
         //
         // POST: /OnderzoekerMVC/Delete/5
         [HttpPost]
-        public ActionResult Delete(Onderzoeker onderzoeker)
+        public ActionResult Delete(int id, FormCollection collection)
         {
+            Onderzoeker onderzoeker = db.Onderzoekers.Find(id);
             ApplicationUser user = db.Users.Where(r => r.Email == onderzoeker.Email).FirstOrDefault();
 
             try
             {
+                db.Onderzoekers.Remove(onderzoeker);
                 db.Users.Remove(user);
                 db.SaveChanges();
 
@@ -120,7 +156,7 @@ namespace WebAPI.Controllers
             }
             catch
             {
-                return View(user);
+                return View(onderzoeker);
             }
         }
     }

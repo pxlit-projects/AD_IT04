@@ -56,28 +56,33 @@ namespace WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currentUser = manager.FindById(User.Identity.GetUserId());
-
-                var dokterId = 0;
-                if (currentUser != null)
+                if (db.Users.Where(r => r.Email == patient.Email).FirstOrDefault() == null)
                 {
-                    dokterId = db.Dokters
-                        .Where(r => r.Email == currentUser.Email)
-                        .Select(r => r.Id)
-                        .FirstOrDefault();
+                    var currentUser = manager.FindById(User.Identity.GetUserId());
+
+                    var dokterId = 0;
+                    if (currentUser != null)
+                    {
+                        dokterId = db.Dokters
+                            .Where(r => r.Email == currentUser.Email)
+                            .Select(r => r.Id)
+                            .FirstOrDefault();
+                    }
+
+                    patient.Verzorger = false;
+                    patient.Dokter_Id = dokterId;
+
+                    db.PatientMantelzorgers.Add(patient);
+                    db.SaveChanges();
+
+                    var user = new ApplicationUser { UserName = patient.Email, Email = patient.Email };
+                    manager.Create(user, "P@ssw0rd");
+                    manager.AddToRole(user.Id, "PatientMantelzorger");
+
+                    return RedirectToAction("Index");
                 }
-
-                patient.Verzorger = false;
-                patient.Dokter_Id = dokterId;
-
-                db.PatientMantelzorgers.Add(patient);
-                db.SaveChanges();
-
-                var user = new ApplicationUser { UserName = patient.Email, Email = patient.Email };
-                manager.Create(user, "P@ssw0rd");
-                manager.AddToRole(user.Id, "PatientMantelzorger");
-
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                return View(patient);
             }
 
             return View(patient);
@@ -109,14 +114,40 @@ namespace WebAPI.Controllers
 
             if (ModelState.IsValid)
             {
-                oudePatient.Vnaam = nieuwePatient.Vnaam;
-                oudePatient.Anaam = nieuwePatient.Anaam;
-                oudePatient.Email = nieuwePatient.Email;
-                user.Email = nieuwePatient.Email;
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                if (oudePatient.Email != nieuwePatient.Email)
+                {
+                    if (db.Users.Where(r => r.Email == nieuwePatient.Email) == null)
+                    {
+                        oudePatient.Vnaam = nieuwePatient.Vnaam;
+                        oudePatient.Anaam = nieuwePatient.Anaam;
+                        oudePatient.Email = nieuwePatient.Email;
+                        user.Email = nieuwePatient.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
 
-                return RedirectToAction("Index");
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuwePatient);
+                }
+                else
+                {
+                    if (db.Users.Where(r => r.Email == nieuwePatient.Email).Count() == 1)
+                    {
+                        oudePatient.Vnaam = nieuwePatient.Vnaam;
+                        oudePatient.Anaam = nieuwePatient.Anaam;
+                        oudePatient.Email = nieuwePatient.Email;
+                        user.Email = nieuwePatient.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuwePatient);
+                }
             }
 
             return View(nieuwePatient);

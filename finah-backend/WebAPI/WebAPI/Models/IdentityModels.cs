@@ -48,6 +48,6 @@ namespace WebAPI.Models
         public System.Data.Entity.DbSet<Vragenlijst> Vragenlijsten { get; set; }
         public System.Data.Entity.DbSet<PatientMantelzorger> PatientMantelzorgers { get; set; }
         public System.Data.Entity.DbSet<Dokter> Dokters { get; set; }
-
+        public System.Data.Entity.DbSet<Onderzoeker> Onderzoekers { get; set; }
     }
 }

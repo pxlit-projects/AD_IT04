@@ -2,7 +2,7 @@ namespace WebAPI.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
+    
     public partial class init : DbMigration
     {
         public override void Up()
@@ -18,12 +18,8 @@ namespace WebAPI.Migrations
                         AntwoordExtra = c.Int(nullable: false),
                         Verzorger = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Vraag", t => t.Vraag_Id)
-                .ForeignKey("dbo.Rapport", t => t.Rapport_Id)
-                .Index(t => t.Vraag_Id)
-                .Index(t => t.Rapport_Id);
-
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Dokter",
                 c => new
@@ -34,7 +30,18 @@ namespace WebAPI.Migrations
                         Email = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-
+            
+            CreateTable(
+                "dbo.Onderzoeker",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Vnaam = c.String(nullable: false),
+                        Anaam = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.PatientMantelzorger",
                 c => new
@@ -46,10 +53,8 @@ namespace WebAPI.Migrations
                         Verzorger = c.Boolean(nullable: false),
                         Dokter_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Dokter", t => t.Dokter_Id)
-                .Index(t => t.Dokter_Id);
-
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Rapport",
                 c => new
@@ -61,12 +66,8 @@ namespace WebAPI.Migrations
                         Vragenlijst_Id = c.Int(nullable: false),
                         Dokter_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.PatientMantelzorger", t => t.Patient_Id)
-                .ForeignKey("dbo.PatientMantelzorger", t => t.Mantelzorger_Id)
-                .Index(t => t.Patient_Id)
-                .Index(t => t.Mantelzorger_Id);
-
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -75,7 +76,7 @@ namespace WebAPI.Migrations
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
-
+            
             CreateTable(
                 "dbo.AspNetUserRoles",
                 c => new
@@ -90,7 +91,7 @@ namespace WebAPI.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.IdentityUser_Id)
                 .Index(t => t.IdentityRole_Id)
                 .Index(t => t.IdentityUser_Id);
-
+            
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
@@ -110,7 +111,7 @@ namespace WebAPI.Migrations
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
-
+            
             CreateTable(
                 "dbo.AspNetUserClaims",
                 c => new
@@ -124,7 +125,7 @@ namespace WebAPI.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.IdentityUser_Id)
                 .Index(t => t.IdentityUser_Id);
-
+            
             CreateTable(
                 "dbo.AspNetUserLogins",
                 c => new
@@ -137,7 +138,7 @@ namespace WebAPI.Migrations
                 .PrimaryKey(t => t.UserId)
                 .ForeignKey("dbo.AspNetUsers", t => t.IdentityUser_Id)
                 .Index(t => t.IdentityUser_Id);
-
+            
             CreateTable(
                 "dbo.Vraag",
                 c => new
@@ -146,11 +147,8 @@ namespace WebAPI.Migrations
                         Beschrijving = c.String(nullable: false, maxLength: 450),
                         Vragenlijst_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Vragenlijst", t => t.Vragenlijst_Id)
-                .Index(t => t.Vragenlijst_Id);
-
-
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Vragenlijst",
                 c => new
@@ -159,12 +157,10 @@ namespace WebAPI.Migrations
                         Beschrijving = c.String(nullable: false, maxLength: 450),
                         Dokter_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Dokter", t => t.Dokter_Id)
-                .Index(t => t.Dokter_Id);
-
+                .PrimaryKey(t => t.Id);
+            
         }
-
+        
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "IdentityUser_Id", "dbo.AspNetUsers");
@@ -175,17 +171,18 @@ namespace WebAPI.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "IdentityUser_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "IdentityUser_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "IdentityRole_Id" });
-            DropTable("dbo.Antwoord");
-            DropTable("dbo.Rapport");
-            DropTable("dbo.Vraag");
             DropTable("dbo.Vragenlijst");
-            DropTable("dbo.PatientMantelzorger");
-            DropTable("dbo.Dokter");
+            DropTable("dbo.Vraag");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");           
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Rapport");
+            DropTable("dbo.PatientMantelzorger");
+            DropTable("dbo.Onderzoeker");
+            DropTable("dbo.Dokter");
+            DropTable("dbo.Antwoord");
         }
     }
 }

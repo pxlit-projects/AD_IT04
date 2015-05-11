@@ -45,14 +45,20 @@ namespace WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Dokters.Add(dokter);
-                db.SaveChanges();
+                if (db.Users.Where(r => r.Email == dokter.Email).FirstOrDefault() == null)
+                {
+                    db.Dokters.Add(dokter);
+                    db.SaveChanges();
 
-                var user = new ApplicationUser { UserName = dokter.Email, Email = dokter.Email };
-                manager.Create(user, "P@ssw0rd");
-                manager.AddToRole(user.Id, "Dokter");
+                    var user = new ApplicationUser { UserName = dokter.Email, Email = dokter.Email };
+                    manager.Create(user, "P@ssw0rd");
+                    manager.AddToRole(user.Id, "Dokter");
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+
+                ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                return View(dokter);
             }
 
             return View(dokter);
@@ -72,7 +78,7 @@ namespace WebAPI.Controllers
             return View(dokter);
         }
 
-        //
+        //oudeDokter
         // POST: /DokterMVC/Edit/5
         [HttpPost]
         public ActionResult Edit(Dokter nieuweDokter)
@@ -85,14 +91,40 @@ namespace WebAPI.Controllers
 
             if (ModelState.IsValid)
             {
-                oudeDokter.Vnaam = nieuweDokter.Vnaam;
-                oudeDokter.Anaam = nieuweDokter.Anaam;
-                oudeDokter.Email = nieuweDokter.Email;
-                user.Email = nieuweDokter.Email;
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                if (oudeDokter.Email != nieuweDokter.Email)
+                {
+                    if (db.Users.Where(r => r.Email == nieuweDokter.Email) == null)
+                    {
+                        oudeDokter.Vnaam = nieuweDokter.Vnaam;
+                        oudeDokter.Anaam = nieuweDokter.Anaam;
+                        oudeDokter.Email = nieuweDokter.Email;
+                        user.Email = nieuweDokter.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
 
-                return RedirectToAction("Index");
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuweDokter);
+                }
+                else
+                {
+                    if (db.Users.Where(r => r.Email == nieuweDokter.Email).Count() == 1)
+                    {
+                        oudeDokter.Vnaam = nieuweDokter.Vnaam;
+                        oudeDokter.Anaam = nieuweDokter.Anaam;
+                        oudeDokter.Email = nieuweDokter.Email;
+                        user.Email = nieuweDokter.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuweDokter);
+                }
             }
 
             return View(nieuweDokter);

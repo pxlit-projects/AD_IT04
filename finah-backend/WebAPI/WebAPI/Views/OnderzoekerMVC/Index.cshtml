@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebAPI.Models.ApplicationUser>
+﻿@model IEnumerable<WebAPI.Models.Onderzoeker>
 
     @{
         ViewBag.Title = "Onderzoeker";
@@ -19,6 +19,8 @@
     <table>
 
         <tr>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
             <th>Email</th>
         </tr>
 
@@ -26,14 +28,16 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>@item.Vnaam</td>
+                <td>@item.Anaam</td>
                 <td>@item.Email</td>
                 <td>
-                    <button class="btn btn-default" onclick="location.href='@Url.Action("Edit", new { email = item.Email })'">
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Edit", new { id = item.Id })'">
                         Wijzig
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { email = item.Email })'">
+                    <button class="btn btn-default" onclick="location.href='@Url.Action("Delete", new { id = item.Id })'">
                         Verwijder
                     </button>
                 </td>

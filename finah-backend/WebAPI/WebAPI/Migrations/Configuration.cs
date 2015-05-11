@@ -12,7 +12,7 @@ namespace WebAPI.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(WebAPI.Models.ApplicationDbContext context)
@@ -81,7 +81,7 @@ namespace WebAPI.Migrations
                 var role = new IdentityRole { Name = "PatientMantelzorger" };
 
                 manager.Create(role);
-            }          
+            }
         }
     }
 }

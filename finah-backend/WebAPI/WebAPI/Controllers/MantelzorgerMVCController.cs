@@ -61,28 +61,34 @@ namespace WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currentUser = manager.FindById(User.Identity.GetUserId());
-
-                var dokterId = 0;
-                if (currentUser != null)
+                if (db.Users.Where(r => r.Email == mantelzorger.Email).FirstOrDefault() == null)
                 {
-                    dokterId = db.Dokters
-                        .Where(r => r.Email == currentUser.Email)
-                        .Select(r => r.Id)
-                        .FirstOrDefault();
+                    var currentUser = manager.FindById(User.Identity.GetUserId());
+
+                    var dokterId = 0;
+                    if (currentUser != null)
+                    {
+                        dokterId = db.Dokters
+                            .Where(r => r.Email == currentUser.Email)
+                            .Select(r => r.Id)
+                            .FirstOrDefault();
+                    }
+
+                    mantelzorger.Verzorger = true;
+                    mantelzorger.Dokter_Id = dokterId;
+
+                    db.PatientMantelzorgers.Add(mantelzorger);
+                    db.SaveChanges();
+
+                    var user = new ApplicationUser { UserName = mantelzorger.Email, Email = mantelzorger.Email };
+                    manager.Create(user, "P@ssw0rd");
+                    manager.AddToRole(user.Id, "PatientMantelzorger");
+
+                    return RedirectToAction("Index");
                 }
 
-                mantelzorger.Verzorger = true;
-                mantelzorger.Dokter_Id = dokterId;
-
-                db.PatientMantelzorgers.Add(mantelzorger);
-                db.SaveChanges();
-
-                var user = new ApplicationUser { UserName = mantelzorger.Email, Email = mantelzorger.Email };
-                manager.Create(user, "P@ssw0rd");
-                manager.AddToRole(user.Id, "PatientMantelzorger");
-
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                return View(mantelzorger);
             }
 
             return View(mantelzorger);
@@ -114,14 +120,40 @@ namespace WebAPI.Controllers
 
             if (ModelState.IsValid)
             {
-                oudeMantelzorger.Vnaam = nieuweMantelzorger.Vnaam;
-                oudeMantelzorger.Anaam = nieuweMantelzorger.Anaam;
-                oudeMantelzorger.Email = nieuweMantelzorger.Email;
-                user.Email = nieuweMantelzorger.Email;
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                if (oudeMantelzorger.Email != nieuweMantelzorger.Email)
+                {
+                    if (db.Users.Where(r => r.Email == nieuweMantelzorger.Email) == null)
+                    {
+                        oudeMantelzorger.Vnaam = nieuweMantelzorger.Vnaam;
+                        oudeMantelzorger.Anaam = nieuweMantelzorger.Anaam;
+                        oudeMantelzorger.Email = nieuweMantelzorger.Email;
+                        user.Email = nieuweMantelzorger.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
 
-                return RedirectToAction("Index");
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuweMantelzorger);
+                }
+                else
+                {
+                    if (db.Users.Where(r => r.Email == nieuweMantelzorger.Email).Count() == 1)
+                    {
+                        oudeMantelzorger.Vnaam = nieuweMantelzorger.Vnaam;
+                        oudeMantelzorger.Anaam = nieuweMantelzorger.Anaam;
+                        oudeMantelzorger.Email = nieuweMantelzorger.Email;
+                        user.Email = nieuweMantelzorger.Email;
+                        db.Entry(user).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+
+                    ModelState.AddModelError("", "Dit email-adres is al gekoppeld aan een account, gelieve een ander te kiezen");
+                    return View(nieuweMantelzorger);
+                }
             }
 
             return View(nieuweMantelzorger);
