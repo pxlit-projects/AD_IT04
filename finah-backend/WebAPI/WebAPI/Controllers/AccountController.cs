@@ -161,7 +161,7 @@ namespace WebAPI.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         //
