@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
                         Id = r.Id,
                         VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
                         Date = r.Date,
-                        HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
+                        HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() >= (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
                     });
 
                 return View(model);
@@ -61,7 +61,7 @@ namespace WebAPI.Controllers
                       MantelzorgerAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Anaam).FirstOrDefault()),
                       VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
                       Date = r.Date,
-                      HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
+                      HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() >= (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
                   });
 
                 return View(model);
@@ -90,7 +90,7 @@ namespace WebAPI.Controllers
                         MantelzorgerAnaam = (db.PatientMantelzorgers.Where(re => re.Id == r.Mantelzorger_Id).Select(rev => rev.Anaam).FirstOrDefault()),
                         VragenlijstBeschrijving = (db.Vragenlijsten.Where(re => re.Id == r.Vragenlijst_Id).Select(rev => rev.Beschrijving).FirstOrDefault()),
                         Date = r.Date,
-                        HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() == (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
+                        HasAnswers = (db.Antwoorden.Where(re => re.Rapport_Id == r.Id).Count() >= (db.Vragen.Where(t => t.Vragenlijst_Id == r.Vragenlijst_Id).Count() * 2))
                     });
 
                 return View(model);
