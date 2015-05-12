@@ -49,6 +49,7 @@
             this.voegVerzorgerButton.TabIndex = 20;
             this.voegVerzorgerButton.Text = "Voeg verzorger toe";
             this.voegVerzorgerButton.UseVisualStyleBackColor = true;
+            this.voegVerzorgerButton.Click += new System.EventHandler(this.voegVerzorgerButton_Click);
             // 
             // voegPatientButton
             // 
@@ -59,6 +60,7 @@
             this.voegPatientButton.TabIndex = 19;
             this.voegPatientButton.Text = "Toevoegen";
             this.voegPatientButton.UseVisualStyleBackColor = true;
+            this.voegPatientButton.Click += new System.EventHandler(this.voegPatientButton_Click);
             // 
             // verzorgerComboBox
             // 
@@ -142,6 +144,7 @@
             this.Controls.Add(this.label1);
             this.Name = "VoegPatientForm";
             this.Text = "VoegPatientForm";
+            this.Load += new System.EventHandler(this.VoegPatientForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

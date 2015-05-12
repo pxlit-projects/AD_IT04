@@ -129,6 +129,7 @@
       <DependentUpon>VoegVerzorgerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Vraag.cs" />
+    <Compile Include="Vragenlijst.cs" />
     <Compile Include="VragenlijstForm.cs">
       <SubType>Form</SubType>
     </Compile>

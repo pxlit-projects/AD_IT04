@@ -14,9 +14,27 @@ namespace finah_desktop_CSharp
 {
     public partial class AanVragenlijstForm : Form
     {
-        public AanVragenlijstForm()
+        private DataGridView datagrid;
+
+        public AanVragenlijstForm(DataGridView datagrid)
         {
             InitializeComponent();
+
+            toeVragenDataGridView.Columns.Add("Beschrijving", "Beschrijving");
+
+            this.datagrid = datagrid;
+       }
+
+        public AanVragenlijstForm(int vragenID, DataGridView datagrid) 
+        {
+            InitializeComponent();
+
+            IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenID).Result;
+            toeVragenDataGridView.DataSource = vragen;
+            List<Vraag> list = vragen.ToList();
+
+            this.datagrid = datagrid;
+
         }
 
         private void AanVragenlijstForm_Load(object sender, EventArgs e)
@@ -66,6 +84,34 @@ namespace finah_desktop_CSharp
                 var json = innerTask.Result;
                 return JsonConvert.DeserializeObject<Vraag[]>(json);
             });
+        }
+
+        private void toevoegButton_Click(object sender, EventArgs e)
+        {
+           toeVragenDataGridView.Rows.Add(vragenDataGridView.SelectedRows).ToString();
+        }
+
+        private void verwijderButton_Click(object sender, EventArgs e)
+        {
+            toeVragenDataGridView.Rows.Remove(toeVragenDataGridView.CurrentRow);
+        }
+
+        private void nieuwButton_Click(object sender, EventArgs e)
+        {
+            Form form = new AanVragenFrom(toeVragenDataGridView);
+            form.ShowDialog();
+        }
+
+        private void bewerkButton_Click(object sender, EventArgs e)
+        {
+            string beschrijving = toeVragenDataGridView.CurrentCell.Value.ToString();
+            Form form = new AanVragenFrom(beschrijving, toeVragenDataGridView);
+            form.ShowDialog();
+        }
+
+        private void opslaanButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

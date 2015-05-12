@@ -53,6 +53,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.idLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vragenDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toeVragenDataGridView)).BeginInit();
@@ -71,42 +72,51 @@
             this.opslaanButton.TabIndex = 3;
             this.opslaanButton.Text = "Opslaan";
             this.opslaanButton.UseVisualStyleBackColor = true;
+            this.opslaanButton.Click += new System.EventHandler(this.opslaanButton_Click);
             // 
             // nieuwButton
             // 
+            this.nieuwButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.nieuwButton.Location = new System.Drawing.Point(288, 339);
             this.nieuwButton.Name = "nieuwButton";
             this.nieuwButton.Size = new System.Drawing.Size(100, 35);
             this.nieuwButton.TabIndex = 7;
             this.nieuwButton.Text = "Nieuw";
             this.nieuwButton.UseVisualStyleBackColor = true;
+            this.nieuwButton.Click += new System.EventHandler(this.nieuwButton_Click);
             // 
             // bewerkButton
             // 
+            this.bewerkButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bewerkButton.Location = new System.Drawing.Point(288, 380);
             this.bewerkButton.Name = "bewerkButton";
             this.bewerkButton.Size = new System.Drawing.Size(100, 35);
             this.bewerkButton.TabIndex = 6;
             this.bewerkButton.Text = "Bewerken";
             this.bewerkButton.UseVisualStyleBackColor = true;
+            this.bewerkButton.Click += new System.EventHandler(this.bewerkButton_Click);
             // 
             // verwijderButton
             // 
+            this.verwijderButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.verwijderButton.Location = new System.Drawing.Point(288, 188);
             this.verwijderButton.Name = "verwijderButton";
             this.verwijderButton.Size = new System.Drawing.Size(100, 35);
             this.verwijderButton.TabIndex = 5;
             this.verwijderButton.Text = "Verwijderen";
             this.verwijderButton.UseVisualStyleBackColor = true;
+            this.verwijderButton.Click += new System.EventHandler(this.verwijderButton_Click);
             // 
             // toevoegButton
             // 
+            this.toevoegButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.toevoegButton.Location = new System.Drawing.Point(288, 147);
             this.toevoegButton.Name = "toevoegButton";
             this.toevoegButton.Size = new System.Drawing.Size(100, 35);
             this.toevoegButton.TabIndex = 4;
             this.toevoegButton.Text = "Toevoegen";
             this.toevoegButton.UseVisualStyleBackColor = true;
+            this.toevoegButton.Click += new System.EventHandler(this.toevoegButton_Click);
             // 
             // vragenDataGridView
             // 
@@ -260,6 +270,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.idLabel);
             this.groupBox1.Controls.Add(this.verzorgerComboBox);
             this.groupBox1.Controls.Add(this.clientComboBox);
             this.groupBox1.Controls.Add(this.label1);
@@ -301,6 +312,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -310,6 +324,15 @@
             this.tabControl1.Size = new System.Drawing.Size(781, 505);
             this.tabControl1.TabIndex = 2;
             // 
+            // idLabel
+            // 
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(143, 33);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(24, 20);
+            this.idLabel.TabIndex = 5;
+            this.idLabel.Text = "fff";
+            // 
             // AanVragenlijstForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,7 +341,7 @@
             this.Controls.Add(this.opslaanButton);
             this.Controls.Add(this.tabControl1);
             this.Name = "AanVragenlijstForm";
-            this.Text = "Aanmaak vragenlijst";
+            this.Text = "Vragenlijst";
             this.Load += new System.EventHandler(this.AanVragenlijstForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.vragenDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -362,5 +385,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Label idLabel;
     }
 }

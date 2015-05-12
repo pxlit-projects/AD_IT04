@@ -46,6 +46,7 @@
             this.voegVerzorgerButton.TabIndex = 13;
             this.voegVerzorgerButton.Text = "Toevoegen";
             this.voegVerzorgerButton.UseVisualStyleBackColor = true;
+            this.voegVerzorgerButton.Click += new System.EventHandler(this.voegVerzorgerButton_Click);
             // 
             // emailTextBox
             // 

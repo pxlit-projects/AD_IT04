@@ -32,13 +32,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.vraagTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.annulerenForm = new System.Windows.Forms.Button();
-            this.opslaanForm = new System.Windows.Forms.Button();
+            this.annulerenButton = new System.Windows.Forms.Button();
+            this.opslaanButton = new System.Windows.Forms.Button();
+            this.verkennerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
             // 
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox.Location = new System.Drawing.Point(417, 32);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(355, 179);
@@ -71,39 +73,56 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Vraag :";
             // 
-            // annulerenForm
+            // annulerenButton
             // 
-            this.annulerenForm.Location = new System.Drawing.Point(659, 312);
-            this.annulerenForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.annulerenForm.Name = "annulerenForm";
-            this.annulerenForm.Size = new System.Drawing.Size(112, 35);
-            this.annulerenForm.TabIndex = 7;
-            this.annulerenForm.Text = "Annuleren";
-            this.annulerenForm.UseVisualStyleBackColor = true;
+            this.annulerenButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.annulerenButton.Location = new System.Drawing.Point(659, 312);
+            this.annulerenButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.annulerenButton.Name = "annulerenButton";
+            this.annulerenButton.Size = new System.Drawing.Size(112, 35);
+            this.annulerenButton.TabIndex = 7;
+            this.annulerenButton.Text = "Annuleren";
+            this.annulerenButton.UseVisualStyleBackColor = true;
+            this.annulerenButton.Click += new System.EventHandler(this.annulerenButton_Click);
             // 
-            // opslaanForm
+            // opslaanButton
             // 
-            this.opslaanForm.Location = new System.Drawing.Point(539, 312);
-            this.opslaanForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.opslaanForm.Name = "opslaanForm";
-            this.opslaanForm.Size = new System.Drawing.Size(112, 35);
-            this.opslaanForm.TabIndex = 6;
-            this.opslaanForm.Text = "Opslaan";
-            this.opslaanForm.UseVisualStyleBackColor = true;
+            this.opslaanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opslaanButton.Location = new System.Drawing.Point(539, 312);
+            this.opslaanButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.opslaanButton.Name = "opslaanButton";
+            this.opslaanButton.Size = new System.Drawing.Size(112, 35);
+            this.opslaanButton.TabIndex = 6;
+            this.opslaanButton.Text = "Opslaan";
+            this.opslaanButton.UseVisualStyleBackColor = true;
+            this.opslaanButton.Click += new System.EventHandler(this.opslaanButton_Click);
+            // 
+            // verkennerButton
+            // 
+            this.verkennerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.verkennerButton.Location = new System.Drawing.Point(501, 217);
+            this.verkennerButton.Name = "verkennerButton";
+            this.verkennerButton.Size = new System.Drawing.Size(167, 29);
+            this.verkennerButton.TabIndex = 12;
+            this.verkennerButton.Text = "Afbeelding kiezen";
+            this.verkennerButton.UseVisualStyleBackColor = true;
+            this.verkennerButton.Click += new System.EventHandler(this.verkennerButton_Click);
             // 
             // AanVragenFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 361);
+            this.Controls.Add(this.verkennerButton);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.vraagTextBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.annulerenForm);
-            this.Controls.Add(this.opslaanForm);
+            this.Controls.Add(this.annulerenButton);
+            this.Controls.Add(this.opslaanButton);
             this.Name = "AanVragenFrom";
             this.Text = "AanVragenFrom";
+            this.Load += new System.EventHandler(this.AanVragenFrom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,7 +135,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox vraagTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button annulerenForm;
-        private System.Windows.Forms.Button opslaanForm;
+        private System.Windows.Forms.Button annulerenButton;
+        private System.Windows.Forms.Button opslaanButton;
+        private System.Windows.Forms.Button verkennerButton;
     }
 }

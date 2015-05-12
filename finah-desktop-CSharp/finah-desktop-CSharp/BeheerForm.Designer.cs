@@ -41,7 +41,7 @@
             this.detailsButton = new System.Windows.Forms.Button();
             this.vragenlijstDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.rapportDataGridView = new System.Windows.Forms.DataGridView();
             this.rapportDetailButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -51,7 +51,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vragenlijstDataGridView)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rapportDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -90,6 +90,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.patientDataGridView.Font = global::finah_desktop_CSharp.Properties.Settings.Default.ff;
             this.patientDataGridView.Location = new System.Drawing.Point(3, 3);
             this.patientDataGridView.Name = "patientDataGridView";
             this.patientDataGridView.Size = new System.Drawing.Size(760, 471);
@@ -129,6 +131,7 @@
             this.voegVerzorgerToeButton.TabIndex = 1;
             this.voegVerzorgerToeButton.Text = "Voeg verzorger toe";
             this.voegVerzorgerToeButton.UseVisualStyleBackColor = true;
+            this.voegVerzorgerToeButton.Click += new System.EventHandler(this.voegVerzorgerToeButton_Click);
             // 
             // verzorgerDataGridView
             // 
@@ -158,7 +161,7 @@
             // voegVragenlijstButton
             // 
             this.voegVragenlijstButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.voegVragenlijstButton.Location = new System.Drawing.Point(6, 489);
+            this.voegVragenlijstButton.Location = new System.Drawing.Point(6, 486);
             this.voegVragenlijstButton.Name = "voegVragenlijstButton";
             this.voegVragenlijstButton.Size = new System.Drawing.Size(175, 35);
             this.voegVragenlijstButton.TabIndex = 2;
@@ -169,12 +172,13 @@
             // detailsButton
             // 
             this.detailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.detailsButton.Location = new System.Drawing.Point(616, 489);
+            this.detailsButton.Location = new System.Drawing.Point(616, 486);
             this.detailsButton.Name = "detailsButton";
             this.detailsButton.Size = new System.Drawing.Size(150, 35);
             this.detailsButton.TabIndex = 1;
             this.detailsButton.Text = "Meer informatie";
             this.detailsButton.UseVisualStyleBackColor = true;
+            this.detailsButton.Click += new System.EventHandler(this.detailsButton_Click);
             // 
             // vragenlijstDataGridView
             // 
@@ -190,7 +194,7 @@
             // tabPage4
             // 
             this.tabPage4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage4.BackgroundImage")));
-            this.tabPage4.Controls.Add(this.dataGridView4);
+            this.tabPage4.Controls.Add(this.rapportDataGridView);
             this.tabPage4.Controls.Add(this.rapportDetailButton);
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
@@ -199,26 +203,27 @@
             this.tabPage4.Text = "Rapporten";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // dataGridView4
+            // rapportDataGridView
             // 
-            this.dataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rapportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(760, 474);
-            this.dataGridView4.TabIndex = 1;
+            this.rapportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rapportDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.rapportDataGridView.Name = "rapportDataGridView";
+            this.rapportDataGridView.Size = new System.Drawing.Size(760, 474);
+            this.rapportDataGridView.TabIndex = 1;
             // 
             // rapportDetailButton
             // 
             this.rapportDetailButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.rapportDetailButton.Location = new System.Drawing.Point(616, 483);
+            this.rapportDetailButton.Location = new System.Drawing.Point(619, 485);
             this.rapportDetailButton.Name = "rapportDetailButton";
             this.rapportDetailButton.Size = new System.Drawing.Size(150, 35);
             this.rapportDetailButton.TabIndex = 0;
             this.rapportDetailButton.Text = "Meer informatie";
             this.rapportDetailButton.UseVisualStyleBackColor = true;
+            this.rapportDetailButton.Click += new System.EventHandler(this.rapportDetailButton_Click);
             // 
             // BeheerForm
             // 
@@ -237,7 +242,7 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vragenlijstDataGridView)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rapportDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,7 +261,7 @@
         private System.Windows.Forms.Button detailsButton;
         private System.Windows.Forms.DataGridView vragenlijstDataGridView;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView rapportDataGridView;
         private System.Windows.Forms.Button rapportDetailButton;
     }
 }
