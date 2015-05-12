@@ -101,6 +101,9 @@ De client die bereikbaar is via een webbrowser (heeft een http server met php mo
 de vragenlijst invullen & doorsturen naar de backend.
 
 ### Instructies:
+Volgende link is een voorbeeld-link die een patiënt via mail kan aankrijgen:
+
+http://webclientfinah.azurewebsites.net/?verzorger=false&rapportId=83&vragenlijstId=17
 
 ### Screenshots:
 
