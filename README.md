@@ -34,15 +34,21 @@ Alle accounts hebben de mogelijkheid om hun wachtwoord te veranderen.
 
 ### Instructies:
 Via volgende link kom je uit op de MVC Client:
+
 http://finahweb.azurewebsites.net/
 
 Hier kan je inloggen met:
+
 (Wachtwoord voor alle accounts: P@ssw0rd)
 
 admin-account: admin@gmail.com
+
 dokter-account: jan.schoefs@gmail.com
+
 patiënt-acount: kristof.spaas@gmail.com
+
 mantelzorger-account: 11307308@student.pxl.be
+
 onderzoeker-account: jef.peeters@gmail.com
 
 ### Screenshots:
