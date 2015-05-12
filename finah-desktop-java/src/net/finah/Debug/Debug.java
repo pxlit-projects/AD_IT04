@@ -30,8 +30,9 @@ public class Debug {
 		writer(message, location, "err");
 
 	}
+
 	/**
-	 * Log an error to the error log
+	 * Log an error to stderr
 	 * @param message The message to log
 	 */
 	public static void err(String message){
@@ -39,7 +40,9 @@ public class Debug {
 	}
 
 	/**
-	 * Internal step to ignore an extension, if needed
+	 * Internal overide to ignore an extension, if needed
+	 * @param message
+	 * @param location
 	 */
 	private static void writer(String message, String location){
 		writer(message, location, "");

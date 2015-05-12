@@ -35,7 +35,6 @@ public class Antwoord {
 		this.verzorger = verzorger;
 	}
 
-
 	public String toString() {
 		return id + ":" + vraag_Id + "," + rapport_Id + "," + antwoordInt + "," + antwoordExtra + " verzorger:" + verzorger;
 	}

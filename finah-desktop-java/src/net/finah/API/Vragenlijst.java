@@ -16,11 +16,4 @@ public class Vragenlijst {
 	public String toString(){
 		return id + ":" + beschrijving + ":" + dokter_Id ;
 	}
-
-	public Vragenlijst(int id, String beschrijving, int dokter_Id){
-		this.id = id;
-		this.beschrijving = beschrijving;
-		this.dokter_Id = dokter_Id;
-	}
-
 }
