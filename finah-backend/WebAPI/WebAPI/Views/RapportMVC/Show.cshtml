@@ -11,18 +11,20 @@
 
 <br />
 
-
 @if (User.IsInRole("Dokter") || User.IsInRole("PatientMantelzorger"))
 {
     <h3>Patiënt: @Model.PatientVnaam @Model.PatientAnaam</h3>
     <h3>Mantelzorger: @Model.MantelzorgerVnaam @Model.MantelzorgerAnaam</h3>
 }
 
+<a style="float:right" href="javascript:window.print()"><img src="../../content/images/print_icon1.png" border="0"></a>
+
+<h3>Vragenlijst: @Model.VragenlijstBeschrijving</h3>
 <h3>Datum: @Model.Date.Day/@Model.Date.Month/@Model.Date.Year</h3>
 
 <hr />
 
-<table style="font-size:15px">
+<table style="font-size:15px" id="tableRapport">
 
     <tr>
         <th>&nbsp</th>

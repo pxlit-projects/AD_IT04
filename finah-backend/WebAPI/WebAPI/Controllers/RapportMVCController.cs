@@ -103,6 +103,8 @@ namespace WebAPI.Controllers
             var rapport = db.Rapporten.Find(id);
             var patient = db.PatientMantelzorgers.Find(rapport.Patient_Id);
             var mantelzorger = db.PatientMantelzorgers.Find(rapport.Mantelzorger_Id);
+            var vragenlijst = db.Vragenlijsten.Find(rapport.Vragenlijst_Id);
+
 
             WebAPI.Models.RapportDetailsModel rapportDetailsModel = new RapportDetailsModel();
             rapportDetailsModel.Id = id;
@@ -115,6 +117,7 @@ namespace WebAPI.Controllers
                 rapportDetailsModel.MantelzorgerAnaam = mantelzorger.Anaam;
             }
 
+            rapportDetailsModel.VragenlijstBeschrijving = vragenlijst.Beschrijving;
             rapportDetailsModel.Date = rapport.Date;
 
             var vragen = db.Vragen.Where(r => r.Vragenlijst_Id == rapport.Vragenlijst_Id);
