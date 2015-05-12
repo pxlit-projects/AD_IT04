@@ -14,20 +14,40 @@ Lander Ghekiere
 
 ## Projecten:
 
-## Backend:
+## Backend (WebAPI):
 
 ### Beschrijving:
-De Backend is de database waarop de API draait. Dit project is gemaakt in Visual Studio. De database bevat alle vragenlijsten 
-met de verschillende vragen & de bijhorende antwoorden van de verschillende patiënten. De database bevat ook de inloggegevens
-van de dokters.
+De Backend is een Asp.net WebAPI project. Dit project is gemaakt in Visual Studio. De WebAPI heeft connectie met de database en verleend deze aan de andere projecten. Deze database bevat vragenlijsten, vragen, antwoorden, rapporten, patiënten, mantelzorgers, dokters, onderzoekers en alle accounts en rollen die nodig zijn voor een vlotte werking. 
 
-### Instructies: 
+### Instructies:
+Het project importeren in Visual Studio.
 
-Met de account 'dokter@gmail.com' en het wachtwoord 'P@sw0rd' kan je inloggen op de site finahweb.azurewebsites.net.
-Hier krijg je een overzicht van deze dokter zijn patiënten, mantelzorgers, vragenlijsten en rapporten.
-Tevens kan je ook vragenlijsten versturen naar patiënten en mantelzorgers.
+## MVC Client:
+
+### Beschrijving:
+De MVC Client zit in hetzelfde project als de WebAPI. Deze client geeft de admin, dokters, patiënten, mantelzorgers en onderzoekers een manier om in te loggen en hun data te bekijken en te manipuleren.
+De admin kan dokters en onderzoekers toevoegen, verwijderen of wijzigen.
+De dokter kan patiënten, mantelzorgers en vragenlijsten toevoegen, verwijderen of wijzigen, vragenlijsten versturen, vragenlijsten herhalen en de rapporten bekijken en deze lokaal opslaan.
+De patiënt en de mantelzorger kunnen hun eigen rapporten bekijken en lokaal opslaan.
+De onderzoeker kan alle rapporten bekijken en deze lokaal opslaan. Hier worden echter de namen van de patiënten en mantelzorgers niet getoond.
+Alle accounts hebben de mogelijkheid om hun wachtwoord te veranderen.
+
+### Instructies:
+Via volgende link kom je uit op de MVC Client:
+http://finahweb.azurewebsites.net/
+
+Hier kan je inloggen met:
+(Wachtwoord voor alle accounts: P@ssw0rd)
+
+admin-account: admin@gmail.com
+dokter-account: jan.schoefs@gmail.com
+patiënt-acount: kristof.spaas@gmail.com
+mantelzorger-account: 11307308@student.pxl.be
+onderzoeker-account: jef.peeters@gmail.com
 
 ### Screenshots:
+zie map afbeeldingen/mvc webclient
+
 
 ## Desktop (Java):
 
