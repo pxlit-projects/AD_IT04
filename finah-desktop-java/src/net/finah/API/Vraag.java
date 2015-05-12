@@ -24,8 +24,8 @@ public class Vraag {
 		this.beschrijving = beschrijving;
 	}
 
-	public void setVragenLijst_I(int vragenlijst_Id) {
+	public void setVragenLijst_Id(int vragenlijst_Id) {
 		this.vragenlijst_Id = vragenlijst_Id;
 	}
-
+	
 }

@@ -5,21 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-//import com.sun.net.ssl.HttpsURLConnection;
 import sun.net.www.protocol.http.HttpURLConnection;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-//import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
-//import javax.net.ssl.HttpsURLConnection;
-
-
 
 import net.finah.Debug.Debug;
 
@@ -50,7 +44,7 @@ public class API {
 
 
 	public static ArrayList<Vraag> getVragenLijst(int lijst) throws IOException{
-		URL loc = new URL(remote + "/vraag/" + lijst);
+		URL loc = new URL(remote + "vraag/" + lijst);
 		init();
 		Debug.log("receiving 'vragenLijst' data");
 		ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Vraag>>(){});
@@ -61,7 +55,7 @@ public class API {
 	}
 
 	public static ArrayList<Rapport> getRapport(int id) throws IOException{
-		URL loc = new URL(remote + "/rapport/" + id);
+		URL loc = new URL(remote + "rapport/" + id);
 		init();
 		Debug.log("receiving 'rapportLijst' data");
 		ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Rapport>>(){});
@@ -72,7 +66,7 @@ public class API {
 	}
 
 	public static ArrayList<Antwoord> getAntwoordLijst(int id) throws IOException{
-		URL loc = new URL(remote + "/antwoord/" + id);
+		URL loc = new URL(remote + "antwoord/" + id);
 		init();
 		Debug.log("receiving 'antwoordLijst' data");
 		ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Antwoord>>(){});
@@ -83,7 +77,7 @@ public class API {
 	}
 
 	public static ArrayList<Vragenlijst> getVragenlijst(int id) throws IOException{
-		URL loc = new URL(remote + "/vragenlijst/"+ id);
+		URL loc = new URL(remote + "vragenlijst/"+ id);
 		init();
 		Debug.log("receiving 'Vragenlijst' data");
 
@@ -95,16 +89,26 @@ public class API {
 
 
 	public static void writeVragenLijst(ArrayList<Vraag> list, int id) throws IOException{
-		URL loc = new URL(remote + "/vraag/");
+		URL loc = new URL(remote + "vraag/");
 		init();
 		Debug.log("checking if list already added");
-		ArrayList<Vragenlijst> vragenlijst = getVragenlijst(id);
-		if(vragenlijst.isEmpty()){
-			Debug.err("How Jerry! dees is leeg!");
-			// TODO: 1 is hier een tijdelijke waarde, moet dokter ID voorstellen
+		try{
+			ArrayList<Vragenlijst> vragenlijst = getVragenlijst(id);
+			if(vragenlijst.isEmpty()){
+				Debug.err("How Jerry! dees is leeg!");
+				// TODO: 1 is hier een tijdelijke waarde, moet dokter ID voorstellen
+				writeVragenlijst(new Vragenlijst(id, "vragenlijst " + id, 1 ));
+			}else{
+				Debug.log("genkidama");
+			}
+		}catch(IOException e){
+			Debug.err("crash prevented" + e.getMessage());
 			writeVragenlijst(new Vragenlijst(id, "vragenlijst " + id, 1 ));
 		}
 		Debug.log("transforming 'VragenLijst' data");
+		for(Vraag vraag : list){
+			writeVraag(vraag);
+		}
 
 		//mapper.writeValue(new File("log/output.json"), list);
 		ObjectWriter ow = new ObjectMapper().writer();
@@ -116,15 +120,22 @@ public class API {
 	}
 
 	public static void writeVragenlijst(Vragenlijst obj) throws IOException{
-		URL loc = new URL(remote + "/vragenlijst/");
+		URL loc = new URL(remote + "vragenlijst/");
 		init();
 		Debug.log("transforming to json");
 		ObjectWriter ow = new ObjectMapper().writer();
 		String json = ow.writeValueAsString(obj);
-
 		putData(json,loc);
 
 		Debug.log("transfered data");
+	}
+	public static void writeVraag(Vraag obj) throws IOException{
+		URL loc = new URL(remote + "vraag/"); 
+		init();
+		ObjectWriter ow = new ObjectMapper().writer();
+		String json = ow.writeValueAsString(obj);
+		Debug.log("transfering  Vraag:" + obj.toString()); 
+		putData(json, loc);
 	}
 
 	private static void putData(String json, URL loc) throws IOException{
@@ -145,6 +156,7 @@ public class API {
 		out.flush();
 		if (httpcon.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
 			Debug.err("Wrong response code:" + httpcon.getResponseCode() );
+			throw new IOException("Connection Failed");
 		}
 
 		out.close();
