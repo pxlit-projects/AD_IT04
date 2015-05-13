@@ -42,14 +42,12 @@ public class JavaJFrameApplication {
                 return false;               
         }
         };
-        /*
         private JTable rapportTabel = new JTable(250,5){
         	public boolean isCellEditable(int row, int column) {                
                 return false;               
         }
         };
-        */
-        private JTable rapportTabel = new JTable(250,5);
+        
         private JScrollPane patientPane=new JScrollPane(patientTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         private JScrollPane rapportPane =new JScrollPane(rapportTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         private JButton jButton = new JButton("Voeg patient toe");
@@ -87,7 +85,13 @@ public class JavaJFrameApplication {
              public void actionPerformed(ActionEvent e) {
          		int rij = rapportTabel.getSelectedRow();
          		int id= Integer.parseInt( rapportTabel.getValueAt(rij, 4).toString());
-         		PDF.test(id);
+				try {
+					PDF.test(id);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
          		//JOptionPane.showMessageDialog(null,rapportTabel.getModel().getValueAt(rij,4));
              }
         });
