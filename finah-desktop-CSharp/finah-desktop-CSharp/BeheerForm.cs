@@ -16,64 +16,67 @@ namespace finah_desktop_CSharp
     {
         private DbFunctions dbfunctions = new DbFunctions();
 
-        private List<Patientmantelzorger> patientenList = new List<Patientmantelzorger>();
-        private List<Patientmantelzorger> verzorgerList = new List<Patientmantelzorger>();
+        private List<Patientmantelzorger> patientList = new List<Patientmantelzorger>();
+        private List<Patientmantelzorger> mantelzorgerList = new List<Patientmantelzorger>();
         private List<Rapport> rapportList = new List<Rapport>();
         private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
 
-        public BeheerForm()
+        private int dokter_Id;
+
+        public BeheerForm(int dokter_Id)
         {
             InitializeComponent();
+            this.dokter_Id = dokter_Id;
         }
 
         private void BeheerForm_Load(object sender, EventArgs e)
         {
-            patientenList = dbfunctions.loadPatienten();
-            patientDataGridView.DataSource = patientenList;
+            patientList = dbfunctions.loadPatienten(dokter_Id);
+            patientDataGridView.DataSource = patientList;
+            patientDataGridView.Columns["Id"].Visible = false;
             patientDataGridView.Columns["Verzorger"].Visible = false;
             patientDataGridView.Columns["Dokter_Id"].Visible = false;
 
-            verzorgerList = dbfunctions.loadVerzorger();
-            verzorgerDataGridView.DataSource = verzorgerList;
+            mantelzorgerList = dbfunctions.loadMantelzorgers(dokter_Id);
+            verzorgerDataGridView.DataSource = mantelzorgerList;
+            verzorgerDataGridView.Columns["Id"].Visible = false;
             verzorgerDataGridView.Columns["Verzorger"].Visible = false;
             verzorgerDataGridView.Columns["Dokter_Id"].Visible = false;
 
-            rapportList = dbfunctions.loadRapport();
+            vragenlijstList = dbfunctions.loadVragenlijsten(dokter_Id);
+            vragenlijstDataGridView.DataSource = vragenlijstList;
+            vragenlijstDataGridView.Columns["Id"].Visible = false;
+            vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
+
+            rapportList = dbfunctions.loadRapporten(dokter_Id);
             rapportDataGridView.DataSource = rapportList;
-
-            vragenlijstList = dbfunctions.loadVragenlijsten();
-            vragenlijstDataGridView.DataSource = rapportList;
-
-
-            //Patientmantelzorger patient = new Patientmantelzorger();
-            //patient.Id = 88;
-            //patient.Vnaam = "Pietje";
-            //patient.Anaam = "Peeters";
-            //patient.Email = "azeazeazeazeaze";
-            //patient.Verzorger = false;
-            //patient.Dokter_Id = 0;
-
-
-            //patientenList.Add(patient);
-
-
-
-            //patientDataGridView.DataSource = null;
-            //patientDataGridView.DataSource = patientenList;
-
+            rapportDataGridView.Columns["Id"].Visible = false;
         }
 
         private void voegPatientToeButton_Click(object sender, EventArgs e)
         {
-            Form patientForm = new VoegPatientForm(ref patientenList, patientDataGridView);
+            Form patientForm = new VoegPatientForm(ref patientList, patientDataGridView, dokter_Id);
             patientForm.ShowDialog();
         }
 
         private void voegVerzorgerToeButton_Click(object sender, EventArgs e)
         {
-            Form verzorgerForm = new VoegVerzorgerForm(ref verzorgerList, verzorgerDataGridView);
+            Form verzorgerForm = new VoegVerzorgerForm(ref mantelzorgerList, verzorgerDataGridView, dokter_Id);
             verzorgerForm.ShowDialog();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void voegVragenlijstButton_Click(object sender, EventArgs e)
         {

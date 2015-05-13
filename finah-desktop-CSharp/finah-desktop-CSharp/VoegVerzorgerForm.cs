@@ -14,39 +14,32 @@ namespace finah_desktop_CSharp
     {
         private List<Patientmantelzorger> list;
         private DataGridView datagrid;
+        private int Dokter_Id;
+        private DbFunctions dbfunctions;
 
-        public VoegVerzorgerForm(ref List<Patientmantelzorger> list, DataGridView datagrid)
+        public VoegVerzorgerForm(ref List<Patientmantelzorger> list, DataGridView datagrid, int dokter_Id)
         {
             InitializeComponent();
             this.list = list;
             this.datagrid = datagrid;
-
-            int idd= 0;
-
-            foreach (Patientmantelzorger id in list)
-	        {
-		         if(id.Id > idd)
-                    {
-                    idd = id.Id;
-                }
-	        }
-            idd+=1;
-            idTextBox.Text = idd.ToString();
+            this.Dokter_Id = dokter_Id;
+            dbfunctions = new DbFunctions();        
         }
 
         private void voegVerzorgerButton_Click(object sender, EventArgs e)
         {
-            Patientmantelzorger patient = new Patientmantelzorger();
+            Patientmantelzorger mantelzorger = new Patientmantelzorger();
 
-            patient.Id = Convert.ToInt32(idTextBox.Text);
-            patient.Vnaam = voornaamTextBox.Text;
-            patient.Anaam = naamTextBox.Text;
-            patient.Email = emailTextBox.Text;
+            mantelzorger.Vnaam = voornaamTextBox.Text;
+            mantelzorger.Anaam = naamTextBox.Text;
+            mantelzorger.Email = emailTextBox.Text;
+            mantelzorger.Verzorger = true;
+            mantelzorger.Dokter_Id = Dokter_Id;            
 
-            list.Add(patient);
+            list.Add(mantelzorger);
 
-
-            //toevoegen aan database
+            //Met deze functie wordt de mantelzorger toegevoegd aan de database
+            dbfunctions.postMantelzorger(mantelzorger);
 
             this.Close();
         }
@@ -55,6 +48,7 @@ namespace finah_desktop_CSharp
         {
             datagrid.DataSource = null;
             datagrid.DataSource = list;
+            datagrid.Columns["Id"].Visible = false;
             datagrid.Columns["Verzorger"].Visible = false;
             datagrid.Columns["Dokter_Id"].Visible = false;
         }

@@ -26,7 +26,7 @@ namespace finah_desktop_CSharp
 
             this.datagrid = datagrid;
 
-            toeVragenList = dbfunctions.loadVragen();
+            toeVragenList = dbfunctions.loadVragen(1);
             toeVragenDataGridView.DataSource = toeVragenList;
             toeVragenDataGridView.Columns["Verzorger"].Visible = false;
             toeVragenDataGridView.Columns["Dokter_Id"].Visible = false;

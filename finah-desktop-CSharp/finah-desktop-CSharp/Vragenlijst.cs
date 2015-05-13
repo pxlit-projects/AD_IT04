@@ -10,6 +10,6 @@ namespace finah_desktop_CSharp
     {
         public int Id { get; set; }
         public String Beschrijving { get; set; }
-        public int Vragenlijst_Id { get; set; }
+        public int Dokter_Id { get; set; }
     }
 }

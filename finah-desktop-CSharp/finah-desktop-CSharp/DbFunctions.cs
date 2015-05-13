@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,11 +11,11 @@ namespace finah_desktop_CSharp
 {
     public class DbFunctions
     {
-        public List<Patientmantelzorger> loadPatienten()
+        public List<Patientmantelzorger> loadPatienten(int dokter_Id)
         {
-            return getPatienten("http://finahweb.azurewebsites.net/api/patientmantelzorger/false").Result.ToList();
+            return getPatienten("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokter_Id + "/false").Result.ToList();
         }
-        
+
         private Task<IEnumerable<Patientmantelzorger>> getPatienten(string baseUrl)
         {
             var client = new HttpClient();
@@ -22,24 +23,15 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Patientmantelzorger>>(innerTask =>
             {
-                try
-                {
-                    var json = innerTask.Result;
-                    return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
-                }
-                catch (Exception)
-                {
-                    
-                    throw;
-                }
-                
+                var json = innerTask.Result;
+                return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
             });
         }
 
 
-        public List<Patientmantelzorger> loadVerzorger()
+        public List<Patientmantelzorger> loadMantelzorgers(int dokter_Id)
         {
-            return getVerzorger("http://finahweb.azurewebsites.net/api/patientmantelzorger/false").Result.ToList();
+            return getVerzorger("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokter_Id + "/true").Result.ToList();
         }
 
         private Task<IEnumerable<Patientmantelzorger>> getVerzorger(string baseUrl)
@@ -49,23 +41,15 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Patientmantelzorger>>(innerTask =>
             {
-                try
-                {
-                    var json = innerTask.Result;
-                    return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
+                var json = innerTask.Result;
+                return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
             });
         }
 
 
-        public List<Vraag> loadVragen()
+        public List<Vraag> loadVragen(int vragenlijst_Id)
         {
-            return getVragen("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
+            return getVragen("http://finahweb.azurewebsites.net/api/vraag/" + vragenlijst_Id).Result.ToList();
         }
 
         private Task<IEnumerable<Vraag>> getVragen(string baseUrl)
@@ -75,49 +59,14 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Vraag>>(innerTask =>
             {
-                try
-                {
-                    var json = innerTask.Result;
-                    return JsonConvert.DeserializeObject<Vraag[]>(json);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
+                var json = innerTask.Result;
+                return JsonConvert.DeserializeObject<Vraag[]>(json);
             });
         }
 
-
-        public List<Dokter> loadDokters()
+        public List<Antwoord> loadAntwoorden(int rapport_Id)
         {
-            return getDokters("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
-        }
-
-        private Task<IEnumerable<Dokter>> getDokters(string baseUrl)
-        {
-            var client = new HttpClient();
-            var task = client.GetStringAsync(baseUrl);
-
-            return task.ContinueWith<IEnumerable<Dokter>>(innerTask =>
-            {
-                try
-                {
-                    var json = innerTask.Result;
-                    return JsonConvert.DeserializeObject<Dokter[]>(json);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            });
-        }
-
-
-        public List<Antwoord> loadAntwoorden()
-        {
-            return getAntwoorden("http://finahweb.azurewebsites.net/api/antwoord/").Result.ToList();
+            return getAntwoorden("http://finahweb.azurewebsites.net/api/antwoord/" + rapport_Id).Result.ToList();
         }
 
         private Task<IEnumerable<Antwoord>> getAntwoorden(string baseUrl)
@@ -127,126 +76,19 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Antwoord>>(innerTask =>
             {
-                try
-                {
-                    var json = innerTask.Result;
-                    return JsonConvert.DeserializeObject<Antwoord[]>(json);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
+                var json = innerTask.Result;
+                return JsonConvert.DeserializeObject<Antwoord[]>(json);
             });
         }
 
 
-        public List<Rapport> loadRapport()
+        public List<Rapport> loadRapporten(int dokter_Id)
         {
-            /*//List<Rapport> list = new List<Rapport>();
-            //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;
-            IEnumerable<Rapport> rapport = getRapport("http://finahweb.azurewebsites.net/api/rapport").Result;
-
-            foreach (Rapport test in rapport)
-            {
-                Console.WriteLine(rapport);
-            }
-            return null;*/
-           return getRapport("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
+            return getRapport("http://finahweb.azurewebsites.net/api/rapport/" + dokter_Id).Result.ToList();
         }
 
         private Task<IEnumerable<Rapport>> getRapport(string baseUrl)
         {
-            var client = new HttpClient();
-            var task = client.GetStringAsync(baseUrl);
-
-            return task.ContinueWith<IEnumerable<Rapport>>(innerTask =>
-            {
-                try
-                {
-                    var json = innerTask.Result;
-                    return JsonConvert.DeserializeObject<Rapport[]>(json);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            });
-        }
-
-
-        public List<Vragenlijst> loadVragenlijsten()
-        {
-            return getVragenlijsten("http://finahweb.azurewebsites.net/api/antwoord/").Result.ToList();
-        }
-
-        private Task<IEnumerable<Vragenlijst>> getVragenlijsten(string baseUrl)
-        {
-            var client = new HttpClient();
-            var task = client.GetStringAsync(baseUrl);
-
-            return task.ContinueWith<IEnumerable<Vragenlijst>>(innerTask =>
-            {
-                try
-                {
-                    var json = innerTask.Result;
-                    return JsonConvert.DeserializeObject<Vragenlijst[]>(json);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            });
-        }
-
-        /* private void loadVragen(int vragenlijstId)
-         {
-             //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;
-             IEnumerable<Vraag> vragen = getData("http://finahweb.azurewebsites.net/api/patientmantelzorger/false").Result;
-             patientDataGridView.DataSource = patient;
-
-             foreach (Patientmantelzorger vraag in patient)
-             {
-                 Console.WriteLine();
-                 Console.WriteLine("VraagId: " + vraag.Id + "Beschrijving :" + vraag.Anaam);
-             }
-         }*/
-
-   
-
-        /*private void loadRapport()
-        {
-            //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;
-            IEnumerable<Rapport> rapport = getRapport("http://finahweb.azurewebsites.net/api/rapport").Result;
-            rapportDataGridView.DataSource = rapport;
-
-            foreach (Rapport vraag in rapport)
-            {
-                Console.WriteLine();
-                Console.WriteLine("VraagId: " + vraag.Id + "Beschrijving :" + vraag.Date);
-            }
-        }
-
-        private void loadVragenlijst()
-        {
-            //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;
-            IEnumerable<Vragenlijst> vragenlijst = getVragenlijst("http://finahweb.azurewebsites.net/api/vragenlijst").Result;
-            vragenlijstDataGridView.DataSource = vragenlijst;
-            //vragenlijstDataGridView.
-
-            foreach (Vragenlijst vraag in vragenlijst)
-            {
-                Console.WriteLine();
-                Console.WriteLine("VraagId: " + vraag.Id + "Beschrijving :" + vraag.Beschrijving);
-            }
-        }
-
-
-        public Task<IEnumerable<Rapport>> getRapport(string baseUrl)
-        {
-
             var client = new HttpClient();
             var task = client.GetStringAsync(baseUrl);
 
@@ -257,9 +99,14 @@ namespace finah_desktop_CSharp
             });
         }
 
-        public Task<IEnumerable<Vragenlijst>> getVragenlijst(string baseUrl)
-        {
 
+        public List<Vragenlijst> loadVragenlijsten(int dokter_Id)
+        {
+            return getVragenlijsten("http://finahweb.azurewebsites.net/api/vragenlijst/" + dokter_Id).Result.ToList();
+        }
+
+        private Task<IEnumerable<Vragenlijst>> getVragenlijsten(string baseUrl)
+        {
             var client = new HttpClient();
             var task = client.GetStringAsync(baseUrl);
 
@@ -268,9 +115,44 @@ namespace finah_desktop_CSharp
                 var json = innerTask.Result;
                 return JsonConvert.DeserializeObject<Vragenlijst[]>(json);
             });
-        }*/
+        }
 
+        public void postPatient(Patientmantelzorger patient)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            var response = client.PostAsJsonAsync("api/patientmantelzorger", patient);
 
+            System.Diagnostics.Debug.WriteLine(response.Result);
+        }
+
+        public void postMantelzorger(Patientmantelzorger mantelzorger)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = client.PostAsJsonAsync("api/patientmantelzorger", mantelzorger);
+
+            System.Diagnostics.Debug.WriteLine(response.Result);
+        }
+
+        public int postVragenlijst(Vragenlijst vragenlijst)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = client.PostAsJsonAsync("api/vragenlijst", vragenlijst);
+
+            System.Diagnostics.Debug.WriteLine(response.Result);
+
+            return response.Result.Content.ReadAsAsync<Vragenlijst>().Result.Id;
+        }
     }
 }
