@@ -30,26 +30,30 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 public class JavaJFrameApplication {
      
     static public class MyTabJPanel extends JPanel {
-         
+    	private JTabbedPane jTabbedPane = new JTabbedPane();
+        private JMenuBar menuBar = new JMenuBar();
+        private JMenu fileMenu = new JMenu("Login");
+        private JMenuItem inloggen = new JMenuItem("Inloggen");
+        private JMenuItem uitloggen = new JMenuItem("Uitloggen");
+        private JTable patientTabel = new JTable(250,3);
+        private JTable rapportTabel = new JTable(250,5);
+        private JScrollPane patientPane=new JScrollPane(patientTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        private JScrollPane rapportPane =new JScrollPane(rapportTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        private JButton jButton = new JButton("Voeg patient toe");
+        
         public MyTabJPanel(){
             super(new BorderLayout());
-             
-            JTabbedPane jTabbedPane = new JTabbedPane();
-            JMenuBar menuBar = new JMenuBar();
-            JMenu fileMenu = new JMenu("Login");
-            JMenuItem inloggen = new JMenuItem("Inloggen");
-            JMenuItem uitloggen = new JMenuItem("Uitloggen");
-            JTable table = new JTable(250,3);
-            JScrollPane pane =new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
             LoginPanel login = new LoginPanel();
+            
            
            
             
             JPanel jPaneA = new JPanel();
-            jPaneA.add(pane);
-            table.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
-            table.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
-            table.getColumnModel().getColumn(2).setHeaderValue("Email");
+            patientTabel.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
+            patientTabel.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
+            patientTabel.getColumnModel().getColumn(2).setHeaderValue("Email");
+            jPaneA.add(patientPane);
+            jPaneA.add(jButton);
             inloggen.addActionListener(new ActionListener(){
             	 @Override
                  public void actionPerformed(ActionEvent e) {
@@ -57,10 +61,15 @@ public class JavaJFrameApplication {
              		login.setVisible(true);
                  }
             });
+            
              
             JPanel jPaneB = new JPanel();
-            JButton jButton = new JButton("Voeg patient toe");
-            jPaneA.add(jButton);
+            jPaneB.add(rapportPane);
+            rapportTabel.getColumnModel().getColumn(0).setHeaderValue("Patient");
+            rapportTabel.getColumnModel().getColumn(1).setHeaderValue("Mantelzorger");
+            rapportTabel.getColumnModel().getColumn(2).setHeaderValue("Vragenlijst");
+            rapportTabel.getColumnModel().getColumn(3).setHeaderValue("Datum");
+            rapportTabel.getColumnModel().getColumn(4).setHeaderValue("Bekijken");
              
             JPanel jPaneC = new JPanel();
             JButton buttonExit = new JButton("Exit button on Tab C");
