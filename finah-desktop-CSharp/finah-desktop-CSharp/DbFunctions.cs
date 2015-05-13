@@ -201,8 +201,6 @@ namespace finah_desktop_CSharp
             });
         }
 
-
-
         /* private void loadVragen(int vragenlijstId)
          {
              //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;

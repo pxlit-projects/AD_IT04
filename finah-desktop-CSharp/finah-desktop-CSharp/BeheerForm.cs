@@ -65,13 +65,13 @@ namespace finah_desktop_CSharp
 
         private void voegPatientToeButton_Click(object sender, EventArgs e)
         {
-            Form patientForm = new VoegPatientForm(patientDataGridView);
+            Form patientForm = new VoegPatientForm(ref patientenList, patientDataGridView);
             patientForm.ShowDialog();
         }
 
         private void voegVerzorgerToeButton_Click(object sender, EventArgs e)
         {
-            Form verzorgerForm = new VoegVerzorgerForm(verzorgerDataGridView);
+            Form verzorgerForm = new VoegVerzorgerForm(ref verzorgerList, verzorgerDataGridView);
             verzorgerForm.ShowDialog();
         }
 
