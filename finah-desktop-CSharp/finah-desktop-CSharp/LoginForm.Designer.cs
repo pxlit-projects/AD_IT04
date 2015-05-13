@@ -50,6 +50,7 @@
             this.wwTextBox.Size = new System.Drawing.Size(229, 20);
             this.wwTextBox.TabIndex = 9;
             this.wwTextBox.Text = "wachtwoord";
+            this.wwTextBox.UseSystemPasswordChar = true;
             // 
             // label2
             // 

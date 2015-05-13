@@ -28,29 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.voegVerzorgerButton = new System.Windows.Forms.Button();
             this.voegPatientButton = new System.Windows.Forms.Button();
-            this.verzorgerComboBox = new System.Windows.Forms.ComboBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.naamTextBox = new System.Windows.Forms.TextBox();
             this.voornaamTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // voegVerzorgerButton
-            // 
-            this.voegVerzorgerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.voegVerzorgerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voegVerzorgerButton.Location = new System.Drawing.Point(12, 123);
-            this.voegVerzorgerButton.Name = "voegVerzorgerButton";
-            this.voegVerzorgerButton.Size = new System.Drawing.Size(155, 30);
-            this.voegVerzorgerButton.TabIndex = 20;
-            this.voegVerzorgerButton.Text = "Voeg verzorger toe";
-            this.voegVerzorgerButton.UseVisualStyleBackColor = false;
-            this.voegVerzorgerButton.Click += new System.EventHandler(this.voegVerzorgerButton_Click);
             // 
             // voegPatientButton
             // 
@@ -62,15 +47,6 @@
             this.voegPatientButton.TabIndex = 19;
             this.voegPatientButton.Text = "Toevoegen";
             this.voegPatientButton.UseVisualStyleBackColor = false;
-            this.voegPatientButton.Click += new System.EventHandler(this.voegPatientButton_Click);
-            // 
-            // verzorgerComboBox
-            // 
-            this.verzorgerComboBox.FormattingEnabled = true;
-            this.verzorgerComboBox.Location = new System.Drawing.Point(95, 84);
-            this.verzorgerComboBox.Name = "verzorgerComboBox";
-            this.verzorgerComboBox.Size = new System.Drawing.Size(277, 21);
-            this.verzorgerComboBox.TabIndex = 18;
             // 
             // emailTextBox
             // 
@@ -92,16 +68,6 @@
             this.voornaamTextBox.Name = "voornaamTextBox";
             this.voornaamTextBox.Size = new System.Drawing.Size(277, 20);
             this.voornaamTextBox.TabIndex = 15;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(12, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Mantelzorger : ";
             // 
             // label3
             // 
@@ -140,13 +106,10 @@
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(384, 171);
-            this.Controls.Add(this.voegVerzorgerButton);
             this.Controls.Add(this.voegPatientButton);
-            this.Controls.Add(this.verzorgerComboBox);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.naamTextBox);
             this.Controls.Add(this.voornaamTextBox);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -160,13 +123,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button voegVerzorgerButton;
         private System.Windows.Forms.Button voegPatientButton;
-        private System.Windows.Forms.ComboBox verzorgerComboBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox naamTextBox;
         private System.Windows.Forms.TextBox voornaamTextBox;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

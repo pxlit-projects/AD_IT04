@@ -18,7 +18,7 @@ namespace finah_desktop_CSharp
 
         private List<Patientmantelzorger> patientenList = new List<Patientmantelzorger>();
         private List<Patientmantelzorger> verzorgerList = new List<Patientmantelzorger>();
-        private IEnumerable<Rapport> rapportList;
+        private List<Rapport> rapportList = new List<Rapport>();
         private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
 
         public BeheerForm()
@@ -28,18 +28,21 @@ namespace finah_desktop_CSharp
 
         private void BeheerForm_Load(object sender, EventArgs e)
         {
-            //patientenList = dbfunctions.loadPatienten();
-           patientDataGridView.DataSource = patientenList;
+            patientenList = dbfunctions.loadPatienten();
+            patientDataGridView.DataSource = patientenList;
+            patientDataGridView.Columns["Verzorger"].Visible = false;
+            patientDataGridView.Columns["Dokter_Id"].Visible = false;
 
-
-            //verzorgerList = dbfunctions.loadVerzorger();
+            verzorgerList = dbfunctions.loadVerzorger();
             verzorgerDataGridView.DataSource = verzorgerList;
             verzorgerDataGridView.Columns["Verzorger"].Visible = false;
             verzorgerDataGridView.Columns["Dokter_Id"].Visible = false;
 
-
             rapportList = dbfunctions.loadRapport();
+            rapportDataGridView.DataSource = rapportList;
+
             vragenlijstList = dbfunctions.loadVragenlijsten();
+            vragenlijstDataGridView.DataSource = rapportList;
 
 
             //Patientmantelzorger patient = new Patientmantelzorger();
@@ -62,7 +65,7 @@ namespace finah_desktop_CSharp
 
         private void voegPatientToeButton_Click(object sender, EventArgs e)
         {
-            Form patientForm = new VoegPatientForm(patientDataGridView, verzorgerDataGridView);
+            Form patientForm = new VoegPatientForm(patientDataGridView);
             patientForm.ShowDialog();
         }
 

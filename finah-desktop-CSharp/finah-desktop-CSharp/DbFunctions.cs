@@ -22,8 +22,17 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Patientmantelzorger>>(innerTask =>
             {
-                var json = innerTask.Result;
-                return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+                
             });
         }
 
@@ -40,8 +49,16 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Patientmantelzorger>>(innerTask =>
             {
-                var json = innerTask.Result;
-                return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Patientmantelzorger[]>(json);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             });
         }
 
@@ -58,8 +75,16 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Vraag>>(innerTask =>
             {
-                var json = innerTask.Result;
-                return JsonConvert.DeserializeObject<Vraag[]>(json);
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Vraag[]>(json);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             });
         }
 
@@ -76,8 +101,16 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Dokter>>(innerTask =>
             {
-                var json = innerTask.Result;
-                return JsonConvert.DeserializeObject<Dokter[]>(json);
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Dokter[]>(json);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             });
         }
 
@@ -94,24 +127,32 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Antwoord>>(innerTask =>
             {
-                var json = innerTask.Result;
-                return JsonConvert.DeserializeObject<Antwoord[]>(json);
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Antwoord[]>(json);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             });
         }
 
 
         public List<Rapport> loadRapport()
         {
-            List<Rapport> list = new List<Rapport>();
+            /*//List<Rapport> list = new List<Rapport>();
             //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;
             IEnumerable<Rapport> rapport = getRapport("http://finahweb.azurewebsites.net/api/rapport").Result;
 
             foreach (Rapport test in rapport)
             {
-                list.Add(test);
+                Console.WriteLine(rapport);
             }
-            return list;
-           // return getRapport("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
+            return null;*/
+           return getRapport("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
         }
 
         private Task<IEnumerable<Rapport>> getRapport(string baseUrl)
@@ -121,8 +162,16 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Rapport>>(innerTask =>
             {
-                var json = innerTask.Result;
-                return JsonConvert.DeserializeObject<Rapport[]>(json);
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Rapport[]>(json);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             });
         }
 
@@ -139,8 +188,16 @@ namespace finah_desktop_CSharp
 
             return task.ContinueWith<IEnumerable<Vragenlijst>>(innerTask =>
             {
-                var json = innerTask.Result;
-                return JsonConvert.DeserializeObject<Vragenlijst[]>(json);
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Vragenlijst[]>(json);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             });
         }
 

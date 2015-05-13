@@ -15,6 +15,8 @@ namespace finah_desktop_CSharp
     public partial class AanVragenlijstForm : Form
     {
         private DataGridView datagrid;
+        private DbFunctions dbfunctions = new DbFunctions();
+        private List<Vraag> toeVragenList = new List<Vraag>();
 
         public AanVragenlijstForm(DataGridView datagrid)
         {
@@ -23,6 +25,11 @@ namespace finah_desktop_CSharp
             toeVragenDataGridView.Columns.Add("Beschrijving", "Beschrijving");
 
             this.datagrid = datagrid;
+
+            toeVragenList = dbfunctions.loadVragen();
+            toeVragenDataGridView.DataSource = toeVragenList;
+            toeVragenDataGridView.Columns["Verzorger"].Visible = false;
+            toeVragenDataGridView.Columns["Dokter_Id"].Visible = false;
        }
 
         public AanVragenlijstForm(int vragenID, DataGridView datagrid) 
