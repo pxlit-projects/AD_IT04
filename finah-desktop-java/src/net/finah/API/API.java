@@ -1,5 +1,9 @@
 package net.finah.API;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -7,7 +11,10 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import sun.net.www.protocol.http.HttpURLConnection;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,7 +31,10 @@ import net.finah.Debug.Debug;
 public class API {
 
 	private static ObjectMapper mapper;
+	private static ObjectWriter writer;
 	private static URL remote;
+	private static int ID;
+	private static int lastID;
 
 
 	/**
@@ -33,8 +43,10 @@ public class API {
 	 *
 	 */
 	public static void init(){
-		if(mapper == null){
+		if(mapper == null || writer == null ){
 			mapper = new ObjectMapper();
+			writer = mapper.writer();
+			syncLastID();
 		}
 	}
 
@@ -162,31 +174,16 @@ public class API {
 		Debug.log("Writing 'vragenlijst'");
 		URL loc = new URL(remote + "vraag/");
 		init();
-		try{
-			Debug.log("checking if list already added");
-			ArrayList<Vragenlijst> vragenlijst = getVragenlijst(id);
-			if(vragenlijst.isEmpty()){
-				Debug.err(" 'VragenLijst' Empty!");
-				// TODO: 1 is hier een tijdelijke waarde, moet dokter ID voorstellen
-				//writeVragenlijst(new Vragenlijst(id, "vragenlijst " + id, 1 ));
-			}else{
-				Debug.log("genkidama");
-			}
-		}catch(IOException e){
-			Debug.err("crash prevented" + e.getMessage());
-			Debug.err(e.toString());
-			//writeVragenlijst(new Vragenlijst(id, "vragenlijst " + id, 1 ));
-		}
+		writeVragenlijst(new Vragenlijst("vragenlijst " + id, 1 ));
+		syncLastID();
 		Debug.log("Writing each 'Vraag'");
 		for(Vraag vraag : list){
-			Debug.log("fake Write");
-			//writeVraag(vraag);
+			vraag.setVragenLijst_Id(lastID);
+			Debug.log("Writing " + vraag.toString() );
+			writeVraag(vraag);
 		}
 
-		//mapper.writeValue(new File("log/output.json"), list);
-		ObjectWriter ow = new ObjectMapper().writer();
-		//ow.writeValue(new File("log/output.json"),list);
-		String json = ow.writeValueAsString(list);
+		String json = writer.writeValueAsString(list);
 		putData(json, loc);
 		Debug.log("wrote 'VragenLijst' data");
 	}
@@ -199,16 +196,17 @@ public class API {
 	 *
 	 * @throws IOException
 	 */
-	public static void writeVragenlijst(Vragenlijst obj) throws IOException{
+	public static int writeVragenlijst(Vragenlijst obj) throws IOException{
 		Debug.log("preparing to transfer to server");
 		URL loc = new URL(remote + "vragenlijst/");
 		init();
 		Debug.log("transforming to json");
-		ObjectWriter ow = new ObjectMapper().writer();
-		String json = ow.writeValueAsString(obj);
-		//putData(json,loc);
-
+		String json = writer.writeValueAsString(obj);
 		Debug.log("data written");
+		String response = putData(json,loc);
+		ObjectReader reader = mapper.reader(new TypeReference<Vragenlijst>(){});
+		Vragenlijst vragenlijst = reader.readValue(response);
+		return vragenlijst.getId();
 	}
 
 	/**
@@ -222,35 +220,17 @@ public class API {
 	public static void writeVraag(Vraag obj) throws IOException{
 		URL loc = new URL(remote + "vraag/"); 
 		init();
-		ObjectWriter ow = new ObjectMapper().writer();
-		String json = ow.writeValueAsString(obj);
-		Debug.log("transfering  Vraag:" + obj.toString()); 
-		//putData(json, loc);
-		Debug.log("transferd  Vraag:" + obj.toString());
+		String json = writer.writeValueAsString(obj);
+		Debug.log("transfering  Vraag: " + obj.toString());
+		putData(json, loc);
+		Debug.log("transferd  Vraag: " + obj.toString());
 	}
 
-	/**
-	 * Write any JSON to server.
-	 * Experimental, use with caution
-	 *
-	 * @param json The data represented in JSON
-	 * @param loc The URL
-	 *
-	 * @throws IOException
-	 */
-	private static void putData(String json, URL loc) throws IOException{
-		Debug.log("Uploading data to: " + loc.toString());
-		// create a connection to the url
+	private static String putData(String json, URL loc) throws IOException{
 		HttpURLConnection httpcon = (HttpURLConnection) loc.openConnection();
-		//make it a writable connection
 		httpcon.setDoOutput(true);
-		//use the POST method
 		httpcon.setRequestMethod("POST");
-		//declare it's JSON
 		httpcon.setRequestProperty("Content-Type", "application/json");
-
-		//create an output stream
-		//OutputStreamWriter out = new OutputStreamWriter( httpcon.getOutputStream());
 		OutputStream out = httpcon.getOutputStream();
 		out.write(json.getBytes());
 		out.flush();
@@ -258,8 +238,40 @@ public class API {
 			Debug.err("Wrong response code:" + httpcon.getResponseCode() + " from: "+ loc.toString() );
 			throw new IOException("Connection Failed");
 		}
-
 		out.close();
-		Debug.log("data transfer completed (false)");
+		Debug.log("data transfer completed");
+
+		Debug.log("Receiving response");
+		BufferedReader br = new BufferedReader( new InputStreamReader( httpcon.getInputStream()));
+
+		String line = null;
+		StringBuilder sb = new StringBuilder();
+
+		while ((line = br.readLine()) != null) {
+			sb.append(line + "\n");
+		}
+
+		br.close();
+		httpcon.disconnect();
+
+		Debug.log("response: " + sb.toString());
+		return sb.toString();
+	}
+
+	private static void syncLastID(){
+		Boolean cont = true;
+		int id = 0;
+		//TODO: fix 1 (dokter ID)
+		try{
+			ArrayList<Vragenlijst> obj = getVragenlijst(2);
+			for(Vragenlijst vragenlijst: obj){
+				int derp = vragenlijst.getId();
+				if(derp > id) id = derp;
+				Debug.log(vragenlijst.toString());
+			}
+			if(id > 0) lastID = id;
+			Debug.log(lastID + "");
+		}catch(IOException e){
+		}
 	}
 }
