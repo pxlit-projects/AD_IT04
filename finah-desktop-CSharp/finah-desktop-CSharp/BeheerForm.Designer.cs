@@ -100,13 +100,14 @@
             // voegPatientToeButton
             // 
             this.voegPatientToeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.voegPatientToeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.voegPatientToeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.voegPatientToeButton.Location = new System.Drawing.Point(626, 483);
             this.voegPatientToeButton.Name = "voegPatientToeButton";
             this.voegPatientToeButton.Size = new System.Drawing.Size(140, 35);
             this.voegPatientToeButton.TabIndex = 0;
             this.voegPatientToeButton.Text = "Voeg patient toe";
-            this.voegPatientToeButton.UseVisualStyleBackColor = true;
+            this.voegPatientToeButton.UseVisualStyleBackColor = false;
             this.voegPatientToeButton.Click += new System.EventHandler(this.voegPatientToeButton_Click);
             // 
             // tabPage2
@@ -125,12 +126,13 @@
             // voegVerzorgerToeButton
             // 
             this.voegVerzorgerToeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.voegVerzorgerToeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.voegVerzorgerToeButton.Location = new System.Drawing.Point(591, 483);
             this.voegVerzorgerToeButton.Name = "voegVerzorgerToeButton";
             this.voegVerzorgerToeButton.Size = new System.Drawing.Size(175, 35);
             this.voegVerzorgerToeButton.TabIndex = 1;
             this.voegVerzorgerToeButton.Text = "Voeg verzorger toe";
-            this.voegVerzorgerToeButton.UseVisualStyleBackColor = true;
+            this.voegVerzorgerToeButton.UseVisualStyleBackColor = false;
             this.voegVerzorgerToeButton.Click += new System.EventHandler(this.voegVerzorgerToeButton_Click);
             // 
             // verzorgerDataGridView
@@ -161,23 +163,25 @@
             // voegVragenlijstButton
             // 
             this.voegVragenlijstButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.voegVragenlijstButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.voegVragenlijstButton.Location = new System.Drawing.Point(6, 486);
             this.voegVragenlijstButton.Name = "voegVragenlijstButton";
             this.voegVragenlijstButton.Size = new System.Drawing.Size(175, 35);
             this.voegVragenlijstButton.TabIndex = 2;
             this.voegVragenlijstButton.Text = "Vragenlijst aanmaken";
-            this.voegVragenlijstButton.UseVisualStyleBackColor = true;
+            this.voegVragenlijstButton.UseVisualStyleBackColor = false;
             this.voegVragenlijstButton.Click += new System.EventHandler(this.voegVragenlijstButton_Click);
             // 
             // detailsButton
             // 
             this.detailsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.detailsButton.Location = new System.Drawing.Point(616, 486);
+            this.detailsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.detailsButton.Location = new System.Drawing.Point(589, 486);
             this.detailsButton.Name = "detailsButton";
-            this.detailsButton.Size = new System.Drawing.Size(150, 35);
+            this.detailsButton.Size = new System.Drawing.Size(177, 35);
             this.detailsButton.TabIndex = 1;
-            this.detailsButton.Text = "Meer informatie";
-            this.detailsButton.UseVisualStyleBackColor = true;
+            this.detailsButton.Text = "Vragenlijst bewerken";
+            this.detailsButton.UseVisualStyleBackColor = false;
             this.detailsButton.Click += new System.EventHandler(this.detailsButton_Click);
             // 
             // vragenlijstDataGridView
@@ -217,12 +221,13 @@
             // rapportDetailButton
             // 
             this.rapportDetailButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.rapportDetailButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.rapportDetailButton.Location = new System.Drawing.Point(619, 485);
             this.rapportDetailButton.Name = "rapportDetailButton";
             this.rapportDetailButton.Size = new System.Drawing.Size(150, 35);
             this.rapportDetailButton.TabIndex = 0;
             this.rapportDetailButton.Text = "Meer informatie";
-            this.rapportDetailButton.UseVisualStyleBackColor = true;
+            this.rapportDetailButton.UseVisualStyleBackColor = false;
             this.rapportDetailButton.Click += new System.EventHandler(this.rapportDetailButton_Click);
             // 
             // BeheerForm
