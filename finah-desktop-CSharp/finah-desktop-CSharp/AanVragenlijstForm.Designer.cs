@@ -50,10 +50,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.idLabel = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.idLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.vragenDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toeVragenDataGridView)).BeginInit();
@@ -284,8 +284,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Algemeen";
             // 
+            // idLabel
+            // 
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(143, 33);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(24, 20);
+            this.idLabel.TabIndex = 5;
+            this.idLabel.Text = "fff";
+            // 
             // tabPage1
             // 
+            this.tabPage1.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
+            this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox2);
@@ -323,15 +334,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(781, 505);
             this.tabControl1.TabIndex = 2;
-            // 
-            // idLabel
-            // 
-            this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(143, 33);
-            this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(24, 20);
-            this.idLabel.TabIndex = 5;
-            this.idLabel.Text = "fff";
             // 
             // AanVragenlijstForm
             // 
