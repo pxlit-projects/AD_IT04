@@ -58,8 +58,8 @@ namespace finah_desktop_CSharp
         //    }
         //    else if (openForm == 1) //dokter : open beheerform
         //    {
-        //        Form form = new BeheerForm();
-        //        form.ShowDialog();
+               Form form = new BeheerForm();
+               form.ShowDialog();
         //    }
         //    else if (openForm == 2) //verzorger/patient : open vragenlijstform
         //    {

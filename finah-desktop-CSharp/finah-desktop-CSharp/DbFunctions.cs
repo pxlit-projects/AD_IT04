@@ -102,7 +102,16 @@ namespace finah_desktop_CSharp
 
         public List<Rapport> loadRapport()
         {
-            return getRapport("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
+            List<Rapport> list = new List<Rapport>();
+            //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;
+            IEnumerable<Rapport> rapport = getRapport("http://finahweb.azurewebsites.net/api/rapport").Result;
+
+            foreach (Rapport test in rapport)
+            {
+                list.Add(test);
+            }
+            return list;
+           // return getRapport("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
         }
 
         private Task<IEnumerable<Rapport>> getRapport(string baseUrl)

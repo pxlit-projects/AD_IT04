@@ -9,7 +9,6 @@ namespace finah_desktop_CSharp
 {
     public class Patientmantelzorger
     {
-         [DisplayName("ID")]
         public int Id { get; set; }
         public String Vnaam { get; set; }
         public String Anaam { get; set; }

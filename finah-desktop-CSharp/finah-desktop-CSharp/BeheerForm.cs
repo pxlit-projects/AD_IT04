@@ -18,7 +18,7 @@ namespace finah_desktop_CSharp
 
         private List<Patientmantelzorger> patientenList = new List<Patientmantelzorger>();
         private List<Patientmantelzorger> verzorgerList = new List<Patientmantelzorger>();
-        private List<Rapport> rapportList = new List<Rapport>();
+        private IEnumerable<Rapport> rapportList;
         private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
 
         public BeheerForm()
@@ -28,10 +28,11 @@ namespace finah_desktop_CSharp
 
         private void BeheerForm_Load(object sender, EventArgs e)
         {
-            patientenList = dbfunctions.loadPatienten();
-            patientDataGridView.DataSource = patientenList;
+            //patientenList = dbfunctions.loadPatienten();
+           patientDataGridView.DataSource = patientenList;
 
-            verzorgerList = dbfunctions.loadVerzorger();
+
+            //verzorgerList = dbfunctions.loadVerzorger();
             verzorgerDataGridView.DataSource = verzorgerList;
             verzorgerDataGridView.Columns["Verzorger"].Visible = false;
             verzorgerDataGridView.Columns["Dokter_Id"].Visible = false;
