@@ -21,32 +21,11 @@ namespace finah_desktop_CSharp
             InitializeComponent();
         }
 
-        public class inlogGegevens {
-            private String email;
-            private String password;
-            private String returnUrl;
-
-            public inlogGegevens(String email, String password, String returnUrl)
-            {
-                this.email = email;
-                this.password = password;
-                this.returnUrl = returnUrl;
-            }
-        }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
             string username = gebruikersTextBox.Text;
             string password = wwTextBox.Text;
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
-            
-
-
-            var gegevens = new inlogGegevens("jan.schoefs@gmail.com", "P@ssw0rd", "iets");
-
-            
 
         //    int openForm = 1;
 
