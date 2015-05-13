@@ -54,7 +54,7 @@ namespace finah_desktop_CSharp
 
         //    if (openForm == 0)  //verkeerde gebruikersnaam of wachtwoord
         //    {
-        //        MessageBox.Show("U heeft een verkeerde gebruikernaam of wachtwoord ingegeven");
+        //        MessageBox.Show("U heeft een verkeerde gebruikersnaam of wachtwoord ingegeven");
         //    }
         //    else if (openForm == 1) //dokter : open beheerform
         //    {
@@ -68,7 +68,7 @@ namespace finah_desktop_CSharp
         //    }
         //    else
         //    {
-        //        MessageBox.Show("Er is een fout opgestreden bij het verbinding maken met de server");
+        //        MessageBox.Show("Er is een fout opgetreden bij het verbinding maken met de server");
         //    }
 
         //}
