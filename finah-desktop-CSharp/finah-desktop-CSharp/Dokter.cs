@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace finah_desktop_CSharp
 {
-    class Dokter
+    public class Dokter
     {
         public int Id { get; set; }
 

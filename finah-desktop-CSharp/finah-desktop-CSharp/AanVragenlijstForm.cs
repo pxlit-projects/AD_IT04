@@ -88,7 +88,7 @@ namespace finah_desktop_CSharp
 
         private void toevoegButton_Click(object sender, EventArgs e)
         {
-           toeVragenDataGridView.Rows.Add(vragenDataGridView.SelectedRows).ToString();
+           toeVragenDataGridView.Rows.Add(vragenDataGridView.SelectedRows);
         }
 
         private void verwijderButton_Click(object sender, EventArgs e)

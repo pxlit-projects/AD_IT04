@@ -105,6 +105,7 @@
     <Compile Include="BeheerForm.Designer.cs">
       <DependentUpon>BeheerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DbFunctions.cs" />
     <Compile Include="Dokter.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
