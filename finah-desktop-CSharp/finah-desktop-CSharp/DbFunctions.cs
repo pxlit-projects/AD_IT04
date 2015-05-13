@@ -154,5 +154,17 @@ namespace finah_desktop_CSharp
 
             return response.Result.Content.ReadAsAsync<Vragenlijst>().Result.Id;
         }
+
+        public void postVraag(Vraag vraag)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = client.PostAsJsonAsync("api/vraag", vraag);
+
+            System.Diagnostics.Debug.WriteLine(response.Result);
+        }
     }
 }
