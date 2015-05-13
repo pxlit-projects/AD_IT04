@@ -23,7 +23,10 @@ namespace finah_desktop_CSharp
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            
+            string username = gebruikersTextBox.Text;
+            string password = wwTextBox.Text;
+
+
         //    int openForm = 1;
 
         //    //openForm =                de gebruikersnaam, wachtwoord en type gebruiker worden opgevraagd en vergeleken
