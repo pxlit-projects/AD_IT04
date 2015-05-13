@@ -65,57 +65,62 @@
             // 
             // opslaanButton
             // 
+            this.opslaanButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.opslaanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opslaanButton.Location = new System.Drawing.Point(653, 512);
             this.opslaanButton.Name = "opslaanButton";
             this.opslaanButton.Size = new System.Drawing.Size(120, 35);
             this.opslaanButton.TabIndex = 3;
             this.opslaanButton.Text = "Opslaan";
-            this.opslaanButton.UseVisualStyleBackColor = true;
+            this.opslaanButton.UseVisualStyleBackColor = false;
             this.opslaanButton.Click += new System.EventHandler(this.opslaanButton_Click);
             // 
             // nieuwButton
             // 
             this.nieuwButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.nieuwButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.nieuwButton.Location = new System.Drawing.Point(288, 339);
             this.nieuwButton.Name = "nieuwButton";
             this.nieuwButton.Size = new System.Drawing.Size(100, 35);
             this.nieuwButton.TabIndex = 7;
             this.nieuwButton.Text = "Nieuw";
-            this.nieuwButton.UseVisualStyleBackColor = true;
+            this.nieuwButton.UseVisualStyleBackColor = false;
             this.nieuwButton.Click += new System.EventHandler(this.nieuwButton_Click);
             // 
             // bewerkButton
             // 
             this.bewerkButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.bewerkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.bewerkButton.Location = new System.Drawing.Point(288, 380);
             this.bewerkButton.Name = "bewerkButton";
             this.bewerkButton.Size = new System.Drawing.Size(100, 35);
             this.bewerkButton.TabIndex = 6;
             this.bewerkButton.Text = "Bewerken";
-            this.bewerkButton.UseVisualStyleBackColor = true;
+            this.bewerkButton.UseVisualStyleBackColor = false;
             this.bewerkButton.Click += new System.EventHandler(this.bewerkButton_Click);
             // 
             // verwijderButton
             // 
             this.verwijderButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.verwijderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.verwijderButton.Location = new System.Drawing.Point(288, 188);
             this.verwijderButton.Name = "verwijderButton";
             this.verwijderButton.Size = new System.Drawing.Size(100, 35);
             this.verwijderButton.TabIndex = 5;
             this.verwijderButton.Text = "Verwijderen";
-            this.verwijderButton.UseVisualStyleBackColor = true;
+            this.verwijderButton.UseVisualStyleBackColor = false;
             this.verwijderButton.Click += new System.EventHandler(this.verwijderButton_Click);
             // 
             // toevoegButton
             // 
             this.toevoegButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.toevoegButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.toevoegButton.Location = new System.Drawing.Point(288, 147);
             this.toevoegButton.Name = "toevoegButton";
             this.toevoegButton.Size = new System.Drawing.Size(100, 35);
             this.toevoegButton.TabIndex = 4;
             this.toevoegButton.Text = "Toevoegen";
-            this.toevoegButton.UseVisualStyleBackColor = true;
+            this.toevoegButton.UseVisualStyleBackColor = false;
             this.toevoegButton.Click += new System.EventHandler(this.toevoegButton_Click);
             // 
             // vragenDataGridView
@@ -146,6 +151,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
+            this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabPage2.Controls.Add(this.nieuwButton);
             this.tabPage2.Controls.Add(this.bewerkButton);
             this.tabPage2.Controls.Add(this.verwijderButton);
@@ -339,6 +346,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.opslaanButton);
             this.Controls.Add(this.tabControl1);
