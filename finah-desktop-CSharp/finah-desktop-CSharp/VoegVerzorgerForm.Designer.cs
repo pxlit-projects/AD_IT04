@@ -39,13 +39,14 @@
             // 
             // voegVerzorgerButton
             // 
+            this.voegVerzorgerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.voegVerzorgerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.voegVerzorgerButton.Location = new System.Drawing.Point(242, 113);
             this.voegVerzorgerButton.Name = "voegVerzorgerButton";
             this.voegVerzorgerButton.Size = new System.Drawing.Size(130, 30);
             this.voegVerzorgerButton.TabIndex = 13;
             this.voegVerzorgerButton.Text = "Toevoegen";
-            this.voegVerzorgerButton.UseVisualStyleBackColor = true;
+            this.voegVerzorgerButton.UseVisualStyleBackColor = false;
             this.voegVerzorgerButton.Click += new System.EventHandler(this.voegVerzorgerButton_Click);
             // 
             // emailTextBox
@@ -72,6 +73,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(12, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
@@ -81,6 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(12, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
@@ -90,6 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
@@ -100,6 +104,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(384, 161);
             this.Controls.Add(this.voegVerzorgerButton);
             this.Controls.Add(this.emailTextBox);

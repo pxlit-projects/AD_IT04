@@ -41,6 +41,7 @@
             this.gebruikersTextBox.Name = "gebruikersTextBox";
             this.gebruikersTextBox.Size = new System.Drawing.Size(229, 20);
             this.gebruikersTextBox.TabIndex = 10;
+            this.gebruikersTextBox.Text = "email";
             // 
             // wwTextBox
             // 
@@ -48,6 +49,7 @@
             this.wwTextBox.Name = "wwTextBox";
             this.wwTextBox.Size = new System.Drawing.Size(229, 20);
             this.wwTextBox.TabIndex = 9;
+            this.wwTextBox.Text = "wachtwoord";
             // 
             // label2
             // 
