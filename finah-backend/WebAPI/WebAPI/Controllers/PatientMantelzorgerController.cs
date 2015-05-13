@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,6 +17,12 @@ namespace WebAPI.Controllers
     public class PatientMantelzorgerController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private UserManager<ApplicationUser> manager;
+
+        public PatientMantelzorgerController()
+        {
+            manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+        }
 
         // GET: api/PatientMantelzorger
         [Route("api/patientmantelzorger/{verzorger}")]
@@ -81,6 +89,10 @@ namespace WebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            var user = new ApplicationUser { UserName = patientMantelzorger.Email, Email = patientMantelzorger.Email };
+            manager.Create(user, "P@ssw0rd");
+            manager.AddToRole(user.Id, "PatientMantelzorger");
 
             db.PatientMantelzorgers.Add(patientMantelzorger);
             db.SaveChanges();
