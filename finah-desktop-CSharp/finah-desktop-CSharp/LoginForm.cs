@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using Newtonsoft.Json;
+using System.Net.Http;
+
 
 
 namespace finah_desktop_CSharp
@@ -21,7 +23,7 @@ namespace finah_desktop_CSharp
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("");
+            
         //    int openForm = 1;
 
         //    //openForm =                de gebruikersnaam, wachtwoord en type gebruiker worden opgevraagd en vergeleken
@@ -54,6 +56,6 @@ namespace finah_desktop_CSharp
 
 
         //    return result;
-        //}
+        }
     }
 }
