@@ -48,8 +48,15 @@ public class JavaJFrameApplication {
         }
         };
         
+        private JTable vraagTabel = new JTable(250,2){
+        	public boolean isCellEditable(int row, int column) {                
+                return false;               
+        }
+        };
+        
         private JScrollPane patientPane=new JScrollPane(patientTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         private JScrollPane rapportPane =new JScrollPane(rapportTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        private JScrollPane vraagPane=new JScrollPane(vraagTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         private JButton jButton = new JButton("Voeg patient toe");
         private JButton button = new JButton("Test");
         
@@ -98,27 +105,18 @@ public class JavaJFrameApplication {
             
              
             JPanel jPaneC = new JPanel();
-            JButton buttonExit = new JButton("Exit button on Tab C");
-            buttonExit.addActionListener(new ActionListener(){
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
- 
-                
- 
-            });
+            vraagTabel.getColumnModel().getColumn(0).setHeaderValue("Vragenlijst");
+            vraagTabel.getColumnModel().getColumn(1).setHeaderValue("ID");
+            jPaneC.add(vraagPane);
             
             menuBar.add(fileMenu);
             fileMenu.add(inloggen);
             fileMenu.add(uitloggen);
-            jPaneC.add(buttonExit);
+           
              
-            jTabbedPane.addTab("Tab A", jPaneA);
-            jTabbedPane.addTab("Tab B", jPaneB);
-            jTabbedPane.addTab("Tab C", jPaneC);
+            jTabbedPane.addTab("Patiënt", jPaneA);
+            jTabbedPane.addTab("Rapport", jPaneB);
+            jTabbedPane.addTab("Vragenlijst", jPaneC);
              
             add(menuBar,BorderLayout.NORTH);
             add(jTabbedPane,BorderLayout.CENTER);

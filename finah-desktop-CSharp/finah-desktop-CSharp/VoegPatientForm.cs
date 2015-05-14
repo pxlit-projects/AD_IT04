@@ -16,51 +16,43 @@ namespace finah_desktop_CSharp
     {
         private List<Patientmantelzorger> list;
         private DataGridView datagrid;
+        private int dokter_Id;
+        private DbFunctions dbfunctions;
 
-        public VoegPatientForm(ref List<Patientmantelzorger> list, DataGridView datagrid)
+        public VoegPatientForm(ref List<Patientmantelzorger> list, DataGridView datagrid, int dokter_Id)
         {
             InitializeComponent();
             this.list = list;
             this.datagrid = datagrid;
-
-            int idd= 0;
-
-            foreach (Patientmantelzorger id in list)
-	        {
-		         if(id.Id > idd)
-                    {
-                    idd = id.Id;
-                }
-	        }
-            idd+=1;
-            idTextBox.Text = idd.ToString();
+            this.dokter_Id = dokter_Id;
+            dbfunctions = new DbFunctions();
         }
 
         private void voegPatientButton_Click(object sender, EventArgs e)
         {
             Patientmantelzorger patient = new Patientmantelzorger();
 
-            patient.Id = Convert.ToInt32(idTextBox.Text);
             patient.Vnaam = voornaamTextBox.Text;
             patient.Anaam = naamTextBox.Text;
             patient.Email = emailTextBox.Text;
+            patient.Verzorger = false;
+            patient.Dokter_Id = dokter_Id;
 
             list.Add(patient);
-            
 
-            //toevoegen aan database
+            // Met deze functie wordt de patient toegevoegd aan de database
+            dbfunctions.postPatient(patient);
 
             this.Close();
-
         }
 
         private void VoegPatientForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             datagrid.DataSource = null;
             datagrid.DataSource = list;
+            datagrid.Columns["Id"].Visible = false;
             datagrid.Columns["Verzorger"].Visible = false;
             datagrid.Columns["Dokter_Id"].Visible = false;
-
         }
 
     }

@@ -87,21 +87,16 @@ namespace WebAPI.Controllers
 
                     if (returnUrl != null)
                     {
-                        var currentUser = manager.FindById(User.Identity.GetUserId());
-
-                        var dokterId = 0;
-                        if (currentUser != null)
-                        {
-                            dokterId = db.Dokters
-                           .Where(r => r.Email == currentUser.Email)
+                        var dokterId = db.Dokters
+                           .Where(r => r.Email == model.Email)
                            .Select(r => r.Id)
                            .FirstOrDefault();
-                        }
 
                         return Json(dokterId);
                     }
 
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

@@ -9,9 +9,10 @@ namespace finah_desktop_CSharp
      public class Rapport
     {
         public int Id { get; set; }
-        public int MantelzorgerId { get; set; }
+        public int Patient_Id { get; set; }
+        public int Mantelzorger_Id { get; set; }
         public DateTime Date { get; set; }
-        public int VragenlijstId { get; set; }
+        public int Vragenlijst_Id { get; set; }
 
         /*private int id; 
         private int patientId;

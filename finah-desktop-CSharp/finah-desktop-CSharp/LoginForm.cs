@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Runtime.Serialization;
+using System.Net.Http.Headers;
 
 
 
@@ -16,70 +18,66 @@ namespace finah_desktop_CSharp
 {
     public partial class LoginForm : Form
     {
+        private DbFunctions dbfunctions;
+
         public LoginForm()
         {
             InitializeComponent();
-        }
-
-        public class inlogGegevens {
-            private String email;
-            private String password;
-            private String returnUrl;
-
-            public inlogGegevens(String email, String password, String returnUrl)
-            {
-                this.email = email;
-                this.password = password;
-                this.returnUrl = returnUrl;
-            }
+            dbfunctions = new DbFunctions();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string username = gebruikersTextBox.Text;
+            string email = gebruikersTextBox.Text;
             string password = wwTextBox.Text;
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
-            
 
+            var loginGegevens = new LoginGegevens() { Email = email, Password = password, returnUrl = "Hier moet gewoon iets staan maakt niet uit wat" };
 
-            var gegevens = new inlogGegevens("jan.schoefs@gmail.com", "P@ssw0rd", "iets");
+            int dokter_Id = login(loginGegevens);
 
-            
+            if (dokter_Id != 0)
+            {
+                Form form = new BeheerForm(dokter_Id);
+                form.ShowDialog();
+            }
+            else
+            {
 
-        //    int openForm = 1;
-
-        //    //openForm =                de gebruikersnaam, wachtwoord en type gebruiker worden opgevraagd en vergeleken
-
-        //    if (openForm == 0)  //verkeerde gebruikersnaam of wachtwoord
-        //    {
-        //        MessageBox.Show("U heeft een verkeerde gebruikersnaam of wachtwoord ingegeven");
-        //    }
-        //    else if (openForm == 1) //dokter : open beheerform
-        //    {
-               Form form = new BeheerForm();
-               form.ShowDialog();
-        //    }
-        //    else if (openForm == 2) //verzorger/patient : open vragenlijstform
-        //    {
-        //        Form form = new VragenlijstForm();
-        //        form.ShowDialog();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Er is een fout opgetreden bij het verbinding maken met de server");
-        //    }
-
-        //}
-
-        //private int CheckUser(string gebruikersnaam, string wachtwoord)
-        //{
-        //    int result = 0;
-
-
-
-        //    return result;
+            }
         }
+
+        public int login(LoginGegevens loginGegevens)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://finahweb.azurewebsites.net/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = client.PostAsJsonAsync("account/login", loginGegevens);
+
+            try
+            {
+                return response.Result.Content.ReadAsAsync<int>().Result;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+    }
+
+    public class LoginGegevens
+    {
+        [DataMember]
+        public String Email;
+
+        [DataMember]
+        public String Password;
+
+        [DataMember]
+        public String returnUrl;
     }
 }
