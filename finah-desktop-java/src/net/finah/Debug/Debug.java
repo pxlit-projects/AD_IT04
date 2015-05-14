@@ -18,7 +18,7 @@ public class Debug {
 	 * @param message The message to log
 	 */
 	public static void log(String message){
-		writer(message, "stdinfo");
+		write(message, "stdinfo");
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class Debug {
 	 * @param message The message to log
 	 */
 	public static void err(String message){
-		writer(message, "stderr");
+		write(message, "stderr");
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class Debug {
 	 * @param message
 	 * @param location
 	 */
-	private static void writer(String message, String location){
+	public static void write(String message, String location){
 		writer(message, location, "");
 	}
 

@@ -20,6 +20,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import net.finah.Debug.Debug;
 
 /**
@@ -29,12 +32,15 @@ import net.finah.Debug.Debug;
  */
 //TODO: Makes sure all the URL's make sense
 public class API {
+	private static final Log log =
+		LogFactory.getLog(API.class);
+
 
 	private static ObjectMapper mapper;
 	private static ObjectWriter writer;
 	private static URL remote;
-	private static int ID;
-	private static int lastID;
+	private static int dokterID,lastID;
+	private static Login loginData;
 
 
 	/**
@@ -48,6 +54,34 @@ public class API {
 			writer = mapper.writer();
 			syncLastID();
 		}
+		try{
+			//login();
+		}catch(Exception e){
+			Debug.err(e.getMessage());
+		}
+	}
+	public static void setLogin(Login data){
+		loginData = data;
+		Debug.log("set loginData:" + loginData.toString());
+	}
+
+	public static void login(URL loc) throws Exception{
+		//Debug.log("Current loginData: " + loginData.toString());
+		if(loginData == null)
+			throw new Exception("Username and password need to be set");
+		String json = writer.writeValueAsString(loginData);
+		Debug.log(json);
+		String response = putData(json, loc).replace("\n","");
+		Debug.write(":" + response + ":", "login-response");
+
+		try{
+			dokterID = Integer.parseInt(response);
+		}catch(NumberFormatException e){
+			Debug.log("Login failed");
+			dokterID = 0;
+		}
+		Debug.log("dokter ID:" + dokterID);
+
 	}
 
 	/**
@@ -174,7 +208,7 @@ public class API {
 		Debug.log("Writing 'vragenlijst'");
 		URL loc = new URL(remote + "vraag/");
 		init();
-		writeVragenlijst(new Vragenlijst("vragenlijst " + id, 1 ));
+		writeVragenlijst(new Vragenlijst("vragenlijst " + id, dokterID ));
 		syncLastID();
 		Debug.log("Writing each 'Vraag'");
 		for(Vraag vraag : list){
@@ -234,12 +268,14 @@ public class API {
 		OutputStream out = httpcon.getOutputStream();
 		out.write(json.getBytes());
 		out.flush();
-		if (httpcon.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
-			Debug.err("Wrong response code:" + httpcon.getResponseCode() + " from: "+ loc.toString() );
+		int respc = httpcon.getResponseCode();
+		Debug.log("response code:" + respc);
+		if (respc != HttpURLConnection.HTTP_CREATED && respc != 200) {
+			Debug.err("Wrong response code:" + respc + " from: "+ loc.toString() );
 			throw new IOException("Connection Failed");
 		}
 		out.close();
-		Debug.log("data transfer completed");
+		Debug.log("JSON transfered: " + json, "putdata-transfer");
 
 		Debug.log("Receiving response");
 		BufferedReader br = new BufferedReader( new InputStreamReader( httpcon.getInputStream()));
@@ -254,7 +290,7 @@ public class API {
 		br.close();
 		httpcon.disconnect();
 
-		Debug.log("response: " + sb.toString());
+		//Debug.log("response: " + sb.toString(), "putdata-response");
 		return sb.toString();
 	}
 

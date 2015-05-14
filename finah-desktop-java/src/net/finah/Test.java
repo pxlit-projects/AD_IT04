@@ -3,6 +3,7 @@ package net.finah;
 
 import java.util.ArrayList;
 import java.io.IOException;
+import java.net.URL;
 
 import net.finah.API.*;
 import net.finah.Debug.Debug;
@@ -22,7 +23,14 @@ public class Test {
 			for(Vraag vraag: lijst1){
 				vraag.setVragenLijst_Id(2);
 			}
-			API.writeVragenLijst(lijst1,2);
+			//disabled om te vermijden dat de API vol zou geraken
+			//API.writeVragenLijst(lijst1,2);
+			API.setLogin(new Login("jan.schoefs@gmail.com","P@ssw0rd"));
+			try{
+				API.login(new URL("http://finahweb.azurewebsites.net/account/login"));
+			}catch(Exception e){
+				Debug.log("Login Failed: " + e.getMessage() +".");
+			}
 			System.out.println("Done");
 		} catch (IOException e) {
 			Debug.err(e.getMessage());
