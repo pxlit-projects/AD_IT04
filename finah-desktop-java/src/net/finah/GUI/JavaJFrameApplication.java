@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -20,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.TableCellRenderer;
 
 import org.apache.pdfbox.exceptions.COSVisitorException;
@@ -28,6 +32,10 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import net.finah.API.API;
+import net.finah.API.Login;
+import net.finah.Debug.*;
 
 public class JavaJFrameApplication {
      
@@ -73,7 +81,7 @@ public class JavaJFrameApplication {
             inloggen.addActionListener(new ActionListener(){
             	 @Override
                  public void actionPerformed(ActionEvent e) {
-             		login.setSize(400,200);
+             		login.setSize(400,300);
              		login.setVisible(true);
                  }
             });
@@ -129,16 +137,35 @@ public class JavaJFrameApplication {
     public static void main(String[] args) {
          
     
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} 
+		catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			Debug.log("Unable to change the UI to the system UI");
+		}
           
                 JFrame mainJFrame = new JFrame();
                 mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 mainJFrame.setTitle("test");
-                mainJFrame.setSize(600, 700);
+                mainJFrame.setSize(800, 600);
  
                 MyTabJPanel myTabJPanel = new MyTabJPanel();
                 mainJFrame.add(myTabJPanel);
                 mainJFrame.setVisible(true);
-            
-        
+		try {
+			API.setURL("http://finahweb.azurewebsites.net/api/");
+		} catch (Exception e) {
+			Debug.err(e.getStackTrace().toString());
+		}
+
+		try{
+			Login test = new Login("jan.schoefs@gmail.com","P@ssw0rd"); 
+			API.setLogin(test);
+			API.login(new URL("http://finahweb.azurewebsites.net/account/login"));
+		}catch(Exception e){
+			Debug.err("Could not insert 'cached' values: " +e.toString());
+			e.printStackTrace();
+		}
+
     }
 }

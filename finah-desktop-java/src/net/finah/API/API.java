@@ -66,9 +66,12 @@ public class API {
 	}
 
 	public static void login(URL loc) throws Exception{
-		//Debug.log("Current loginData: " + loginData.toString());
+		Debug.log("Current loginData: " + loginData.toString());
+		//init();
 		if(loginData == null)
 			throw new Exception("Username and password need to be set");
+		if(writer == null)
+			throw new Exception("HOW THE FUCK DOES THIS EVEN HAPPEN?");
 		String json = writer.writeValueAsString(loginData);
 		Debug.log(json);
 		String response = putData(json, loc).replace("\n","");
@@ -309,5 +312,9 @@ public class API {
 			Debug.log(lastID + "");
 		}catch(IOException e){
 		}
+	}
+
+	public static Login getLogin(){
+		return loginData;
 	}
 }

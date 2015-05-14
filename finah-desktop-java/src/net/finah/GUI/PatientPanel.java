@@ -63,7 +63,7 @@ public class PatientPanel extends JFrame {
 
 	public static void main(String[] args) {
 		PatientPanel panel = new PatientPanel();
-		panel.setSize(400,300);
+		panel.setSize(800,600);
  		panel.setVisible(true);
 		
 
