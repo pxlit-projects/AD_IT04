@@ -201,6 +201,32 @@ namespace finah_desktop_CSharp
             });
         }
 
+
+        public List<Vraag> getVragelijst(int vragenlijstId)
+        {
+            return getvragenId("http://finahweb.azurewebsites.net/api/vraag/" + vragenlijstId).Result.ToList();
+        }
+
+        private Task<IEnumerable<Vraag>> getvragenId(string baseUrl)
+        {
+            var client = new HttpClient();
+            var task = client.GetStringAsync(baseUrl);
+
+            return task.ContinueWith<IEnumerable<Vraag>>(innerTask =>
+            {
+                try
+                {
+                    var json = innerTask.Result;
+                    return JsonConvert.DeserializeObject<Vraag[]>(json);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            });
+        }
+
         /* private void loadVragen(int vragenlijstId)
          {
              //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;

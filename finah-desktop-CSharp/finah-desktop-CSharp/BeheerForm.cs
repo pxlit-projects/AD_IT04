@@ -77,7 +77,7 @@ namespace finah_desktop_CSharp
 
         private void voegVragenlijstButton_Click(object sender, EventArgs e)
         {
-            Form vragenlijstForm = new AanVragenlijstForm(vragenlijstDataGridView);
+            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientenList, verzorgerList, vragenlijstDataGridView);
             vragenlijstForm.ShowDialog();
         }
 
@@ -89,7 +89,13 @@ namespace finah_desktop_CSharp
 
         private void detailsButton_Click(object sender, EventArgs e)
         {
-            Form vragenlijstForm = new AanVragenlijstForm(1, vragenlijstDataGridView);
+            int id;
+
+            id = Convert.ToInt32(vragenlijstDataGridView.SelectedCells[0].Value.ToString());
+            Console.WriteLine(id);
+
+
+            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientenList, verzorgerList, vragenlijstDataGridView, id);
             vragenlijstForm.ShowDialog();
         }
     }

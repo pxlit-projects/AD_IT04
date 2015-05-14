@@ -17,36 +17,60 @@ namespace finah_desktop_CSharp
         private DataGridView datagrid;
         private DbFunctions dbfunctions = new DbFunctions();
         private List<Vraag> toeVragenList = new List<Vraag>();
+        private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
+        private List<Patientmantelzorger> patientList = new List<Patientmantelzorger>();
+        private List<Patientmantelzorger> verzorgerList = new List<Patientmantelzorger>();
 
-        public AanVragenlijstForm(DataGridView datagrid)
+        public AanVragenlijstForm(ref List<Vragenlijst> list, List<Patientmantelzorger> patient, List<Patientmantelzorger> verzorger, DataGridView datagrid)
         {
             InitializeComponent();
 
             toeVragenDataGridView.Columns.Add("Beschrijving", "Beschrijving");
 
             this.datagrid = datagrid;
+            vragenlijstList = list;
 
-            toeVragenList = dbfunctions.loadVragen();
-            toeVragenDataGridView.DataSource = toeVragenList;
-            toeVragenDataGridView.Columns["Verzorger"].Visible = false;
-            toeVragenDataGridView.Columns["Dokter_Id"].Visible = false;
+            int idd = 0;
+
+            foreach (Vragenlijst id in list)
+            {
+                if (id.Id > idd)
+                {
+                    idd = id.Id;
+                }
+            }
+            idd += 1;
+            idLabel.Text = idd.ToString();
+
+            foreach (Patientmantelzorger pat in patientList)
+            {
+                clientComboBox.Items.Add(pat.Vnaam.ToString());
+            }
+
        }
 
-        public AanVragenlijstForm(int vragenID, DataGridView datagrid) 
+        public AanVragenlijstForm(ref List<Vragenlijst> list, List<Patientmantelzorger> patient, List<Patientmantelzorger> verzorger, DataGridView datagrid, int vragenID) 
         {
             InitializeComponent();
 
-            IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenID).Result;
-            toeVragenDataGridView.DataSource = vragen;
-            List<Vraag> list = vragen.ToList();
+            toeVragenList = dbfunctions.loadVragen();
+            toeVragenDataGridView.DataSource = toeVragenList;
+            //toeVragenDataGridView.Columns["Verzorger"].Visible = false;
+            //toeVragenDataGridView.Columns["Dokter_Id"].Visible = false;
 
             this.datagrid = datagrid;
+
+            idLabel.Text = vragenID.ToString();
+
 
         }
 
         private void AanVragenlijstForm_Load(object sender, EventArgs e)
         {
-            //vragenDataGridView.DataSource = API.DB.getVragen();
+
+
+
+          /*  //vragenDataGridView.DataSource = API.DB.getVragen();
 
             //int vragenlijstId = 1;
 
@@ -60,11 +84,11 @@ namespace finah_desktop_CSharp
                 Console.WriteLine("VraagId: " + vraag.Id + "Beschrijving :" + vraag.Beschrijving);
 
                 
-            }
+            }*/
         }
 
 
-        public Task<IEnumerable<Vraag>> getVragenByVragenlijstId(int vragenlijstId)
+        /*public Task<IEnumerable<Vraag>> getVragenByVragenlijstId(int vragenlijstId)
         {
             string baseUrl = "http://finahweb.azurewebsites.net/api/vraag/" + vragenlijstId;
 
@@ -76,8 +100,8 @@ namespace finah_desktop_CSharp
                 var json = innerTask.Result;
                 return JsonConvert.DeserializeObject<Vraag[]>(json);
             });
-        }
-
+        }*/
+        
 
         public Task<IEnumerable<Vraag>> getVragen()
         {
