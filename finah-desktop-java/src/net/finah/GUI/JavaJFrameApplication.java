@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -35,137 +36,164 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import net.finah.API.API;
 import net.finah.API.Login;
+import net.finah.API.PatientVerzorger;
 import net.finah.Debug.*;
 
 public class JavaJFrameApplication {
-     
-    static public class MyTabJPanel extends JPanel {
-    	private JTabbedPane jTabbedPane = new JTabbedPane();
-        private JMenuBar menuBar = new JMenuBar();
-        private JMenu fileMenu = new JMenu("Login");
-        private JMenuItem inloggen = new JMenuItem("Inloggen");
-        private JMenuItem uitloggen = new JMenuItem("Uitloggen");
-        private JTable patientTabel = new JTable(250,3){
-        	public boolean isCellEditable(int row, int column) {                
-                return false;               
-        }
-        };
-        private JTable rapportTabel = new JTable(250,5){
-        	public boolean isCellEditable(int row, int column) {                
-                return false;               
-        }
-        };
-        
-        private JTable vraagTabel = new JTable(250,2){
-        	public boolean isCellEditable(int row, int column) {                
-                return false;               
-        }
-        };
-        
-        private JScrollPane patientPane=new JScrollPane(patientTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        private JScrollPane rapportPane =new JScrollPane(rapportTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        private JScrollPane vraagPane=new JScrollPane(vraagTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        private JButton jButton = new JButton("Voeg patient toe");
-        private JButton button = new JButton("Test");
-        
-        public MyTabJPanel(){
-            super(new BorderLayout());
-            LoginPanel login = new LoginPanel();
-            
-            JPanel jPaneA = new JPanel();
-            patientTabel.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
-            patientTabel.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
-            patientTabel.getColumnModel().getColumn(2).setHeaderValue("Email");
-            jPaneA.add(patientPane);
-            jPaneA.add(jButton);
-            inloggen.addActionListener(new ActionListener(){
-            	 @Override
-                 public void actionPerformed(ActionEvent e) {
-             		login.setSize(400,300);
-             		login.setVisible(true);
-                 }
-            });
-            
-             
-            JPanel jPaneB = new JPanel();
-            rapportTabel.getColumnModel().getColumn(0).setHeaderValue("Patient");
-            rapportTabel.getColumnModel().getColumn(1).setHeaderValue("Mantelzorger");
-            rapportTabel.getColumnModel().getColumn(2).setHeaderValue("Vragenlijst");
-            rapportTabel.getColumnModel().getColumn(3).setHeaderValue("Datum");
-            rapportTabel.getColumnModel().getColumn(4).setHeaderValue("ID");
-            jPaneB.add(rapportPane);
-            jPaneB.add(button);
-            button.addActionListener(new ActionListener(){
-           	 @Override
-             public void actionPerformed(ActionEvent e) {
-         		int rij = rapportTabel.getSelectedRow();
-         		int id= Integer.parseInt( rapportTabel.getValueAt(rij, 4).toString());
-				try {
-					PDF.test(id);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+
+	static public class MyTabJPanel extends JPanel {
+		private JTabbedPane jTabbedPane = new JTabbedPane();
+		private JMenuBar menuBar = new JMenuBar();
+		private JMenu fileMenu = new JMenu("Login");
+		private JMenuItem inloggen = new JMenuItem("Inloggen");
+		private JMenuItem uitloggen = new JMenuItem("Uitloggen");
+		private JTable patientTabel = new JTable(250, 3) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		private JTable rapportTabel = new JTable(250, 5) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		private JTable vraagTabel = new JTable(250, 2) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		private JScrollPane patientPane = new JScrollPane(patientTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JScrollPane rapportPane = new JScrollPane(rapportTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JScrollPane vraagPane = new JScrollPane(vraagTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JButton jButton = new JButton("Voeg patient toe");
+		private JButton button = new JButton("Test");
+
+		public MyTabJPanel() {
+			super(new BorderLayout());
+
+			LoginPanel login = new LoginPanel();
+
+			JPanel jPaneA = new JPanel();
+			patientTabel.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
+			patientTabel.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
+			patientTabel.getColumnModel().getColumn(2).setHeaderValue("Email");
+
+			jPaneA.add(patientPane);
+			jPaneA.add(jButton);
+			inloggen.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					login.setSize(400, 300);
+					login.setVisible(true);
 				}
-				
-         		//JOptionPane.showMessageDialog(null,rapportTabel.getModel().getValueAt(rij,4));
-             }
-        });
-            
-             
-            JPanel jPaneC = new JPanel();
-            vraagTabel.getColumnModel().getColumn(0).setHeaderValue("Vragenlijst");
-            vraagTabel.getColumnModel().getColumn(1).setHeaderValue("ID");
-            jPaneC.add(vraagPane);
-            
-            menuBar.add(fileMenu);
-            fileMenu.add(inloggen);
-            fileMenu.add(uitloggen);
-           
-             
-            jTabbedPane.addTab("Patiënt", jPaneA);
-            jTabbedPane.addTab("Rapport", jPaneB);
-            jTabbedPane.addTab("Vragenlijst", jPaneC);
-             
-            add(menuBar,BorderLayout.NORTH);
-            add(jTabbedPane,BorderLayout.CENTER);
-     
-            
-        }
-         
-    }
-     
-    public static void main(String[] args) {
-         
-    
+			});
+
+			JPanel jPaneB = new JPanel();
+			rapportTabel.getColumnModel().getColumn(0).setHeaderValue("Patient");
+			rapportTabel.getColumnModel().getColumn(1).setHeaderValue("Mantelzorger");
+			rapportTabel.getColumnModel().getColumn(2).setHeaderValue("Vragenlijst");
+			rapportTabel.getColumnModel().getColumn(3).setHeaderValue("Datum");
+			rapportTabel.getColumnModel().getColumn(4).setHeaderValue("ID");
+			jPaneB.add(rapportPane);
+			jPaneB.add(button);
+			button.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int rij = rapportTabel.getSelectedRow();
+					int id = Integer.parseInt(rapportTabel.getValueAt(rij, 4).toString());
+					try {
+						PDF.test(id);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+					// JOptionPane.showMessageDialog(null,rapportTabel.getModel().getValueAt(rij,4));
+				}
+			});
+
+			JPanel jPaneC = new JPanel();
+			vraagTabel.getColumnModel().getColumn(0).setHeaderValue("Vragenlijst");
+			vraagTabel.getColumnModel().getColumn(1).setHeaderValue("ID");
+			jPaneC.add(vraagPane);
+
+			menuBar.add(fileMenu);
+			fileMenu.add(inloggen);
+			fileMenu.add(uitloggen);
+
+			jTabbedPane.addTab("PatiÃ«nt", jPaneA);
+			jTabbedPane.addTab("Rapport", jPaneB);
+			jTabbedPane.addTab("Vragenlijst", jPaneC);
+
+			add(menuBar, BorderLayout.NORTH);
+			add(jTabbedPane, BorderLayout.CENTER);
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		API.init();
+
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} 
-		catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+		} catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			Debug.log("Unable to change the UI to the system UI");
 		}
-          
-                JFrame mainJFrame = new JFrame();
-                mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                mainJFrame.setTitle("test");
-                mainJFrame.setSize(800, 600);
- 
-                MyTabJPanel myTabJPanel = new MyTabJPanel();
-                mainJFrame.add(myTabJPanel);
-                mainJFrame.setVisible(true);
 		try {
 			API.setURL("http://finahweb.azurewebsites.net/api/");
 		} catch (Exception e) {
 			Debug.err(e.getStackTrace().toString());
 		}
 
-		try{
-			Login test = new Login("jan.schoefs@gmail.com","P@ssw0rd"); 
+		// TODO: fix set limit of 50
+		Object[][] rowdata = new Object[50][3];
+		try {
+			Debug.log("Patienten inladen");
+			ArrayList<PatientVerzorger> list = API.getPatientVerzoger();
+			int i = 0;
+			for (PatientVerzorger patientVerzorger : list) {
+				if (patientVerzorger.isPatient()) {
+					Debug.log("is een patient, voeg toe");
+					rowdata[i][0] = patientVerzorger.getVNaam();
+					rowdata[i][1] = patientVerzorger.getANaam();
+					rowdata[i][2] = patientVerzorger.getemail();
+
+					i++;
+				} else {
+					Debug.log("is een verzorger");
+				}
+			}
+			Debug.log("Klaar met laden van patienten");
+		} catch (IOException e2) {
+			Debug.log(" patienten: " + e2.getMessage());
+		}
+
+		Object[] columnnames = {"Voornaam", "achternaam", "email"};
+
+		//dit is een static function dus we kunnen niet aan die andere variables?
+		//patientTabel = new jtable(rowdata,columnnames);
+
+		JFrame mainJFrame = new JFrame();
+		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainJFrame.setTitle("test");
+		mainJFrame.setSize(800, 600);
+
+		MyTabJPanel myTabJPanel = new MyTabJPanel();
+		mainJFrame.add(myTabJPanel);
+		mainJFrame.setVisible(true);
+
+		try {
+			Login test = new Login("jan.schoefs@gmail.com", "P@ssw0rd");
 			API.setLogin(test);
 			API.login(new URL("http://finahweb.azurewebsites.net/account/login"));
-		}catch(Exception e){
-			Debug.err("Could not insert 'cached' values: " +e.toString());
+		} catch (Exception e) {
+			Debug.err("Could not insert 'cached' values: " + e.toString());
 			e.printStackTrace();
 		}
 
-    }
+	}
 }
