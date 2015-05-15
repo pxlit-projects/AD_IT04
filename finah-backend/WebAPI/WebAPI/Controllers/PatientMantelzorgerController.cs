@@ -33,6 +33,15 @@ namespace WebAPI.Controllers
             return Ok(model);
         }
 
+        // GET: api/PatientMantelzorger
+        [Route("api/patientmantelzorger/{dokter_Id}/{random}/{random2}")]
+        public IHttpActionResult GetPatientMantelzorgersByDokterId(int dokter_Id, int random, int random2)
+        {
+            var model = db.PatientMantelzorgers.Where(r => r.Dokter_Id == dokter_Id);
+
+            return Ok(model);
+        }
+
         // GET: api/PatientMantelzorger/5/true
         [Route("api/patientmantelzorger/{id}/{verzorger}")]
         [ResponseType(typeof(PatientMantelzorger))]
