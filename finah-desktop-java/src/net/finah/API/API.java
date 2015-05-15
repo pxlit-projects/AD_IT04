@@ -41,7 +41,7 @@ public class API {
 	private static ObjectMapper mapper;
 	private static ObjectWriter writer;
 	private static URL remote;
-	private static int dokterID,lastID;
+	private static int dokterID = 1 ,lastID;
 	private static Login loginData;
 
 
@@ -83,7 +83,7 @@ public class API {
 			dokterID = Integer.parseInt(response);
 		}catch(NumberFormatException e){
 			Debug.log("Login failed");
-			dokterID = 0;
+			dokterID = 1;
 		}
 		Debug.log("dokter ID:" + dokterID);
 
@@ -143,6 +143,14 @@ public class API {
 		ArrayList<Vraag> vragen = reader.readValue(loc);
 		return vragen;
 
+	}
+
+	public static ArrayList<PatientVerzorger> getPatientVerzoger() throws IOException{
+		URL loc = new URL(remote + "patientmantelzorger/" + dokterID + "/2/2");
+		init();
+		ObjectReader reader = mapper.reader(new TypeReference<ArrayList<PatientVerzorger>>(){});
+		ArrayList<PatientVerzorger> patientVerzorger = reader.readValue(loc);
+		return patientVerzorger;
 	}
 
 	/**
