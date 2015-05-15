@@ -45,7 +45,7 @@ namespace finah_desktop_CSharp
             }
             else
             {
-
+                MessageBox.Show("Gelieve het e-mailadres en wachtwoord in te vullen");
             }
         }
 

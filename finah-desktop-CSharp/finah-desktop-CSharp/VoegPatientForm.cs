@@ -41,7 +41,7 @@ namespace finah_desktop_CSharp
             list.Add(patient);
 
             // Met deze functie wordt de patient toegevoegd aan de database
-            dbfunctions.postPatient(patient);
+           // dbfunctions.postPatient(patient);
 
             this.Close();
         }

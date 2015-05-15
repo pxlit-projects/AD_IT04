@@ -86,6 +86,8 @@
             // 
             // patientDataGridView
             // 
+            this.patientDataGridView.AllowUserToAddRows = false;
+            this.patientDataGridView.AllowUserToDeleteRows = false;
             this.patientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -94,6 +96,7 @@
             this.patientDataGridView.Font = global::finah_desktop_CSharp.Properties.Settings.Default.ff;
             this.patientDataGridView.Location = new System.Drawing.Point(3, 3);
             this.patientDataGridView.Name = "patientDataGridView";
+            this.patientDataGridView.ReadOnly = true;
             this.patientDataGridView.Size = new System.Drawing.Size(760, 471);
             this.patientDataGridView.TabIndex = 1;
             // 
@@ -137,12 +140,15 @@
             // 
             // verzorgerDataGridView
             // 
+            this.verzorgerDataGridView.AllowUserToAddRows = false;
+            this.verzorgerDataGridView.AllowUserToDeleteRows = false;
             this.verzorgerDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.verzorgerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.verzorgerDataGridView.Location = new System.Drawing.Point(3, 3);
             this.verzorgerDataGridView.Name = "verzorgerDataGridView";
+            this.verzorgerDataGridView.ReadOnly = true;
             this.verzorgerDataGridView.Size = new System.Drawing.Size(759, 467);
             this.verzorgerDataGridView.TabIndex = 0;
             // 
@@ -186,12 +192,15 @@
             // 
             // vragenlijstDataGridView
             // 
+            this.vragenlijstDataGridView.AllowUserToAddRows = false;
+            this.vragenlijstDataGridView.AllowUserToDeleteRows = false;
             this.vragenlijstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.vragenlijstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vragenlijstDataGridView.Location = new System.Drawing.Point(6, 3);
             this.vragenlijstDataGridView.Name = "vragenlijstDataGridView";
+            this.vragenlijstDataGridView.ReadOnly = true;
             this.vragenlijstDataGridView.Size = new System.Drawing.Size(756, 473);
             this.vragenlijstDataGridView.TabIndex = 0;
             // 
@@ -209,12 +218,15 @@
             // 
             // rapportDataGridView
             // 
+            this.rapportDataGridView.AllowUserToAddRows = false;
+            this.rapportDataGridView.AllowUserToDeleteRows = false;
             this.rapportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rapportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rapportDataGridView.Location = new System.Drawing.Point(3, 3);
             this.rapportDataGridView.Name = "rapportDataGridView";
+            this.rapportDataGridView.ReadOnly = true;
             this.rapportDataGridView.Size = new System.Drawing.Size(760, 474);
             this.rapportDataGridView.TabIndex = 1;
             // 

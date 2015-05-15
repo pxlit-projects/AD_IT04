@@ -14,18 +14,17 @@ namespace finah_desktop_CSharp
 {
     public partial class AanVragenlijstForm : Form
     {
-        private DataGridView datagrid;
+        private DataGridView datagrid; //verniewen van datagridview beheerFrom
         private DbFunctions dbfunctions = new DbFunctions();
-        private List<Vraag> toeVragenList = new List<Vraag>();
-        private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
-        private List<Patientmantelzorger> patientList = new List<Patientmantelzorger>();
+        private List<Vraag> toeVragenList = new List<Vraag>(); //toegevoegde vragen van de vragenlijst
+        private List<Vraag> vragenList = new List<Vraag>(); //alle vragen
+        private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>(); //vragenlijsten van beheerForm
+        private List<Patientmantelzorger> patientList = new List<Patientmantelzorger>(); //
         private List<Patientmantelzorger> verzorgerList = new List<Patientmantelzorger>();
 
         public AanVragenlijstForm(ref List<Vragenlijst> list, List<Patientmantelzorger> patient, List<Patientmantelzorger> verzorger, DataGridView datagrid)
         {
             InitializeComponent();
-
-            toeVragenDataGridView.Columns.Add("Beschrijving", "Beschrijving");
 
             this.datagrid = datagrid;
             vragenlijstList = list;
@@ -62,13 +61,29 @@ namespace finah_desktop_CSharp
 
             idLabel.Text = vragenID.ToString();
 
+            toeVragenList = dbfunctions.getVragelijst(vragenID);
+            toeVragenDataGridView.DataSource = toeVragenList;
+            toeVragenDataGridView.Columns["Id"].Visible = false;
+            toeVragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         }
 
         private void AanVragenlijstForm_Load(object sender, EventArgs e)
         {
 
+            vragenList = dbfunctions.loadVragen();
+            vragenDataGridView.DataSource = vragenList;
+            vragenDataGridView.Columns["Id"].Visible = false;
+            vragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            
+            clientComboBox.DisplayMember = "Vnaam";
+            clientComboBox.ValueMember = "Vnaam";
+            clientComboBox.DataSource = patientList;
+            verzorgerComboBox.DataSource = verzorgerList;
 
+            
+
+            //vragenDataGridView.Columns["Vragenlijst_Id"].Visible = false;
 
           /*  //vragenDataGridView.DataSource = API.DB.getVragen();
 
@@ -100,7 +115,7 @@ namespace finah_desktop_CSharp
                 var json = innerTask.Result;
                 return JsonConvert.DeserializeObject<Vraag[]>(json);
             });
-        }*/
+        }
         
 
         public Task<IEnumerable<Vraag>> getVragen()
@@ -115,32 +130,60 @@ namespace finah_desktop_CSharp
                 var json = innerTask.Result;
                 return JsonConvert.DeserializeObject<Vraag[]>(json);
             });
-        }
+        }*/
 
         private void toevoegButton_Click(object sender, EventArgs e)
         {
-           toeVragenDataGridView.Rows.Add(vragenDataGridView.SelectedRows);
+           //toeVragenDataGridView.Rows.Add(vragenDataGridView.SelectedRows.);
+
+            toeVragenList.Add(vragenList[vragenDataGridView.CurrentCell.RowIndex]);
+
+            toeVragenDataGridView.DataSource = null;
+            toeVragenDataGridView.DataSource = toeVragenList;
+            toeVragenDataGridView.Columns["Id"].Visible = false;
+            toeVragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+       
         }
 
         private void verwijderButton_Click(object sender, EventArgs e)
         {
-            toeVragenDataGridView.Rows.Remove(toeVragenDataGridView.CurrentRow);
+            if (toeVragenDataGridView.SelectedRows.Count > 0)
+            {
+                int idVraag = toeVragenDataGridView.CurrentCell.RowIndex;
+                toeVragenList.RemoveAt(idVraag);
+            }
+            
+
+            toeVragenDataGridView.DataSource = null;
+            toeVragenDataGridView.DataSource = toeVragenList;
+            toeVragenDataGridView.Columns["Id"].Visible = false;
+            toeVragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+           // toeVragenDataGridView.Rows.Remove(toeVragenDataGridView.CurrentRow);
         }
 
         private void nieuwButton_Click(object sender, EventArgs e)
         {
-            Form form = new AanVragenFrom(toeVragenDataGridView);
+            Form form = new AanVragenFrom(toeVragenDataGridView, ref toeVragenList);
             form.ShowDialog();
         }
 
         private void bewerkButton_Click(object sender, EventArgs e)
         {
-            string beschrijving = toeVragenDataGridView.CurrentCell.Value.ToString();
-            Form form = new AanVragenFrom(beschrijving, toeVragenDataGridView);
-            form.ShowDialog();
+            if (toeVragenDataGridView.CurrentCell.Value != null)
+            {
+                string beschrijving = toeVragenDataGridView.CurrentCell.Value.ToString();
+                Form form = new AanVragenFrom(beschrijving, toeVragenDataGridView, ref toeVragenList, toeVragenDataGridView.CurrentCell.RowIndex);
+                form.ShowDialog();
+            }
         }
 
         private void opslaanButton_Click(object sender, EventArgs e)
+        {
+            ///moet nog gemaakt worden
+        }
+
+        private void clientComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

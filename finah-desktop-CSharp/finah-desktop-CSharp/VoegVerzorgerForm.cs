@@ -39,7 +39,7 @@ namespace finah_desktop_CSharp
             list.Add(mantelzorger);
 
             //Met deze functie wordt de mantelzorger toegevoegd aan de database
-            dbfunctions.postMantelzorger(mantelzorger);
+            //dbfunctions.postMantelzorger(mantelzorger);
 
             this.Close();
         }

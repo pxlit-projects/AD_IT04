@@ -35,6 +35,7 @@
             this.annulerenButton = new System.Windows.Forms.Button();
             this.opslaanButton = new System.Windows.Forms.Button();
             this.verkennerButton = new System.Windows.Forms.Button();
+            this.idTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +114,14 @@
             this.verkennerButton.UseVisualStyleBackColor = false;
             this.verkennerButton.Click += new System.EventHandler(this.verkennerButton_Click);
             // 
+            // idTextBox
+            // 
+            this.idTextBox.Location = new System.Drawing.Point(42, 278);
+            this.idTextBox.Name = "idTextBox";
+            this.idTextBox.Size = new System.Drawing.Size(100, 20);
+            this.idTextBox.TabIndex = 13;
+            this.idTextBox.Visible = false;
+            // 
             // AanVragenFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +129,7 @@
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 361);
+            this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.verkennerButton);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.label2);
@@ -129,7 +139,6 @@
             this.Controls.Add(this.opslaanButton);
             this.Name = "AanVragenFrom";
             this.Text = "AanVragenFrom";
-            this.Load += new System.EventHandler(this.AanVragenFrom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,5 +154,6 @@
         private System.Windows.Forms.Button annulerenButton;
         private System.Windows.Forms.Button opslaanButton;
         private System.Windows.Forms.Button verkennerButton;
+        private System.Windows.Forms.TextBox idTextBox;
     }
 }

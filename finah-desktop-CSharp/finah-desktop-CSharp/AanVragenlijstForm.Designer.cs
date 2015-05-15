@@ -47,7 +47,6 @@
             this.clientComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.idLabel = new System.Windows.Forms.Label();
@@ -239,6 +238,7 @@
             this.clientComboBox.Name = "clientComboBox";
             this.clientComboBox.Size = new System.Drawing.Size(190, 28);
             this.clientComboBox.TabIndex = 1;
+            this.clientComboBox.SelectedIndexChanged += new System.EventHandler(this.clientComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -258,15 +258,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Client : ";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 146);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Aantal vragen : ";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -282,7 +273,6 @@
             this.groupBox1.Controls.Add(this.clientComboBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(16, 20);
             this.groupBox1.Name = "groupBox1";
@@ -327,6 +317,7 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Interval";
+            this.groupBox2.Visible = false;
             // 
             // tabControl1
             // 
@@ -390,7 +381,6 @@
         private System.Windows.Forms.ComboBox clientComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage tabPage1;

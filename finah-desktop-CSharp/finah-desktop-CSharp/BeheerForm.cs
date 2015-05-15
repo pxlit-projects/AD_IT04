@@ -36,8 +36,10 @@ namespace finah_desktop_CSharp
             patientDataGridView.Columns["Id"].Visible = false;
             patientDataGridView.Columns["Verzorger"].Visible = false;
             patientDataGridView.Columns["Dokter_Id"].Visible = false;
+            this.patientDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            mantelzorgerList = dbfunctions.loadMantelzorgers(dokter_Id);
+            mantelzorgerList = dbfunctions.loadVerzorger(dokter_Id);
             verzorgerDataGridView.DataSource = mantelzorgerList;
             verzorgerDataGridView.Columns["Id"].Visible = false;
             verzorgerDataGridView.Columns["Verzorger"].Visible = false;
@@ -45,10 +47,10 @@ namespace finah_desktop_CSharp
 
             vragenlijstList = dbfunctions.loadVragenlijsten(dokter_Id);
             vragenlijstDataGridView.DataSource = vragenlijstList;
-            vragenlijstDataGridView.Columns["Id"].Visible = false;
+            //vragenlijstDataGridView.Columns["Id"].Visible = false;
             vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
 
-            rapportList = dbfunctions.loadRapporten(dokter_Id);
+            rapportList = dbfunctions.loadRapport(dokter_Id);
             rapportDataGridView.DataSource = rapportList;
             rapportDataGridView.Columns["Id"].Visible = false;
         }
@@ -80,7 +82,7 @@ namespace finah_desktop_CSharp
 
         private void voegVragenlijstButton_Click(object sender, EventArgs e)
         {
-            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientenList, verzorgerList, vragenlijstDataGridView);
+            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientList, mantelzorgerList, vragenlijstDataGridView);
             vragenlijstForm.ShowDialog();
         }
 
@@ -98,7 +100,7 @@ namespace finah_desktop_CSharp
             Console.WriteLine(id);
 
 
-            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientenList, verzorgerList, vragenlijstDataGridView, id);
+            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientList, mantelzorgerList, vragenlijstDataGridView, id);
             vragenlijstForm.ShowDialog();
         }
     }

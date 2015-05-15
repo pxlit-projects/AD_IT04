@@ -12,24 +12,24 @@ namespace finah_desktop_CSharp
 {
     public partial class AanVragenFrom : Form
     {
+        private int id = 0;
+        private List<Vraag> list = new List<Vraag>();
         private DataGridView datagridview;
 
-        public AanVragenFrom(DataGridView datagridview)
+        public AanVragenFrom(DataGridView datagridview, ref List<Vraag>list)
         {
             InitializeComponent();
+            this.list = list;
             this.datagridview = datagridview;
         }
 
-        public AanVragenFrom(string beschrijving, DataGridView datagridview)
+        public AanVragenFrom(string beschrijving, DataGridView datagridview, ref List<Vraag>list, int indexVraag)
         {
             InitializeComponent();
-            vraagTextBox.Text = beschrijving;
+            vraagTextBox.Text = list[indexVraag].Beschrijving;
+            id = indexVraag;
             this.datagridview = datagridview;
-
-        }
-
-        private void AanVragenFrom_Load(object sender, EventArgs e)
-        {
+            this.list = list;
 
         }
 
@@ -47,7 +47,39 @@ namespace finah_desktop_CSharp
 
         private void opslaanButton_Click(object sender, EventArgs e)
         {
-            datagridview.Rows.Add(vraagTextBox.Text);
+            Vraag vraag = new Vraag();
+
+            if (Convert.ToString(id) == "0")
+            {
+                int idd = 0;
+
+                foreach (Vraag idvraag in list)
+                {
+                    if (idvraag.Id < idd)
+                    {
+                        idd = idvraag.Id;
+                    }
+                }
+                idd =+ 1;
+
+                Console.WriteLine(idd);
+
+                vraag.Id = idd;
+                vraag.Beschrijving = vraagTextBox.Text;
+                list.Add(vraag);
+                //List.Add(
+            }
+            else
+            {
+                list[id].Beschrijving = vraagTextBox.Text;
+            }
+
+            //datagridview.Rows.Add(vraagTextBox.Text);
+            datagridview.DataSource = null;
+            datagridview.DataSource = list;
+            datagridview.Columns["Id"].Visible = false;
+            datagridview.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
             this.Close();
         }
 

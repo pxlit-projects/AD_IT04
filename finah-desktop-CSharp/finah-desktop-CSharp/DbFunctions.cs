@@ -10,9 +10,9 @@ namespace finah_desktop_CSharp
 {
     public class DbFunctions
     {
-        public List<Patientmantelzorger> loadPatienten()
+        public List<Patientmantelzorger> loadPatienten(int dokterId)
         {
-            return getPatienten("http://finahweb.azurewebsites.net/api/patientmantelzorger/false").Result.ToList();
+            return getPatienten("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/false").Result.ToList();
         }
         
         private Task<IEnumerable<Patientmantelzorger>> getPatienten(string baseUrl)
@@ -37,9 +37,9 @@ namespace finah_desktop_CSharp
         }
 
 
-        public List<Patientmantelzorger> loadVerzorger()
+        public List<Patientmantelzorger> loadVerzorger(int dokterId)
         {
-            return getVerzorger("http://finahweb.azurewebsites.net/api/patientmantelzorger/false").Result.ToList();
+            return getVerzorger("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/true").Result.ToList();
         }
 
         private Task<IEnumerable<Patientmantelzorger>> getVerzorger(string baseUrl)
@@ -141,7 +141,7 @@ namespace finah_desktop_CSharp
         }
 
 
-        public List<Rapport> loadRapport()
+        public List<Rapport> loadRapport(int dokterId)
         {
             /*//List<Rapport> list = new List<Rapport>();
             //IEnumerable<Vraag> vragen = getVragenByVragenlijstId(vragenlijstId).Result;
@@ -176,9 +176,9 @@ namespace finah_desktop_CSharp
         }
 
 
-        public List<Vragenlijst> loadVragenlijsten()
+        public List<Vragenlijst> loadVragenlijsten(int dokterId)
         {
-            return getVragenlijsten("http://finahweb.azurewebsites.net/api/antwoord/").Result.ToList();
+            return getVragenlijsten("http://finahweb.azurewebsites.net/api/antwoord/" + dokterId).Result.ToList();
         }
 
         private Task<IEnumerable<Vragenlijst>> getVragenlijsten(string baseUrl)
