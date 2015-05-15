@@ -52,6 +52,11 @@ public class JavaJFrameApplication {
 				return false;
 			}
 		};
+		private JTable mantelzorgerTabel = new JTable(250, 3) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		private JTable rapportTabel = new JTable(250, 5) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -74,14 +79,7 @@ public class JavaJFrameApplication {
 			super(new BorderLayout());
 
 			LoginPanel login = new LoginPanel();
-
-			JPanel jPaneA = new JPanel();
-			patientTabel.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
-			patientTabel.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
-			patientTabel.getColumnModel().getColumn(2).setHeaderValue("Email");
-
-			jPaneA.add(patientPane);
-			jPaneA.add(jButton);
+			
 			inloggen.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -90,33 +88,27 @@ public class JavaJFrameApplication {
 				}
 			});
 
+			JPanel jPaneA = new JPanel();
+			patientTabel.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
+			patientTabel.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
+			patientTabel.getColumnModel().getColumn(2).setHeaderValue("Email");
+
+			jPaneA.add(patientPane);
+			jPaneA.add(jButton);
+			
+		
 			JPanel jPaneB = new JPanel();
 			rapportTabel.getColumnModel().getColumn(0).setHeaderValue("Patient");
 			rapportTabel.getColumnModel().getColumn(1).setHeaderValue("Mantelzorger");
 			rapportTabel.getColumnModel().getColumn(2).setHeaderValue("Vragenlijst");
 			rapportTabel.getColumnModel().getColumn(3).setHeaderValue("Datum");
-			rapportTabel.getColumnModel().getColumn(4).setHeaderValue("ID");
 			jPaneB.add(rapportPane);
 			jPaneB.add(button);
-			button.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					int rij = rapportTabel.getSelectedRow();
-					int id = Integer.parseInt(rapportTabel.getValueAt(rij, 4).toString());
-					try {
-						PDF.test(id);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+			
 
-					// JOptionPane.showMessageDialog(null,rapportTabel.getModel().getValueAt(rij,4));
-				}
-			});
 
 			JPanel jPaneC = new JPanel();
-			vraagTabel.getColumnModel().getColumn(0).setHeaderValue("Vragenlijst");
-			vraagTabel.getColumnModel().getColumn(1).setHeaderValue("ID");
+			vraagTabel.getColumnModel().getColumn(0).setHeaderValue("Beschrijving");
 			jPaneC.add(vraagPane);
 
 			menuBar.add(fileMenu);
