@@ -349,4 +349,7 @@ public class API {
 	public static Login getLogin() {
 		return loginData;
 	}
+	public static int getDokterID(){
+		return dokterID;
+	}
 }
