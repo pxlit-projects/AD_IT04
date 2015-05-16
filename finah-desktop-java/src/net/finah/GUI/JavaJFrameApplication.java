@@ -25,7 +25,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -47,11 +49,13 @@ public class JavaJFrameApplication {
 		private JMenu fileMenu = new JMenu("Login");
 		private JMenuItem inloggen = new JMenuItem("Inloggen");
 		private JMenuItem uitloggen = new JMenuItem("Uitloggen");
-		private JTable patientTabel = new JTable(250, 3) {
+		private DefaultTableModel model = new DefaultTableModel();
+		private JTable patientTabel = new JTable(model){
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
+		
 		private JTable mantelzorgerTabel = new JTable(250, 3) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -89,10 +93,15 @@ public class JavaJFrameApplication {
 			});
 
 			JPanel jPaneA = new JPanel();
+			/*
 			patientTabel.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
 			patientTabel.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
 			patientTabel.getColumnModel().getColumn(2).setHeaderValue("Email");
-
+*/
+			model.addColumn("Voornaam");
+			model.addColumn("Achternaam");
+			model.addColumn("Email");
+			model.addRow(new Object[] { "test", "test" });
 			jPaneA.add(patientPane);
 			jPaneA.add(jButton);
 			
@@ -121,10 +130,8 @@ public class JavaJFrameApplication {
 
 			add(menuBar, BorderLayout.NORTH);
 			add(jTabbedPane, BorderLayout.CENTER);
-
 		}
-
-	}
+		}
 
 	public static void main(String[] args) {
 
@@ -188,4 +195,5 @@ public class JavaJFrameApplication {
 		}
 
 	}
-}
+	}
+	
