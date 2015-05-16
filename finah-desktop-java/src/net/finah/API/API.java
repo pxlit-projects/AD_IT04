@@ -168,9 +168,9 @@ public class API {
 	 *
 	 * @throws IOException
 	 */
-	public static ArrayList<Rapport> getRapport(int dokter_Id)
+	public static ArrayList<Rapport> getRapport()
 			throws IOException {
-		URL loc = new URL(remote + "rapport/" + dokter_Id);
+		URL loc = new URL(remote + "rapport/" + dokterID);
 		init();
 		ObjectReader reader = mapper
 				.reader(new TypeReference<ArrayList<Rapport>>() {
@@ -211,7 +211,7 @@ public class API {
 	 * @throws IOException
 	 */
 	// TODO: id verwijderen en wrapper functie maken
-	public static ArrayList<Vragenlijst> getVragenlijst(int id)
+	public static ArrayList<Vragenlijst> getVragenlijst()
 			throws IOException {
 		Debug.log("receiving 'Vragenlijst' data");
 		URL loc = new URL(remote + "vragenlijst/");
@@ -341,7 +341,7 @@ public class API {
 		int id = 0;
 		// TODO: fix 1 (dokter ID)
 		try {
-			ArrayList<Vragenlijst> obj = getVragenlijst(2);
+			ArrayList<Vragenlijst> obj = getVragenlijst();
 			for (Vragenlijst vragenlijst : obj) {
 				int derp = vragenlijst.getId();
 				if (derp > id)

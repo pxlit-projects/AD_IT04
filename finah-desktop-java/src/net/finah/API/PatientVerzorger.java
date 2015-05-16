@@ -40,4 +40,8 @@ public class PatientVerzorger {
 	public String getemail() {
 		return email;
 	}
+
+	public Object getFullNaam() {
+		return getANaam() + "-" + getVNaam() ;
+	}
 }

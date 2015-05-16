@@ -34,4 +34,8 @@ public class Vragenlijst {
 	public int getId(){
 		return id;
 	}
+
+	public Object getBeschrijving() {
+		return beschrijving;
+	}
 }
