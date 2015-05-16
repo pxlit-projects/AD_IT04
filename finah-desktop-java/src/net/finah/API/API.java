@@ -291,6 +291,15 @@ public class API {
 		Debug.log("transferd  Vraag: " + obj.toString());
 	}
 
+	public static void writePatientMantelzorger(PatientVerzorger obj) throws IOException {
+		URL loc = new URL(remote + "patientmantelzorger");
+		init();
+		String json = writer.writeValueAsString(obj);
+		Debug.log("transfering  Patientverzorger: " + obj.toString());
+		putData(json, loc);
+		Debug.log("transfered  patientverzorger: " + obj.toString());
+	}
+
 	private static String putData(String json, URL loc) throws IOException {
 		HttpURLConnection httpcon = (HttpURLConnection) loc.openConnection();
 		httpcon.setDoOutput(true);
