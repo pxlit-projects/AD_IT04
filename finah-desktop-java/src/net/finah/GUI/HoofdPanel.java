@@ -3,6 +3,8 @@ package net.finah.GUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -12,10 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+
+import org.apache.pdfbox.exceptions.COSVisitorException;
 
 import net.finah.API.API;
 import net.finah.API.PatientVerzorger;
@@ -147,6 +152,42 @@ public class HoofdPanel extends JFrame {
 
 		JScrollPane scrollRapport = new JScrollPane(rapportTabel);
 		panelRapport.add(scrollRapport, BorderLayout.CENTER);
+
+		buttonRapport.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int rij = rapportTabel.getSelectedRow();
+				if (rij == -1) {
+					JFrame frame = new JFrame(
+							"JOptionPane showMessageDialog example");
+
+					JOptionPane.showMessageDialog(frame,
+							"Gelieve een rapport te selecteren", "Ongeldige rij",
+							JOptionPane.WARNING_MESSAGE);
+
+				} else {
+					if (rapportTabel.getValueAt(rij, 0) == null) {
+						JFrame frame = new JFrame(
+								"JOptionPane showMessageDialog example");
+
+						JOptionPane.showMessageDialog(frame,
+								"Gelieve een geldig rapport te selecteren",
+								"Ongeldige rij", JOptionPane.WARNING_MESSAGE);
+					} else {
+						int id = Integer.parseInt(rapportTabel.getValueAt(rij,
+								0).toString());
+						try {
+							PDFMaker.bekijkRapport(id);
+						} catch (IOException | COSVisitorException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+
+						}
+					}
+				}
+			}
+		});
 
 		// Algemeen
 		menuBar.add(fileMenu);
