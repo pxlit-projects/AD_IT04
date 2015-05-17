@@ -121,5 +121,35 @@ namespace finah_desktop_CSharp
             img.Dispose();
         }
 
+        int originalExStyle = -1;
+        bool enableFormLevelDoubleBuffering = true;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                if (originalExStyle == -1)
+                    originalExStyle = base.CreateParams.ExStyle;
+
+                CreateParams cp = base.CreateParams;
+                if (enableFormLevelDoubleBuffering)
+                    cp.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
+                else
+                    cp.ExStyle = originalExStyle;
+
+                return cp;
+            }
+        }
+
+        private void TurnOffFormLevelDoubleBuffering()
+        {
+            enableFormLevelDoubleBuffering = false;
+            this.MaximizeBox = true;
+        }
+
+        private void RapportDetails_Shown(object sender, EventArgs e)
+        {
+            TurnOffFormLevelDoubleBuffering();
+        }
     }
 }

@@ -24,6 +24,10 @@ namespace finah_desktop_CSharp
         {
             InitializeComponent();
             dbfunctions = new DbFunctions();
+
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void loginButton_Click(object sender, EventArgs e)

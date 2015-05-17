@@ -40,6 +40,7 @@
             // 
             // rapportDetailsDataGridView
             // 
+            this.rapportDetailsDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rapportDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rapportDetailsDataGridView.Location = new System.Drawing.Point(30, 153);
             this.rapportDetailsDataGridView.Name = "rapportDetailsDataGridView";
@@ -97,6 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.ClientSize = new System.Drawing.Size(1552, 1060);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.datumLabel);

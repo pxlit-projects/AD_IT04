@@ -35,6 +35,7 @@
             // 
             // bekijkVragenlijstDataGridView
             // 
+            this.bekijkVragenlijstDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bekijkVragenlijstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bekijkVragenlijstDataGridView.Location = new System.Drawing.Point(12, 87);
             this.bekijkVragenlijstDataGridView.Name = "bekijkVragenlijstDataGridView";
@@ -55,6 +56,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.ClientSize = new System.Drawing.Size(1043, 876);
             this.Controls.Add(this.VragenlijstBeschrijving);
             this.Controls.Add(this.bekijkVragenlijstDataGridView);

@@ -32,7 +32,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.voegPatientToeButton = new System.Windows.Forms.Button();
-            this.patientDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.voegVerzorgerToeButton = new System.Windows.Forms.Button();
             this.verzorgerDataGridView = new System.Windows.Forms.DataGridView();
@@ -44,16 +43,16 @@
             this.rapportDetailButton = new System.Windows.Forms.Button();
             this.rapportDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.comboBoxPatient = new System.Windows.Forms.ComboBox();
-            this.comboBoxMantelzorger = new System.Windows.Forms.ComboBox();
-            this.comboBoxVragenlijst = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnVerstuur = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxVragenlijst = new System.Windows.Forms.ComboBox();
+            this.comboBoxMantelzorger = new System.Windows.Forms.ComboBox();
+            this.comboBoxPatient = new System.Windows.Forms.ComboBox();
+            this.patientDataGridView = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.verzorgerDataGridView)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -61,6 +60,7 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rapportDataGridView)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -74,11 +74,11 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(4, 0);
+            this.tabControl1.Location = new System.Drawing.Point(5, 3);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1932, 1077);
+            this.tabControl1.Size = new System.Drawing.Size(1564, 1127);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -91,7 +91,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage1.Size = new System.Drawing.Size(1924, 1027);
+            this.tabPage1.Size = new System.Drawing.Size(1556, 1077);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Patienten";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             this.voegPatientToeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.voegPatientToeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.voegPatientToeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voegPatientToeButton.Location = new System.Drawing.Point(654, 564);
+            this.voegPatientToeButton.Location = new System.Drawing.Point(-758, 6);
             this.voegPatientToeButton.Margin = new System.Windows.Forms.Padding(6);
             this.voegPatientToeButton.Name = "voegPatientToeButton";
             this.voegPatientToeButton.Size = new System.Drawing.Size(280, 67);
@@ -109,23 +109,6 @@
             this.voegPatientToeButton.Text = "Voeg patient toe";
             this.voegPatientToeButton.UseVisualStyleBackColor = false;
             this.voegPatientToeButton.Click += new System.EventHandler(this.voegPatientToeButton_Click);
-            // 
-            // patientDataGridView
-            // 
-            this.patientDataGridView.AllowUserToAddRows = false;
-            this.patientDataGridView.AllowUserToDeleteRows = false;
-            this.patientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.patientDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.patientDataGridView.Font = global::finah_desktop_CSharp.Properties.Settings.Default.ff;
-            this.patientDataGridView.Location = new System.Drawing.Point(6, 12);
-            this.patientDataGridView.Margin = new System.Windows.Forms.Padding(6);
-            this.patientDataGridView.Name = "patientDataGridView";
-            this.patientDataGridView.ReadOnly = true;
-            this.patientDataGridView.Size = new System.Drawing.Size(1376, 867);
-            this.patientDataGridView.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -136,7 +119,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage2.Size = new System.Drawing.Size(1924, 1027);
+            this.tabPage2.Size = new System.Drawing.Size(1556, 1077);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantelzorgers";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -145,7 +128,7 @@
             // 
             this.voegVerzorgerToeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.voegVerzorgerToeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.voegVerzorgerToeButton.Location = new System.Drawing.Point(519, 293);
+            this.voegVerzorgerToeButton.Location = new System.Drawing.Point(830, 490);
             this.voegVerzorgerToeButton.Margin = new System.Windows.Forms.Padding(6);
             this.voegVerzorgerToeButton.Name = "voegVerzorgerToeButton";
             this.voegVerzorgerToeButton.Size = new System.Drawing.Size(350, 67);
@@ -161,12 +144,13 @@
             this.verzorgerDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.verzorgerDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.verzorgerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.verzorgerDataGridView.Location = new System.Drawing.Point(6, 6);
+            this.verzorgerDataGridView.Location = new System.Drawing.Point(6, 12);
             this.verzorgerDataGridView.Margin = new System.Windows.Forms.Padding(6);
             this.verzorgerDataGridView.Name = "verzorgerDataGridView";
             this.verzorgerDataGridView.ReadOnly = true;
-            this.verzorgerDataGridView.Size = new System.Drawing.Size(1518, 898);
+            this.verzorgerDataGridView.Size = new System.Drawing.Size(1174, 433);
             this.verzorgerDataGridView.TabIndex = 0;
             // 
             // tabPage3
@@ -179,7 +163,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage3.Size = new System.Drawing.Size(1924, 1027);
+            this.tabPage3.Size = new System.Drawing.Size(1556, 1077);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Vragenlijsten";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -187,7 +171,7 @@
             // bekijkVragenlijst
             // 
             this.bekijkVragenlijst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.bekijkVragenlijst.Location = new System.Drawing.Point(487, 384);
+            this.bekijkVragenlijst.Location = new System.Drawing.Point(494, 343);
             this.bekijkVragenlijst.Name = "bekijkVragenlijst";
             this.bekijkVragenlijst.Size = new System.Drawing.Size(312, 86);
             this.bekijkVragenlijst.TabIndex = 3;
@@ -199,10 +183,10 @@
             // 
             this.voegVragenlijstButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.voegVragenlijstButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.voegVragenlijstButton.Location = new System.Drawing.Point(594, 169);
+            this.voegVragenlijstButton.Location = new System.Drawing.Point(841, 343);
             this.voegVragenlijstButton.Margin = new System.Windows.Forms.Padding(6);
             this.voegVragenlijstButton.Name = "voegVragenlijstButton";
-            this.voegVragenlijstButton.Size = new System.Drawing.Size(350, 67);
+            this.voegVragenlijstButton.Size = new System.Drawing.Size(350, 86);
             this.voegVragenlijstButton.TabIndex = 2;
             this.voegVragenlijstButton.Text = "Nieuwe vragenlijst";
             this.voegVragenlijstButton.UseVisualStyleBackColor = false;
@@ -215,12 +199,13 @@
             this.vragenlijstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.vragenlijstDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.vragenlijstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vragenlijstDataGridView.Location = new System.Drawing.Point(12, 6);
             this.vragenlijstDataGridView.Margin = new System.Windows.Forms.Padding(6);
             this.vragenlijstDataGridView.Name = "vragenlijstDataGridView";
             this.vragenlijstDataGridView.ReadOnly = true;
-            this.vragenlijstDataGridView.Size = new System.Drawing.Size(1512, 771);
+            this.vragenlijstDataGridView.Size = new System.Drawing.Size(1179, 311);
             this.vragenlijstDataGridView.TabIndex = 0;
             // 
             // tabPage4
@@ -231,7 +216,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1924, 1027);
+            this.tabPage4.Size = new System.Drawing.Size(1556, 1077);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Rapporten";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -240,7 +225,7 @@
             // 
             this.rapportDetailButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rapportDetailButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.rapportDetailButton.Location = new System.Drawing.Point(801, 400);
+            this.rapportDetailButton.Location = new System.Drawing.Point(863, 439);
             this.rapportDetailButton.Margin = new System.Windows.Forms.Padding(6);
             this.rapportDetailButton.Name = "rapportDetailButton";
             this.rapportDetailButton.Size = new System.Drawing.Size(300, 67);
@@ -256,16 +241,18 @@
             this.rapportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rapportDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rapportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rapportDataGridView.Location = new System.Drawing.Point(6, 6);
             this.rapportDataGridView.Margin = new System.Windows.Forms.Padding(6);
             this.rapportDataGridView.Name = "rapportDataGridView";
             this.rapportDataGridView.ReadOnly = true;
-            this.rapportDataGridView.Size = new System.Drawing.Size(1520, 912);
+            this.rapportDataGridView.Size = new System.Drawing.Size(1157, 401);
             this.rapportDataGridView.TabIndex = 1;
             // 
             // tabPage5
             // 
+            this.tabPage5.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.tabPage5.Controls.Add(this.btnVerstuur);
             this.tabPage5.Controls.Add(this.label3);
             this.tabPage5.Controls.Add(this.label2);
@@ -276,61 +263,10 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 46);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1924, 1027);
+            this.tabPage5.Size = new System.Drawing.Size(1146, 677);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Vragenlijst versturen";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxPatient
-            // 
-            this.comboBoxPatient.FormattingEnabled = true;
-            this.comboBoxPatient.Location = new System.Drawing.Point(376, 144);
-            this.comboBoxPatient.Name = "comboBoxPatient";
-            this.comboBoxPatient.Size = new System.Drawing.Size(300, 45);
-            this.comboBoxPatient.TabIndex = 0;
-            // 
-            // comboBoxMantelzorger
-            // 
-            this.comboBoxMantelzorger.FormattingEnabled = true;
-            this.comboBoxMantelzorger.Location = new System.Drawing.Point(376, 234);
-            this.comboBoxMantelzorger.Name = "comboBoxMantelzorger";
-            this.comboBoxMantelzorger.Size = new System.Drawing.Size(300, 45);
-            this.comboBoxMantelzorger.TabIndex = 1;
-            // 
-            // comboBoxVragenlijst
-            // 
-            this.comboBoxVragenlijst.FormattingEnabled = true;
-            this.comboBoxVragenlijst.Location = new System.Drawing.Point(376, 327);
-            this.comboBoxVragenlijst.Name = "comboBoxVragenlijst";
-            this.comboBoxVragenlijst.Size = new System.Drawing.Size(300, 45);
-            this.comboBoxVragenlijst.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(135, 144);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 37);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Patiënt";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(135, 242);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(203, 37);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Mantelzorger";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(133, 335);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 37);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Vragenlijst";
             // 
             // btnVerstuur
             // 
@@ -342,13 +278,74 @@
             this.btnVerstuur.UseVisualStyleBackColor = true;
             this.btnVerstuur.Click += new System.EventHandler(this.btnVerstuur_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(133, 335);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(167, 37);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Vragenlijst";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(135, 242);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(203, 37);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Mantelzorger";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(135, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 37);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Patiënt";
+            // 
+            // comboBoxVragenlijst
+            // 
+            this.comboBoxVragenlijst.FormattingEnabled = true;
+            this.comboBoxVragenlijst.Location = new System.Drawing.Point(376, 327);
+            this.comboBoxVragenlijst.Name = "comboBoxVragenlijst";
+            this.comboBoxVragenlijst.Size = new System.Drawing.Size(300, 45);
+            this.comboBoxVragenlijst.TabIndex = 2;
+            // 
+            // comboBoxMantelzorger
+            // 
+            this.comboBoxMantelzorger.FormattingEnabled = true;
+            this.comboBoxMantelzorger.Location = new System.Drawing.Point(376, 234);
+            this.comboBoxMantelzorger.Name = "comboBoxMantelzorger";
+            this.comboBoxMantelzorger.Size = new System.Drawing.Size(300, 45);
+            this.comboBoxMantelzorger.TabIndex = 1;
+            // 
+            // comboBoxPatient
+            // 
+            this.comboBoxPatient.FormattingEnabled = true;
+            this.comboBoxPatient.Location = new System.Drawing.Point(376, 144);
+            this.comboBoxPatient.Name = "comboBoxPatient";
+            this.comboBoxPatient.Size = new System.Drawing.Size(300, 45);
+            this.comboBoxPatient.TabIndex = 0;
+            // 
+            // patientDataGridView
+            // 
+            this.patientDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientDataGridView.Location = new System.Drawing.Point(3, 9);
+            this.patientDataGridView.Name = "patientDataGridView";
+            this.patientDataGridView.RowTemplate.Height = 33;
+            this.patientDataGridView.Size = new System.Drawing.Size(1126, 484);
+            this.patientDataGridView.TabIndex = 1;
+            // 
             // BeheerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1940, 1079);
+            this.ClientSize = new System.Drawing.Size(1574, 1129);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "BeheerForm";
@@ -356,7 +353,6 @@
             this.Load += new System.EventHandler(this.BeheerForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.verzorgerDataGridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -365,6 +361,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rapportDataGridView)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,7 +370,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView patientDataGridView;
         private System.Windows.Forms.Button voegPatientToeButton;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button voegVerzorgerToeButton;
@@ -393,5 +389,6 @@
         private System.Windows.Forms.ComboBox comboBoxVragenlijst;
         private System.Windows.Forms.ComboBox comboBoxMantelzorger;
         private System.Windows.Forms.ComboBox comboBoxPatient;
+        private System.Windows.Forms.DataGridView patientDataGridView;
     }
 }
