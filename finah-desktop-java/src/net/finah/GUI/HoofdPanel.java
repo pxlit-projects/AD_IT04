@@ -25,6 +25,7 @@ import org.apache.pdfbox.exceptions.COSVisitorException;
 import net.finah.API.API;
 import net.finah.API.PatientVerzorger;
 import net.finah.API.Rapport;
+import net.finah.API.Vragenlijst;
 
 public class HoofdPanel extends JFrame {
 	// Algemeen
@@ -45,16 +46,6 @@ public class HoofdPanel extends JFrame {
 	private JButton buttonPatient = new JButton("Voeg patiënt toe");
 
 	// Variabelen Panel voor Mantelzorger
-	private JPanel panelRapport = new JPanel(new BorderLayout());
-	private JPanel topPanelRapport = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
-	private JPanel bottomPanelRapport = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
-	private JTable rapportTabel = new JTable();
-	private JLabel labelRapport = new JLabel("Rapporten");
-	private JButton buttonRapport = new JButton("Download rapport");
-
-	// Variabelen Panel voor Rapport
 	private JPanel panelZorger = new JPanel(new BorderLayout());
 	private JPanel topPanelZorger = new JPanel(
 			new FlowLayout(FlowLayout.CENTER));
@@ -64,19 +55,44 @@ public class HoofdPanel extends JFrame {
 	private JLabel labelZorger = new JLabel("Mantelzorgers");
 	private JButton buttonZorger = new JButton("Voeg mantelzorger toe");
 
+	// Variabelen Panel voor Rapport
+	private JPanel panelRapport = new JPanel(new BorderLayout());
+	private JPanel topPanelRapport = new JPanel(new FlowLayout(
+			FlowLayout.CENTER));
+	private JPanel bottomPanelRapport = new JPanel(new FlowLayout(
+			FlowLayout.CENTER));
+	private JTable rapportTabel = new JTable();
+	private JLabel labelRapport = new JLabel("Rapporten");
+	private JButton buttonRapport = new JButton("Download rapport");
+
+	// Variabelen Panel voor Vragenlijst
+	private JPanel panelVragenlijst = new JPanel(new BorderLayout());
+	private JPanel topPanelVragenlijst = new JPanel(new FlowLayout(
+			FlowLayout.CENTER));
+	private JPanel bottomPanelVragenlijst = new JPanel(new FlowLayout(
+			FlowLayout.CENTER));
+	private JTable vragenlijstTabel = new JTable();
+	private JLabel labelVragenlijst = new JLabel("Vragenlijsten");
+	private JButton buttonVragenlijst = new JButton("Voeg vragenlijst toe");
+
 	public HoofdPanel() throws IOException {
 
 		Object[][] patienten = new Object[100][3];
 		Object[][] mantelzorgers = new Object[100][3];
-		Object[][] rapporten = new Object[100][100];
+		Object[][] rapporten = new Object[100][5];
+		Object[][] vragenlijsten = new Object[100][2];
+
 		ArrayList<PatientVerzorger> patientList = new ArrayList<PatientVerzorger>();
 		patientList = API.getPatientVerzoger();
 		ArrayList<Rapport> rapportList = new ArrayList<Rapport>();
 		rapportList = API.getRapport();
+		ArrayList<Vragenlijst> vragenList = new ArrayList<Vragenlijst>();
+		vragenList = API.getVragenlijst();
 
 		int i = 0;
 		int j = 0;
 		int k = 0;
+		int v = 0;
 
 		for (PatientVerzorger patientVerzorger : patientList) {
 			if (patientVerzorger.isPatient()) {
@@ -101,9 +117,16 @@ public class HoofdPanel extends JFrame {
 			k++;
 		}
 
+		for (Vragenlijst vraaglijst : vragenList) {
+			vragenlijsten[v][0] = vraaglijst.getId();
+			vragenlijsten[v][1] = vraaglijst.getBeschrijving();
+			v++;
+		}
+
 		Object[] column = { "Voornaam", "Achternaam", "Email" };
 		Object[] columnRapport = { "Rapport ID", "Patient ID", "Verzoger ID",
 				"Vragenlijst ID", "Datum" };
+		Object[] columnVraag = { "ID", "Beschrijving" };
 
 		// Panel voor Patiënten
 		patientTabel = new JTable(patienten, column) {
@@ -163,8 +186,8 @@ public class HoofdPanel extends JFrame {
 							"JOptionPane showMessageDialog example");
 
 					JOptionPane.showMessageDialog(frame,
-							"Gelieve een rapport te selecteren", "Ongeldige rij",
-							JOptionPane.WARNING_MESSAGE);
+							"Gelieve een rapport te selecteren",
+							"Ongeldige rij", JOptionPane.WARNING_MESSAGE);
 
 				} else {
 					if (rapportTabel.getValueAt(rij, 0) == null) {
@@ -189,6 +212,22 @@ public class HoofdPanel extends JFrame {
 			}
 		});
 
+		// Panel voor Vragenlijsten
+		vragenlijstTabel = new JTable(vragenlijsten, columnVraag) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		labelVragenlijst.setFont(labelVragenlijst.getFont().deriveFont(
+				Font.BOLD | Font.ITALIC, 18));
+		topPanelVragenlijst.add(labelVragenlijst);
+		bottomPanelVragenlijst.add(buttonVragenlijst);
+		panelVragenlijst.add(bottomPanelVragenlijst, BorderLayout.SOUTH);
+		panelVragenlijst.add(topPanelVragenlijst, BorderLayout.NORTH);
+
+		JScrollPane scrollVraag = new JScrollPane(vragenlijstTabel);
+		panelVragenlijst.add(scrollVraag, BorderLayout.CENTER);
+
 		// Algemeen
 		menuBar.add(fileMenu);
 		fileMenu.add(inloggen);
@@ -197,6 +236,7 @@ public class HoofdPanel extends JFrame {
 		jTabbedPane.addTab("Patiënt", panelPatient);
 		jTabbedPane.addTab("Mantelzorger", panelZorger);
 		jTabbedPane.addTab("Rapport", panelRapport);
+		jTabbedPane.addTab("Vragenlijst", panelVragenlijst);
 		add(menuBar, BorderLayout.NORTH);
 		add(jTabbedPane, BorderLayout.CENTER);
 	}
