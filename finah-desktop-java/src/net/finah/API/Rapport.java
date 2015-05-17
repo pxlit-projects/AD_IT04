@@ -31,6 +31,10 @@ public class Rapport {
 	public String toString(){
 		return id + ":" + patient_Id + "," + mantelzorger_Id + "-" + date + "(" + vragenlijst_Id + ")";
 	}
+	public int getId() {
+		return id;
+	}
+	
 	public int getPatientId() {
 		return patient_Id;
 	}
@@ -40,5 +44,8 @@ public class Rapport {
 	public Date getDate() {
 		return date;
 	}
-
+	
+	public int getVragenlijstId() {
+		return vragenlijst_Id;
+	}
 }

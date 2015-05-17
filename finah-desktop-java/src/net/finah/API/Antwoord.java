@@ -40,10 +40,35 @@ public class Antwoord {
 	public void setAntwoordExtra(int antwoordExtra) {
 		this.antwoordExtra = antwoordExtra;
 	}
-
+	
 	public void setVerzorger(boolean verzorger) {
 		this.verzorger = verzorger;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getVraag_Id() {
+		return vraag_Id;
+	}
+
+	public int getRapport_Id() {
+		return rapport_Id;
+	}
+
+	public int getAntwoordInt() {
+		return antwoordInt;
+	}
+
+	public int getAntwoordExtra() {
+		return antwoordExtra;
+	}
+
+	public boolean getVerzorger() {
+		return verzorger;
+	}
+
 
 	public String toString() {
 		return id + ":" + vraag_Id + "," + rapport_Id + "," + antwoordInt + "," + antwoordExtra + " verzorger:" + verzorger;
