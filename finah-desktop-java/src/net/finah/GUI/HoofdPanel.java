@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import org.apache.pdfbox.exceptions.COSVisitorException;
 
@@ -26,6 +29,7 @@ import net.finah.API.API;
 import net.finah.API.PatientVerzorger;
 import net.finah.API.Rapport;
 import net.finah.API.Vragenlijst;
+import net.finah.Debug.Debug;
 
 public class HoofdPanel extends JFrame {
 	// Algemeen
@@ -42,7 +46,7 @@ public class HoofdPanel extends JFrame {
 	private JPanel bottomPanelPatient = new JPanel(new FlowLayout(
 			FlowLayout.CENTER));
 	private JTable patientTabel = new JTable();
-	private JLabel labelPatient = new JLabel("Patiënten");
+	private JLabel labelPatient = new JLabel(" Patiënten ");
 	private JButton buttonPatient = new JButton("Voeg patiënt toe");
 
 	// Variabelen Panel voor Mantelzorger
@@ -52,7 +56,7 @@ public class HoofdPanel extends JFrame {
 	private JPanel bottomPanelZorger = new JPanel(new FlowLayout(
 			FlowLayout.CENTER));
 	private JTable zorgerTabel = new JTable();
-	private JLabel labelZorger = new JLabel("Mantelzorgers");
+	private JLabel labelZorger = new JLabel(" Mantelzorgers ");
 	private JButton buttonZorger = new JButton("Voeg mantelzorger toe");
 
 	// Variabelen Panel voor Rapport
@@ -62,7 +66,7 @@ public class HoofdPanel extends JFrame {
 	private JPanel bottomPanelRapport = new JPanel(new FlowLayout(
 			FlowLayout.CENTER));
 	private JTable rapportTabel = new JTable();
-	private JLabel labelRapport = new JLabel("Rapporten");
+	private JLabel labelRapport = new JLabel(" Rapporten ");
 	private JButton buttonRapport = new JButton("Download rapport");
 
 	// Variabelen Panel voor Vragenlijst
@@ -71,7 +75,7 @@ public class HoofdPanel extends JFrame {
 			FlowLayout.CENTER));
 	private JPanel bottomPanelVragenlijst = new JPanel(new FlowLayout());
 	private JTable vragenlijstTabel = new JTable();
-	private JLabel labelVragenlijst = new JLabel("Vragenlijsten");
+	private JLabel labelVragenlijst = new JLabel(" Vragenlijsten ");
 	private JButton buttonVragenlijst = new JButton("Voeg vragenlijst toe");
 	private JButton buttonBekijken = new JButton("Bekijk vragenlijst");
 
@@ -285,15 +289,69 @@ public class HoofdPanel extends JFrame {
 		jTabbedPane.addTab("Vragenlijst", panelVragenlijst);
 		add(menuBar, BorderLayout.NORTH);
 		add(jTabbedPane, BorderLayout.CENTER);
+
+		// Andere Panels te openen
+		LoginPanel login = new LoginPanel();
+
+		inloggen.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				login.setSize(400, 300);
+				login.setVisible(true);
+			}
+		});
+
+		VraagToevoegenPanel toevoegen = new VraagToevoegenPanel();
+
+		buttonVragenlijst.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				toevoegen.setSize(800, 600);
+				toevoegen.setVisible(true);
+			}
+		});
+
+		PatientPanel patient = new PatientPanel();
+
+		buttonPatient.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				patient.setSize(800, 600);
+				patient.setVisible(true);
+			}
+		});
+
+		MantelzorgerPanel mantelzorger = new MantelzorgerPanel();
+
+		buttonZorger.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mantelzorger.setSize(800, 600);
+				mantelzorger.setVisible(true);
+			}
+		});
+
 	}
 
 	public static void main(String[] args) throws IOException {
-		API.setURL("http://finahweb.azurewebsites.net/api/");
+		API.init();
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (UnsupportedLookAndFeelException | ClassNotFoundException
+				| InstantiationException | IllegalAccessException e) {
+			Debug.log("Unable to change the UI to the system UI");
+		}
+
+		try {
+			API.setURL("http://finahweb.azurewebsites.net/api/");
+		} catch (Exception e) {
+			Debug.err(e.getStackTrace().toString());
+		}
+
 		HoofdPanel panel = new HoofdPanel();
 		panel.setSize(800, 600);
 		panel.setVisible(true);
 		panel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
-
 }

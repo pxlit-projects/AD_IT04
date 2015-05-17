@@ -25,7 +25,7 @@ public class VraagTonenPanel extends JFrame {
 	private JPanel panelVraag = new JPanel(new BorderLayout());
 	private JPanel topPanelVraag = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JTable vraagTabel = new JTable();
-	private JLabel labelVraag = new JLabel("Vragenlijst Tonen");
+	private JLabel labelVraag = new JLabel(" Vragenlijst Tonen ");
 
 	public VraagTonenPanel(int ID) throws IOException {
 		super("Vragenlijst tonen");

@@ -1,4 +1,5 @@
 package net.finah.GUI;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -24,7 +25,7 @@ public class LoginPanel extends JFrame {
 	private JPasswordField tekstWachtwoord = new JPasswordField(20);
 	private JButton loginButton = new JButton("Inloggen");
 
-	public LoginPanel(){
+	public LoginPanel() {
 		super("Inloggen");
 
 		JPanel newPanel = new JPanel(new GridBagLayout());
@@ -34,14 +35,14 @@ public class LoginPanel extends JFrame {
 		constraints.insets = new Insets(10, 10, 10, 10);
 
 		constraints.gridx = 0;
-		constraints.gridy = 0;     
+		constraints.gridy = 0;
 		newPanel.add(gebruikersnaam, constraints);
 
 		constraints.gridx = 1;
 		newPanel.add(tekstGebruiker, constraints);
 
 		constraints.gridx = 0;
-		constraints.gridy = 1;     
+		constraints.gridy = 1;
 		newPanel.add(wachtwoord, constraints);
 
 		constraints.gridx = 1;
@@ -56,30 +57,29 @@ public class LoginPanel extends JFrame {
 		add(newPanel);
 		setLocationRelativeTo(null);
 
-		try{
+		try {
 			tekstGebruiker.setText(API.getLogin().getEmail());
 			tekstWachtwoord.setText(API.getLogin().getPassword());
 
-		}catch(NullPointerException e ){
+		} catch (NullPointerException e) {
 			Debug.log("geen login gegevens gevonden");
 		}
-		loginButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
+		loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				API.init();
-				API.setLogin(new Login(tekstGebruiker.getText(), tekstWachtwoord.getText()));
+				API.setLogin(new Login(tekstGebruiker.getText(),
+						tekstWachtwoord.getText()));
 				Debug.log(API.getLogin().toString());
 				/*
-				try{
-					API.login(new URL("http://finahweb.azurewebsites.net/account/login"));
-				}catch(Exception ex){
-					 Debug.err("login request failed:" + ex.getMessage());
-					 //ex.printStackTrace();
-
-				}
-				*/
+				 * try{ API.login(new
+				 * URL("http://finahweb.azurewebsites.net/account/login"));
+				 * }catch(Exception ex){ Debug.err("login request failed:" +
+				 * ex.getMessage()); //ex.printStackTrace();
+				 * 
+				 * }
+				 */
 			}
 		});
-
 
 	}
 

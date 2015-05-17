@@ -78,7 +78,7 @@ public class JavaJFrameApplication {
 		private JScrollPane patientPane = new JScrollPane(patientTabel,
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-				
+
 		private JScrollPane rapportPane = new JScrollPane(rapportTabel,
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -107,12 +107,12 @@ public class JavaJFrameApplication {
 					18));
 			JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			topPanel.add(label);
-			
+
 			JButton button = new JButton("Log In");
-	        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-	        bottomPanel.add(button);
-	        jPaneA.add(bottomPanel,BorderLayout.NORTH);
-	        jPaneA.add(topPanel,BorderLayout.SOUTH);
+			JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+			bottomPanel.add(button);
+			jPaneA.add(bottomPanel, BorderLayout.NORTH);
+			jPaneA.add(topPanel, BorderLayout.SOUTH);
 
 			JPanel jPaneB = new JPanel();
 			rapportTabel.getColumnModel().getColumn(0)
@@ -186,17 +186,16 @@ public class JavaJFrameApplication {
 
 		// dit is een static function dus we kunnen niet aan die andere
 		// variables?
-		//patientTabel = new JTable(rowdata,columnnames);
+		// patientTabel = new JTable(rowdata,columnnames);
 
 		JFrame mainJFrame = new JFrame();
 		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainJFrame.setTitle("test");
 		mainJFrame.setSize(800, 600);
-/*
-		MyTabJPanel myTabJPanel = new MyTabJPanel();
-		mainJFrame.add(myTabJPanel);
-		mainJFrame.setVisible(true);
-*/
+		/*
+		 * MyTabJPanel myTabJPanel = new MyTabJPanel();
+		 * mainJFrame.add(myTabJPanel); mainJFrame.setVisible(true);
+		 */
 		try {
 			Login test = new Login("jan.schoefs@gmail.com", "P@ssw0rd");
 			API.setLogin(test);
