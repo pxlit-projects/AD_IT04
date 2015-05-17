@@ -28,4 +28,16 @@ public class Vraag {
 		this.vragenlijst_Id = vragenlijst_Id;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
+	public int getVragenlijst_Id() {
+		return vragenlijst_Id;
+	}
+	
+	public String getBeschrijving() {
+		return beschrijving;
+	}
+	
 }

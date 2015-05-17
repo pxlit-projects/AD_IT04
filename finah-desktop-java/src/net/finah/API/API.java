@@ -112,7 +112,7 @@ public class API {
 	public static Vraag getVraag(int lijst, int vraag) throws IOException {
 		return getVragenLijst(lijst).get(vraag);
 	}
-
+	
 	/**
 	 * Get an 'Antwoord' from a specific 'Antwoordlijst'
 	 *
