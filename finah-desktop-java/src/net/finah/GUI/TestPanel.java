@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -63,18 +64,34 @@ public class TestPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int rij = patientTabel.getSelectedRow();
-				int id = Integer.parseInt(patientTabel.getValueAt(rij, 0)
-						.toString());
-				System.out.print(id);
+				if (rij == -1) {
+					JFrame frame = new JFrame(
+							"JOptionPane showMessageDialog example");
 
-				try {
-					PDFMaker.bekijkRapport(id);
-				} catch (IOException | COSVisitorException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(frame,
+							"Gelieve een rij te selecteren", "Ongeldige rij",
+							JOptionPane.WARNING_MESSAGE);
 
+				} else {
+					if (patientTabel.getValueAt(rij, 0) == null) {
+						JFrame frame = new JFrame(
+								"JOptionPane showMessageDialog example");
+
+						JOptionPane.showMessageDialog(frame,
+								"Gelieve een geldige rij te selecteren",
+								"Ongeldige rij", JOptionPane.WARNING_MESSAGE);
+					} else {
+						int id = Integer.parseInt(patientTabel.getValueAt(rij,
+								0).toString());
+						try {
+							PDFMaker.bekijkRapport(id);
+						} catch (IOException | COSVisitorException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+
+						}
+					}
 				}
-
 			}
 		});
 	}

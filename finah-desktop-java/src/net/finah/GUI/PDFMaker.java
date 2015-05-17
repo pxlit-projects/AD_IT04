@@ -87,5 +87,6 @@ public class PDFMaker {
 		drawTable(page, contentStream, 675, 100, content, ID);
 		contentStream.close();
 		doc.save("Rapport_" + ID + ".pdf");
+		System.out.print("ok");
 	}
 }
