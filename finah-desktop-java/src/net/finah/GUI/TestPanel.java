@@ -30,16 +30,13 @@ public class TestPanel extends JFrame {
 	JTable patientTabel = new JTable();
 
 	public TestPanel() throws IOException {
+		
 		JButton button = new JButton("Click");
 		add(button, BorderLayout.NORTH);
 		Object[] columnnames = { "Rapport ID", "Patient ID", "Verzoger ID",
 				"Vragenlijst ID", "Datum" };
-		ArrayList<PatientVerzorger> patientVerzorger = new ArrayList<PatientVerzorger>();
 		ArrayList<Rapport> rapporten = new ArrayList<Rapport>();
-		ArrayList<Antwoord> antwoorden = new ArrayList<Antwoord>();
 		rapporten = API.getRapport();
-		antwoorden = API.getAntwoordLijst(1);
-		patientVerzorger = API.getPatientVerzoger();
 
 		Object[][] object = new Object[100][100];
 		int i = 0;

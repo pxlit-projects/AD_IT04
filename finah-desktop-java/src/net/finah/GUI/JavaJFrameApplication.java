@@ -2,6 +2,8 @@ package net.finah.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,19 +45,19 @@ import net.finah.Debug.*;
 
 public class JavaJFrameApplication {
 
-	static public class MyTabJPanel extends JPanel {
+	public class MyTabJPanel extends JPanel {
 		private JTabbedPane jTabbedPane = new JTabbedPane();
 		private JMenuBar menuBar = new JMenuBar();
 		private JMenu fileMenu = new JMenu("Login");
 		private JMenuItem inloggen = new JMenuItem("Inloggen");
 		private JMenuItem uitloggen = new JMenuItem("Uitloggen");
 		private DefaultTableModel model = new DefaultTableModel();
-		private JTable patientTabel = new JTable(model){
+		private JTable patientTabel = new JTable(model) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
-		
+
 		private JTable mantelzorgerTabel = new JTable(250, 3) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -73,9 +75,16 @@ public class JavaJFrameApplication {
 			}
 		};
 
-		private JScrollPane patientPane = new JScrollPane(patientTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		private JScrollPane rapportPane = new JScrollPane(rapportTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		private JScrollPane vraagPane = new JScrollPane(vraagTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JScrollPane patientPane = new JScrollPane(patientTabel,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+				
+		private JScrollPane rapportPane = new JScrollPane(rapportTabel,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JScrollPane vraagPane = new JScrollPane(vraagTabel,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		private JButton jButton = new JButton("Voeg patient toe");
 		private JButton button = new JButton("Test");
 
@@ -83,7 +92,7 @@ public class JavaJFrameApplication {
 			super(new BorderLayout());
 
 			LoginPanel login = new LoginPanel();
-			
+
 			inloggen.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -93,31 +102,32 @@ public class JavaJFrameApplication {
 			});
 
 			JPanel jPaneA = new JPanel();
-			/*
-			patientTabel.getColumnModel().getColumn(0).setHeaderValue("Voornaam");
-			patientTabel.getColumnModel().getColumn(1).setHeaderValue("Achternaam");
-			patientTabel.getColumnModel().getColumn(2).setHeaderValue("Email");
-*/
-			model.addColumn("Voornaam");
-			model.addColumn("Achternaam");
-			model.addColumn("Email");
-			model.addRow(new Object[] { "test", "test" });
-			jPaneA.add(patientPane);
-			jPaneA.add(jButton);
+			JLabel label = new JLabel("Title ");
+			label.setFont(label.getFont().deriveFont(Font.BOLD | Font.ITALIC,
+					18));
+			JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			topPanel.add(label);
 			
-		
+			JButton button = new JButton("Log In");
+	        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+	        bottomPanel.add(button);
+	        jPaneA.add(bottomPanel,BorderLayout.NORTH);
+	        jPaneA.add(topPanel,BorderLayout.SOUTH);
+
 			JPanel jPaneB = new JPanel();
-			rapportTabel.getColumnModel().getColumn(0).setHeaderValue("Patient");
-			rapportTabel.getColumnModel().getColumn(1).setHeaderValue("Mantelzorger");
-			rapportTabel.getColumnModel().getColumn(2).setHeaderValue("Vragenlijst");
+			rapportTabel.getColumnModel().getColumn(0)
+					.setHeaderValue("Patient");
+			rapportTabel.getColumnModel().getColumn(1)
+					.setHeaderValue("Mantelzorger");
+			rapportTabel.getColumnModel().getColumn(2)
+					.setHeaderValue("Vragenlijst");
 			rapportTabel.getColumnModel().getColumn(3).setHeaderValue("Datum");
 			jPaneB.add(rapportPane);
 			jPaneB.add(button);
-			
-
 
 			JPanel jPaneC = new JPanel();
-			vraagTabel.getColumnModel().getColumn(0).setHeaderValue("Beschrijving");
+			vraagTabel.getColumnModel().getColumn(0)
+					.setHeaderValue("Beschrijving");
 			jPaneC.add(vraagPane);
 
 			menuBar.add(fileMenu);
@@ -131,7 +141,7 @@ public class JavaJFrameApplication {
 			add(menuBar, BorderLayout.NORTH);
 			add(jTabbedPane, BorderLayout.CENTER);
 		}
-		}
+	}
 
 	public static void main(String[] args) {
 
@@ -139,7 +149,8 @@ public class JavaJFrameApplication {
 
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+		} catch (UnsupportedLookAndFeelException | ClassNotFoundException
+				| InstantiationException | IllegalAccessException e) {
 			Debug.log("Unable to change the UI to the system UI");
 		}
 		try {
@@ -171,20 +182,21 @@ public class JavaJFrameApplication {
 			Debug.log(" patienten: " + e2.getMessage());
 		}
 
-		Object[] columnnames = {"Voornaam", "achternaam", "email"};
+		Object[] columnnames = { "Voornaam", "achternaam", "email" };
 
-		//dit is een static function dus we kunnen niet aan die andere variables?
-		//patientTabel = new jtable(rowdata,columnnames);
+		// dit is een static function dus we kunnen niet aan die andere
+		// variables?
+		//patientTabel = new JTable(rowdata,columnnames);
 
 		JFrame mainJFrame = new JFrame();
 		mainJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainJFrame.setTitle("test");
 		mainJFrame.setSize(800, 600);
-
+/*
 		MyTabJPanel myTabJPanel = new MyTabJPanel();
 		mainJFrame.add(myTabJPanel);
 		mainJFrame.setVisible(true);
-
+*/
 		try {
 			Login test = new Login("jan.schoefs@gmail.com", "P@ssw0rd");
 			API.setLogin(test);
@@ -195,5 +207,4 @@ public class JavaJFrameApplication {
 		}
 
 	}
-	}
-	
+}
