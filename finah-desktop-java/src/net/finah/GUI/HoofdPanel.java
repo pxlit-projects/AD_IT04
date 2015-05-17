@@ -69,11 +69,11 @@ public class HoofdPanel extends JFrame {
 	private JPanel panelVragenlijst = new JPanel(new BorderLayout());
 	private JPanel topPanelVragenlijst = new JPanel(new FlowLayout(
 			FlowLayout.CENTER));
-	private JPanel bottomPanelVragenlijst = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
+	private JPanel bottomPanelVragenlijst = new JPanel(new FlowLayout());
 	private JTable vragenlijstTabel = new JTable();
 	private JLabel labelVragenlijst = new JLabel("Vragenlijsten");
 	private JButton buttonVragenlijst = new JButton("Voeg vragenlijst toe");
+	private JButton buttonBekijken = new JButton("Bekijk vragenlijst");
 
 	public HoofdPanel() throws IOException {
 
@@ -187,16 +187,19 @@ public class HoofdPanel extends JFrame {
 
 					JOptionPane.showMessageDialog(frame,
 							"Gelieve een rapport te selecteren",
-							"Ongeldige rij", JOptionPane.WARNING_MESSAGE);
+							"Ongeldig rapport", JOptionPane.WARNING_MESSAGE);
 
 				} else {
 					if (rapportTabel.getValueAt(rij, 0) == null) {
 						JFrame frame = new JFrame(
 								"JOptionPane showMessageDialog example");
 
-						JOptionPane.showMessageDialog(frame,
-								"Gelieve een geldig rapport te selecteren",
-								"Ongeldige rij", JOptionPane.WARNING_MESSAGE);
+						JOptionPane
+								.showMessageDialog(
+										frame,
+										"Gelieve een geldig rapport te selecteren",
+										"Ongeldig rapport",
+										JOptionPane.WARNING_MESSAGE);
 					} else {
 						int id = Integer.parseInt(rapportTabel.getValueAt(rij,
 								0).toString());
@@ -222,11 +225,52 @@ public class HoofdPanel extends JFrame {
 				Font.BOLD | Font.ITALIC, 18));
 		topPanelVragenlijst.add(labelVragenlijst);
 		bottomPanelVragenlijst.add(buttonVragenlijst);
+		bottomPanelVragenlijst.add(buttonBekijken);
 		panelVragenlijst.add(bottomPanelVragenlijst, BorderLayout.SOUTH);
 		panelVragenlijst.add(topPanelVragenlijst, BorderLayout.NORTH);
 
 		JScrollPane scrollVraag = new JScrollPane(vragenlijstTabel);
 		panelVragenlijst.add(scrollVraag, BorderLayout.CENTER);
+
+		buttonBekijken.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int rij = vragenlijstTabel.getSelectedRow();
+				if (rij == -1) {
+					JFrame frame = new JFrame(
+							"JOptionPane showMessageDialog example");
+
+					JOptionPane.showMessageDialog(frame,
+							"Gelieve een vragenlijst te selecteren",
+							"Ongeldige vragenlijst",
+							JOptionPane.WARNING_MESSAGE);
+
+				} else {
+					if (vragenlijstTabel.getValueAt(rij, 0) == null) {
+						JFrame frame = new JFrame(
+								"JOptionPane showMessageDialog example");
+
+						JOptionPane
+								.showMessageDialog(
+										frame,
+										"Gelieve een geldige vragenlijst te selecteren",
+										"Ongeldige vragenlijst",
+										JOptionPane.WARNING_MESSAGE);
+					} else {
+						int id = Integer.parseInt(vragenlijstTabel.getValueAt(
+								rij, 0).toString());
+						try {
+							PDFMaker.bekijkRapport(id);
+						} catch (IOException | COSVisitorException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+
+						}
+					}
+				}
+			}
+		});
 
 		// Algemeen
 		menuBar.add(fileMenu);
