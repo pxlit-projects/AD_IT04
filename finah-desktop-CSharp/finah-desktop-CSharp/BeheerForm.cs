@@ -132,7 +132,7 @@ namespace finah_desktop_CSharp
 
             int rapportId = dbfunctions.postRapport(rapport);
 
-            new VerstuurVragenlijst().sendMessage(patientId, mantelzorgerId, rapportId, vragenlijstId);
+            //new VerstuurVragenlijst().sendMessage(patientId, mantelzorgerId, rapportId, vragenlijstId);
 
             MessageBox.Show(
                 "De vragenlijst '" + comboBoxVragenlijst.Text
