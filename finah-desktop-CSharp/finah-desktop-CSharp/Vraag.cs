@@ -17,6 +17,6 @@ namespace finah_desktop_CSharp
         public string Beschrijving { get; set; }   
 
         [DataMember]
-        int Vragenlijst_Id { get; set; }
+        public int Vragenlijst_Id { get; set; }
     }
 }

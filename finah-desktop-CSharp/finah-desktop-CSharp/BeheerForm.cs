@@ -19,9 +19,8 @@ namespace finah_desktop_CSharp
         private List<Patientmantelzorger> patientList = new List<Patientmantelzorger>();
         private List<Patientmantelzorger> mantelzorgerList = new List<Patientmantelzorger>();
         private List<Rapport> rapportList = new List<Rapport>();
+        private List<RapportViewModel> rapportViewModelList = new List<RapportViewModel>();
         private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
-       // private List<
-
         private int dokter_Id;
 
         public BeheerForm(int dokter_Id)
@@ -40,7 +39,7 @@ namespace finah_desktop_CSharp
             this.patientDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            mantelzorgerList = dbfunctions.loadVerzorger(dokter_Id);
+            mantelzorgerList = dbfunctions.loadVerzorgers(dokter_Id);
             verzorgerDataGridView.DataSource = mantelzorgerList;
             verzorgerDataGridView.Columns["Id"].Visible = false;
             verzorgerDataGridView.Columns["Verzorger"].Visible = false;
@@ -48,14 +47,38 @@ namespace finah_desktop_CSharp
 
             vragenlijstList = dbfunctions.loadVragenlijsten(dokter_Id);
             vragenlijstDataGridView.DataSource = vragenlijstList;
-            //vragenlijstDataGridView.Columns["Id"].Visible = false;
+            vragenlijstDataGridView.Columns["Id"].Visible = false;
             vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
 
-           /* rapportList = dbfunctions.loadRapport(dokter_Id);
-            rapportDataGridView.DataSource = rapportList;
-            rapportDataGridView.Columns["Id"].Visible = false;*/
+            rapportList = dbfunctions.loadRapport(dokter_Id);
 
-            //rapportDataGridView.Columns.Add();
+            foreach (Rapport rapport in rapportList)
+            {
+                Patientmantelzorger patient = dbfunctions.loadPatientMantelzorger(rapport.Patient_Id).First();
+                Patientmantelzorger mantelzorger = dbfunctions.loadPatientMantelzorger(rapport.Mantelzorger_Id).First();
+                Vragenlijst vragenlijst = dbfunctions.loadVragenlijst(rapport.Vragenlijst_Id).First();
+                rapportViewModelList.Add(new RapportViewModel()
+                {
+                    PatientNaam = patient.Vnaam + " " + patient.Anaam,
+                    MantelzorgerNaam = mantelzorger.Vnaam + " " + mantelzorger.Anaam,
+                    Date = rapport.Date,
+                    VragenlijstBeschrijving = vragenlijst.Beschrijving
+                });
+            }
+
+            rapportDataGridView.DataSource = rapportViewModelList;
+
+            comboBoxPatient.DataSource = patientList;
+            comboBoxPatient.DisplayMember = "FullName";
+            comboBoxPatient.ValueMember = "Id";
+
+            comboBoxMantelzorger.DataSource = mantelzorgerList;
+            comboBoxMantelzorger.DisplayMember = "FullName";
+            comboBoxMantelzorger.ValueMember = "Id";
+
+            comboBoxVragenlijst.DataSource = vragenlijstList;
+            comboBoxVragenlijst.DisplayMember = "Beschrijving";
+            comboBoxVragenlijst.ValueMember = "Id";
         }
 
         private void voegPatientToeButton_Click(object sender, EventArgs e)
@@ -70,41 +93,53 @@ namespace finah_desktop_CSharp
             verzorgerForm.ShowDialog();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void voegVragenlijstButton_Click(object sender, EventArgs e)
         {
-            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientList, mantelzorgerList, vragenlijstDataGridView);
+            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, vragenlijstDataGridView, dokter_Id);
             vragenlijstForm.ShowDialog();
+        }
+
+        private void bekijkVragenlijst_Click_1(object sender, EventArgs e)
+        {
+            Vragenlijst vragenlijst = vragenlijstList[vragenlijstDataGridView.CurrentCell.RowIndex];
+            int vragenlijstId = vragenlijst.Id;
+            String beschrijving = vragenlijst.Beschrijving;
+            Form bekijkvragenlijstForm = new BekijkVragenlijstForm(vragenlijstId, beschrijving);
+            bekijkvragenlijstForm.ShowDialog();
         }
 
         private void rapportDetailButton_Click(object sender, EventArgs e)
         {
-            /* Form form = new VragenlijstForm();
-             form.ShowDialog();*/
+            Rapport rapport = rapportList[rapportDataGridView.CurrentCell.RowIndex];
+            Form rapportDetailsForm = new RapportDetailsForm(rapport.Id, rapport.Patient_Id, rapport.Mantelzorger_Id, rapport.Vragenlijst_Id, rapport.Date);
+            rapportDetailsForm.ShowDialog();
         }
 
-        private void detailsButton_Click(object sender, EventArgs e)
+        private void btnVerstuur_Click(object sender, EventArgs e)
         {
-            int id;
+            int patientId = (int)comboBoxPatient.SelectedValue;
+            int mantelzorgerId = (int)comboBoxMantelzorger.SelectedValue;
+            int vragenlijstId = (int)comboBoxVragenlijst.SelectedValue;
 
-            id = Convert.ToInt32(vragenlijstDataGridView.SelectedCells[0].Value.ToString());
-            Console.WriteLine(id);
+            Rapport rapport = new Rapport()
+            {
+                Patient_Id = patientId,
+                Mantelzorger_Id = mantelzorgerId,
+                Vragenlijst_Id = vragenlijstId,
+                Date = DateTime.Now,
+                Dokter_Id = dokter_Id
+            };
 
+            int rapportId = dbfunctions.postRapport(rapport);
 
-            Form vragenlijstForm = new AanVragenlijstForm(ref vragenlijstList, patientList, mantelzorgerList, vragenlijstDataGridView, id);
-            vragenlijstForm.ShowDialog();
+            new VerstuurVragenlijst().sendMessage(patientId, mantelzorgerId, rapportId, vragenlijstId);
+
+            MessageBox.Show(
+                "De vragenlijst '" + comboBoxVragenlijst.Text
+                + "' is verstuurd naar patiënt " + comboBoxPatient.Text
+                + " en naar mantelzorger " + comboBoxMantelzorger.Text 
+                + ".", "Finah", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
+
     }
 }

@@ -40,6 +40,22 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGrid.SmtpApi, Version=1.3.1.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.3.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SendGridMail, Version=6.1.0.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.6.1.0\lib\SendGridMail.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -110,6 +126,12 @@
     <Compile Include="BeheerForm.Designer.cs">
       <DependentUpon>BeheerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BekijkVragenlijstForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BekijkVragenlijstForm.Designer.cs">
+      <DependentUpon>BekijkVragenlijstForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DbFunctions.cs" />
     <Compile Include="Dokter.cs" />
     <Compile Include="LoginForm.cs">
@@ -122,6 +144,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rapport.cs" />
+    <Compile Include="RapportDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RapportDetailsForm.Designer.cs">
+      <DependentUpon>RapportDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RapportDetailsModel.cs" />
+    <Compile Include="RapportViewModel.cs" />
+    <Compile Include="ScreenCapture.cs" />
+    <Compile Include="VerstuurVragenlijst.cs" />
     <Compile Include="VoegPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +183,9 @@
     <EmbeddedResource Include="BeheerForm.resx">
       <DependentUpon>BeheerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BekijkVragenlijstForm.resx">
+      <DependentUpon>BekijkVragenlijstForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +199,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RapportDetailsForm.resx">
+      <DependentUpon>RapportDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VoegPatientForm.resx">
       <DependentUpon>VoegPatientForm.cs</DependentUpon>
     </EmbeddedResource>

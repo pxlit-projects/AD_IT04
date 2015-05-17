@@ -22,6 +22,15 @@ namespace WebAPI.Controllers
             return db.Vragenlijsten;
         }
 
+        // GET: api/Vragenlijst
+        [Route("api/vragenlijst/{id}/{random}/{random2}/{random3}")]
+        public IHttpActionResult GetVragenlijst(int id, int random, int random2, int random3)
+        {
+            var model = db.Vragenlijsten.Where(r => r.Id == id);
+
+            return Ok(model);
+        }
+
         // GET: api/Vragenlijst/5
         [ResponseType(typeof(Vragenlijst))]
         public IHttpActionResult GetVragenlijstenByDokterId(int id)

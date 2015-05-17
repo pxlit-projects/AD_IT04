@@ -34,6 +34,15 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/PatientMantelzorger
+        [Route("api/patientmantelzorger/{id}/{random}/{random2}/{random3}")]
+        public IHttpActionResult GetPatientMantelzorger(int id, int random, int random2, int random3)
+        {
+            var model = db.PatientMantelzorgers.Where(r => r.Id == id);
+
+            return Ok(model);
+        }
+
+        // GET: api/PatientMantelzorger
         [Route("api/patientmantelzorger/{dokter_Id}/{random}/{random2}")]
         public IHttpActionResult GetPatientMantelzorgersByDokterId(int dokter_Id, int random, int random2)
         {

@@ -28,5 +28,13 @@ namespace finah_desktop_CSharp
 
         [DataMember]
         public int Dokter_Id { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return Vnaam + " " + Anaam;
+            }
+        }
     }
 }
