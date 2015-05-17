@@ -1,8 +1,15 @@
 package net.finah.GUI;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import net.finah.API.API;
 import net.finah.API.Antwoord;
+
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -59,13 +66,23 @@ public class PDFMaker {
 		}
 	}
 
-	public static void bekijkRapport(int ID) throws IOException, COSVisitorException {
+	public static void bekijkRapport(int ID) throws IOException,
+			COSVisitorException {
 		PDDocument doc = new PDDocument();
 		PDPage page = new PDPage();
 		doc.addPage(page);
 		PDPageContentStream contentStream = new PDPageContentStream(doc, page);
 		ArrayList<Antwoord> antwoorden = new ArrayList<Antwoord>();
-		antwoorden = API.getAntwoordLijst(ID);
+		try {
+			antwoorden = API.getAntwoordLijst(ID);
+		} catch (FileNotFoundException e) {
+			JFrame frame = new JFrame();
+
+			JOptionPane.showMessageDialog(frame,
+					"Dit is een leeg rapport",
+					"Leeg rapport", JOptionPane.WARNING_MESSAGE);
+		}
+
 		int i = 1;
 		int size = antwoorden.size();
 		String[][] content = new String[size + 1][4];
@@ -87,6 +104,5 @@ public class PDFMaker {
 		drawTable(page, contentStream, 675, 100, content, ID);
 		contentStream.close();
 		doc.save("Rapport_" + ID + ".pdf");
-		System.out.print("ok");
 	}
 }

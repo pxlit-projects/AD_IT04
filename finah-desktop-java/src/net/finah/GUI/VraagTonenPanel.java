@@ -3,12 +3,15 @@ package net.finah.GUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -24,12 +27,21 @@ public class VraagTonenPanel extends JFrame {
 	private JTable vraagTabel = new JTable();
 	private JLabel labelVraag = new JLabel("Vragenlijst Tonen");
 
-	public VraagTonenPanel() throws IOException {
+	public VraagTonenPanel(int ID) throws IOException {
 		super("Vragenlijst tonen");
 
 		Object[][] vragen = new Object[100][2];
 		ArrayList<Vraag> vraagList = new ArrayList<Vraag>();
-		vraagList = API.getVragenLijst(1);
+		try {
+			vraagList = API.getVragenLijst(ID);
+		} catch (FileNotFoundException e) {
+			JFrame frame = new JFrame();
+
+			JOptionPane.showMessageDialog(frame,
+					"Deze vragenlijst bevat geen vragen",
+					"Lege vragenlijst",
+					JOptionPane.WARNING_MESSAGE);
+		}
 
 		int i = 0;
 
@@ -55,15 +67,6 @@ public class VraagTonenPanel extends JFrame {
 		JScrollPane scrollVraag = new JScrollPane(vraagTabel);
 		panelVraag.add(scrollVraag, BorderLayout.CENTER);
 		add(panelVraag);
-	}
-
-	public static void main(String[] args) throws IOException {
-		API.setURL("http://finahweb.azurewebsites.net/api/");
-		VraagTonenPanel panel = new VraagTonenPanel();
-		panel.setSize(800, 600);
-		panel.setVisible(true);
-		panel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
 	}
 
 }
