@@ -20,6 +20,7 @@ namespace finah_desktop_CSharp
         private List<Patientmantelzorger> mantelzorgerList = new List<Patientmantelzorger>();
         private List<Rapport> rapportList = new List<Rapport>();
         private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
+       // private List<
 
         private int dokter_Id;
 
@@ -50,9 +51,11 @@ namespace finah_desktop_CSharp
             //vragenlijstDataGridView.Columns["Id"].Visible = false;
             vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
 
-            rapportList = dbfunctions.loadRapport(dokter_Id);
+           /* rapportList = dbfunctions.loadRapport(dokter_Id);
             rapportDataGridView.DataSource = rapportList;
-            rapportDataGridView.Columns["Id"].Visible = false;
+            rapportDataGridView.Columns["Id"].Visible = false;*/
+
+            //rapportDataGridView.Columns.Add();
         }
 
         private void voegPatientToeButton_Click(object sender, EventArgs e)
