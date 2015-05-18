@@ -103,7 +103,7 @@
             this.patientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.patientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.patientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.patientButton.Location = new System.Drawing.Point(1150, 483);
+            this.patientButton.Location = new System.Drawing.Point(1153, 489);
             this.patientButton.Name = "patientButton";
             this.patientButton.Size = new System.Drawing.Size(175, 35);
             this.patientButton.TabIndex = 2;
@@ -115,8 +115,10 @@
             // 
             this.patientDataGridView.AllowUserToAddRows = false;
             this.patientDataGridView.AllowUserToDeleteRows = false;
+            this.patientDataGridView.AllowUserToResizeColumns = false;
+            this.patientDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Empty;
             this.patientDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.patientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -130,7 +132,7 @@
             this.patientDataGridView.Name = "patientDataGridView";
             this.patientDataGridView.ReadOnly = true;
             this.patientDataGridView.RowTemplate.Height = 33;
-            this.patientDataGridView.Size = new System.Drawing.Size(770, 480);
+            this.patientDataGridView.Size = new System.Drawing.Size(1329, 480);
             this.patientDataGridView.TabIndex = 1;
             // 
             // tabPage2
@@ -162,6 +164,8 @@
             // 
             this.verzorgerDataGridView.AllowUserToAddRows = false;
             this.verzorgerDataGridView.AllowUserToDeleteRows = false;
+            this.verzorgerDataGridView.AllowUserToResizeColumns = false;
+            this.verzorgerDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.verzorgerDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.verzorgerDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -195,9 +199,9 @@
             // 
             // bekijkVragenlijst
             // 
-            this.bekijkVragenlijst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bekijkVragenlijst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bekijkVragenlijst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.bekijkVragenlijst.Location = new System.Drawing.Point(6, 486);
+            this.bekijkVragenlijst.Location = new System.Drawing.Point(951, 489);
             this.bekijkVragenlijst.Margin = new System.Windows.Forms.Padding(2);
             this.bekijkVragenlijst.Name = "bekijkVragenlijst";
             this.bekijkVragenlijst.Size = new System.Drawing.Size(175, 35);
@@ -208,9 +212,9 @@
             // 
             // voegVragenlijstButton
             // 
-            this.voegVragenlijstButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.voegVragenlijstButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.voegVragenlijstButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.voegVragenlijstButton.Location = new System.Drawing.Point(594, 486);
+            this.voegVragenlijstButton.Location = new System.Drawing.Point(1153, 489);
             this.voegVragenlijstButton.Name = "voegVragenlijstButton";
             this.voegVragenlijstButton.Size = new System.Drawing.Size(175, 35);
             this.voegVragenlijstButton.TabIndex = 2;
@@ -222,11 +226,14 @@
             // 
             this.vragenlijstDataGridView.AllowUserToAddRows = false;
             this.vragenlijstDataGridView.AllowUserToDeleteRows = false;
+            this.vragenlijstDataGridView.AllowUserToResizeColumns = false;
+            this.vragenlijstDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.vragenlijstDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.vragenlijstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.vragenlijstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.vragenlijstDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.vragenlijstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vragenlijstDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -235,7 +242,7 @@
             this.vragenlijstDataGridView.MultiSelect = false;
             this.vragenlijstDataGridView.Name = "vragenlijstDataGridView";
             this.vragenlijstDataGridView.ReadOnly = true;
-            this.vragenlijstDataGridView.Size = new System.Drawing.Size(770, 480);
+            this.vragenlijstDataGridView.Size = new System.Drawing.Size(1329, 480);
             this.vragenlijstDataGridView.TabIndex = 0;
             // 
             // tabPage4
@@ -266,11 +273,14 @@
             // 
             this.rapportDataGridView.AllowUserToAddRows = false;
             this.rapportDataGridView.AllowUserToDeleteRows = false;
+            this.rapportDataGridView.AllowUserToResizeColumns = false;
+            this.rapportDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.rapportDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.rapportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rapportDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.rapportDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rapportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rapportDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
