@@ -45,7 +45,7 @@
             this.rapportDetailsDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rapportDetailsDataGridView.Font = global::finah_desktop_CSharp.Properties.Settings.Default.ff;
             this.rapportDetailsDataGridView.Location = new System.Drawing.Point(2, 75);
-            this.rapportDetailsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rapportDetailsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.rapportDetailsDataGridView.Name = "rapportDetailsDataGridView";
             this.rapportDetailsDataGridView.RowTemplate.Height = 33;
             this.rapportDetailsDataGridView.Size = new System.Drawing.Size(780, 380);
@@ -54,6 +54,7 @@
             // patientlabel
             // 
             this.patientlabel.AutoSize = true;
+            this.patientlabel.BackColor = System.Drawing.Color.Transparent;
             this.patientlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.patientlabel.Location = new System.Drawing.Point(12, 5);
             this.patientlabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -65,6 +66,7 @@
             // mantelzorgerLabel
             // 
             this.mantelzorgerLabel.AutoSize = true;
+            this.mantelzorgerLabel.BackColor = System.Drawing.Color.Transparent;
             this.mantelzorgerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.mantelzorgerLabel.Location = new System.Drawing.Point(11, 45);
             this.mantelzorgerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -76,6 +78,7 @@
             // VragenlijstLabel
             // 
             this.VragenlijstLabel.AutoSize = true;
+            this.VragenlijstLabel.BackColor = System.Drawing.Color.Transparent;
             this.VragenlijstLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.VragenlijstLabel.Location = new System.Drawing.Point(299, 45);
             this.VragenlijstLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -87,6 +90,7 @@
             // datumLabel
             // 
             this.datumLabel.AutoSize = true;
+            this.datumLabel.BackColor = System.Drawing.Color.Transparent;
             this.datumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.datumLabel.Location = new System.Drawing.Point(299, 5);
             this.datumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -100,7 +104,7 @@
             this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnExport.Location = new System.Drawing.Point(605, 5);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(2);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(175, 35);
             this.btnExport.TabIndex = 5;
@@ -113,6 +117,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.datumLabel);
@@ -120,7 +125,7 @@
             this.Controls.Add(this.mantelzorgerLabel);
             this.Controls.Add(this.patientlabel);
             this.Controls.Add(this.rapportDetailsDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RapportDetailsForm";
             this.Text = "RapportDetailsForm";
             ((System.ComponentModel.ISupportInitialize)(this.rapportDetailsDataGridView)).EndInit();

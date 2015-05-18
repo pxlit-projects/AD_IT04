@@ -31,7 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BeheerForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.voegPatientToeButton = new System.Windows.Forms.Button();
+            this.patientButton = new System.Windows.Forms.Button();
+            this.patientDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.voegVerzorgerToeButton = new System.Windows.Forms.Button();
             this.verzorgerDataGridView = new System.Windows.Forms.DataGridView();
@@ -50,10 +51,9 @@
             this.comboBoxVragenlijst = new System.Windows.Forms.ComboBox();
             this.comboBoxMantelzorger = new System.Windows.Forms.ComboBox();
             this.comboBoxPatient = new System.Windows.Forms.ComboBox();
-            this.patientButton = new System.Windows.Forms.Button();
-            this.patientDataGridView = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.verzorgerDataGridView)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -61,7 +61,6 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rapportDataGridView)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -78,36 +77,50 @@
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(780, 560);
+            this.tabControl1.Size = new System.Drawing.Size(1339, 560);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
             this.tabPage1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage1.BackgroundImage")));
             this.tabPage1.Controls.Add(this.patientButton);
-            this.tabPage1.Controls.Add(this.voegPatientToeButton);
             this.tabPage1.Controls.Add(this.patientDataGridView);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(772, 527);
+            this.tabPage1.Size = new System.Drawing.Size(1331, 527);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Patienten";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // voegPatientToeButton
+            // patientButton
             // 
-            this.voegPatientToeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.voegPatientToeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.voegPatientToeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voegPatientToeButton.Location = new System.Drawing.Point(-381, -23);
-            this.voegPatientToeButton.Name = "voegPatientToeButton";
-            this.voegPatientToeButton.Size = new System.Drawing.Size(140, 35);
-            this.voegPatientToeButton.TabIndex = 0;
-            this.voegPatientToeButton.Text = "Voeg patient toe";
-            this.voegPatientToeButton.UseVisualStyleBackColor = false;
-            this.voegPatientToeButton.Click += new System.EventHandler(this.voegPatientToeButton_Click);
+            this.patientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.patientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.patientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.patientButton.Location = new System.Drawing.Point(1150, 483);
+            this.patientButton.Name = "patientButton";
+            this.patientButton.Size = new System.Drawing.Size(175, 35);
+            this.patientButton.TabIndex = 2;
+            this.patientButton.Text = "Voeg patient toe";
+            this.patientButton.UseVisualStyleBackColor = false;
+            this.patientButton.Click += new System.EventHandler(this.voegPatientToeButton_Click);
+            // 
+            // patientDataGridView
+            // 
+            this.patientDataGridView.AllowUserToAddRows = false;
+            this.patientDataGridView.AllowUserToDeleteRows = false;
+            this.patientDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientDataGridView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.patientDataGridView.Location = new System.Drawing.Point(2, 2);
+            this.patientDataGridView.MultiSelect = false;
+            this.patientDataGridView.Name = "patientDataGridView";
+            this.patientDataGridView.ReadOnly = true;
+            this.patientDataGridView.RowTemplate.Height = 33;
+            this.patientDataGridView.Size = new System.Drawing.Size(770, 480);
+            this.patientDataGridView.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -117,7 +130,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(772, 527);
+            this.tabPage2.Size = new System.Drawing.Size(1331, 527);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantelzorgers";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -126,7 +139,7 @@
             // 
             this.voegVerzorgerToeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.voegVerzorgerToeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.voegVerzorgerToeButton.Location = new System.Drawing.Point(594, 489);
+            this.voegVerzorgerToeButton.Location = new System.Drawing.Point(1153, 489);
             this.voegVerzorgerToeButton.Name = "voegVerzorgerToeButton";
             this.voegVerzorgerToeButton.Size = new System.Drawing.Size(175, 35);
             this.voegVerzorgerToeButton.TabIndex = 1;
@@ -149,7 +162,7 @@
             this.verzorgerDataGridView.MultiSelect = false;
             this.verzorgerDataGridView.Name = "verzorgerDataGridView";
             this.verzorgerDataGridView.ReadOnly = true;
-            this.verzorgerDataGridView.Size = new System.Drawing.Size(770, 480);
+            this.verzorgerDataGridView.Size = new System.Drawing.Size(1329, 480);
             this.verzorgerDataGridView.TabIndex = 0;
             // 
             // tabPage3
@@ -215,7 +228,7 @@
             this.tabPage4.Controls.Add(this.rapportDataGridView);
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(772, 527);
+            this.tabPage4.Size = new System.Drawing.Size(1331, 527);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Rapporten";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -224,7 +237,7 @@
             // 
             this.rapportDetailButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rapportDetailButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.rapportDetailButton.Location = new System.Drawing.Point(594, 489);
+            this.rapportDetailButton.Location = new System.Drawing.Point(1153, 489);
             this.rapportDetailButton.Name = "rapportDetailButton";
             this.rapportDetailButton.Size = new System.Drawing.Size(175, 35);
             this.rapportDetailButton.TabIndex = 0;
@@ -247,7 +260,7 @@
             this.rapportDataGridView.MultiSelect = false;
             this.rapportDataGridView.Name = "rapportDataGridView";
             this.rapportDataGridView.ReadOnly = true;
-            this.rapportDataGridView.Size = new System.Drawing.Size(770, 480);
+            this.rapportDataGridView.Size = new System.Drawing.Size(1329, 480);
             this.rapportDataGridView.TabIndex = 1;
             // 
             // tabPage5
@@ -338,47 +351,20 @@
             this.comboBoxPatient.Size = new System.Drawing.Size(152, 28);
             this.comboBoxPatient.TabIndex = 0;
             // 
-            // patientButton
-            // 
-            this.patientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.patientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.patientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.patientButton.Location = new System.Drawing.Point(591, 483);
-            this.patientButton.Name = "patientButton";
-            this.patientButton.Size = new System.Drawing.Size(175, 35);
-            this.patientButton.TabIndex = 2;
-            this.patientButton.Text = "Voeg patient toe";
-            this.patientButton.UseVisualStyleBackColor = false;
-            this.patientButton.Click += new System.EventHandler(this.voegPatientToeButton_Click);
-            // 
-            // patientDataGridView
-            // 
-            this.patientDataGridView.AllowUserToAddRows = false;
-            this.patientDataGridView.AllowUserToDeleteRows = false;
-            this.patientDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.patientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.patientDataGridView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.patientDataGridView.Location = new System.Drawing.Point(2, 2);
-            this.patientDataGridView.MultiSelect = false;
-            this.patientDataGridView.Name = "patientDataGridView";
-            this.patientDataGridView.ReadOnly = true;
-            this.patientDataGridView.RowTemplate.Height = 33;
-            this.patientDataGridView.Size = new System.Drawing.Size(770, 480);
-            this.patientDataGridView.TabIndex = 1;
-            // 
             // BeheerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1343, 561);
             this.Controls.Add(this.tabControl1);
             this.Name = "BeheerForm";
             this.Text = "Beheer";
             this.Load += new System.EventHandler(this.BeheerForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.verzorgerDataGridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -387,7 +373,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.rapportDataGridView)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,7 +381,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button voegPatientToeButton;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button voegVerzorgerToeButton;
         private System.Windows.Forms.DataGridView verzorgerDataGridView;
