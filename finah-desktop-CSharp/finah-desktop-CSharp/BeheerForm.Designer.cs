@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BeheerForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.patientButton = new System.Windows.Forms.Button();
@@ -102,6 +102,7 @@
             // 
             this.patientButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.patientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.patientButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.patientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.patientButton.Location = new System.Drawing.Point(1153, 489);
             this.patientButton.Name = "patientButton";
@@ -117,9 +118,9 @@
             this.patientDataGridView.AllowUserToDeleteRows = false;
             this.patientDataGridView.AllowUserToResizeColumns = false;
             this.patientDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Empty;
-            this.patientDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Empty;
+            this.patientDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.patientDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -152,6 +153,7 @@
             // 
             this.voegVerzorgerToeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.voegVerzorgerToeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.voegVerzorgerToeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.voegVerzorgerToeButton.Location = new System.Drawing.Point(1153, 489);
             this.voegVerzorgerToeButton.Name = "voegVerzorgerToeButton";
             this.voegVerzorgerToeButton.Size = new System.Drawing.Size(175, 35);
@@ -166,8 +168,8 @@
             this.verzorgerDataGridView.AllowUserToDeleteRows = false;
             this.verzorgerDataGridView.AllowUserToResizeColumns = false;
             this.verzorgerDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.verzorgerDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.verzorgerDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.verzorgerDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -201,6 +203,7 @@
             // 
             this.bekijkVragenlijst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bekijkVragenlijst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.bekijkVragenlijst.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bekijkVragenlijst.Location = new System.Drawing.Point(951, 489);
             this.bekijkVragenlijst.Margin = new System.Windows.Forms.Padding(2);
             this.bekijkVragenlijst.Name = "bekijkVragenlijst";
@@ -214,6 +217,7 @@
             // 
             this.voegVragenlijstButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.voegVragenlijstButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.voegVragenlijstButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.voegVragenlijstButton.Location = new System.Drawing.Point(1153, 489);
             this.voegVragenlijstButton.Name = "voegVragenlijstButton";
             this.voegVragenlijstButton.Size = new System.Drawing.Size(175, 35);
@@ -228,8 +232,8 @@
             this.vragenlijstDataGridView.AllowUserToDeleteRows = false;
             this.vragenlijstDataGridView.AllowUserToResizeColumns = false;
             this.vragenlijstDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.vragenlijstDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.vragenlijstDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.vragenlijstDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -261,6 +265,7 @@
             // 
             this.rapportDetailButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rapportDetailButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.rapportDetailButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.rapportDetailButton.Location = new System.Drawing.Point(1153, 489);
             this.rapportDetailButton.Name = "rapportDetailButton";
             this.rapportDetailButton.Size = new System.Drawing.Size(175, 35);
@@ -275,8 +280,8 @@
             this.rapportDataGridView.AllowUserToDeleteRows = false;
             this.rapportDataGridView.AllowUserToResizeColumns = false;
             this.rapportDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
-            this.rapportDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.rapportDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.rapportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -314,6 +319,7 @@
             // btnVerstuur
             // 
             this.btnVerstuur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.btnVerstuur.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVerstuur.Location = new System.Drawing.Point(180, 220);
             this.btnVerstuur.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerstuur.Name = "btnVerstuur";

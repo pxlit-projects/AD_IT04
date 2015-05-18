@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bekijkVragenlijstDataGridView = new System.Windows.Forms.DataGridView();
             this.VragenlijstBeschrijving = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bekijkVragenlijstDataGridView)).BeginInit();
@@ -35,6 +36,11 @@
             // 
             // bekijkVragenlijstDataGridView
             // 
+            this.bekijkVragenlijstDataGridView.AllowUserToResizeColumns = false;
+            this.bekijkVragenlijstDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.bekijkVragenlijstDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.bekijkVragenlijstDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.bekijkVragenlijstDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bekijkVragenlijstDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bekijkVragenlijstDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -43,7 +49,7 @@
             this.bekijkVragenlijstDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.bekijkVragenlijstDataGridView.Name = "bekijkVragenlijstDataGridView";
             this.bekijkVragenlijstDataGridView.RowTemplate.Height = 33;
-            this.bekijkVragenlijstDataGridView.Size = new System.Drawing.Size(510, 404);
+            this.bekijkVragenlijstDataGridView.Size = new System.Drawing.Size(1169, 404);
             this.bekijkVragenlijstDataGridView.TabIndex = 0;
             // 
             // VragenlijstBeschrijving
@@ -64,7 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(522, 454);
+            this.ClientSize = new System.Drawing.Size(1178, 454);
             this.Controls.Add(this.VragenlijstBeschrijving);
             this.Controls.Add(this.bekijkVragenlijstDataGridView);
             this.Margin = new System.Windows.Forms.Padding(2);
