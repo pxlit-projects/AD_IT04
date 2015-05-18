@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.ButtonModel;
@@ -26,6 +27,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 
 import net.finah.API.API;
+import net.finah.API.Login;
 import net.finah.API.PatientVerzorger;
 import net.finah.API.Rapport;
 import net.finah.API.Vragenlijst;
