@@ -174,13 +174,14 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(772, 527);
+            this.tabPage3.Size = new System.Drawing.Size(1331, 527);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Vragenlijsten";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // bekijkVragenlijst
             // 
+            this.bekijkVragenlijst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bekijkVragenlijst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.bekijkVragenlijst.Location = new System.Drawing.Point(6, 486);
             this.bekijkVragenlijst.Margin = new System.Windows.Forms.Padding(2);
@@ -277,7 +278,7 @@
             this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage5.Size = new System.Drawing.Size(772, 527);
+            this.tabPage5.Size = new System.Drawing.Size(1331, 527);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Vragenlijst versturen";
             this.tabPage5.UseVisualStyleBackColor = true;
