@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import net.finah.API.API;
+import net.finah.API.PatientVerzorger;
+import net.finah.API.Vraag;
+import net.finah.API.Vragenlijst;
+
 public class VraagToevoegenPanel extends JFrame {
 	private JLabel titel = new JLabel("Titel: ");
 	private JTextField tekstTitel = new JTextField(25);
@@ -24,6 +30,8 @@ public class VraagToevoegenPanel extends JFrame {
 	private static Integer indexer = 1;
 	private static List<JLabel> listOfLabels = new ArrayList<JLabel>();
 	private static List<JTextField> listOfTextFields = new ArrayList<JTextField>();
+	private ArrayList<String> tekstVragen = new ArrayList<String>();
+	private ArrayList<Vraag> vragen = new ArrayList<Vraag>();
 
 	public VraagToevoegenPanel() {
 		super("Toevoegen vragenlijst");
@@ -103,5 +111,26 @@ public class VraagToevoegenPanel extends JFrame {
 		panelMain.add(pane, BorderLayout.CENTER);
 		add(panelMain);
 
+		toevoegen.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int i = 1;
+
+				for (JTextField field : listOfTextFields) {
+					tekstVragen.add(field.getText());
+				}
+
+				for (String tekst : tekstVragen) {
+					Vraag vraag = new Vraag();
+					vraag.setId(i);
+					vraag.setBeschrijving(tekst);
+					vraag.setVragenLijst_Id(99);
+					vragen.add(vraag);
+					i++;
+				}
+				System.out.println(vragen);
+
+			}
+		});
 	}
 }
