@@ -34,5 +34,17 @@ namespace finah_desktop_CSharp.Properties {
                 this["ff"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Microso {
+            get {
+                return ((string)(this["Microso"]));
+            }
+            set {
+                this["Microso"] = value;
+            }
+        }
     }
 }
