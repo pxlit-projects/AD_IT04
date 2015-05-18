@@ -3,13 +3,19 @@ package net.finah.GUI;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import net.finah.API.PatientVerzorger;
+import net.finah.API.Vraag;
 
 public class MantelzorgerPanel extends JFrame {
 	private JLabel voornaam = new JLabel("Voornaam: ");
@@ -19,6 +25,8 @@ public class MantelzorgerPanel extends JFrame {
 	private JTextField tekstAchternaam = new JTextField(20);
 	private JTextField tekstEmail = new JTextField(20);
 	private JButton button = new JButton("Voeg mantelzorger toe");
+	private String achternaamString, voornaamString, emailString;
+	private PatientVerzorger zorger = new PatientVerzorger();
 
 	public MantelzorgerPanel() {
 		super("Toevoegen Mantelzorger");
@@ -58,6 +66,51 @@ public class MantelzorgerPanel extends JFrame {
 
 		add(newPanel);
 		// setLocationRelativeTo(null);
+
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				achternaamString = tekstAchternaam.getText();
+				voornaamString = tekstVoornaam.getText();
+				emailString = tekstEmail.getText();
+				validate(emailString);
+
+				/*
+				 * System.out.println(achternaamString + " " + voornaamString +
+				 * " " + emailString);
+				 */
+
+				zorger.setaNaam(achternaamString);
+				zorger.setvNaam(voornaamString);
+				zorger.setEmail(emailString);
+				zorger.setVerzorger(true);
+
+				System.out.println(zorger);
+			}
+		});
+	}
+
+	public void validate(String email) {
+		if (!(email.contains("@") && email.contains("."))) {
+			JFrame frame = new JFrame();
+
+			JOptionPane.showMessageDialog(frame,
+					"Gelieve een geldig emailadres in te geven",
+					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+		} else if (!(email.contains("@") || email.contains("."))) {
+			JFrame frame = new JFrame();
+
+			JOptionPane.showMessageDialog(frame,
+					"Gelieve een geldig emailadres in te geven",
+					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+		} else if (email.length() < 8) {
+			JFrame frame = new JFrame();
+
+			JOptionPane.showMessageDialog(frame,
+					"Gelieve een geldig emailadres in te geven",
+					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+
+		}
 	}
 
 }

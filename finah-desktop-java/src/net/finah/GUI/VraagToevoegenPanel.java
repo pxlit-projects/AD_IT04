@@ -33,6 +33,7 @@ public class VraagToevoegenPanel extends JFrame {
 	private ArrayList<String> tekstVragen = new ArrayList<String>();
 	private ArrayList<Vraag> vragen = new ArrayList<Vraag>();
 
+	
 	public VraagToevoegenPanel() {
 		super("Toevoegen vragenlijst");
 		JPanel newPanel = new JPanel(new GridBagLayout());

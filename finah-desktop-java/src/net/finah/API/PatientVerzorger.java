@@ -20,6 +20,22 @@ public class PatientVerzorger {
 
 	@JsonProperty("Dokter_Id")
 	private boolean dokterId;
+	
+	public void setvNaam(String vNaam) {
+		this.vNaam = vNaam;
+	}
+
+	public void setaNaam(String aNaam) {
+		this.aNaam = aNaam;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setVerzorger(boolean verzorger) {
+		this.verzorger = verzorger;
+	}
 
 	public String toString(){
 		return id + ":" + vNaam + "-" + aNaam + ":" + email + ":" + verzorger + ":" + dokterId;
