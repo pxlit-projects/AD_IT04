@@ -337,7 +337,7 @@ public class HoofdPanel extends JFrame {
 
 	}
 	
-	public static void refresh() throws IOException{
+	public static void refreshHoofdPanel() throws IOException{
 		try{
 			main.dispose();
 		}catch(NullPointerException e){
@@ -349,6 +349,8 @@ public class HoofdPanel extends JFrame {
 		main.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
+
+
 
 	public static void main(String[] args) throws IOException {
 		API.init();
@@ -366,6 +368,6 @@ public class HoofdPanel extends JFrame {
 		}
 
 	
-		refresh();
+		refreshHoofdPanel();
 	}
 }

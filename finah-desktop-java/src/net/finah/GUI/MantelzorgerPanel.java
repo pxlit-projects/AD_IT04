@@ -3,6 +3,7 @@ package net.finah.GUI;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import net.finah.API.API;
 import net.finah.API.PatientVerzorger;
@@ -89,7 +91,9 @@ public class MantelzorgerPanel extends JFrame {
 				zorger.setDokterId(1);
 				try {
 					API.writePatientMantelzorger(zorger);
-					HoofdPanel.refresh();
+					HoofdPanel.refreshHoofdPanel();
+					dispose();
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -98,6 +102,10 @@ public class MantelzorgerPanel extends JFrame {
 				System.out.println(zorger);
 			}
 		});
+	}
+
+	private void refresh(){
+
 	}
 
 	public void validate(String email) {
@@ -122,5 +130,6 @@ public class MantelzorgerPanel extends JFrame {
 
 		}
 	}
+
 
 }

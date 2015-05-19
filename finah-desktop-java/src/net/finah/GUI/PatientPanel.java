@@ -90,7 +90,8 @@ public class PatientPanel extends JFrame {
 
 				try {
 					API.writePatientMantelzorger(patient);
-					HoofdPanel.refresh();
+					HoofdPanel.refreshHoofdPanel();
+					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
