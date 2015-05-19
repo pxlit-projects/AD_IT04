@@ -13,24 +13,23 @@ namespace finah_desktop_CSharp
     public partial class AanVragenFrom : Form
     {
         private int id = 0;
-        private List<Vraag> list = new List<Vraag>();
+        private BindingList<Vraag> list = new BindingList<Vraag>();
         private DataGridView datagridview;
 
-        public AanVragenFrom(DataGridView datagridview, ref List<Vraag>list)
+        public AanVragenFrom(DataGridView datagridview, ref BindingList<Vraag>list)
         {
             InitializeComponent();
             this.list = list;
             this.datagridview = datagridview;
         }
 
-        public AanVragenFrom(string beschrijving, DataGridView datagridview, ref List<Vraag>list, int indexVraag)
+        public AanVragenFrom(string beschrijving, DataGridView datagridview, ref BindingList<Vraag>list, int indexVraag)
         {
             InitializeComponent();
             vraagTextBox.Text = list[indexVraag].Beschrijving;
             id = indexVraag;
             this.datagridview = datagridview;
             this.list = list;
-
         }
 
         private void verkennerButton_Click(object sender, EventArgs e)

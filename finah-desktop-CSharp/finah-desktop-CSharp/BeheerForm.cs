@@ -36,19 +36,26 @@ namespace finah_desktop_CSharp
             patientDataGridView.Columns["Id"].Visible = false;
             patientDataGridView.Columns["Verzorger"].Visible = false;
             patientDataGridView.Columns["Dokter_Id"].Visible = false;
+            patientDataGridView.Columns["FullName"].Visible = false;
             this.patientDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.patientDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             mantelzorgerList = dbfunctions.loadVerzorgers(dokter_Id);
             verzorgerDataGridView.DataSource = mantelzorgerList;
             verzorgerDataGridView.Columns["Id"].Visible = false;
             verzorgerDataGridView.Columns["Verzorger"].Visible = false;
             verzorgerDataGridView.Columns["Dokter_Id"].Visible = false;
+            verzorgerDataGridView.Columns["FullName"].Visible = false;
+            this.verzorgerDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.verzorgerDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.verzorgerDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             vragenlijstList = dbfunctions.loadVragenlijsten(dokter_Id);
             vragenlijstDataGridView.DataSource = vragenlijstList;
             vragenlijstDataGridView.Columns["Id"].Visible = false;
             vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
+            this.vragenlijstDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;       
 
             rapportList = dbfunctions.loadRapport(dokter_Id);
 
@@ -67,6 +74,10 @@ namespace finah_desktop_CSharp
             }
 
             rapportDataGridView.DataSource = rapportViewModelList;
+            this.rapportDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.rapportDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.rapportDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.rapportDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             comboBoxPatient.DataSource = patientList;
             comboBoxPatient.DisplayMember = "FullName";

@@ -16,7 +16,7 @@ namespace finah_desktop_CSharp
     {
         private DataGridView datagrid; //verniewen van datagridview beheerFrom
         private DbFunctions dbfunctions = new DbFunctions();
-        private List<Vraag> toeVragenList = new List<Vraag>(); //toegevoegde vragen van de vragenlijst
+        private BindingList<Vraag> toeVragenList = new BindingList<Vraag>(); //toegevoegde vragen van de vragenlijst
         private List<Vraag> vragenList = new List<Vraag>(); //alle vragen
         private int dokterId;
         private List<Vragenlijst> vragenlijstList;
@@ -30,7 +30,8 @@ namespace finah_desktop_CSharp
 
             toeVragenDataGridView.DataSource = toeVragenList;
             toeVragenDataGridView.Columns["Id"].Visible = false;
-            toeVragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;        
+            toeVragenDataGridView.Columns["Vragenlijst_Id"].Visible = false;
+            toeVragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void AanVragenlijstForm_Load(object sender, EventArgs e)
@@ -38,6 +39,7 @@ namespace finah_desktop_CSharp
             vragenList = dbfunctions.loadAlleVragen();
             vragenDataGridView.DataSource = vragenList;
             vragenDataGridView.Columns["Id"].Visible = false;
+            vragenDataGridView.Columns["Vragenlijst_Id"].Visible = false;
             vragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
@@ -48,11 +50,6 @@ namespace finah_desktop_CSharp
                 toeVragenList.Add(vragenList[vragenDataGridView.CurrentCell.RowIndex]);
             }
             catch { }
-
-            toeVragenDataGridView.DataSource = null;
-            toeVragenDataGridView.DataSource = toeVragenList;
-            toeVragenDataGridView.Columns["Id"].Visible = false;
-            toeVragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void verwijderButton_Click(object sender, EventArgs e)
@@ -63,11 +60,6 @@ namespace finah_desktop_CSharp
                 toeVragenList.RemoveAt(idVraag);
             }
             catch { }
-
-            toeVragenDataGridView.DataSource = null;
-            toeVragenDataGridView.DataSource = toeVragenList;
-            toeVragenDataGridView.Columns["Id"].Visible = false;
-            toeVragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void nieuwButton_Click(object sender, EventArgs e)
@@ -83,7 +75,6 @@ namespace finah_desktop_CSharp
                 String beschrijving = beschrijvingTextBox.Text;
 
                 Vragenlijst vragenlijst = new Vragenlijst() { Beschrijving = beschrijving, Dokter_Id = dokterId };
-
 
                 int vragenlijstId = dbfunctions.postVragenlijst(vragenlijst);
 
