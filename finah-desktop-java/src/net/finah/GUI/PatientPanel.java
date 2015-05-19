@@ -86,9 +86,11 @@ public class PatientPanel extends JFrame {
 				patient.setvNaam(voornaamString);
 				patient.setEmail(emailString);
 				patient.setVerzorger(false);
-				
+				patient.setDokterId(1);
+
 				try {
 					API.writePatientMantelzorger(patient);
+					HoofdPanel.refresh();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
