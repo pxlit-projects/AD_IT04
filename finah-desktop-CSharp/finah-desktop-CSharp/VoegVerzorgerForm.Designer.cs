@@ -117,7 +117,6 @@
             this.Controls.Add(this.label1);
             this.Name = "VoegVerzorgerForm";
             this.Text = "Voeg verzorger toe";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VoegVerzorgerForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

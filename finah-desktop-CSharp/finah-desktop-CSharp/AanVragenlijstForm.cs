@@ -14,19 +14,21 @@ namespace finah_desktop_CSharp
 {
     public partial class AanVragenlijstForm : Form
     {
+        private BindingList<Vragenlijst> vragenlijstList;
         private DataGridView vragenlijstDatagrid; //verniewen van datagridview beheerFrom
-        private DbFunctions dbfunctions = new DbFunctions();
-        private BindingList<Vraag> toeVragenList = new BindingList<Vraag>(); //toegevoegde vragen van de vragenlijst
-        private List<Vraag> vragenList = new List<Vraag>(); //alle vragen
+        private BindingList<Vraag> toeVragenList;//toegevoegde vragen van de vragenlijst
+        private List<Vraag> vragenList; //alle vragen
+        private DbFunctions dbfunctions;
         private int dokterId;
-        private List<Vragenlijst> vragenlijstList;
 
-        public AanVragenlijstForm(ref List<Vragenlijst> vragenlijstList, DataGridView datagrid, int dokterId)
+        public AanVragenlijstForm(ref BindingList<Vragenlijst> vragenlijstList, DataGridView datagrid, int dokterId)
         {
             InitializeComponent();
-            this.dokterId = dokterId;
             this.vragenlijstList = vragenlijstList;
             this.vragenlijstDatagrid = datagrid;
+            toeVragenList = new BindingList<Vraag>();
+            dbfunctions = new DbFunctions();
+            this.dokterId = dokterId;
 
             toeVragenDataGridView.DataSource = toeVragenList;
             toeVragenDataGridView.Columns["Id"].Visible = false;
@@ -76,6 +78,8 @@ namespace finah_desktop_CSharp
 
                 Vragenlijst vragenlijst = new Vragenlijst() { Beschrijving = beschrijving, Dokter_Id = dokterId };
 
+                vragenlijstList.Add(vragenlijst);
+
                 int vragenlijstId = dbfunctions.postVragenlijst(vragenlijst);
 
                 foreach (Vraag vraag in toeVragenList)
@@ -84,20 +88,14 @@ namespace finah_desktop_CSharp
                     dbfunctions.postVraag(vraag);
                 }
 
-                vragenlijstList.Add(vragenlijst);
-
                 this.Close();
             }
         }
 
-        private void AanVragenlijstForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            vragenlijstDatagrid.DataSource = null;
-            vragenlijstDatagrid.DataSource = vragenlijstList;
-            vragenlijstDatagrid.Columns["Id"].Visible = false;
-            vragenlijstDatagrid.Columns["Dokter_Id"].Visible = false;
-        }
-
+        //
+        // Piece of code I found online for preventing screen flickering
+        //
+        //
         int originalExStyle = -1;
         bool enableFormLevelDoubleBuffering = true;
 
@@ -128,5 +126,9 @@ namespace finah_desktop_CSharp
         {
             TurnOffFormLevelDoubleBuffering();
         }
+        //
+        //
+        //
+        //
     }
 }

@@ -121,6 +121,10 @@ namespace finah_desktop_CSharp
             img.Dispose();
         }
 
+        //
+        // Piece of code I found online for preventing screen flickering
+        //
+        //
         int originalExStyle = -1;
         bool enableFormLevelDoubleBuffering = true;
 
@@ -151,5 +155,9 @@ namespace finah_desktop_CSharp
         {
             TurnOffFormLevelDoubleBuffering();
         }
+        //
+        //
+        //
+        //
     }
 }

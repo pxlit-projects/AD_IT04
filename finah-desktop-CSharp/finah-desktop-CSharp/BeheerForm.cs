@@ -16,11 +16,11 @@ namespace finah_desktop_CSharp
     {
         private DbFunctions dbfunctions = new DbFunctions();
 
-        private List<Patientmantelzorger> patientList = new List<Patientmantelzorger>();
-        private List<Patientmantelzorger> mantelzorgerList = new List<Patientmantelzorger>();
+        private BindingList<Patientmantelzorger> patientList = new BindingList<Patientmantelzorger>();
+        private BindingList<Patientmantelzorger> mantelzorgerList = new BindingList<Patientmantelzorger>();
         private List<Rapport> rapportList = new List<Rapport>();
         private List<RapportViewModel> rapportViewModelList = new List<RapportViewModel>();
-        private List<Vragenlijst> vragenlijstList = new List<Vragenlijst>();
+        private BindingList<Vragenlijst> vragenlijstList;
         private int dokter_Id;
 
         public BeheerForm(int dokter_Id)
@@ -31,7 +31,7 @@ namespace finah_desktop_CSharp
 
         private void BeheerForm_Load(object sender, EventArgs e)
         {
-            patientList = dbfunctions.loadPatienten(dokter_Id);
+            patientList = new BindingList<Patientmantelzorger>(dbfunctions.loadPatienten(dokter_Id));
             patientDataGridView.DataSource = patientList;
             patientDataGridView.Columns["Id"].Visible = false;
             patientDataGridView.Columns["Verzorger"].Visible = false;
@@ -41,7 +41,7 @@ namespace finah_desktop_CSharp
             this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.patientDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            mantelzorgerList = dbfunctions.loadVerzorgers(dokter_Id);
+            mantelzorgerList = new BindingList<Patientmantelzorger>(dbfunctions.loadVerzorgers(dokter_Id));
             verzorgerDataGridView.DataSource = mantelzorgerList;
             verzorgerDataGridView.Columns["Id"].Visible = false;
             verzorgerDataGridView.Columns["Verzorger"].Visible = false;
@@ -51,11 +51,11 @@ namespace finah_desktop_CSharp
             this.verzorgerDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             this.verzorgerDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            vragenlijstList = dbfunctions.loadVragenlijsten(dokter_Id);
+            vragenlijstList = new BindingList<Vragenlijst>(dbfunctions.loadVragenlijsten(dokter_Id));
             vragenlijstDataGridView.DataSource = vragenlijstList;
             vragenlijstDataGridView.Columns["Id"].Visible = false;
             vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
-            this.vragenlijstDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;       
+            this.vragenlijstDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             rapportList = dbfunctions.loadRapport(dokter_Id);
 
@@ -148,10 +148,14 @@ namespace finah_desktop_CSharp
             MessageBox.Show(
                 "De vragenlijst '" + comboBoxVragenlijst.Text
                 + "' is verstuurd naar patiënt " + comboBoxPatient.Text
-                + " en naar mantelzorger " + comboBoxMantelzorger.Text 
+                + " en naar mantelzorger " + comboBoxMantelzorger.Text
                 + ".", "Finah", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
+        //
+        // Piece of code I found online for preventing screen flickering
+        //
+        //
         int originalExStyle = -1;
         bool enableFormLevelDoubleBuffering = true;
 
@@ -182,6 +186,9 @@ namespace finah_desktop_CSharp
         {
             TurnOffFormLevelDoubleBuffering();
         }
-
+        //
+        //
+        //
+        //
     }
 }

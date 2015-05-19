@@ -103,7 +103,7 @@ namespace finah_desktop_CSharp
             Rect rect = new Rect();
             GetWindowRect(handle, ref rect);
             bounds = new Rectangle(rect.Left, rect.Top,
-                    rect.Right - rect.Left, rect.Bottom - rect.Top);
+                    rect.Right, rect.Bottom);
             CursorPosition = new Point(Cursor.Position.X - rect.Left,
                         Cursor.Position.Y - rect.Top);
 

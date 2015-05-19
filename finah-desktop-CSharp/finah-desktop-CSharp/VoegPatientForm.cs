@@ -14,12 +14,12 @@ namespace finah_desktop_CSharp
 {
     public partial class VoegPatientForm : Form
     {
-        private List<Patientmantelzorger> list;
+        private BindingList<Patientmantelzorger> list;
         private DataGridView datagrid;
         private int dokter_Id;
         private DbFunctions dbfunctions;
 
-        public VoegPatientForm(ref List<Patientmantelzorger> list, DataGridView datagrid, int dokter_Id)
+        public VoegPatientForm(ref BindingList<Patientmantelzorger> list, DataGridView datagrid, int dokter_Id)
         {
             InitializeComponent();
             this.list = list;
@@ -44,15 +44,6 @@ namespace finah_desktop_CSharp
             dbfunctions.postPatient(patient);
 
             this.Close();
-        }
-
-        private void VoegPatientForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            datagrid.DataSource = null;
-            datagrid.DataSource = list;
-            datagrid.Columns["Id"].Visible = false;
-            datagrid.Columns["Verzorger"].Visible = false;
-            datagrid.Columns["Dokter_Id"].Visible = false;
         }
 
     }

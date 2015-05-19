@@ -117,10 +117,8 @@
             this.Controls.Add(this.label1);
             this.Name = "VoegPatientForm";
             this.Text = "VoegPatientForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VoegPatientForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

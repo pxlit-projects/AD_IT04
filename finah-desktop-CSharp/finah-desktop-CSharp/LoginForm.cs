@@ -24,10 +24,6 @@ namespace finah_desktop_CSharp
         {
             InitializeComponent();
             dbfunctions = new DbFunctions();
-
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -46,10 +42,12 @@ namespace finah_desktop_CSharp
             {
                 Form form = new BeheerForm(dokter_Id);
                 form.ShowDialog();
+
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Gelieve het e-mailadres en wachtwoord in te vullen");
+                MessageBox.Show("Ongeldige logingegevens");
             }
         }
 

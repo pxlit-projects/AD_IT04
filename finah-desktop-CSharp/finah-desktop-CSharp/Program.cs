@@ -16,7 +16,7 @@ namespace finah_desktop_CSharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BeheerForm(1));
+            Application.Run(new LoginForm());
         }
     }
 }

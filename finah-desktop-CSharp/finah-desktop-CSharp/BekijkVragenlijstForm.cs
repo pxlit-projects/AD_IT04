@@ -14,14 +14,15 @@ namespace finah_desktop_CSharp
     {
         private int vragenlijstId;
         private String beschrijving;
-        private List<Vraag> vragenList = new List<Vraag>();
-        private DbFunctions dbfunctions = new DbFunctions();
+        private List<Vraag> vragenList;
+        private DbFunctions dbfunctions;
 
         public BekijkVragenlijstForm(int vragenlijstId, String beschrijving)
         {
             InitializeComponent();
             this.vragenlijstId = vragenlijstId;
             this.beschrijving = beschrijving;
+            dbfunctions = new DbFunctions();
 
             vragenList = dbfunctions.loadVragenByVragenlijstId(vragenlijstId);
 
@@ -35,6 +36,10 @@ namespace finah_desktop_CSharp
             }
         }
 
+        //
+        // Piece of code I found online for preventing screen flickering
+        //
+        //
         int originalExStyle = -1;
         bool enableFormLevelDoubleBuffering = true;
 
@@ -65,5 +70,9 @@ namespace finah_desktop_CSharp
         {
             TurnOffFormLevelDoubleBuffering();
         }
+        //
+        //
+        //
+        //
     }
 }

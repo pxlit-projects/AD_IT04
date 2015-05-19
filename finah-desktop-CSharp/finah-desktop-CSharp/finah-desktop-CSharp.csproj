@@ -168,12 +168,6 @@
     </Compile>
     <Compile Include="Vraag.cs" />
     <Compile Include="Vragenlijst.cs" />
-    <Compile Include="VragenlijstForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VragenlijstForm.Designer.cs">
-      <DependentUpon>VragenlijstForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AanVragenFrom.resx">
       <DependentUpon>AanVragenFrom.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,9 +201,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VoegVerzorgerForm.resx">
       <DependentUpon>VoegVerzorgerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VragenlijstForm.resx">
-      <DependentUpon>VragenlijstForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
