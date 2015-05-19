@@ -14,7 +14,7 @@ namespace finah_desktop_CSharp
 {
     public partial class AanVragenlijstForm : Form
     {
-        private DataGridView datagrid; //verniewen van datagridview beheerFrom
+        private DataGridView vragenlijstDatagrid; //verniewen van datagridview beheerFrom
         private DbFunctions dbfunctions = new DbFunctions();
         private BindingList<Vraag> toeVragenList = new BindingList<Vraag>(); //toegevoegde vragen van de vragenlijst
         private List<Vraag> vragenList = new List<Vraag>(); //alle vragen
@@ -26,7 +26,7 @@ namespace finah_desktop_CSharp
             InitializeComponent();
             this.dokterId = dokterId;
             this.vragenlijstList = vragenlijstList;
-            this.datagrid = datagrid;
+            this.vragenlijstDatagrid = datagrid;
 
             toeVragenDataGridView.DataSource = toeVragenList;
             toeVragenDataGridView.Columns["Id"].Visible = false;
@@ -92,10 +92,10 @@ namespace finah_desktop_CSharp
 
         private void AanVragenlijstForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            datagrid.DataSource = null;
-            datagrid.DataSource = vragenlijstList;
-            datagrid.Columns["Id"].Visible = false;
-            datagrid.Columns["Dokter_Id"].Visible = false;
+            vragenlijstDatagrid.DataSource = null;
+            vragenlijstDatagrid.DataSource = vragenlijstList;
+            vragenlijstDatagrid.Columns["Id"].Visible = false;
+            vragenlijstDatagrid.Columns["Dokter_Id"].Visible = false;
         }
 
         int originalExStyle = -1;
