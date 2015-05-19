@@ -84,7 +84,7 @@ public class HoofdPanel extends JFrame {
 	private static HoofdPanel main;
 
 	public HoofdPanel() throws IOException {
-		super("Hoofpanel");
+		super("Hoofdpanel");
 
 		Object[][] patienten = new Object[100][3];
 		Object[][] mantelzorgers = new Object[100][3];
@@ -337,16 +337,16 @@ public class HoofdPanel extends JFrame {
 
 	}
 
-	public void setTab(int tab){
+	public void setTab(int tab) {
 		jTabbedPane.setSelectedIndex(tab);
 	}
-	
-	public static void refreshHoofdPanel() throws IOException{
+
+	public static void refreshHoofdPanel() throws IOException {
 		int i = 0;
-		try{
+		try {
 			i = main.jTabbedPane.getSelectedIndex();
 			main.dispose();
-		}catch(NullPointerException e){
+		} catch (NullPointerException e) {
 			Debug.log("Er was nog geen scherm open");
 		}
 		main = new HoofdPanel();
@@ -355,8 +355,6 @@ public class HoofdPanel extends JFrame {
 		main.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		main.jTabbedPane.setSelectedIndex(i);
 	}
-
-
 
 	public static void main(String[] args) throws IOException {
 		API.init();
@@ -373,7 +371,6 @@ public class HoofdPanel extends JFrame {
 			Debug.err(e.getStackTrace().toString());
 		}
 
-	
 		refreshHoofdPanel();
 	}
 }

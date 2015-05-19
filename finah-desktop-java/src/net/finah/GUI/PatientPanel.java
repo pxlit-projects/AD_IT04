@@ -94,7 +94,7 @@ public class PatientPanel extends JFrame {
 					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					//e1.printStackTrace();
 				}
 
 				System.out.println(patient);
@@ -103,6 +103,8 @@ public class PatientPanel extends JFrame {
 	}
 
 	public void validate(String email) {
+		int staart = email.indexOf("@");
+		int punt = email.indexOf(".");
 		if (!(email.contains("@") && email.contains("."))) {
 			JFrame frame = new JFrame();
 
@@ -116,6 +118,13 @@ public class PatientPanel extends JFrame {
 					"Gelieve een geldig emailadres in te geven",
 					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
 		} else if (email.length() < 8) {
+			JFrame frame = new JFrame();
+
+			JOptionPane.showMessageDialog(frame,
+					"Gelieve een geldig emailadres in te geven",
+					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+
+		} else if (punt == staart+1) {
 			JFrame frame = new JFrame();
 
 			JOptionPane.showMessageDialog(frame,

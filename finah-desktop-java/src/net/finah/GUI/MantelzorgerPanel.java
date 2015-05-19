@@ -93,7 +93,7 @@ public class MantelzorgerPanel extends JFrame {
 					API.writePatientMantelzorger(zorger);
 					HoofdPanel.refreshHoofdPanel();
 					dispose();
-					
+
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -104,11 +104,9 @@ public class MantelzorgerPanel extends JFrame {
 		});
 	}
 
-	private void refresh(){
-
-	}
-
 	public void validate(String email) {
+		int staart = email.indexOf("@");
+		int punt = email.indexOf(".");
 		if (!(email.contains("@") && email.contains("."))) {
 			JFrame frame = new JFrame();
 
@@ -128,8 +126,14 @@ public class MantelzorgerPanel extends JFrame {
 					"Gelieve een geldig emailadres in te geven",
 					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
 
+		} else if (punt == staart + 1) {
+			JFrame frame = new JFrame();
+
+			JOptionPane.showMessageDialog(frame,
+					"Gelieve een geldig emailadres in te geven",
+					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+
 		}
 	}
-
 
 }
