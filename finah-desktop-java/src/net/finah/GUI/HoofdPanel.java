@@ -336,9 +336,15 @@ public class HoofdPanel extends JFrame {
 		});
 
 	}
+
+	public void setTab(int tab){
+		jTabbedPane.setSelectedIndex(tab);
+	}
 	
 	public static void refreshHoofdPanel() throws IOException{
+		int i = 0;
 		try{
+			i = main.jTabbedPane.getSelectedIndex();
 			main.dispose();
 		}catch(NullPointerException e){
 			Debug.log("Er was nog geen scherm open");
@@ -347,7 +353,7 @@ public class HoofdPanel extends JFrame {
 		main.setSize(800, 600);
 		main.setVisible(true);
 		main.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+		main.jTabbedPane.setSelectedIndex(i);
 	}
 
 
