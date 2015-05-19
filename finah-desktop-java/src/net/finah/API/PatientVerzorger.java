@@ -19,7 +19,7 @@ public class PatientVerzorger {
 	private boolean verzorger;
 
 	@JsonProperty("Dokter_Id")
-	private boolean dokterId;
+	private int dokterId;
 	
 	public void setvNaam(String vNaam) {
 		this.vNaam = vNaam;

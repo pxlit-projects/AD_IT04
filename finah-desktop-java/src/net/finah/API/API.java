@@ -292,7 +292,7 @@ public class API {
 	}
 
 	public static void writePatientMantelzorger(PatientVerzorger obj) throws IOException {
-		URL loc = new URL(remote + "patientmantelzorger");
+		URL loc = new URL(remote + "patientmantelzorger/");
 		init();
 		String json = writer.writeValueAsString(obj);
 		Debug.log("transfering  Patientverzorger: " + obj.toString());
