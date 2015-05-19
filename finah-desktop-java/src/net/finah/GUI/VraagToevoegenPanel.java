@@ -135,8 +135,8 @@ public class VraagToevoegenPanel extends JFrame {
 				for (String tekst : tekstVragen) {
 					Vraag vraag = new Vraag();
 					vraag.setBeschrijving(tekst);
+					vraag.setVragenLijst_Id(ID);
 					vragen.add(vraag);
-					i++;
 				}
 				System.out.println(vragen);
 				try {
