@@ -240,7 +240,7 @@ public class API {
 		Debug.log("Writing 'vragenlijst'");
 		URL loc = new URL(remote + "vraag/");
 		init();
-		writeVragenlijst(new Vragenlijst("vragenlijst " + id, dokterID));
+		//writeVragenlijst(new Vragenlijst("vragenlijst " + id, dokterID));
 		syncLastID();
 		Debug.log("Writing each 'Vraag'");
 		for (Vraag vraag : list) {
@@ -302,6 +302,7 @@ public class API {
 	}
 
 	private static String putData(String json, URL loc) throws IOException {
+		Debug.log(json);
 		HttpURLConnection httpcon = (HttpURLConnection) loc.openConnection();
 		httpcon.setDoOutput(true);
 		httpcon.setRequestMethod("POST");
