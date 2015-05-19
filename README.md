@@ -76,8 +76,6 @@ een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hierm
 & nieuwe vragenlijsten worden gemaakt & alle rapporten kunnen beheerd worden vanuit de desktop client.
 
 ### Instructies:
-open het project in Visual Studio
-druk op "Start"
 
 ### Screenshots:
 
