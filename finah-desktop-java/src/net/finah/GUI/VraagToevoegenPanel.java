@@ -32,8 +32,8 @@ public class VraagToevoegenPanel extends JFrame {
 	private static List<JTextField> listOfTextFields = new ArrayList<JTextField>();
 	private ArrayList<String> tekstVragen = new ArrayList<String>();
 	private ArrayList<Vraag> vragen = new ArrayList<Vraag>();
+	private Vragenlijst lijst;
 
-	
 	public VraagToevoegenPanel() {
 		super("Toevoegen vragenlijst");
 		JPanel newPanel = new JPanel(new GridBagLayout());
@@ -116,6 +116,17 @@ public class VraagToevoegenPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int i = 1;
+				String titel = tekstTitel.getText();
+				lijst = new Vragenlijst(titel, 1);
+				try {
+					API.writeVragenlijst(lijst);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				API.syncLastID();
+				int ID = API.lastID;
+				System.out.print(ID);
 
 				for (JTextField field : listOfTextFields) {
 					tekstVragen.add(field.getText());
@@ -123,13 +134,17 @@ public class VraagToevoegenPanel extends JFrame {
 
 				for (String tekst : tekstVragen) {
 					Vraag vraag = new Vraag();
-					vraag.setId(i);
 					vraag.setBeschrijving(tekst);
-					vraag.setVragenLijst_Id(99);
 					vragen.add(vraag);
 					i++;
 				}
 				System.out.println(vragen);
+				try {
+					API.writeVragenLijst(vragen, ID);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});

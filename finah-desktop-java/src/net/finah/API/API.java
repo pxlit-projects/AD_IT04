@@ -38,7 +38,8 @@ public class API {
 	private static ObjectMapper mapper;
 	private static ObjectWriter writer;
 	private static URL remote;
-	private static int dokterID = 1, lastID;
+	private static int dokterID = 1;
+	public static int lastID;
 	private static Login loginData;
 
 	/**
@@ -336,7 +337,7 @@ public class API {
 		return sb.toString();
 	}
 
-	private static void syncLastID() {
+	public static void syncLastID() {
 		Boolean cont = true;
 		int id = 0;
 		// TODO: fix 1 (dokter ID)
