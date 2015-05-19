@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rapportDetailsDataGridView = new System.Windows.Forms.DataGridView();
             this.patientlabel = new System.Windows.Forms.Label();
             this.mantelzorgerLabel = new System.Windows.Forms.Label();
@@ -40,6 +41,16 @@
             // 
             // rapportDetailsDataGridView
             // 
+            this.rapportDetailsDataGridView.AllowUserToAddRows = false;
+            this.rapportDetailsDataGridView.AllowUserToDeleteRows = false;
+            this.rapportDetailsDataGridView.AllowUserToResizeColumns = false;
+            this.rapportDetailsDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
+            this.rapportDetailsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.rapportDetailsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rapportDetailsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.rapportDetailsDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rapportDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rapportDetailsDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -48,7 +59,7 @@
             this.rapportDetailsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.rapportDetailsDataGridView.Name = "rapportDetailsDataGridView";
             this.rapportDetailsDataGridView.RowTemplate.Height = 33;
-            this.rapportDetailsDataGridView.Size = new System.Drawing.Size(780, 380);
+            this.rapportDetailsDataGridView.Size = new System.Drawing.Size(1330, 380);
             this.rapportDetailsDataGridView.TabIndex = 0;
             // 
             // patientlabel
@@ -119,7 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(1343, 561);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.datumLabel);
             this.Controls.Add(this.VragenlijstLabel);
