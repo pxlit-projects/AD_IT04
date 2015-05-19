@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import net.finah.API.API;
 import net.finah.API.PatientVerzorger;
 import net.finah.API.Vraag;
 
@@ -84,6 +86,14 @@ public class MantelzorgerPanel extends JFrame {
 				zorger.setvNaam(voornaamString);
 				zorger.setEmail(emailString);
 				zorger.setVerzorger(true);
+				zorger.setDokterId(1);
+				try {
+					API.writePatientMantelzorger(zorger);
+					HoofdPanel.refresh();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				System.out.println(zorger);
 			}
