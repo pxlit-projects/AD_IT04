@@ -115,9 +115,9 @@ public class VraagToevoegenPanel extends JFrame {
 		toevoegen.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int i = 1;
 				String titel = tekstTitel.getText();
 				lijst = new Vragenlijst(titel, 1);
+
 				try {
 					API.writeVragenlijst(lijst);
 				} catch (IOException e1) {
@@ -126,7 +126,7 @@ public class VraagToevoegenPanel extends JFrame {
 				}
 				API.syncLastID();
 				int ID = API.lastID;
-				System.out.print(ID);
+				System.out.println(ID);
 
 				for (JTextField field : listOfTextFields) {
 					tekstVragen.add(field.getText());
@@ -137,14 +137,22 @@ public class VraagToevoegenPanel extends JFrame {
 					vraag.setBeschrijving(tekst);
 					vraag.setVragenLijst_Id(ID);
 					vragen.add(vraag);
+
 				}
 				System.out.println(vragen);
+
 				try {
 					API.writeVragenLijst(vragen, ID);
+				} catch (IOException e1) { // TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					HoofdPanel.refreshHoofdPanel();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				dispose();
 
 			}
 		});
