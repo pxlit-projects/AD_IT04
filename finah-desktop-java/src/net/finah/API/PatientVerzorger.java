@@ -1,5 +1,6 @@
 package net.finah.API;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PatientVerzorger {
@@ -37,27 +38,37 @@ public class PatientVerzorger {
 		this.verzorger = verzorger;
 	}
 
+	@JsonIgnore
 	public String toString(){
 		return id + ":" + vNaam + "-" + aNaam + ":" + email + ":" + verzorger + ":" + dokterId;
 	}
 
+	@JsonIgnore
 	public boolean isPatient() {
 		return !verzorger;
 	}
 
+	@JsonIgnore
 	public String getANaam() {
 		return aNaam;
 	}
 
+	@JsonIgnore
 	public String getVNaam() {
 		return vNaam;
 	}
 
+	@JsonIgnore
 	public String getemail() {
 		return email;
 	}
 	
+	@JsonIgnore
 	public Object getFullNaam() {
 		return getANaam() + "-" + getVNaam() ;
+	}
+
+	public void setDokterId(int i) {
+		dokterId = i;	
 	}
 }
