@@ -337,6 +337,11 @@ public class HoofdPanel extends JFrame {
 	}
 	
 	public static void refresh() throws IOException{
+		try{
+			main.dispose();
+		}catch(NullPointerException e){
+			Debug.log("Er was nog geen scherm open");
+		}
 		main = new HoofdPanel();
 		main.setSize(800, 600);
 		main.setVisible(true);
