@@ -80,6 +80,7 @@ public class HoofdPanel extends JFrame {
 	private JLabel labelVragenlijst = new JLabel(" Vragenlijsten ");
 	private JButton buttonVragenlijst = new JButton("Voeg vragenlijst toe");
 	private JButton buttonBekijken = new JButton("Bekijk vragenlijst");
+	private static HoofdPanel main;
 
 	public HoofdPanel() throws IOException {
 		super("Hoofpanel");
@@ -334,6 +335,14 @@ public class HoofdPanel extends JFrame {
 		});
 
 	}
+	
+	public static void refresh() throws IOException{
+		main = new HoofdPanel();
+		main.setSize(800, 600);
+		main.setVisible(true);
+		main.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+	}
 
 	public static void main(String[] args) throws IOException {
 		API.init();
@@ -350,10 +359,7 @@ public class HoofdPanel extends JFrame {
 			Debug.err(e.getStackTrace().toString());
 		}
 
-		HoofdPanel panel = new HoofdPanel();
-		panel.setSize(800, 600);
-		panel.setVisible(true);
-		panel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+	
+		refresh();
 	}
 }
