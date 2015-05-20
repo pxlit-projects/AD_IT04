@@ -55,8 +55,8 @@
             this.opslaanButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.opslaanButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.opslaanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opslaanButton.Location = new System.Drawing.Point(1312, 996);
-            this.opslaanButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.opslaanButton.Location = new System.Drawing.Point(1262, 944);
+            this.opslaanButton.Margin = new System.Windows.Forms.Padding(6);
             this.opslaanButton.Name = "opslaanButton";
             this.opslaanButton.Size = new System.Drawing.Size(240, 67);
             this.opslaanButton.TabIndex = 3;
@@ -68,6 +68,7 @@
             // 
             this.tabPage2.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage2.Controls.Add(this.opslaanButton);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.beschrijvingTextBox);
             this.tabPage2.Controls.Add(this.nieuwButton);
@@ -78,9 +79,9 @@
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.toeVragenDataGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 46);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(6);
             this.tabPage2.Size = new System.Drawing.Size(1554, 1079);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Vragen";
@@ -99,7 +100,7 @@
             // beschrijvingTextBox
             // 
             this.beschrijvingTextBox.Location = new System.Drawing.Point(232, 27);
-            this.beschrijvingTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.beschrijvingTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.beschrijvingTextBox.Name = "beschrijvingTextBox";
             this.beschrijvingTextBox.Size = new System.Drawing.Size(268, 44);
             this.beschrijvingTextBox.TabIndex = 8;
@@ -109,7 +110,7 @@
             this.nieuwButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.nieuwButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nieuwButton.Location = new System.Drawing.Point(784, 623);
-            this.nieuwButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nieuwButton.Margin = new System.Windows.Forms.Padding(6);
             this.nieuwButton.Name = "nieuwButton";
             this.nieuwButton.Size = new System.Drawing.Size(200, 67);
             this.nieuwButton.TabIndex = 7;
@@ -122,7 +123,7 @@
             this.verwijderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.verwijderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.verwijderButton.Location = new System.Drawing.Point(784, 437);
-            this.verwijderButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.verwijderButton.Margin = new System.Windows.Forms.Padding(6);
             this.verwijderButton.Name = "verwijderButton";
             this.verwijderButton.Size = new System.Drawing.Size(200, 67);
             this.verwijderButton.TabIndex = 5;
@@ -135,7 +136,7 @@
             this.toevoegButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.toevoegButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.toevoegButton.Location = new System.Drawing.Point(784, 312);
-            this.toevoegButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.toevoegButton.Margin = new System.Windows.Forms.Padding(6);
             this.toevoegButton.Name = "toevoegButton";
             this.toevoegButton.Size = new System.Drawing.Size(200, 67);
             this.toevoegButton.TabIndex = 4;
@@ -147,9 +148,11 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.vragenDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.vragenDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.vragenDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.vragenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vragenDataGridView.Location = new System.Drawing.Point(32, 146);
-            this.vragenDataGridView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.vragenDataGridView.Margin = new System.Windows.Forms.Padding(6);
             this.vragenDataGridView.Name = "vragenDataGridView";
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(4);
             this.vragenDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
@@ -180,9 +183,11 @@
             // 
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.toeVragenDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.toeVragenDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.toeVragenDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toeVragenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.toeVragenDataGridView.Location = new System.Drawing.Point(1022, 148);
-            this.toeVragenDataGridView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.toeVragenDataGridView.Margin = new System.Windows.Forms.Padding(6);
             this.toeVragenDataGridView.Name = "toeVragenDataGridView";
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(4);
             this.toeVragenDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
@@ -197,7 +202,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(4, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1562, 1129);
@@ -210,9 +215,8 @@
             this.BackgroundImage = global::finah_desktop_CSharp.Properties.Resources._11264430_962915657081985_435153716_o;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1568, 1031);
-            this.Controls.Add(this.opslaanButton);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "AanVragenlijstForm";
             this.Text = "Vragenlijst";
             this.Load += new System.EventHandler(this.AanVragenlijstForm_Load);

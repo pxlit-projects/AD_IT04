@@ -23,6 +23,7 @@ namespace finah_desktop_CSharp
 
         public AanVragenlijstForm(ref BindingList<Vragenlijst> vragenlijstList, DataGridView datagrid, int dokterId)
         {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             InitializeComponent();
             this.vragenlijstList = vragenlijstList;
             this.vragenlijstDatagrid = datagrid;
@@ -39,10 +40,13 @@ namespace finah_desktop_CSharp
         private void AanVragenlijstForm_Load(object sender, EventArgs e)
         {
             vragenList = dbfunctions.loadAlleVragen();
-            vragenDataGridView.DataSource = vragenList;
-            vragenDataGridView.Columns["Id"].Visible = false;
-            vragenDataGridView.Columns["Vragenlijst_Id"].Visible = false;
-            vragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            if (vragenList != null)
+            {
+                vragenDataGridView.DataSource = vragenList;
+                vragenDataGridView.Columns["Id"].Visible = false;
+                vragenDataGridView.Columns["Vragenlijst_Id"].Visible = false;
+                vragenDataGridView.Columns["Beschrijving"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void toevoegButton_Click(object sender, EventArgs e)

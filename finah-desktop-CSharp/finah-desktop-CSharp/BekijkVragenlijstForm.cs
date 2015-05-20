@@ -19,6 +19,7 @@ namespace finah_desktop_CSharp
 
         public BekijkVragenlijstForm(int vragenlijstId, String beschrijving)
         {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             InitializeComponent();
             this.vragenlijstId = vragenlijstId;
             this.beschrijving = beschrijving;

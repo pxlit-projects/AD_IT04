@@ -63,7 +63,12 @@ namespace finah_desktop_CSharp
 
         public List<Patientmantelzorger> loadPatienten(int dokterId)
         {
-            return getPatienten("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/false").Result.ToList();
+            if (getPatienten("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/false").Result != null)
+            {
+                return getPatienten("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/false").Result.ToList();
+            }
+
+            return null;
         }
 
         private Task<IEnumerable<Patientmantelzorger>> getPatienten(string baseUrl)
@@ -80,16 +85,19 @@ namespace finah_desktop_CSharp
                 }
                 catch (Exception)
                 {
-
-                    throw;
+                    return null;
                 }
-
             });
         }
 
         public List<Patientmantelzorger> loadVerzorgers(int dokterId)
         {
-            return getVerzorgers("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/true").Result.ToList();
+            if (getVerzorgers("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/true").Result != null)
+            {
+                return getVerzorgers("http://finahweb.azurewebsites.net/api/patientmantelzorger/" + dokterId + "/true").Result.ToList();
+            }
+
+            return null;
         }
 
         private Task<IEnumerable<Patientmantelzorger>> getVerzorgers(string baseUrl)
@@ -107,14 +115,19 @@ namespace finah_desktop_CSharp
                 catch (Exception)
                 {
 
-                    throw;
+                    return null;
                 }
             });
         }
 
         public List<Vraag> loadAlleVragen()
         {
-            return getAlleVragen("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
+            if (getAlleVragen("http://finahweb.azurewebsites.net/api/vraag/").Result != null)
+            {
+                return getAlleVragen("http://finahweb.azurewebsites.net/api/vraag/").Result.ToList();
+            }
+
+            return null;
         }
 
         private Task<IEnumerable<Vraag>> getAlleVragen(string baseUrl)
@@ -132,7 +145,7 @@ namespace finah_desktop_CSharp
                 catch (Exception)
                 {
 
-                    throw;
+                    return null;
                 }
             });
         }
@@ -171,7 +184,12 @@ namespace finah_desktop_CSharp
 
         public List<Rapport> loadRapport(int dokterId)
         {
-            return getRapport("http://finahweb.azurewebsites.net/api/rapport/" + dokterId).Result.ToList();
+            if (getRapport("http://finahweb.azurewebsites.net/api/rapport/" + dokterId).Result != null)
+            {
+                return getRapport("http://finahweb.azurewebsites.net/api/rapport/" + dokterId).Result.ToList();
+            }
+
+            return null;
         }
 
         private Task<IEnumerable<Rapport>> getRapport(string baseUrl)
@@ -189,7 +207,7 @@ namespace finah_desktop_CSharp
                 catch (Exception)
                 {
 
-                    throw;
+                    return null;
                 }
             });
         }
@@ -197,7 +215,12 @@ namespace finah_desktop_CSharp
 
         public List<Vragenlijst> loadVragenlijsten(int dokterId)
         {
-            return getVragenlijsten("http://finahweb.azurewebsites.net/api/vragenlijst/" + dokterId).Result.ToList();
+            if (getVragenlijsten("http://finahweb.azurewebsites.net/api/vragenlijst/" + dokterId).Result != null)
+            {
+                return getVragenlijsten("http://finahweb.azurewebsites.net/api/vragenlijst/" + dokterId).Result.ToList();
+            }
+
+            return null;
         }
 
         private Task<IEnumerable<Vragenlijst>> getVragenlijsten(string baseUrl)
@@ -215,7 +238,7 @@ namespace finah_desktop_CSharp
                 catch (Exception)
                 {
 
-                    throw;
+                    return null;
                 }
             });
         }

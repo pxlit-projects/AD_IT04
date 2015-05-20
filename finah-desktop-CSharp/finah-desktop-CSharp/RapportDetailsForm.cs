@@ -31,6 +31,7 @@ namespace finah_desktop_CSharp
 
         public RapportDetailsForm(int rapportId, int patientId, int mantelzorgerId, int vragenlijstId, DateTime datum)
         {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             InitializeComponent();
 
             this.rapportId = rapportId;

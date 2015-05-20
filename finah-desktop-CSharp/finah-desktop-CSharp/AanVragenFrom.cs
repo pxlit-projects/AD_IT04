@@ -22,17 +22,6 @@ namespace finah_desktop_CSharp
             this.datagridview = datagridview;
         }
 
-        private void verkennerButton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox.Image = Image.FromFile(dialog.FileName);
-                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-        }
-
         private void opslaanButton_Click(object sender, EventArgs e)
         {
             Vraag vraag = new Vraag() { Beschrijving = vraagTextBox.Text };

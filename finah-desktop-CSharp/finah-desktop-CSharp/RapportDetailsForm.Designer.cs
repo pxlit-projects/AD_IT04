@@ -52,17 +52,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rapportDetailsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.rapportDetailsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.rapportDetailsDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rapportDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rapportDetailsDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::finah_desktop_CSharp.Properties.Settings.Default, "ff", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rapportDetailsDataGridView.Font = global::finah_desktop_CSharp.Properties.Settings.Default.ff;
             this.rapportDetailsDataGridView.Location = new System.Drawing.Point(4, 144);
-            this.rapportDetailsDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rapportDetailsDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.rapportDetailsDataGridView.Name = "rapportDetailsDataGridView";
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(4);
             this.rapportDetailsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.rapportDetailsDataGridView.RowTemplate.Height = 33;
-            this.rapportDetailsDataGridView.Size = new System.Drawing.Size(2660, 731);
+            this.rapportDetailsDataGridView.Size = new System.Drawing.Size(1800, 800);
             this.rapportDetailsDataGridView.TabIndex = 0;
             // 
             // patientlabel
@@ -118,8 +119,8 @@
             this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(255)))), ((int)(((byte)(175)))));
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnExport.Location = new System.Drawing.Point(1210, 10);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExport.Location = new System.Drawing.Point(1454, 37);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(350, 67);
             this.btnExport.TabIndex = 5;
@@ -140,7 +141,7 @@
             this.Controls.Add(this.mantelzorgerLabel);
             this.Controls.Add(this.patientlabel);
             this.Controls.Add(this.rapportDetailsDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RapportDetailsForm";
             this.Text = "RapportDetailsForm";
             ((System.ComponentModel.ISupportInitialize)(this.rapportDetailsDataGridView)).EndInit();

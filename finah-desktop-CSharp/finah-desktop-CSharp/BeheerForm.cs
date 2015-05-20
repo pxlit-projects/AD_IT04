@@ -19,86 +19,101 @@ namespace finah_desktop_CSharp
         private BindingList<Patientmantelzorger> patientList = new BindingList<Patientmantelzorger>();
         private BindingList<Patientmantelzorger> mantelzorgerList = new BindingList<Patientmantelzorger>();
         private List<Rapport> rapportList = new List<Rapport>();
-        private List<RapportViewModel> rapportViewModelList = new List<RapportViewModel>();
+        private BindingList<RapportViewModel> rapportViewModelList = new BindingList<RapportViewModel>();
         private BindingList<Vragenlijst> vragenlijstList;
         private int dokter_Id;
 
         public BeheerForm(int dokter_Id)
         {
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             InitializeComponent();
             this.dokter_Id = dokter_Id;
         }
 
         private void BeheerForm_Load(object sender, EventArgs e)
         {
-            patientList = new BindingList<Patientmantelzorger>(dbfunctions.loadPatienten(dokter_Id));
-            patientDataGridView.DataSource = patientList;
-            patientDataGridView.Columns["Id"].Visible = false;
-            patientDataGridView.Columns["Verzorger"].Visible = false;
-            patientDataGridView.Columns["Dokter_Id"].Visible = false;
-            patientDataGridView.Columns["FullName"].Visible = false;
-            this.patientDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.patientDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            mantelzorgerList = new BindingList<Patientmantelzorger>(dbfunctions.loadVerzorgers(dokter_Id));
-            verzorgerDataGridView.DataSource = mantelzorgerList;
-            verzorgerDataGridView.Columns["Id"].Visible = false;
-            verzorgerDataGridView.Columns["Verzorger"].Visible = false;
-            verzorgerDataGridView.Columns["Dokter_Id"].Visible = false;
-            verzorgerDataGridView.Columns["FullName"].Visible = false;
-            this.verzorgerDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.verzorgerDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.verzorgerDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            vragenlijstList = new BindingList<Vragenlijst>(dbfunctions.loadVragenlijsten(dokter_Id));
-            vragenlijstDataGridView.DataSource = vragenlijstList;
-            vragenlijstDataGridView.Columns["Id"].Visible = false;
-            vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
-            this.vragenlijstDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            rapportList = dbfunctions.loadRapport(dokter_Id);
-
-            foreach (Rapport rapport in rapportList)
+            List<Patientmantelzorger> patientHulpList = dbfunctions.loadPatienten(dokter_Id);
+            if (patientHulpList != null)
             {
-                Patientmantelzorger patient = dbfunctions.loadPatientMantelzorger(rapport.Patient_Id).First();
-                Patientmantelzorger mantelzorger = dbfunctions.loadPatientMantelzorger(rapport.Mantelzorger_Id).First();
-                Vragenlijst vragenlijst = dbfunctions.loadVragenlijst(rapport.Vragenlijst_Id).First();
-                rapportViewModelList.Add(new RapportViewModel()
-                {
-                    PatientNaam = patient.Vnaam + " " + patient.Anaam,
-                    MantelzorgerNaam = mantelzorger.Vnaam + " " + mantelzorger.Anaam,
-                    Date = rapport.Date,
-                    VragenlijstBeschrijving = vragenlijst.Beschrijving
-                });
+                patientList = new BindingList<Patientmantelzorger>(patientHulpList);
+                patientDataGridView.DataSource = patientList;
+                patientDataGridView.Columns["Id"].Visible = false;
+                patientDataGridView.Columns["Verzorger"].Visible = false;
+                patientDataGridView.Columns["Dokter_Id"].Visible = false;
+                patientDataGridView.Columns["FullName"].Visible = false;
+                this.patientDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.patientDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
 
-            rapportDataGridView.DataSource = rapportViewModelList;
-            this.rapportDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.rapportDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.rapportDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.rapportDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            List<Patientmantelzorger> mantelzorgerHulpList = dbfunctions.loadVerzorgers(dokter_Id);
+            if (mantelzorgerHulpList != null)
+            {
+                mantelzorgerList = new BindingList<Patientmantelzorger>(mantelzorgerHulpList);
+                verzorgerDataGridView.DataSource = mantelzorgerList;
+                verzorgerDataGridView.Columns["Id"].Visible = false;
+                verzorgerDataGridView.Columns["Verzorger"].Visible = false;
+                verzorgerDataGridView.Columns["Dokter_Id"].Visible = false;
+                verzorgerDataGridView.Columns["FullName"].Visible = false;
+                this.verzorgerDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.verzorgerDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.verzorgerDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
 
-            comboBoxPatient.DataSource = patientList;
+            List<Vragenlijst> vragenlijstHulpList = dbfunctions.loadVragenlijsten(dokter_Id);
+            if (vragenlijstHulpList != null)
+            {
+                vragenlijstList = new BindingList<Vragenlijst>(vragenlijstHulpList);
+                vragenlijstDataGridView.DataSource = vragenlijstList;
+                vragenlijstDataGridView.Columns["Id"].Visible = false;
+                vragenlijstDataGridView.Columns["Dokter_Id"].Visible = false;
+                this.vragenlijstDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            rapportList = dbfunctions.loadRapport(dokter_Id);
+            if (rapportList != null)
+            {
+                foreach (Rapport rapport in rapportList)
+                {
+                    Patientmantelzorger patient = dbfunctions.loadPatientMantelzorger(rapport.Patient_Id).First();
+                    Patientmantelzorger mantelzorger = dbfunctions.loadPatientMantelzorger(rapport.Mantelzorger_Id).First();
+                    Vragenlijst vragenlijst = dbfunctions.loadVragenlijst(rapport.Vragenlijst_Id).First();
+                    rapportViewModelList.Add(new RapportViewModel()
+                    {
+                        PatientNaam = patient.Vnaam + " " + patient.Anaam,
+                        MantelzorgerNaam = mantelzorger.Vnaam + " " + mantelzorger.Anaam,
+                        Date = rapport.Date,
+                        VragenlijstBeschrijving = vragenlijst.Beschrijving
+                    });
+                }
+
+                rapportDataGridView.DataSource = rapportViewModelList;
+                this.rapportDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.rapportDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.rapportDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.rapportDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            comboBoxPatient.DataSource = patientHulpList;
             comboBoxPatient.DisplayMember = "FullName";
             comboBoxPatient.ValueMember = "Id";
 
-            comboBoxMantelzorger.DataSource = mantelzorgerList;
+            comboBoxMantelzorger.DataSource = mantelzorgerHulpList;
             comboBoxMantelzorger.DisplayMember = "FullName";
             comboBoxMantelzorger.ValueMember = "Id";
 
-            comboBoxVragenlijst.DataSource = vragenlijstList;
+            comboBoxVragenlijst.DataSource = vragenlijstHulpList;
             comboBoxVragenlijst.DisplayMember = "Beschrijving";
             comboBoxVragenlijst.ValueMember = "Id";
         }
 
-        private void voegPatientToeButton_Click(object sender, EventArgs e)
+        private void patientButton_Click(object sender, EventArgs e)
         {
             Form patientForm = new VoegPatientForm(ref patientList, patientDataGridView, dokter_Id);
             patientForm.ShowDialog();
         }
 
-        private void voegVerzorgerToeButton_Click(object sender, EventArgs e)
+        private void verzorgerButton_Click_1(object sender, EventArgs e)
         {
             Form verzorgerForm = new VoegVerzorgerForm(ref mantelzorgerList, verzorgerDataGridView, dokter_Id);
             verzorgerForm.ShowDialog();
@@ -110,7 +125,7 @@ namespace finah_desktop_CSharp
             vragenlijstForm.ShowDialog();
         }
 
-        private void bekijkVragenlijst_Click_1(object sender, EventArgs e)
+        private void bekijkVragenlijst_Click(object sender, EventArgs e)
         {
             Vragenlijst vragenlijst = vragenlijstList[vragenlijstDataGridView.CurrentCell.RowIndex];
             int vragenlijstId = vragenlijst.Id;
@@ -119,7 +134,7 @@ namespace finah_desktop_CSharp
             bekijkvragenlijstForm.ShowDialog();
         }
 
-        private void rapportDetailButton_Click(object sender, EventArgs e)
+        private void rapportDetailButton_Click_1(object sender, EventArgs e)
         {
             Rapport rapport = rapportList[rapportDataGridView.CurrentCell.RowIndex];
             Form rapportDetailsForm = new RapportDetailsForm(rapport.Id, rapport.Patient_Id, rapport.Mantelzorger_Id, rapport.Vragenlijst_Id, rapport.Date);
@@ -140,6 +155,18 @@ namespace finah_desktop_CSharp
                 Date = DateTime.Now,
                 Dokter_Id = dokter_Id
             };
+
+            Patientmantelzorger patient = dbfunctions.loadPatientMantelzorger(rapport.Patient_Id).First();
+            Patientmantelzorger mantelzorger = dbfunctions.loadPatientMantelzorger(rapport.Mantelzorger_Id).First();
+            Vragenlijst vragenlijst = dbfunctions.loadVragenlijst(rapport.Vragenlijst_Id).First();
+
+            rapportViewModelList.Add(new RapportViewModel()
+            {
+                PatientNaam = patient.Vnaam + " " + patient.Anaam,
+                MantelzorgerNaam = mantelzorger.Vnaam + " " + mantelzorger.Anaam,
+                Date = rapport.Date,
+                VragenlijstBeschrijving = vragenlijst.Beschrijving
+            });
 
             int rapportId = dbfunctions.postRapport(rapport);
 

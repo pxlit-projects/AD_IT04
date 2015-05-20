@@ -44,6 +44,7 @@ namespace finah_desktop_CSharp
                 form.ShowDialog();
 
                 this.Close();
+                this.Dispose();
             }
             else
             {
