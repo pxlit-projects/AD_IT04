@@ -38,7 +38,7 @@ public class API {
 	private static ObjectMapper mapper;
 	private static ObjectWriter writer;
 	private static URL remote;
-	private static int dokterID = 1;
+	private static int dokterID = 0;
 	public static int lastID;
 	private static Login loginData;
 
@@ -113,7 +113,7 @@ public class API {
 	public static Vraag getVraag(int lijst, int vraag) throws IOException {
 		return getVragenLijst(lijst).get(vraag);
 	}
-	
+
 	/**
 	 * Get an 'Antwoord' from a specific 'Antwoordlijst'
 	 *
@@ -139,6 +139,7 @@ public class API {
 	 * @throws IOException
 	 */
 	public static ArrayList<Vraag> getVragenLijst(int lijst) throws IOException {
+		if(dokterID != 0){
 		URL loc = new URL(remote + "vraag/" + lijst);
 		init();
 		ObjectReader reader = mapper
@@ -146,18 +147,19 @@ public class API {
 				});
 		ArrayList<Vraag> vragen = reader.readValue(loc);
 		return vragen;
-
+		}else{ return null;}
 	}
 
 	public static ArrayList<PatientVerzorger> getPatientVerzoger()
 			throws IOException {
+			if(dokterID != 0){
 		URL loc = new URL(remote + "patientmantelzorger/" + dokterID + "/2/2");
 		init();
 		ObjectReader reader = mapper
 				.reader(new TypeReference<ArrayList<PatientVerzorger>>() {
 				});
 		ArrayList<PatientVerzorger> patientVerzorger = reader.readValue(loc);
-		return patientVerzorger;
+		return patientVerzorger;}else{ return null;}
 	}
 
 	/**
@@ -171,6 +173,7 @@ public class API {
 	 */
 	public static ArrayList<Rapport> getRapport()
 			throws IOException {
+			if(dokterID != 0){
 		URL loc = new URL(remote + "rapport/" + dokterID);
 		init();
 		ObjectReader reader = mapper
@@ -178,7 +181,7 @@ public class API {
 				});
 		ArrayList<Rapport> rapporten = reader.readValue(loc);
 		return rapporten;
-
+			}else{ return null;}
 	}
 
 	/**
@@ -192,6 +195,7 @@ public class API {
 	 */
 	public static ArrayList<Antwoord> getAntwoordLijst(int rapport_Id)
 			throws IOException {
+			if(dokterID != 0){
 		URL loc = new URL(remote + "antwoord/" + rapport_Id);
 		init();
 		ObjectReader reader = mapper
@@ -199,7 +203,7 @@ public class API {
 				});
 		ArrayList<Antwoord> antwoord = reader.readValue(loc);
 		return antwoord;
-
+		}else{ return null;}
 	}
 
 	/**
@@ -214,6 +218,7 @@ public class API {
 	// TODO: id verwijderen en wrapper functie maken
 	public static ArrayList<Vragenlijst> getVragenlijst()
 			throws IOException {
+			if(dokterID != 0){
 		Debug.log("receiving 'Vragenlijst' data");
 		URL loc = new URL(remote + "vragenlijst/");
 		init();
@@ -224,6 +229,7 @@ public class API {
 		ArrayList<Vragenlijst> vragenlijst = reader.readValue(loc);
 		Debug.log("received 'Vragenlijst' data");
 		return vragenlijst;
+			}else{ return null;}
 	}
 
 	/**
@@ -237,6 +243,7 @@ public class API {
 	// TODO: Needs to be corrected
 	public static void writeVragenLijst(ArrayList<Vraag> list, int id)
 			throws IOException {
+			if(dokterID != 0){
 		Debug.log("Writing 'vragenlijst'");
 		URL loc = new URL(remote + "vraag/");
 		init();
@@ -252,6 +259,7 @@ public class API {
 		String json = writer.writeValueAsString(list);
 		putData(json, loc);
 		Debug.log("wrote 'VragenLijst' data");
+			}
 	}
 
 	/**
@@ -262,6 +270,7 @@ public class API {
 	 * @throws IOException
 	 */
 	public static int writeVragenlijst(Vragenlijst obj) throws IOException {
+		if(dokterID != 0){
 		Debug.log("preparing to transfer to server");
 		URL loc = new URL(remote + "vragenlijst/");
 		init();
@@ -273,6 +282,9 @@ public class API {
 		});
 		Vragenlijst vragenlijst = reader.readValue(response);
 		return vragenlijst.getId();
+		}else{
+			return 0;
+		}
 	}
 
 	/**
@@ -293,12 +305,14 @@ public class API {
 	}
 
 	public static void writePatientMantelzorger(PatientVerzorger obj) throws IOException {
+		if(dokterID != 0){
 		URL loc = new URL(remote + "patientmantelzorger/");
 		init();
 		String json = writer.writeValueAsString(obj);
 		Debug.log("transfering  Patientverzorger: " + obj.toString());
 		putData(json, loc);
 		Debug.log("transfered  patientverzorger: " + obj.toString());
+		}
 	}
 
 	private static String putData(String json, URL loc) throws IOException {
@@ -339,6 +353,7 @@ public class API {
 	}
 
 	public static void syncLastID() {
+		if(dokterID != 0){
 		Boolean cont = true;
 		int id = 0;
 		// TODO: fix 1 (dokter ID)
@@ -355,6 +370,7 @@ public class API {
 			Debug.log(lastID + "");
 		} catch (IOException e) {
 		}
+		}else{ lastID = 0;}
 	}
 
 	public static Login getLogin() {

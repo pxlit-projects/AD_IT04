@@ -70,14 +70,18 @@ public class LoginPanel extends JFrame {
 				API.setLogin(new Login(tekstGebruiker.getText(),
 						tekstWachtwoord.getText()));
 				Debug.log(API.getLogin().toString());
-				/*
-				 * try{ API.login(new
-				 * URL("http://finahweb.azurewebsites.net/account/login"));
-				 * }catch(Exception ex){ Debug.err("login request failed:" +
-				 * ex.getMessage()); //ex.printStackTrace();
-				 * 
-				 * }
-				 */
+
+				  try{ API.login(new
+				  URL("http://finahweb.azurewebsites.net/account/login"));
+				  if(API.getDokterID() != 0){
+					HoofdPanel.refreshHoofdPanel();
+					dispose();
+				  }
+				  }catch(Exception ex){ Debug.err("login request failed:" +
+				  ex.getMessage()); //ex.printStackTrace();
+
+				  }
+
 			}
 		});
 

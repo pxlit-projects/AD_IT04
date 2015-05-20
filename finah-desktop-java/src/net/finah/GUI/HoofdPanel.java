@@ -102,6 +102,7 @@ public class HoofdPanel extends JFrame {
 		ArrayList<Vragenlijst> vragenList = new ArrayList<Vragenlijst>();
 		vragenList = API.getVragenlijst();
 
+		if(API.getDokterID() != 0){
 		int i = 0;
 		int j = 0;
 		int k = 0;
@@ -134,6 +135,8 @@ public class HoofdPanel extends JFrame {
 			vragenlijsten[v][0] = vraaglijst.getId();
 			vragenlijsten[v][1] = vraaglijst.getBeschrijving();
 			v++;
+		}
+		
 		}
 
 		Object[] column = { "Voornaam", "Achternaam", "Email" };
