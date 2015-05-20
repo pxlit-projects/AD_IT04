@@ -43,7 +43,7 @@ public class HoofdPanel extends JFrame {
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu fileMenu = new JMenu("Login");
 	private JMenuItem inloggen = new JMenuItem("Inloggen");
-	private JMenuItem uitloggen = new JMenuItem("Uitloggen");
+	private JMenuItem afsluiten = new JMenuItem("afsluiten");
 	protected MantelzorgerPanel mantelzorger;
 
 	// Variabelen Panel voor Patient
@@ -263,7 +263,7 @@ public class HoofdPanel extends JFrame {
 		// Algemeen
 		menuBar.add(fileMenu);
 		fileMenu.add(inloggen);
-		fileMenu.add(uitloggen);
+		fileMenu.add(afsluiten);
 
 		jTabbedPane.addTab("Patiënt", panelPatient);
 		jTabbedPane.addTab("Mantelzorger", panelZorger);
@@ -280,6 +280,13 @@ public class HoofdPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				login.setSize(400, 300);
 				login.setVisible(true);
+			}
+		});
+
+		afsluiten.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				dispose();
 			}
 		});
 
