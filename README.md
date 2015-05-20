@@ -58,9 +58,8 @@ zie map afbeeldingen/mvc webclient
 ## Desktop (Java):
 
 ### Beschrijving:
-Is de desktop client (en API) voor met de Backend to communiceren. Dit project is gemaakt in Eclipse. Met de desktop client kan 
-een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hiermee ook patiënten worden toegevoegd in de database
-& nieuwe vragenlijsten worden gemaakt & alle rapporten kunnen beheerd worden vanuit de desktop client.
+De desktop client in Java voor met de Backend to communiceren. Dit project is gemaakt in Eclipse. Met de desktop client kan 
+er een overzicht weergeven worden van alle rapporten van de patiënten en mantelzorgers. Er kunnen hiermee ook patiënten en mantelzorgers worden toegevoegd en nieuwe vragenlijsten worden gemaakt.
 
 ### Instructies:
 1.Project importeren in Eclipse.
@@ -71,9 +70,8 @@ een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hierm
 ## Desktop (C#):
 
 ### Beschrijving:
-Is de desktop client (en API) voor met de Backend to communiceren. Dit project is gemaakt in Visual Studio. Met de desktop client kan 
-een overzicht weergeven worden alle rapporten van de patiënten. Er kunnen hiermee ook patiënten worden toegevoegd in de database
-& nieuwe vragenlijsten worden gemaakt & alle rapporten kunnen beheerd worden vanuit de desktop client.
+De desktop client in C# voor met de Backend to communiceren.  Dit project is gemaakt in Eclipse. Met de desktop client kan 
+er een overzicht weergeven worden van alle rapporten van de patiënten en mantelzorgers. Er kunnen hiermee ook patiënten en mantelzorgers worden toegevoegd en nieuwe vragenlijsten worden gemaakt.
 
 ### Instructies:
 open het project in Visual Studio
@@ -99,8 +97,7 @@ Vragenlijst aanmaken:
 ## Webclient:
 
 ### Beschrijving:
-De client die bereikbaar is via een webbrowser (heeft een http server met php mogelijkheid nodig). Met de webclient kunnen de patiënten
-de vragenlijst invullen & doorsturen naar de backend.
+De client die bereikbaar is via een webbrowser (heeft een http server met php mogelijkheid nodig). Met de webclient kunnen de patiënten en mantelzorgers de vragenlijst invullen & doorsturen naar de backend.
 
 ### Instructies:
 Volgende link is een voorbeeld-link die een patiënt via mail kan aankrijgen:
