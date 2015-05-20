@@ -1,25 +1,24 @@
 package net.finah.GUI;
 
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import net.finah.API.API;
 import net.finah.API.PatientVerzorger;
-import net.finah.API.Vraag;
 
 public class MantelzorgerPanel extends JFrame {
 	private JLabel voornaam = new JLabel("Voornaam: ");
@@ -31,11 +30,19 @@ public class MantelzorgerPanel extends JFrame {
 	private JButton button = new JButton("Voeg mantelzorger toe");
 	private String achternaamString, voornaamString, emailString;
 	private PatientVerzorger zorger = new PatientVerzorger();
+	private ImageIcon icon;
 
-	public MantelzorgerPanel() {
+	public MantelzorgerPanel(){
 		super("Toevoegen Mantelzorger");
-
-		JPanel newPanel = new JPanel(new GridBagLayout());
+		icon = new ImageIcon("src/background.jpg");
+		JPanel newPanel = new JPanel(new GridBagLayout()){
+		
+		protected void paintComponent(Graphics g){
+			g.drawImage(icon.getImage(), 0, 0, null); 	
+			super.paintComponent(g);
+		}
+	};
+		newPanel.setOpaque(false);
 
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.anchor = GridBagConstraints.WEST;
@@ -135,5 +142,6 @@ public class MantelzorgerPanel extends JFrame {
 
 		}
 	}
+	
 
 }

@@ -3,11 +3,14 @@ package net.finah.GUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,8 +41,7 @@ public class VraagTonenPanel extends JFrame {
 			JFrame frame = new JFrame();
 
 			JOptionPane.showMessageDialog(frame,
-					"Deze vragenlijst bevat geen vragen",
-					"Lege vragenlijst",
+					"Deze vragenlijst bevat geen vragen", "Lege vragenlijst",
 					JOptionPane.WARNING_MESSAGE);
 		}
 

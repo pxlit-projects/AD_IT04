@@ -1,5 +1,6 @@
 package net.finah.GUI;
 
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -8,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,12 +31,21 @@ public class PatientPanel extends JFrame {
 	private JButton button = new JButton("Voeg patiënt toe");
 	private String achternaamString, voornaamString, emailString;
 	private PatientVerzorger patient = new PatientVerzorger();
+	private ImageIcon icon;
 
 	public PatientPanel() {
 		super("Toevoegen Patiënt");
 
-		JPanel newPanel = new JPanel(new GridBagLayout());
+		icon = new ImageIcon("src/background.jpg");
+		JPanel newPanel = new JPanel(new GridBagLayout()) {
 
+			protected void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 0, 0, null);
+				super.paintComponent(g);
+			}
+		};
+		newPanel.setOpaque(false);
+		
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.anchor = GridBagConstraints.WEST;
 		constraints.insets = new Insets(10, 10, 10, 10);
@@ -94,7 +105,7 @@ public class PatientPanel extends JFrame {
 					dispose();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
 
 				System.out.println(patient);
@@ -124,7 +135,7 @@ public class PatientPanel extends JFrame {
 					"Gelieve een geldig emailadres in te geven",
 					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
 
-		} else if (punt == staart+1) {
+		} else if (punt == staart + 1) {
 			JFrame frame = new JFrame();
 
 			JOptionPane.showMessageDialog(frame,

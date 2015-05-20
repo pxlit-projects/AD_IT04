@@ -1,15 +1,19 @@
 package net.finah.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -354,6 +358,7 @@ public class HoofdPanel extends JFrame {
 		main.setVisible(true);
 		main.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		main.jTabbedPane.setSelectedIndex(i);
+
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -372,5 +377,6 @@ public class HoofdPanel extends JFrame {
 		}
 
 		refreshHoofdPanel();
+		
 	}
 }

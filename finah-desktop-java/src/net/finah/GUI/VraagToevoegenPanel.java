@@ -1,6 +1,7 @@
 package net.finah.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,7 +26,7 @@ import net.finah.API.Vragenlijst;
 
 public class VraagToevoegenPanel extends JFrame {
 	private JLabel titel = new JLabel("Titel: ");
-	private JTextField tekstTitel = new JTextField(25);
+	private JTextField tekstTitel = new JTextField(50);
 	private JButton button = new JButton("Voeg vraag toe");
 	private JButton toevoegen = new JButton("Voeg vragenlijst toe");
 	private static Integer indexer = 1;
@@ -33,10 +35,20 @@ public class VraagToevoegenPanel extends JFrame {
 	private ArrayList<String> tekstVragen = new ArrayList<String>();
 	private ArrayList<Vraag> vragen = new ArrayList<Vraag>();
 	private Vragenlijst lijst;
+	private ImageIcon icon;
 
 	public VraagToevoegenPanel() {
 		super("Toevoegen vragenlijst");
-		JPanel newPanel = new JPanel(new GridBagLayout());
+		icon = new ImageIcon("src/background.jpg");
+		JPanel newPanel = new JPanel(new GridBagLayout()) {
+
+			protected void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 0, 0, null);
+				super.paintComponent(g);
+			}
+		};
+		newPanel.setOpaque(false);
+
 		JScrollPane pane = new JScrollPane(newPanel,
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -64,7 +76,7 @@ public class VraagToevoegenPanel extends JFrame {
 				// newPanel.removeAll();
 
 				// Create label and text field
-				listOfTextFields.add(new JTextField(25));
+				listOfTextFields.add(new JTextField(50));
 				listOfLabels.add(new JLabel("Vraag " + indexer + ": "));
 
 				// Create constraints
