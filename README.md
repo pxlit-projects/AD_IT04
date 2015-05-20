@@ -82,8 +82,6 @@ Vragenlijst aanmaken:
 ![Image of aanmaken]
 (/afbeeldingen/desktopclientJava/vragenlijsttoevoegen.JPG)
 
-### Screenshots:
-
 ## Desktop (C#):
 
 ### Beschrijving:
