@@ -67,6 +67,23 @@ er een overzicht weergeven worden van alle rapporten van de patiënten en mantel
 
 ### Screenshots:
 
+Inloggen:
+
+![Image of inloggen]
+(/afbeeldingen/desktopclientJava/login.JPG)
+
+Patiënt toevoegen:
+
+![Image of toevoegen]
+(/afbeeldingen/desktopclientJava/patienttoevoegen.JPG)
+
+Vragenlijst aanmaken:
+
+![Image of aanmaken]
+(/afbeeldingen/desktopclientJava/vragenlijsttoevoegen.JPG)
+
+### Screenshots:
+
 ## Desktop (C#):
 
 ### Beschrijving:
