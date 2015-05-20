@@ -12,21 +12,21 @@ public class Login {
 	@JsonProperty("returnUrl")
 	private String returnUrl;
 
-	public Login(String email, String password){
+	public Login(String email, String password) {
 		this.email = email;
 		this.password = password;
 		this.returnUrl = "abc";
 	}
 
-	public String toString(){
+	public String toString() {
 		return "login:" + email + ":" + password;
 	}
 
-	public String getEmail(){
+	public String getEmail() {
 		return email;
 	}
 
-	public String getPassword(){
+	public String getPassword() {
 		return password;
 	}
 }

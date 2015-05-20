@@ -48,38 +48,31 @@ public class HoofdPanel extends JFrame {
 
 	// Variabelen Panel voor Patient
 	private JPanel panelPatient = new JPanel(new BorderLayout());
-	private JPanel topPanelPatient = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
-	private JPanel bottomPanelPatient = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
+	private JPanel topPanelPatient = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	private JPanel bottomPanelPatient = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JTable patientTabel = new JTable();
 	private JLabel labelPatient = new JLabel(" Patiënten ");
 	private JButton buttonPatient = new JButton("Voeg patiënt toe");
 
 	// Variabelen Panel voor Mantelzorger
 	private JPanel panelZorger = new JPanel(new BorderLayout());
-	private JPanel topPanelZorger = new JPanel(
-			new FlowLayout(FlowLayout.CENTER));
-	private JPanel bottomPanelZorger = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
+	private JPanel topPanelZorger = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	private JPanel bottomPanelZorger = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JTable zorgerTabel = new JTable();
 	private JLabel labelZorger = new JLabel(" Mantelzorgers ");
 	private JButton buttonZorger = new JButton("Voeg mantelzorger toe");
 
 	// Variabelen Panel voor Rapport
 	private JPanel panelRapport = new JPanel(new BorderLayout());
-	private JPanel topPanelRapport = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
-	private JPanel bottomPanelRapport = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
+	private JPanel topPanelRapport = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	private JPanel bottomPanelRapport = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JTable rapportTabel = new JTable();
 	private JLabel labelRapport = new JLabel(" Rapporten ");
 	private JButton buttonRapport = new JButton("Download rapport");
 
 	// Variabelen Panel voor Vragenlijst
 	private JPanel panelVragenlijst = new JPanel(new BorderLayout());
-	private JPanel topPanelVragenlijst = new JPanel(new FlowLayout(
-			FlowLayout.CENTER));
+	private JPanel topPanelVragenlijst = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JPanel bottomPanelVragenlijst = new JPanel(new FlowLayout());
 	private JTable vragenlijstTabel = new JTable();
 	private JLabel labelVragenlijst = new JLabel(" Vragenlijsten ");
@@ -102,46 +95,45 @@ public class HoofdPanel extends JFrame {
 		ArrayList<Vragenlijst> vragenList = new ArrayList<Vragenlijst>();
 		vragenList = API.getVragenlijst();
 
-		if(API.getDokterID() != 0){
-		int i = 0;
-		int j = 0;
-		int k = 0;
-		int v = 0;
+		if (API.getDokterID() != 0) {
+			int i = 0;
+			int j = 0;
+			int k = 0;
+			int v = 0;
 
-		for (PatientVerzorger patientVerzorger : patientList) {
-			if (patientVerzorger.isPatient()) {
-				patienten[i][0] = patientVerzorger.getVNaam();
-				patienten[i][1] = patientVerzorger.getANaam();
-				patienten[i][2] = patientVerzorger.getemail();
-				i++;
-			} else {
-				mantelzorgers[j][0] = patientVerzorger.getVNaam();
-				mantelzorgers[j][1] = patientVerzorger.getANaam();
-				mantelzorgers[j][2] = patientVerzorger.getemail();
-				j++;
+			for (PatientVerzorger patientVerzorger : patientList) {
+				if (patientVerzorger.isPatient()) {
+					patienten[i][0] = patientVerzorger.getVNaam();
+					patienten[i][1] = patientVerzorger.getANaam();
+					patienten[i][2] = patientVerzorger.getemail();
+					i++;
+				} else {
+					mantelzorgers[j][0] = patientVerzorger.getVNaam();
+					mantelzorgers[j][1] = patientVerzorger.getANaam();
+					mantelzorgers[j][2] = patientVerzorger.getemail();
+					j++;
+				}
 			}
-		}
 
-		for (Rapport rapport : rapportList) {
-			rapporten[k][0] = rapport.getId();
-			rapporten[k][1] = rapport.getPatientId();
-			rapporten[k][2] = rapport.getVerzorgerId();
-			rapporten[k][3] = rapport.getVragenlijstId();
-			rapporten[k][4] = rapport.getDate();
-			k++;
-		}
+			for (Rapport rapport : rapportList) {
+				rapporten[k][0] = rapport.getId();
+				rapporten[k][1] = rapport.getPatientId();
+				rapporten[k][2] = rapport.getVerzorgerId();
+				rapporten[k][3] = rapport.getVragenlijstId();
+				rapporten[k][4] = rapport.getDate();
+				k++;
+			}
 
-		for (Vragenlijst vraaglijst : vragenList) {
-			vragenlijsten[v][0] = vraaglijst.getId();
-			vragenlijsten[v][1] = vraaglijst.getBeschrijving();
-			v++;
-		}
-		
+			for (Vragenlijst vraaglijst : vragenList) {
+				vragenlijsten[v][0] = vraaglijst.getId();
+				vragenlijsten[v][1] = vraaglijst.getBeschrijving();
+				v++;
+			}
+
 		}
 
 		Object[] column = { "Voornaam", "Achternaam", "Email" };
-		Object[] columnRapport = { "Rapport ID", "Patient ID", "Verzoger ID",
-				"Vragenlijst ID", "Datum" };
+		Object[] columnRapport = { "Rapport ID", "Patient ID", "Verzoger ID", "Vragenlijst ID", "Datum" };
 		Object[] columnVraag = { "ID", "Beschrijving" };
 
 		// Panel voor Patiënten
@@ -150,8 +142,7 @@ public class HoofdPanel extends JFrame {
 				return false;
 			}
 		};
-		labelPatient.setFont(labelPatient.getFont().deriveFont(
-				Font.BOLD | Font.ITALIC, 18));
+		labelPatient.setFont(labelPatient.getFont().deriveFont(Font.BOLD | Font.ITALIC, 18));
 		topPanelPatient.add(labelPatient);
 		bottomPanelPatient.add(buttonPatient);
 		panelPatient.add(bottomPanelPatient, BorderLayout.SOUTH);
@@ -166,8 +157,7 @@ public class HoofdPanel extends JFrame {
 				return false;
 			}
 		};
-		labelZorger.setFont(labelZorger.getFont().deriveFont(
-				Font.BOLD | Font.ITALIC, 18));
+		labelZorger.setFont(labelZorger.getFont().deriveFont(Font.BOLD | Font.ITALIC, 18));
 		topPanelZorger.add(labelZorger);
 		bottomPanelZorger.add(buttonZorger);
 		panelZorger.add(bottomPanelZorger, BorderLayout.SOUTH);
@@ -182,8 +172,7 @@ public class HoofdPanel extends JFrame {
 				return false;
 			}
 		};
-		labelRapport.setFont(labelRapport.getFont().deriveFont(
-				Font.BOLD | Font.ITALIC, 18));
+		labelRapport.setFont(labelRapport.getFont().deriveFont(Font.BOLD | Font.ITALIC, 18));
 		topPanelRapport.add(labelRapport);
 		bottomPanelRapport.add(buttonRapport);
 		panelRapport.add(bottomPanelRapport, BorderLayout.SOUTH);
@@ -200,23 +189,15 @@ public class HoofdPanel extends JFrame {
 				if (rij == -1) {
 					JFrame frame = new JFrame();
 
-					JOptionPane.showMessageDialog(frame,
-							"Gelieve een rapport te selecteren",
-							"Ongeldig rapport", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(frame, "Gelieve een rapport te selecteren", "Ongeldig rapport", JOptionPane.WARNING_MESSAGE);
 
 				} else {
 					if (rapportTabel.getValueAt(rij, 0) == null) {
 						JFrame frame = new JFrame();
 
-						JOptionPane
-								.showMessageDialog(
-										frame,
-										"Gelieve een geldig rapport te selecteren",
-										"Ongeldig rapport",
-										JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(frame, "Gelieve een geldig rapport te selecteren", "Ongeldig rapport", JOptionPane.WARNING_MESSAGE);
 					} else {
-						int id = Integer.parseInt(rapportTabel.getValueAt(rij,
-								0).toString());
+						int id = Integer.parseInt(rapportTabel.getValueAt(rij, 0).toString());
 						try {
 							PDFMaker.bekijkRapport(id);
 						} catch (IOException | COSVisitorException e1) {
@@ -235,8 +216,7 @@ public class HoofdPanel extends JFrame {
 				return false;
 			}
 		};
-		labelVragenlijst.setFont(labelVragenlijst.getFont().deriveFont(
-				Font.BOLD | Font.ITALIC, 18));
+		labelVragenlijst.setFont(labelVragenlijst.getFont().deriveFont(Font.BOLD | Font.ITALIC, 18));
 		topPanelVragenlijst.add(labelVragenlijst);
 		bottomPanelVragenlijst.add(buttonVragenlijst);
 		bottomPanelVragenlijst.add(buttonBekijken);
@@ -254,24 +234,15 @@ public class HoofdPanel extends JFrame {
 				if (rij == -1) {
 					JFrame frame = new JFrame();
 
-					JOptionPane.showMessageDialog(frame,
-							"Gelieve een vragenlijst te selecteren",
-							"Ongeldige vragenlijst",
-							JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(frame, "Gelieve een vragenlijst te selecteren", "Ongeldige vragenlijst", JOptionPane.WARNING_MESSAGE);
 
 				} else {
 					if (vragenlijstTabel.getValueAt(rij, 0) == null) {
 						JFrame frame = new JFrame();
 
-						JOptionPane
-								.showMessageDialog(
-										frame,
-										"Gelieve een geldige vragenlijst te selecteren",
-										"Ongeldige vragenlijst",
-										JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(frame, "Gelieve een geldige vragenlijst te selecteren", "Ongeldige vragenlijst", JOptionPane.WARNING_MESSAGE);
 					} else {
-						int id = Integer.parseInt(vragenlijstTabel.getValueAt(
-								rij, 0).toString());
+						int id = Integer.parseInt(vragenlijstTabel.getValueAt(rij, 0).toString());
 						try {
 							VraagTonenPanel tonen = new VraagTonenPanel(id);
 
@@ -368,8 +339,7 @@ public class HoofdPanel extends JFrame {
 		API.init();
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (UnsupportedLookAndFeelException | ClassNotFoundException
-				| InstantiationException | IllegalAccessException e) {
+		} catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			Debug.log("Unable to change the UI to the system UI");
 		}
 
@@ -380,6 +350,6 @@ public class HoofdPanel extends JFrame {
 		}
 
 		refreshHoofdPanel();
-		
+
 	}
 }

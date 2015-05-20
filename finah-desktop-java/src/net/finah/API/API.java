@@ -139,27 +139,29 @@ public class API {
 	 * @throws IOException
 	 */
 	public static ArrayList<Vraag> getVragenLijst(int lijst) throws IOException {
-		if(dokterID != 0){
-		URL loc = new URL(remote + "vraag/" + lijst);
-		init();
-		ObjectReader reader = mapper
-				.reader(new TypeReference<ArrayList<Vraag>>() {
-				});
-		ArrayList<Vraag> vragen = reader.readValue(loc);
-		return vragen;
-		}else{ return null;}
+		if (dokterID != 0) {
+			URL loc = new URL(remote + "vraag/" + lijst);
+			init();
+			ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Vraag>>() {
+			});
+			ArrayList<Vraag> vragen = reader.readValue(loc);
+			return vragen;
+		} else {
+			return null;
+		}
 	}
 
-	public static ArrayList<PatientVerzorger> getPatientVerzoger()
-			throws IOException {
-			if(dokterID != 0){
-		URL loc = new URL(remote + "patientmantelzorger/" + dokterID + "/2/2");
-		init();
-		ObjectReader reader = mapper
-				.reader(new TypeReference<ArrayList<PatientVerzorger>>() {
-				});
-		ArrayList<PatientVerzorger> patientVerzorger = reader.readValue(loc);
-		return patientVerzorger;}else{ return null;}
+	public static ArrayList<PatientVerzorger> getPatientVerzoger() throws IOException {
+		if (dokterID != 0) {
+			URL loc = new URL(remote + "patientmantelzorger/" + dokterID + "/2/2");
+			init();
+			ObjectReader reader = mapper.reader(new TypeReference<ArrayList<PatientVerzorger>>() {
+			});
+			ArrayList<PatientVerzorger> patientVerzorger = reader.readValue(loc);
+			return patientVerzorger;
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -171,17 +173,17 @@ public class API {
 	 *
 	 * @throws IOException
 	 */
-	public static ArrayList<Rapport> getRapport()
-			throws IOException {
-			if(dokterID != 0){
-		URL loc = new URL(remote + "rapport/" + dokterID);
-		init();
-		ObjectReader reader = mapper
-				.reader(new TypeReference<ArrayList<Rapport>>() {
-				});
-		ArrayList<Rapport> rapporten = reader.readValue(loc);
-		return rapporten;
-			}else{ return null;}
+	public static ArrayList<Rapport> getRapport() throws IOException {
+		if (dokterID != 0) {
+			URL loc = new URL(remote + "rapport/" + dokterID);
+			init();
+			ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Rapport>>() {
+			});
+			ArrayList<Rapport> rapporten = reader.readValue(loc);
+			return rapporten;
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -193,17 +195,17 @@ public class API {
 	 *
 	 * @throws IOException
 	 */
-	public static ArrayList<Antwoord> getAntwoordLijst(int rapport_Id)
-			throws IOException {
-			if(dokterID != 0){
-		URL loc = new URL(remote + "antwoord/" + rapport_Id);
-		init();
-		ObjectReader reader = mapper
-				.reader(new TypeReference<ArrayList<Antwoord>>() {
-				});
-		ArrayList<Antwoord> antwoord = reader.readValue(loc);
-		return antwoord;
-		}else{ return null;}
+	public static ArrayList<Antwoord> getAntwoordLijst(int rapport_Id) throws IOException {
+		if (dokterID != 0) {
+			URL loc = new URL(remote + "antwoord/" + rapport_Id);
+			init();
+			ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Antwoord>>() {
+			});
+			ArrayList<Antwoord> antwoord = reader.readValue(loc);
+			return antwoord;
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -216,20 +218,20 @@ public class API {
 	 * @throws IOException
 	 */
 	// TODO: id verwijderen en wrapper functie maken
-	public static ArrayList<Vragenlijst> getVragenlijst()
-			throws IOException {
-			if(dokterID != 0){
-		Debug.log("receiving 'Vragenlijst' data");
-		URL loc = new URL(remote + "vragenlijst/");
-		init();
+	public static ArrayList<Vragenlijst> getVragenlijst() throws IOException {
+		if (dokterID != 0) {
+			Debug.log("receiving 'Vragenlijst' data");
+			URL loc = new URL(remote + "vragenlijst/");
+			init();
 
-		ObjectReader reader = mapper
-				.reader(new TypeReference<ArrayList<Vragenlijst>>() {
-				});
-		ArrayList<Vragenlijst> vragenlijst = reader.readValue(loc);
-		Debug.log("received 'Vragenlijst' data");
-		return vragenlijst;
-			}else{ return null;}
+			ObjectReader reader = mapper.reader(new TypeReference<ArrayList<Vragenlijst>>() {
+			});
+			ArrayList<Vragenlijst> vragenlijst = reader.readValue(loc);
+			Debug.log("received 'Vragenlijst' data");
+			return vragenlijst;
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -241,25 +243,24 @@ public class API {
 	 * @throws IOException
 	 */
 	// TODO: Needs to be corrected
-	public static void writeVragenLijst(ArrayList<Vraag> list, int id)
-			throws IOException {
-			if(dokterID != 0){
-		Debug.log("Writing 'vragenlijst'");
-		URL loc = new URL(remote + "vraag/");
-		init();
-		//writeVragenlijst(new Vragenlijst("vragenlijst " + id, dokterID));
-		syncLastID();
-		Debug.log("Writing each 'Vraag'");
-		for (Vraag vraag : list) {
-			vraag.setVragenLijst_Id(lastID);
-			Debug.log("Writing " + vraag.toString());
-			writeVraag(vraag);
-		}
-
-		String json = writer.writeValueAsString(list);
-		putData(json, loc);
-		Debug.log("wrote 'VragenLijst' data");
+	public static void writeVragenLijst(ArrayList<Vraag> list, int id) throws IOException {
+		if (dokterID != 0) {
+			Debug.log("Writing 'vragenlijst'");
+			URL loc = new URL(remote + "vraag/");
+			init();
+			// writeVragenlijst(new Vragenlijst("vragenlijst " + id, dokterID));
+			syncLastID();
+			Debug.log("Writing each 'Vraag'");
+			for (Vraag vraag : list) {
+				vraag.setVragenLijst_Id(lastID);
+				Debug.log("Writing " + vraag.toString());
+				writeVraag(vraag);
 			}
+
+			String json = writer.writeValueAsString(list);
+			putData(json, loc);
+			Debug.log("wrote 'VragenLijst' data");
+		}
 	}
 
 	/**
@@ -270,19 +271,19 @@ public class API {
 	 * @throws IOException
 	 */
 	public static int writeVragenlijst(Vragenlijst obj) throws IOException {
-		if(dokterID != 0){
-		Debug.log("preparing to transfer to server");
-		URL loc = new URL(remote + "vragenlijst/");
-		init();
-		Debug.log("transforming to json");
-		String json = writer.writeValueAsString(obj);
-		Debug.log("data written");
-		String response = putData(json, loc);
-		ObjectReader reader = mapper.reader(new TypeReference<Vragenlijst>() {
-		});
-		Vragenlijst vragenlijst = reader.readValue(response);
-		return vragenlijst.getId();
-		}else{
+		if (dokterID != 0) {
+			Debug.log("preparing to transfer to server");
+			URL loc = new URL(remote + "vragenlijst/");
+			init();
+			Debug.log("transforming to json");
+			String json = writer.writeValueAsString(obj);
+			Debug.log("data written");
+			String response = putData(json, loc);
+			ObjectReader reader = mapper.reader(new TypeReference<Vragenlijst>() {
+			});
+			Vragenlijst vragenlijst = reader.readValue(response);
+			return vragenlijst.getId();
+		} else {
 			return 0;
 		}
 	}
@@ -305,13 +306,13 @@ public class API {
 	}
 
 	public static void writePatientMantelzorger(PatientVerzorger obj) throws IOException {
-		if(dokterID != 0){
-		URL loc = new URL(remote + "patientmantelzorger/");
-		init();
-		String json = writer.writeValueAsString(obj);
-		Debug.log("transfering  Patientverzorger: " + obj.toString());
-		putData(json, loc);
-		Debug.log("transfered  patientverzorger: " + obj.toString());
+		if (dokterID != 0) {
+			URL loc = new URL(remote + "patientmantelzorger/");
+			init();
+			String json = writer.writeValueAsString(obj);
+			Debug.log("transfering  Patientverzorger: " + obj.toString());
+			putData(json, loc);
+			Debug.log("transfered  patientverzorger: " + obj.toString());
 		}
 	}
 
@@ -327,16 +328,14 @@ public class API {
 		int respc = httpcon.getResponseCode();
 		Debug.log("response code:" + respc);
 		if (respc != HttpURLConnection.HTTP_CREATED && respc != 200) {
-			Debug.err("Wrong response code:" + respc + " from: "
-					+ loc.toString());
+			Debug.err("Wrong response code:" + respc + " from: " + loc.toString());
 			throw new IOException("Connection Failed");
 		}
 		out.close();
 		Debug.log("JSON transfered: " + json, "putdata-transfer");
 
 		Debug.log("Receiving response");
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-				httpcon.getInputStream()));
+		BufferedReader br = new BufferedReader(new InputStreamReader(httpcon.getInputStream()));
 
 		String line = null;
 		StringBuilder sb = new StringBuilder();
@@ -353,30 +352,33 @@ public class API {
 	}
 
 	public static void syncLastID() {
-		if(dokterID != 0){
-		Boolean cont = true;
-		int id = 0;
-		// TODO: fix 1 (dokter ID)
-		try {
-			ArrayList<Vragenlijst> obj = getVragenlijst();
-			for (Vragenlijst vragenlijst : obj) {
-				int derp = vragenlijst.getId();
-				if (derp > id)
-					id = derp;
-				Debug.log(vragenlijst.toString());
+		if (dokterID != 0) {
+			Boolean cont = true;
+			int id = 0;
+			// TODO: fix 1 (dokter ID)
+			try {
+				ArrayList<Vragenlijst> obj = getVragenlijst();
+				for (Vragenlijst vragenlijst : obj) {
+					int derp = vragenlijst.getId();
+					if (derp > id)
+						id = derp;
+					Debug.log(vragenlijst.toString());
+				}
+				if (id > 0)
+					lastID = id;
+				Debug.log(lastID + "");
+			} catch (IOException e) {
 			}
-			if (id > 0)
-				lastID = id;
-			Debug.log(lastID + "");
-		} catch (IOException e) {
+		} else {
+			lastID = 0;
 		}
-		}else{ lastID = 0;}
 	}
 
 	public static Login getLogin() {
 		return loginData;
 	}
-	public static int getDokterID(){
+
+	public static int getDokterID() {
 		return dokterID;
 	}
 }

@@ -40,7 +40,7 @@ public class Antwoord {
 	public void setAntwoordExtra(int antwoordExtra) {
 		this.antwoordExtra = antwoordExtra;
 	}
-	
+
 	public void setVerzorger(boolean verzorger) {
 		this.verzorger = verzorger;
 	}
@@ -68,7 +68,6 @@ public class Antwoord {
 	public boolean getVerzorger() {
 		return verzorger;
 	}
-
 
 	public String toString() {
 		return id + ":" + vraag_Id + "," + rapport_Id + "," + antwoordInt + "," + antwoordExtra + " verzorger:" + verzorger;

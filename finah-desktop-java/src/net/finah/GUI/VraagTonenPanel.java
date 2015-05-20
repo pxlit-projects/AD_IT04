@@ -40,9 +40,7 @@ public class VraagTonenPanel extends JFrame {
 		} catch (FileNotFoundException e) {
 			JFrame frame = new JFrame();
 
-			JOptionPane.showMessageDialog(frame,
-					"Deze vragenlijst bevat geen vragen", "Lege vragenlijst",
-					JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Deze vragenlijst bevat geen vragen", "Lege vragenlijst", JOptionPane.WARNING_MESSAGE);
 		}
 
 		int i = 0;
@@ -61,8 +59,7 @@ public class VraagTonenPanel extends JFrame {
 			}
 		};
 		vraagTabel.getColumnModel().getColumn(1).setPreferredWidth(800);
-		labelVraag.setFont(labelVraag.getFont().deriveFont(
-				Font.BOLD | Font.ITALIC, 18));
+		labelVraag.setFont(labelVraag.getFont().deriveFont(Font.BOLD | Font.ITALIC, 18));
 		topPanelVraag.add(labelVraag);
 		panelVraag.add(topPanelVraag, BorderLayout.NORTH);
 

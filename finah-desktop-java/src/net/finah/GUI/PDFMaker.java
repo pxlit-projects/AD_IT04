@@ -17,9 +17,7 @@ import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class PDFMaker {
-	public static void drawTable(PDPage page,
-			PDPageContentStream contentStream, float y, float margin,
-			String[][] content, int ID) throws IOException {
+	public static void drawTable(PDPage page, PDPageContentStream contentStream, float y, float margin, String[][] content, int ID) throws IOException {
 		final int rows = content.length;
 		final int cols = content[0].length;
 		final float rowHeight = 20f;
@@ -66,8 +64,7 @@ public class PDFMaker {
 		}
 	}
 
-	public static void bekijkRapport(int ID) throws IOException,
-			COSVisitorException {
+	public static void bekijkRapport(int ID) throws IOException, COSVisitorException {
 		PDDocument doc = new PDDocument();
 		PDPage page = new PDPage();
 		doc.addPage(page);
@@ -78,9 +75,7 @@ public class PDFMaker {
 		} catch (FileNotFoundException e) {
 			JFrame frame = new JFrame();
 
-			JOptionPane.showMessageDialog(frame,
-					"Dit is een leeg rapport",
-					"Leeg rapport", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Dit is een leeg rapport", "Leeg rapport", JOptionPane.WARNING_MESSAGE);
 		}
 
 		int i = 1;

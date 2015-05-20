@@ -12,7 +12,7 @@ public class Vraag {
 	@JsonProperty("Vragenlijst_Id")
 	private int vragenlijst_Id;
 
-	public String toString(){
+	public String toString() {
 		return id + ": " + beschrijving + ":" + vragenlijst_Id;
 	}
 
@@ -27,17 +27,17 @@ public class Vraag {
 	public void setVragenLijst_Id(int vragenlijst_Id) {
 		this.vragenlijst_Id = vragenlijst_Id;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public int getVragenlijst_Id() {
 		return vragenlijst_Id;
 	}
-	
+
 	public String getBeschrijving() {
 		return beschrijving;
 	}
-	
+
 }

@@ -32,16 +32,16 @@ public class MantelzorgerPanel extends JFrame {
 	private PatientVerzorger zorger = new PatientVerzorger();
 	private ImageIcon icon;
 
-	public MantelzorgerPanel(){
+	public MantelzorgerPanel() {
 		super("Toevoegen Mantelzorger");
 		icon = new ImageIcon("src/background.jpg");
-		JPanel newPanel = new JPanel(new GridBagLayout()){
-		
-		protected void paintComponent(Graphics g){
-			g.drawImage(icon.getImage(), 0, 0, null); 	
-			super.paintComponent(g);
-		}
-	};
+		JPanel newPanel = new JPanel(new GridBagLayout()) {
+
+			protected void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 0, 0, null);
+				super.paintComponent(g);
+			}
+		};
 		newPanel.setOpaque(false);
 
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -117,31 +117,22 @@ public class MantelzorgerPanel extends JFrame {
 		if (!(email.contains("@") && email.contains("."))) {
 			JFrame frame = new JFrame();
 
-			JOptionPane.showMessageDialog(frame,
-					"Gelieve een geldig emailadres in te geven",
-					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Gelieve een geldig emailadres in te geven", "Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
 		} else if (!(email.contains("@") || email.contains("."))) {
 			JFrame frame = new JFrame();
 
-			JOptionPane.showMessageDialog(frame,
-					"Gelieve een geldig emailadres in te geven",
-					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Gelieve een geldig emailadres in te geven", "Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
 		} else if (email.length() < 8) {
 			JFrame frame = new JFrame();
 
-			JOptionPane.showMessageDialog(frame,
-					"Gelieve een geldig emailadres in te geven",
-					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Gelieve een geldig emailadres in te geven", "Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
 
 		} else if (punt == staart + 1) {
 			JFrame frame = new JFrame();
 
-			JOptionPane.showMessageDialog(frame,
-					"Gelieve een geldig emailadres in te geven",
-					"Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "Gelieve een geldig emailadres in te geven", "Ongeldig emailadres", JOptionPane.WARNING_MESSAGE);
 
 		}
 	}
-	
 
 }

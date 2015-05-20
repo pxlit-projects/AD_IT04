@@ -21,30 +21,35 @@ public class Rapport {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
 	public void setVragenlijst_Id(int vragenlijst_Id) {
 		this.vragenlijst_Id = vragenlijst_Id;
 	}
 
-	public String toString(){
+	public String toString() {
 		return id + ":" + patient_Id + "," + mantelzorger_Id + "-" + date + "(" + vragenlijst_Id + ")";
 	}
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public int getPatientId() {
 		return patient_Id;
 	}
+
 	public int getVerzorgerId() {
 		return mantelzorger_Id;
 	}
+
 	public Date getDate() {
 		return date;
 	}
-	
+
 	public int getVragenlijstId() {
 		return vragenlijst_Id;
 	}

@@ -49,9 +49,7 @@ public class VraagToevoegenPanel extends JFrame {
 		};
 		newPanel.setOpaque(false);
 
-		JScrollPane pane = new JScrollPane(newPanel,
-				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		JScrollPane pane = new JScrollPane(newPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		JPanel panelMain = new JPanel(new BorderLayout());
 
 		GridBagConstraints constraints = new GridBagConstraints();

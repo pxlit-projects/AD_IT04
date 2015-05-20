@@ -21,7 +21,7 @@ public class PatientVerzorger {
 
 	@JsonProperty("Dokter_Id")
 	private int dokterId;
-	
+
 	public void setvNaam(String vNaam) {
 		this.vNaam = vNaam;
 	}
@@ -39,7 +39,7 @@ public class PatientVerzorger {
 	}
 
 	@JsonIgnore
-	public String toString(){
+	public String toString() {
 		return id + ":" + vNaam + "-" + aNaam + ":" + email + ":" + verzorger + ":" + dokterId;
 	}
 
@@ -62,13 +62,13 @@ public class PatientVerzorger {
 	public String getemail() {
 		return email;
 	}
-	
+
 	@JsonIgnore
 	public Object getFullNaam() {
-		return getANaam() + "-" + getVNaam() ;
+		return getANaam() + "-" + getVNaam();
 	}
 
 	public void setDokterId(int i) {
-		dokterId = i;	
+		dokterId = i;
 	}
 }

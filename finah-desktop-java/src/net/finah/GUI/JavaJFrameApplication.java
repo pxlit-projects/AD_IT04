@@ -75,16 +75,10 @@ public class JavaJFrameApplication {
 			}
 		};
 
-		private JScrollPane patientPane = new JScrollPane(patientTabel,
-				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JScrollPane patientPane = new JScrollPane(patientTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-		private JScrollPane rapportPane = new JScrollPane(rapportTabel,
-				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		private JScrollPane vraagPane = new JScrollPane(vraagTabel,
-				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JScrollPane rapportPane = new JScrollPane(rapportTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		private JScrollPane vraagPane = new JScrollPane(vraagTabel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		private JButton jButton = new JButton("Voeg patient toe");
 		private JButton button = new JButton("Test");
 
@@ -103,8 +97,7 @@ public class JavaJFrameApplication {
 
 			JPanel jPaneA = new JPanel();
 			JLabel label = new JLabel("Title ");
-			label.setFont(label.getFont().deriveFont(Font.BOLD | Font.ITALIC,
-					18));
+			label.setFont(label.getFont().deriveFont(Font.BOLD | Font.ITALIC, 18));
 			JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 			topPanel.add(label);
 
@@ -115,19 +108,15 @@ public class JavaJFrameApplication {
 			jPaneA.add(topPanel, BorderLayout.SOUTH);
 
 			JPanel jPaneB = new JPanel();
-			rapportTabel.getColumnModel().getColumn(0)
-					.setHeaderValue("Patient");
-			rapportTabel.getColumnModel().getColumn(1)
-					.setHeaderValue("Mantelzorger");
-			rapportTabel.getColumnModel().getColumn(2)
-					.setHeaderValue("Vragenlijst");
+			rapportTabel.getColumnModel().getColumn(0).setHeaderValue("Patient");
+			rapportTabel.getColumnModel().getColumn(1).setHeaderValue("Mantelzorger");
+			rapportTabel.getColumnModel().getColumn(2).setHeaderValue("Vragenlijst");
 			rapportTabel.getColumnModel().getColumn(3).setHeaderValue("Datum");
 			jPaneB.add(rapportPane);
 			jPaneB.add(button);
 
 			JPanel jPaneC = new JPanel();
-			vraagTabel.getColumnModel().getColumn(0)
-					.setHeaderValue("Beschrijving");
+			vraagTabel.getColumnModel().getColumn(0).setHeaderValue("Beschrijving");
 			jPaneC.add(vraagPane);
 
 			menuBar.add(fileMenu);
@@ -149,8 +138,7 @@ public class JavaJFrameApplication {
 
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (UnsupportedLookAndFeelException | ClassNotFoundException
-				| InstantiationException | IllegalAccessException e) {
+		} catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			Debug.log("Unable to change the UI to the system UI");
 		}
 		try {
