@@ -62,8 +62,8 @@ De desktop client in Java voor met de Backend to communiceren. Dit project is ge
 er een overzicht weergeven worden van alle rapporten van de patiënten en mantelzorgers. Er kunnen hiermee ook patiënten en mantelzorgers worden toegevoegd en nieuwe vragenlijsten worden gemaakt.
 
 ### Instructies:
-1.Project importeren in Eclipse.
-2.Test.java runnen voor de project uit te voeren (drukt momenteel enkel de eerste vraag af van de vragenlijst).
+1.Project importeren in Eclipse
+2.Test.java runnen voor het project uit te voeren
 
 ### Screenshots:
 
@@ -86,7 +86,7 @@ Vragenlijst aanmaken:
 
 ### Beschrijving:
 De desktop client in C# voor met de Backend to communiceren.  Dit project is gemaakt in Eclipse. Met de desktop client kan 
-er een overzicht weergeven worden van alle rapporten van de patiënten en mantelzorgers. Er kunnen hiermee ook patiënten en mantelzorgers worden toegevoegd en nieuwe vragenlijsten worden gemaakt.
+er een overzicht weergeven worden van alle rapporten van de patiënten en mantelzorgers. Er kunnen hiermee ook patiënten en mantelzorgers worden toegevoegd en nieuwe vragenlijsten worden gemaakt. De dokter kan vragenlijsten versturen naar patiënten en mantelzorgers.
 
 ### Instructies:
 open het project in Visual Studio
