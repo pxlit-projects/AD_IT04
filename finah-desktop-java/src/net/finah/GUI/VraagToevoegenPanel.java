@@ -152,11 +152,16 @@ public class VraagToevoegenPanel extends JFrame {
 
 				try {
 					API.writeVragenLijst(vragen, ID);
-					HoofdPanel.refreshHoofdPanel();
-					dispose();
 				} catch (IOException e1) { // TODO Auto-generated catch block
+					//e1.printStackTrace();
+				}
+				try {
+					HoofdPanel.refreshHoofdPanel();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				dispose();
 
 			}
 		});
