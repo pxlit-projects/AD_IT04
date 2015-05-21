@@ -1,5 +1,6 @@
 package net.finah.GUI;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -75,6 +76,9 @@ public class LoginPanel extends JFrame {
 		} catch (NullPointerException e) {
 			Debug.log("geen login gegevens gevonden");
 		}
+		loginButton.setBackground(Color.GREEN);
+		loginButton.setContentAreaFilled(false);
+		loginButton.setOpaque(true);
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				API.init();

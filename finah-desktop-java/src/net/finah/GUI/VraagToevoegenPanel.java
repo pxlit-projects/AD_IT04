@@ -1,6 +1,7 @@
 package net.finah.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -67,6 +68,9 @@ public class VraagToevoegenPanel extends JFrame {
 		constraints.anchor = GridBagConstraints.CENTER;
 		newPanel.add(button, constraints);
 
+		button.setBackground(Color.GREEN);
+		button.setContentAreaFilled(false);
+		button.setOpaque(true);
 		button.addActionListener(new ActionListener() {
 
 			@Override
@@ -122,6 +126,9 @@ public class VraagToevoegenPanel extends JFrame {
 		panelMain.add(pane, BorderLayout.CENTER);
 		add(panelMain);
 
+		toevoegen.setBackground(Color.GREEN);
+		toevoegen.setContentAreaFilled(false);
+		toevoegen.setOpaque(true);
 		toevoegen.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

@@ -1,5 +1,6 @@
 package net.finah.GUI;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -78,8 +79,10 @@ public class PatientPanel extends JFrame {
 		newPanel.add(button, constraints);
 
 		add(newPanel);
-		// setLocationRelativeTo(null);
-
+	
+		button.setBackground(Color.GREEN);
+		button.setContentAreaFilled(false);
+		button.setOpaque(true);
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

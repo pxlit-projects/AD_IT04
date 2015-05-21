@@ -181,6 +181,9 @@ public class HoofdPanel extends JFrame {
 		JScrollPane scrollRapport = new JScrollPane(rapportTabel);
 		panelRapport.add(scrollRapport, BorderLayout.CENTER);
 
+		buttonRapport.setBackground(Color.GREEN);
+		buttonRapport.setContentAreaFilled(false);
+		buttonRapport.setOpaque(true);
 		buttonRapport.addActionListener(new ActionListener() {
 
 			@Override
@@ -226,6 +229,9 @@ public class HoofdPanel extends JFrame {
 		JScrollPane scrollVraag = new JScrollPane(vragenlijstTabel);
 		panelVragenlijst.add(scrollVraag, BorderLayout.CENTER);
 
+		buttonBekijken.setBackground(Color.GREEN);
+		buttonBekijken.setContentAreaFilled(false);
+		buttonBekijken.setOpaque(true);
 		buttonBekijken.addActionListener(new ActionListener() {
 
 			@Override
@@ -292,6 +298,9 @@ public class HoofdPanel extends JFrame {
 
 		VraagToevoegenPanel toevoegen = new VraagToevoegenPanel();
 
+		buttonVragenlijst.setBackground(Color.GREEN);
+		buttonVragenlijst.setContentAreaFilled(false);
+		buttonVragenlijst.setOpaque(true);
 		buttonVragenlijst.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -302,6 +311,9 @@ public class HoofdPanel extends JFrame {
 
 		PatientPanel patient = new PatientPanel();
 
+		buttonPatient.setBackground(Color.GREEN);
+		buttonPatient.setContentAreaFilled(false);
+		buttonPatient.setOpaque(true);
 		buttonPatient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -312,6 +324,9 @@ public class HoofdPanel extends JFrame {
 
 		mantelzorger = new MantelzorgerPanel();
 
+		buttonZorger.setBackground(Color.GREEN);
+		buttonZorger.setContentAreaFilled(false);
+		buttonZorger.setOpaque(true);
 		buttonZorger.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -339,7 +354,7 @@ public class HoofdPanel extends JFrame {
 		main.setVisible(true);
 		main.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		main.jTabbedPane.setSelectedIndex(i);
-
+		main.jTabbedPane.setBackgroundAt(i, Color.GREEN);
 	}
 
 	public static void main(String[] args) throws IOException {
