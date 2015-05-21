@@ -67,7 +67,6 @@ public class LoginPanel extends JFrame {
 		newPanel.add(loginButton, constraints);
 
 		add(newPanel);
-		setLocationRelativeTo(null);
 
 		try {
 			tekstGebruiker.setText(API.getLogin().getEmail());

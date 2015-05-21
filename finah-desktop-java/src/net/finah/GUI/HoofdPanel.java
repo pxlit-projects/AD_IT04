@@ -305,7 +305,7 @@ public class HoofdPanel extends JFrame {
 		buttonPatient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				patient.setSize(800, 600);
+				patient.setSize(400, 300);
 				patient.setVisible(true);
 			}
 		});
@@ -315,7 +315,7 @@ public class HoofdPanel extends JFrame {
 		buttonZorger.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mantelzorger.setSize(800, 600);
+				mantelzorger.setSize(400, 300);
 				mantelzorger.setVisible(true);
 			}
 		});
