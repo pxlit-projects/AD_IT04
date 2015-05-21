@@ -23,9 +23,9 @@ import net.finah.API.API;
 import net.finah.API.PatientVerzorger;
 
 public class PatientPanel extends JFrame {
-	private JLabel voornaam = new JLabel("Voornaam: ");
-	private JLabel achternaam = new JLabel("Achternaam: ");
-	private JLabel email = new JLabel("Email: ");
+	private JLabel voornaam = new JLabel(" Voornaam: ");
+	private JLabel achternaam = new JLabel(" Achternaam: ");
+	private JLabel email = new JLabel(" Email: ");
 	private JTextField tekstVoornaam = new JTextField(20);
 	private JTextField tekstAchternaam = new JTextField(20);
 	private JTextField tekstEmail = new JTextField(20);
@@ -37,7 +37,7 @@ public class PatientPanel extends JFrame {
 	public PatientPanel() {
 		super("Toevoegen Patiënt");
 
-		icon = new ImageIcon("src/background.jpg");
+		icon = new ImageIcon("background.jpg");
 		JPanel newPanel = new JPanel(new GridBagLayout()) {
 
 			protected void paintComponent(Graphics g) {

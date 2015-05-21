@@ -23,8 +23,8 @@ import net.finah.API.Login;
 import net.finah.Debug.Debug;
 
 public class LoginPanel extends JFrame {
-	private JLabel gebruikersnaam = new JLabel("Gebruikersnaam: ");
-	private JLabel wachtwoord = new JLabel("Wachtwoord: ");
+	private JLabel gebruikersnaam = new JLabel(" Gebruikersnaam: ");
+	private JLabel wachtwoord = new JLabel(" Wachtwoord: ");
 	private JTextField tekstGebruiker = new JTextField(20);
 	private JPasswordField tekstWachtwoord = new JPasswordField(20);
 	private JButton loginButton = new JButton("Inloggen");
@@ -33,7 +33,7 @@ public class LoginPanel extends JFrame {
 	public LoginPanel() {
 		super("Inloggen");
 
-		icon = new ImageIcon("src/background.jpg");
+		icon = new ImageIcon("background.jpg");
 		JPanel newPanel = new JPanel(new GridBagLayout()) {
 
 			protected void paintComponent(Graphics g) {
