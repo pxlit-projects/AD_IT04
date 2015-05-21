@@ -80,7 +80,7 @@ public class API {
 			dokterID = Integer.parseInt(response);
 		} catch (NumberFormatException e) {
 			Debug.log("Login failed");
-			dokterID = 1;
+			//dokterID = 1;
 		}
 		Debug.log("dokter ID:" + dokterID);
 

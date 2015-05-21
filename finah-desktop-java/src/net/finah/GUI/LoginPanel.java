@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -88,6 +89,15 @@ public class LoginPanel extends JFrame {
 					if (API.getDokterID() != 0) {
 						HoofdPanel.refreshHoofdPanel();
 						dispose();
+					} else {
+						JFrame frame = new JFrame();
+
+						JOptionPane
+								.showMessageDialog(
+										frame,
+										"Gelieve een geldige gebruikersnaam & wachtwoord in te vullen",
+										"Ongeldige login",
+										JOptionPane.ERROR_MESSAGE);
 					}
 				} catch (Exception ex) {
 					Debug.err("login request failed:" + ex.getMessage()); // ex.printStackTrace();
