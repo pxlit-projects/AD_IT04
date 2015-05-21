@@ -1,5 +1,6 @@
 package net.finah.GUI;
 
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -7,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,11 +26,20 @@ public class LoginPanel extends JFrame {
 	private JTextField tekstGebruiker = new JTextField(20);
 	private JPasswordField tekstWachtwoord = new JPasswordField(20);
 	private JButton loginButton = new JButton("Inloggen");
+	private ImageIcon icon;
 
 	public LoginPanel() {
 		super("Inloggen");
 
-		JPanel newPanel = new JPanel(new GridBagLayout());
+		icon = new ImageIcon("src/background.jpg");
+		JPanel newPanel = new JPanel(new GridBagLayout()) {
+
+			protected void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 0, 0, null);
+				super.paintComponent(g);
+			}
+		};
+		newPanel.setOpaque(false);
 
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.anchor = GridBagConstraints.WEST;
@@ -67,11 +78,13 @@ public class LoginPanel extends JFrame {
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				API.init();
-				API.setLogin(new Login(tekstGebruiker.getText(), tekstWachtwoord.getText()));
+				API.setLogin(new Login(tekstGebruiker.getText(),
+						tekstWachtwoord.getText()));
 				Debug.log(API.getLogin().toString());
 
 				try {
-					API.login(new URL("http://finahweb.azurewebsites.net/account/login"));
+					API.login(new URL(
+							"http://finahweb.azurewebsites.net/account/login"));
 					if (API.getDokterID() != 0) {
 						HoofdPanel.refreshHoofdPanel();
 						dispose();

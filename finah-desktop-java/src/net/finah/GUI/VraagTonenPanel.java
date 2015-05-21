@@ -40,7 +40,9 @@ public class VraagTonenPanel extends JFrame {
 		} catch (FileNotFoundException e) {
 			JFrame frame = new JFrame();
 
-			JOptionPane.showMessageDialog(frame, "Deze vragenlijst bevat geen vragen", "Lege vragenlijst", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame,
+					"Deze vragenlijst bevat geen vragen", "Lege vragenlijst",
+					JOptionPane.WARNING_MESSAGE);
 		}
 
 		int i = 0;
@@ -58,12 +60,17 @@ public class VraagTonenPanel extends JFrame {
 				return false;
 			}
 		};
-		vraagTabel.getColumnModel().getColumn(1).setPreferredWidth(800);
-		labelVraag.setFont(labelVraag.getFont().deriveFont(Font.BOLD | Font.ITALIC, 18));
+		labelVraag.setFont(labelVraag.getFont().deriveFont(
+				Font.BOLD | Font.ITALIC, 18));
 		topPanelVraag.add(labelVraag);
 		panelVraag.add(topPanelVraag, BorderLayout.NORTH);
 
-		JScrollPane scrollVraag = new JScrollPane(vraagTabel);
+		JScrollPane scrollVraag = new JScrollPane(vraagTabel,
+				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		vraagTabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		vraagTabel.getColumnModel().getColumn(0).setPreferredWidth(50);
+		vraagTabel.getColumnModel().getColumn(1).setPreferredWidth(2500);
 		panelVraag.add(scrollVraag, BorderLayout.CENTER);
 		add(panelVraag);
 	}
