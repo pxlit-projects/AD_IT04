@@ -39,7 +39,7 @@ public class MantelzorgerPanel extends JFrame {
 		JPanel newPanel = new JPanel(new GridBagLayout()) {
 
 			protected void paintComponent(Graphics g) {
-				g.drawImage(icon.getImage(), 0, 0, null);
+				g.drawImage(icon.getImage(), 0, 0, this.getWidth(),this.getHeight(),this);
 				super.paintComponent(g);
 			}
 		};
