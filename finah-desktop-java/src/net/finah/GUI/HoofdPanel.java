@@ -286,7 +286,7 @@ public class HoofdPanel extends JFrame {
 		afsluiten.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				dispose();
+				System.exit(0);
 			}
 		});
 
@@ -337,7 +337,7 @@ public class HoofdPanel extends JFrame {
 		main = new HoofdPanel();
 		main.setSize(800, 600);
 		main.setVisible(true);
-		main.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		main.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		main.jTabbedPane.setSelectedIndex(i);
 
 	}
