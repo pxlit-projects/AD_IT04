@@ -44,6 +44,8 @@ namespace finah_desktop_CSharp
                 this.patientDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 this.patientDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 this.patientDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.patientDataGridView.Columns[1].HeaderText = "Voornaam";
+                this.patientDataGridView.Columns[2].HeaderText = "Achternaam";
             }
 
             List<Patientmantelzorger> mantelzorgerHulpList = dbfunctions.loadVerzorgers(dokter_Id);
@@ -58,6 +60,8 @@ namespace finah_desktop_CSharp
                 this.verzorgerDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 this.verzorgerDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 this.verzorgerDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.verzorgerDataGridView.Columns[1].HeaderText = "Voornaam";
+                this.verzorgerDataGridView.Columns[2].HeaderText = "Achternaam";
             }
 
             List<Vragenlijst> vragenlijstHulpList = dbfunctions.loadVragenlijsten(dokter_Id);
@@ -92,6 +96,10 @@ namespace finah_desktop_CSharp
                 this.rapportDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 this.rapportDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 this.rapportDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                this.rapportDataGridView.Columns[0].HeaderText = "Patiënt";
+                this.rapportDataGridView.Columns[1].HeaderText = "Mantelzorger";
+                this.rapportDataGridView.Columns[2].HeaderText = "Datum";
+                this.rapportDataGridView.Columns[3].HeaderText = "Vragenlijst";
             }
 
             comboBoxPatient.DataSource = patientHulpList;

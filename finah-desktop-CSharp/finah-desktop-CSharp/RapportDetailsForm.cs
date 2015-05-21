@@ -75,6 +75,11 @@ namespace finah_desktop_CSharp
                 }
 
                 rapportDetailsDataGridView.DataSource = rapportDetailsModelList;
+                rapportDetailsDataGridView.Columns[0].HeaderText = "Vraag";
+                rapportDetailsDataGridView.Columns[1].HeaderText = "Patiënt";
+                rapportDetailsDataGridView.Columns[2].HeaderText = "Mantelzorger";
+                rapportDetailsDataGridView.Columns[3].HeaderText = "Wil patiënt hier aan werken?";
+                rapportDetailsDataGridView.Columns[4].HeaderText = "Wil mantelzorger hier aan werken?";
             }
         }
 
