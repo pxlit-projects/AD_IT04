@@ -1,7 +1,11 @@
 # AD_IT04
+
 AppDev repo voor AD_IT04
 
-## Groepsleden
+
+
+# Groepsleden
+
 Michael Voorjans
 
 Dieter Tuerlinckx
@@ -12,15 +16,21 @@ Jeffrey Bosmans
 
 Lander Ghekiere
 
-## Projecten:
+
+
+# Projecten:
+
 
 ## Backend (WebAPI):
 
 ### Beschrijving:
+
 De Backend is een Asp.net WebAPI project. Dit project is gemaakt in Visual Studio. De WebAPI heeft connectie met de database en verleend deze aan de andere projecten. Deze database bevat vragenlijsten, vragen, antwoorden, rapporten, patiënten, mantelzorgers, dokters, onderzoekers en alle accounts en rollen die nodig zijn voor een vlotte werking. 
 
 ### Instructies:
+
 Het project importeren in Visual Studio.
+
 
 ## MVC Client:
 
@@ -51,8 +61,9 @@ mantelzorger-account: 11307308@student.pxl.be
 
 onderzoeker-account: jef.peeters@gmail.com
 
+
 ### Screenshots:
-zie map afbeeldingen/mvc webclient
+zie map screenshots/mvcWebClient
 
 
 ## Desktop (Java):
@@ -70,26 +81,13 @@ er een overzicht weergeven worden van alle rapporten van de patiënten en mantel
 
 Zonder Eclipse:
 
-1.In de map Exe_Java_Client het bestand JavaClientv4.exe runnen voor het programma te starten. (windows smartscreen uitschakelen)
+1.In de map executable het bestand JavaClientv4.exe runnen voor het programma te starten. (windows smartscreen uitschakelen)
 
 2.Inloggen met het dokter-account.
 
 ### Screenshots:
+zie map screenshots/desktopClientJava
 
-Inloggen:
-
-![Image of inloggen]
-(/afbeeldingen/desktopclientJava/login.JPG)
-
-Patiënt toevoegen:
-
-![Image of toevoegen]
-(/afbeeldingen/desktopclientJava/patienttoevoegen.JPG)
-
-Vragenlijst aanmaken:
-
-![Image of aanmaken]
-(/afbeeldingen/desktopclientJava/vragenlijsttoevoegen.JPG)
 
 ## Desktop (C#):
 
@@ -102,21 +100,8 @@ open het project in Visual Studio
 druk op "Start"
 
 ### Screenshots:
+zie map screenshots/desktopClientCSharp
 
-Inloggen:
-
-![Image of inloggen]
-(/afbeeldingen/desktopClientC#/inlog.JPG)
-
-Patiënt toevoegen:
-
-![Image of toevoegen]
-(/afbeeldingen/desktopClientC#/patient_toevoegen.JPG)
-
-Vragenlijst aanmaken:
-
-![Image of aanmaken]
-(/afbeeldingen/desktopClientC#/vragenlijst_aanmaken.JPG)
 
 ## Webclient:
 
@@ -129,18 +114,4 @@ Volgende link is een voorbeeld-link die een patiënt via mail kan aankrijgen:
 http://webclientfinah.azurewebsites.net/?verzorger=false&rapportId=83&vragenlijstId=17
 
 ### Screenshots:
-
-Beginpagina:
-
-![Image of beginpagina]
-(/afbeeldingen/webclient/begin_vragenlijst.jpg)
-
-Vragenlijst:
-
-![Image of vragenlijst]
-(/afbeeldingen/webclient/vragenlijst.jpg)
-
-Eindpagina:
-
-![Image of eindpagina]
-(/afbeeldingen/webclient/einde_vragenlijst.jpg)
+zie map screenshots/webClient
