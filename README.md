@@ -96,8 +96,9 @@ De desktop client in C# voor met de Backend to communiceren.  Dit project is gem
 er een overzicht weergeven worden van alle rapporten van de patiënten en mantelzorgers. Er kunnen hiermee ook patiënten en mantelzorgers worden toegevoegd en nieuwe vragenlijsten worden gemaakt. De dokter kan vragenlijsten versturen naar patiënten en mantelzorgers.
 
 ### Instructies:
-open het project in Visual Studio
-druk op "Start"
+open het project in Visual Studio.
+druk op "Start".
+voor het exporteren naar pdf moet er op de c-schijf een folder 'temp' aangemaakt worden
 
 ### Screenshots:
 zie map screenshots/desktopClientCSharp
