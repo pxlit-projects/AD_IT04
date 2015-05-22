@@ -64,11 +64,15 @@ er een overzicht weergeven worden van alle rapporten van de patiënten en mantel
 ### Instructies:
 1.Project importeren in Eclipse
 
-2.HoofdPanel.java runnen voor het project uit te voeren
+2.HoofdPanel.java runnen voor het project uit te voeren.
+
+3.Inloggen met het dokter-account.
 
 Zonder Eclipse:
 
-1.In de map Exe_Java_Client het bestand JavaClientv4.exe runnen voor het programma te starten
+1.In de map Exe_Java_Client het bestand JavaClientv4.exe runnen voor het programma te starten. (windows smartscreen uitschakelen)
+
+2.Inloggen met het dokter-account.
 
 ### Screenshots:
 
