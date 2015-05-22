@@ -35,7 +35,7 @@ public class MantelzorgerPanel extends JFrame {
 
 	public MantelzorgerPanel() {
 		super("Toevoegen Mantelzorger");
-		icon = new ImageIcon("background.jpg");
+		icon = new ImageIcon(LoginPanel.class.getClassLoader().getResource("background.jpg"));
 		JPanel newPanel = new JPanel(new GridBagLayout()) {
 
 			protected void paintComponent(Graphics g) {

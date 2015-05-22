@@ -40,11 +40,11 @@ public class VraagToevoegenPanel extends JFrame {
 
 	public VraagToevoegenPanel() {
 		super("Toevoegen vragenlijst");
-		icon = new ImageIcon("src/background.jpg");
+		icon = new ImageIcon(LoginPanel.class.getClassLoader().getResource("background.jpg"));
 		JPanel newPanel = new JPanel(new GridBagLayout()) {
 
 			protected void paintComponent(Graphics g) {
-				g.drawImage(icon.getImage(), 0, 0, null);
+				g.drawImage(icon.getImage(), 0, 0, this.getWidth(),this.getHeight(),this);
 				super.paintComponent(g);
 			}
 		};

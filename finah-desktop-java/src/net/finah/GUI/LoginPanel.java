@@ -33,7 +33,7 @@ public class LoginPanel extends JFrame {
 	public LoginPanel() {
 		super("Inloggen");
 
-		icon = new ImageIcon("background.jpg");
+		icon = new ImageIcon(LoginPanel.class.getClassLoader().getResource("background.jpg"));
 		JPanel newPanel = new JPanel(new GridBagLayout()) {
 
 			protected void paintComponent(Graphics g) {
