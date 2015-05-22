@@ -97,17 +97,17 @@ druk op "Start"
 Inloggen:
 
 ![Image of inloggen]
-(/afbeeldingen/desktopclient/inlog.JPG)
+(/afbeeldingen/desktopClientC#/inlog.JPG)
 
 Patiënt toevoegen:
 
 ![Image of toevoegen]
-(/afbeeldingen/desktopclient/patient_toevoegen.JPG)
+(/afbeeldingen/desktopClientC#/patient_toevoegen.JPG)
 
 Vragenlijst aanmaken:
 
 ![Image of aanmaken]
-(/afbeeldingen/desktopclient/vragenlijst_aanmaken.JPG)
+(/afbeeldingen/desktopClientC#/vragenlijst_aanmaken.JPG)
 
 ## Webclient:
 
